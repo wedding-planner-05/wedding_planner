@@ -9,6 +9,7 @@ function App() {
     <p>Abhimanyu</p>
     <p>Priyanshi</p>
     <p>satish</p>
+    <p>Aashish</p>
   </>
 }
 
