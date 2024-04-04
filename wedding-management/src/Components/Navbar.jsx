@@ -11,10 +11,10 @@ function Navbar() {
     <div className='container navbar-div'>
       <div className= 'navbar-social-media'>
         <div className='icon'>
-        <FaWhatsapp /> 
-        <IoLogoInstagram />
-        <FaYoutube />
-        <TiSocialFacebookCircular />
+          <a href=""><FaWhatsapp /> </a>
+          <a href=""><IoLogoInstagram /></a>
+          <a href=""><FaYoutube /></a>
+          <a href=""><TiSocialFacebookCircular /></a>
         </div>
       </div>
       <div className='navbar-header-button'>
