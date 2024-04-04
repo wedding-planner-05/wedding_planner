@@ -19,17 +19,22 @@ function Navbar() {
       </div>
       <div className='navbar-header-button'>
             <div className='logo'>
+              <a href="#">
               <img src="images/wedding-planner-high-resolution-logo-white-transparent.png" alt="" />
+              </a>
             </div>
             <div className='button'>
-              <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Vendors</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
+
+                <div><a href="#">Home</a></div>
+                <div><a href="#">Vendors</a></div>
+                <div><a href="#">About</a></div>
+                <div><a href="#">Contact Us</a></div>
+             
             </div>
-            <div className='signIn-signUp'></div>
+            <div className='signIn-signUp'>
+              <span><a href="#">Are you a vendor ?</a></span>
+              <button className='btn btn-danger'>Login</button>
+            </div>
       </div>
     </div>
   )
