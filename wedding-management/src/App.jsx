@@ -9,7 +9,9 @@ function App() {
     <p>Abhimanyu</p>
     <p>Priyanshi</p>
     <p>satish</p>
-    <p>Aashish Aaj-mera</p>
+  <p>Devendra</p>
+  <p>Simran</p>
+    
   </>
 }
 
