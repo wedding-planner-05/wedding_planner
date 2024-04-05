@@ -1,0 +1,101 @@
+.footerBox {
+    height: 30rem;
+    width: 100%;
+    border-radius: 2rem 2rem 0rem 0rem;
+    box-shadow: 0rem 0rem 1rem 1rem hwb(0 100% 91%);
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.footerBox ul li {
+    list-style: none;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.FotterBoxSize {
+    height: 20rem;
+    width: 20rem;
+}
+
+.bottom {
+    height: 5rem;
+    width: 100%;
+}
+
+.contentBox {
+    width: 25rem;
+    height: 10rem;
+}
+
+.border {
+    background: #d5133a;
+    height: 5rem;
+    width: 100%;
+    border-radius: 0rem 0rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.footerMail {
+    height: 2rem;
+    width: 20rem;
+    letter-spacing: .2rem;
+    color: white;
+    margin-left: 2rem;
+}
+
+.ml {
+    margin-left: 2rem;
+}
+
+.fontsize div ul li {
+    font-size: 1.25rem;
+}
+
+.imagessize {
+    height: 3rem;
+    width: 15rem;
+}
+
+.contentBox{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin-top: -14rem;
+    margin-left: 5rem;
+    /* heelo */
+}
+.contentBox div:nth-child(1) {
+    background: rgb(213, 19, 58);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+}
+.contentBox div:nth-child(2){
+
+    font-size: 1.3rem;
+    text-align: start;
+}
+.contentBox div:nth-child(3) ul{
+
+    display: flex;
+    background: #d5133a;
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3rem;
+}
+.contentBox div:nth-child(3) ul li{
+    color: whitesmoke;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.sizeback{
+    height: 10rem;
+}
