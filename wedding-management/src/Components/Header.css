@@ -9,15 +9,11 @@
     height: 30vw;
     width: 20vw;
 }
-/* .header{
-    border: 2px solid;
-} */
 .header-text{
-    /* border: 2px solid; */
     display: flex;
     flex-direction: column;
-    /* row-gap: 5vw; */
 }
+
 .dreams{
     height: 15vw;
     display: flex;
@@ -25,6 +21,7 @@
     align-items: center;
     row-gap: .5vw;
 }
+
 .dreams h3{
     font-family: 'Kaushan Script' ,cursive;
     font-size: 27px;
