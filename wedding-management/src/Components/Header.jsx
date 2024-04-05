@@ -3,7 +3,7 @@ import React from 'react'
 import "./Header.css"
 const Header = () => {
   return (
-    <div className='container'>
+    <div className='container-fluid'>
             <div className='header mt-3'>
                 <div className='groom-image'>
                     <img src="/images/groom.png" alt="" />
@@ -14,7 +14,7 @@ const Header = () => {
                         Turning Dreams <br />into Reality.....
                         </h3>
                         <h3>Your Perfect Wedding Awaits...</h3>
-                        <span style={{color:"crimson"}}>____________________ <FaHeartPulse/>  _____________________</span><br />
+                        <span style={{color:"crimson"}}>____________________ <FaHeartPulse/>  ____________________</span><br />
                         <a href="#">
                         <button className='btn btn-danger'>Get started</button>
                         </a>
