@@ -6,7 +6,8 @@ import Header from '../Components/Header';
   return <>
         <Navbar/>
         <Header/>
-  </>
+      <h1>Hello</h1>
+</>
 }
 
 export default Home ;
