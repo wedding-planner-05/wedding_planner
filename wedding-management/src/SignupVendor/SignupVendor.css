@@ -1,0 +1,22 @@
+.boxcontainer{
+    height:60rem;
+    padding: 2rem;
+    width: 100%;
+    border: 1px solid black;
+    /* border-radius: 10rem; */
+}
+.boxFirst{
+    border: 1px solid black;
+    height: 50rem;
+    aspect-ratio: 1;
+}
+.forms{
+    margin-top: 5rem;
+    row-gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
+.forms input, .forms button{
+    height: 5vh;
+    width: 50vh;
+}
