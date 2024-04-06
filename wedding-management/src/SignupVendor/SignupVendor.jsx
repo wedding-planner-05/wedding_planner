@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import Navbar from '../Components/Navbar';
 import "./SignupVendor.css";
+import Footer from '../Components/Footer';
+
 
 function SignupVendor() {
     // Creating refs for input fields
@@ -31,20 +33,22 @@ function SignupVendor() {
     return (
         <>
             <Navbar />
-            <div className='container-fluid boxcontainer d-flex justify-content-around'>
-                <div className='boxFirst'>this box is for images</div>
-                <div className='boxFirst'>
-                    <form action="" className='d-flex flex-column forms'>
+            <div className='container-fluid boxcontainer d-flex justify-content-around mt-5'>
+                <div className='boxFirst'><img src="/images/Rectangle 12.png"alt=""  className='imagesize'/></div>
+                <div className='boxFirst borders'>
+                    <form action="" className='d-flex flex-column forms' onSubmit={handleSubmit}>
                         <h3>SignUp to access your dashboard</h3>
-                        <input type="email" placeholder='Enter Your Email'/>
-                        <input type="password"/>
+                        <input type="email" placeholder='Enter Your Email' className='inputPlace p-3' />
+                        <input type="password" placeholder='Enter Your password' className='inputPlace p-3' />
                         <button type='submit'>Submit</button>
-                        <span><span>ForgotPassword</span><span>help</span></span>
+                        <div className='d-flex forgetmail'><span>ForgotPassword</span><span>Help</span></div>
                     </form>
+                    <div className='signUP'><span>alreay have an account</span> <button className='buttonss'>signUP</button></div>
                 </div>
             </div>
+            {/* <Footer/> */}
 
-           
+
         </>
     )
 }
