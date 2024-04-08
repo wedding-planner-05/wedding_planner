@@ -8,7 +8,7 @@ import './Navbar.css'
 
 function Navbar() {
   return (
-    <div className='container navbar-div'>
+    <div className='container-fluid navbar-div'>
       <div className= 'navbar-social-media'>
         <div className='icon'>
           <a href=""><FaWhatsapp /> </a>
