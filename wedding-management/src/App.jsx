@@ -1,13 +1,12 @@
 
-import React from 'react'
-import Home from './Home-Page/Home'
+import "./App.css";
+import "./Components/Footer.css"
+import Home from "./Home-Page/Home";
 
-
-const App = () => {
-  return<>
-<Home/>
-</>  
-}
-
-
+function App() {
+  return (
+    <>
+      <Home/>
+    </>
+  );
 export default App;
