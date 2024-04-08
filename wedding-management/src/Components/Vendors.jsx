@@ -33,7 +33,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor2.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-danger text-white">View More</button>
+            <button className="btn btn-warning text-white">View More</button>
           </div>
         </div>
 
