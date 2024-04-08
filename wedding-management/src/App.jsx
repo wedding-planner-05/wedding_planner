@@ -1,3 +1,12 @@
+
+import React from 'react'
+import Home from './Home-Page/Home'
+
+const App = () => {
+  return<>
+<Home/>
+</>  
+
 import "./App.css";
 import "./Components/Footer.css"
 import "./SignupVendor/SignupVendor.css"
