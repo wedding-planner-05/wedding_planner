@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 function Footer() {
 
@@ -17,6 +18,7 @@ function Footer() {
 
 
     return (
+        
         <>
             <div className='footerBox'>
 
