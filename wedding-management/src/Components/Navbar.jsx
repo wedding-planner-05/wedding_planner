@@ -8,8 +8,8 @@ import './Navbar.css'
 
 function Navbar() {
   return (
-    <div className='container-fluid navbar-div'>
-      <div className= 'navbar-social-media'>
+    <div className='navbar-div'>
+      <div className= 'container-fluid navbar-social-media'>
         <div className='icon'>
           <a href=""><FaWhatsapp /> </a>
           <a href=""><IoLogoInstagram /></a>
@@ -24,7 +24,6 @@ function Navbar() {
               </a>
             </div>
             <div className='button'>
-
                 <div><a href="#">Home</a></div>
                 <div><a href="#">Vendors</a></div>
                 <div><a href="#">About</a></div>

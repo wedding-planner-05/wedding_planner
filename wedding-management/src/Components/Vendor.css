@@ -38,11 +38,23 @@
 } */
 
 
+/* // Added by priyanshi from line 39 - 43 */
+.vendor-text{
+  color:crimson;
+  margin-left:490px;
+
+}
+.vendor-heart{
+  color:crimson;
+  margin-left: 400px;
+}
+
+
 .vendor-div {
     height: auto;
     /* border: 1px solid;    */
     width: auto;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2); */
   }
   
   .vendor-category {

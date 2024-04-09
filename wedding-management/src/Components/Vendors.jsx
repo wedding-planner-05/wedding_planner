@@ -4,7 +4,14 @@ import { FaHeartPulse } from "react-icons/fa6";
 
 const Vendors = () => {
   return (
+
     <div className="vendor-div container mt-5 p-5">
+        <h3 className="vendor-text">Vendors Categories</h3>
+   <span className="vendor-heart" style={{color:"crimson"}}>______________<FaHeartPulse/>  _______________</span><br />
+
+<br />
+
+
       <h2 style={{ fontSize: "1.5vw" }} className="text-center">
         Find trusted wedding services in all Indore area’s & Book Verified
         Vendors in simple steps.
@@ -33,7 +40,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor2.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-danger text-white">View More</button>
+            <button className="btn btn-warning text-white">View More</button>
           </div>
         </div>
 
