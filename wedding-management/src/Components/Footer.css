@@ -16,11 +16,11 @@
     }
 }
 
-/* .boxborder{
+.boxborder{
     width: 100%;
     height: 1rem;
     background-color: #d5133a;
-} */
+}
 
 .footerBox ul li {
     list-style: none;
