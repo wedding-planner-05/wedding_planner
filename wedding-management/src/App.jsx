@@ -1,6 +1,7 @@
 
-// import { BrowserRouter } from "react-router-dom";
 import "./App.css";
+import "./CaterVendor/CaterPage.css"
+import CaterPage from "./CaterVendor/CaterPage";
 import Footer from "./Components/Footer";
 import "./Components/Footer.css"
 import Home from "./Home-Page/Home";
@@ -12,8 +13,9 @@ function App() {
   return (
     <>
       {/* <Home/> */}
-      <SignupVendor/>
+      {/* <SignupVendor/> */}
       {/* <Footer/> */}
+      <CaterPage/>
 
       
     </>
