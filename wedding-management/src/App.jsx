@@ -2,28 +2,25 @@
 import "./App.css";
 import "./CaterVendor/CaterPage.css"
 import CaterPage from "./CaterVendor/CaterPage";
-import Footer from "./Components/Footer";
-import "./Components/Footer.css"
-import Home from "./Home-Page/Home";
-import SignupVendor from "./SignupVendor/SignupVendor";
+import Footer from "./Components/Footer/Footer.jsx";
+import "./Components/Footer/Footer.css"
+import Home from "./Home-Page/Home.jsx";
+import SignupVendor from "./SignupVendor/SignupVendor.jsx";
 
 import React from 'react';
-import Home from './Home-Page/Home';
 
-import PhotographerHomePage from './Photographer/PhotographerHomePage';
-const App = () => {
-  return<>
-  <Home/>
-  <PhotographerHomePage/>
-</>
+import PhotographerHomePage from './Photographer/PhotographerHomePage.jsx';
 
 function App() {
   return (
     <>
-      {/* <Home/> */}
+      <Home/>
       {/* <SignupVendor/> */}
-      {/* <Footer/> */}
-      <CaterPage/>
+      <Footer/>
+      
+      {/* <CaterPage /> */}
+      </>
+  )
 
 }
 export default App;
