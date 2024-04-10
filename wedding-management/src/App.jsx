@@ -7,7 +7,15 @@ import "./Components/Footer.css"
 import Home from "./Home-Page/Home";
 import SignupVendor from "./SignupVendor/SignupVendor";
 
-import {Routes,Route} from "react-router-dom"
+import React from 'react';
+import Home from './Home-Page/Home';
+
+import PhotographerHomePage from './Photographer/PhotographerHomePage';
+const App = () => {
+  return<>
+  <Home/>
+  <PhotographerHomePage/>
+</>
 
 function App() {
   return (
@@ -17,8 +25,5 @@ function App() {
       {/* <Footer/> */}
       <CaterPage/>
 
-      
-    </>
-  );
 }
 export default App;
