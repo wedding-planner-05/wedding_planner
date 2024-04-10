@@ -1,22 +1,15 @@
 
-// import { BrowserRouter } from "react-router-dom";
-import "./App.css";
-import Footer from "./Components/Footer";
-import "./Components/Footer.css"
-import Home from "./Home-Page/Home";
-import SignupVendor from "./SignupVendor/SignupVendor";
 
-import {Routes,Route} from "react-router-dom"
+import React from 'react';
+import Home from './Home-Page/Home';
 
-function App() {
-  return (
-    <>
-      {/* <Home/> */}
-      <SignupVendor/>
-      {/* <Footer/> */}
+import PhotographerHomePage from './Photographer/PhotographerHomePage';
+const App = () => {
+  return<>
+  <Home/>
+  <PhotographerHomePage/>
+</>
 
-      
-    </>
-  );
+
 }
 export default App;
