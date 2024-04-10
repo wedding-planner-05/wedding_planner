@@ -5,7 +5,8 @@ import Footer from '../Components/Footer';
 import './SignupVendor.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { IoIosContact } from "react-icons/io";
+// import { IoIosContact } from "react-icons/io";
+
 function SignupVendor() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,17 +23,19 @@ function SignupVendor() {
             .catch(err => {
                 console.log(err);
                 console.log("this is error");
+                toast.error("this is load")
             });
     };
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <ToastContainer />
 
             <div className='container-fluid boxcontainer d-flex justify-content-around mt-5 row-md'>
                 <div className='boxFirst col-lg-6 col-md-12'>
                     <img src="/images/Rectangle 12.png" alt="" className='imagesize' />
+                   
                 </div>
                 <div className='boxFirst borders col-lg-6 col-md-12'>
                     <form className='d-flex flex-column forms' onSubmit={handleSubmit}>
