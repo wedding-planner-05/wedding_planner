@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
-import Header from "../Components/Header";
+import Navbar from "../Components/Navbar/Navbar";
+import Header from "../Components/Header/Header";
 
-import AboutUs from "../Components/AboutUs";
+// import AboutUs from "../Components/About/AboutUs";
 
-import Vendors from "../Components/Vendors";
+import Vendors from "../Components/Vendor/Vendors";
 import ContactUs from "../Components/Contact/ContactUs";
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
       <Navbar />  
       <Header />
       <Vendors />
-      <AboutUs />
+      {/* <AboutUs /> */}
       <ContactUs />
     </>
   );
