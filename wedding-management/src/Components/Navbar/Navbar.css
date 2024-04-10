@@ -1,45 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-.navbar-div{
+
+.navbar-div {
     height: auto;
     width: 98vw;
     margin-top: 10px;
-    /* border: 2px solid; */
-    border:50px;
+    border: 50px;
 }
-.navbar-social-media{
-    height: 40px;
+
+.navbar-social-media {
+    height: 2.5vw;
     width: 100%;
     background-color: crimson;
 }
-.icon{
+
+.icon {
     width: 200px;
     height: 100%;
-    margin-left : 60% ;
-    border-radius:5px;
+    margin-left: 60%;
+    border-radius: 5px;
     font-size: 20px;
     background-color: white;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
-.icon a{
+
+.icon a {
     color: black;
 }
-.navbar-header-button{
+
+.navbar-header-button {
     width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-between;
 }
 
-.logo{
+.logo {
     background-color: crimson;
     width: 17vw;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px 0px 100px 0px ;
+    border-radius: 0px 0px 100px 0px;
 }
 
 .logo img {
@@ -47,23 +51,26 @@
     height: 2.5vw;
 }
 
-.button{
-    width: 30vw ;
+.button {
+    width: 30vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.button div a{
+
+.button div a {
     text-decoration: none;
     color: black;
 }
-.signIn-signUp{
-    width: 20vw ;
-    display: flex ;
+
+.signIn-signUp {
+    width: 20vw;
+    display: flex;
     align-items: center;
     column-gap: 1.5vw;
 }
-.signIn-signUp a{
+
+.signIn-signUp a {
     text-decoration: none;
     color: black;
 }
