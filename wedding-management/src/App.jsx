@@ -14,11 +14,11 @@ import PhotographerHomePage from './Photographer/PhotographerHomePage.jsx';
 function App() {
   return (
     <>
-      <Home/>
+      {/* <Home/> */}
       {/* <SignupVendor/> */}
-      <Footer/>
+      {/* <Footer/> */}
       
-      {/* <CaterPage /> */}
+      <CaterPage />
       </>
   )
 
