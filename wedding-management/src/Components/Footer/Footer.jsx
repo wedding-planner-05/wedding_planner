@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css'
 import Navbar from '../Navbar/Navbar';
 
 function Footer() {
