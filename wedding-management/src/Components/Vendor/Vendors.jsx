@@ -1,8 +1,16 @@
 import React from "react";
 import "./Vendor.css";
 import { FaHeartPulse } from "react-icons/fa6";
-
+import {useNavigate} from 'react-router-dom';
 const Vendors = () => {
+  const navigate = useNavigate();
+  const PhotographerHomePage = ()=>{
+    navigate('/PhotographerHomePage');
+
+  }
+  const MehendiHomePage = ()=>{
+    navigate('MehendiHomePage');
+  }
   return (
 
     <div className="vendor-div container mt-5 p-5">
@@ -27,7 +35,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor1.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-warning text-white">View More</button>
+            <button className="btn btn-warning text-white">wedding wears</button>
           </div>
         </div>
 
@@ -40,7 +48,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor2.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-warning text-white">View More</button>
+            <button onClick={()=>MehendiHomePage()} className="btn btn-warning text-white">Mehendi</button>
           </div>
         </div>
 
@@ -53,7 +61,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor3.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-warning text-white">View More</button>
+            <button onClick={()=>PhotographerHomePage()} className="btn btn-warning text-white">Photographer</button>
           </div>
         </div>
 

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Photo.css";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 
-const PhotographerHomePage = () => {
+const MehendiHomePage = () => {
 
   
   const [products, setProducts] = useState([]);
@@ -11,7 +10,7 @@ const PhotographerHomePage = () => {
   useEffect(() => {
     console.log("after");
     axios
-      .get("http://localhost:4000/vendorfunc/viewalldresses")
+      .get("http://localhost:3000/vendorfunc/viewalldresses")
       
       .then((response) => {
         console.log(response.data.data);
@@ -69,4 +68,4 @@ const PhotographerHomePage = () => {
   </>
 };
 
-export default PhotographerHomePage;
+export default MehendiHomePage;
