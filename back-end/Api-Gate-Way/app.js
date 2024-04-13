@@ -31,7 +31,7 @@ const server = fastgateway({
         {
             prefix:"user",
             target:"http://localhost:8000",
-            methods:["post"]
+            methods:["post"],
         }
     ]
 })

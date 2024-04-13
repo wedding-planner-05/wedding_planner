@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
 
-
 function Navbar() {
   return (
     <div className='navbar-div'>
