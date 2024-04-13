@@ -9,6 +9,8 @@ import Vendors from "../Components/Vendor/Vendors";
 import ContactUs from "../Components/Contact/ContactUs";
 import Footer from "../Components/Footer/Footer";
 import AboutUs from "../Components/AboutUs/AboutUs";
+// import PhotoVendorPage from "../Photographer/PhotoVendorPage";
+// import PhotoVendorDetails from "../Photographer/PhotoVendorDetails";
 
 function Home() {
   return (
@@ -19,6 +21,8 @@ function Home() {
       <AboutUs/>
       <ContactUs />
       <Footer/>
+      {/* <PhotoVendorDetails/> */}
+      {/* <PhotoVendorPage/> */}
     </>
   );
 }
