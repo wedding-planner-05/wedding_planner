@@ -69,8 +69,33 @@
     align-items: center;
     column-gap: 1.5vw;
 }
-
+.lohIn{
+    border: none;
+}
 .signIn-signUp a {
     text-decoration: none;
     color: black;
+}
+
+.vendor-user-option{
+    position: absolute;
+    top: 102px;
+    right: 49px;
+    z-index: 2;
+    display: none;
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px grey;
+    cursor: pointer;
+    background-color: white;
+}
+
+.logIn:hover +.vendor-user-option,.vendor-user-option:hover{
+    display: block;
+
+}
+.vendor-user-option:hover{
+    display: block;
+
 }
