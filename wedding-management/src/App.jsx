@@ -6,25 +6,23 @@ import {Route,Routes} from 'react-router-dom';
 
 
 import PhotographerHomePage from './Photographer/PhotographerHomePage';
-import MehendiHomePage from "../Mehendi/MehendiHomePage.jsx";
+import MehendiHomePage from "./Components/Mehendi/MehendiHomePage.jsx";
+import PhotoVendorDetails from "./Photographer/PhotoVendorDetails.jsx";
 
 const App = () => {
   return<>
-  {/* <Home/> */}
-  {/* <PhotographerHomePage/> */}
 
 
 
 
-  <Routes>
+   <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/PhotographerHomePage" element={<PhotographerHomePage/>} />
+          <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails/>} />
           <Route path="/MehendiHomePage" element={<MehendiHomePage/>}/>
           
-  </Routes>
+  </Routes> 
 
       </>
-     
-
 }
 export default App;

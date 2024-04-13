@@ -2,9 +2,17 @@ import React, { useEffect, useState } from "react";
 import "./Photo.css";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const PhotographerHomePage = () => {
 
+  const navigate = useNavigate();
+
+    const PhotoVendorDetails =(product)=> {
+    navigate('/PhotoVendorDetails', {state:product});
+
+  }
   
   const [products, setProducts] = useState([]);
 
@@ -26,7 +34,7 @@ const PhotographerHomePage = () => {
       
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
-        <section key={index} className="main-page m-3">
+        <section onClick={()=>PhotoVendorDetails(product)} key={index} className="main-page m-3">
           <div
             key={index}
             className="p-2 row details-block "
@@ -53,7 +61,7 @@ const PhotographerHomePage = () => {
                     <FaStar color="crimson" /> {product.rating || "N/A"}
                   </p>
                   <p className="font custom-text-size">
-                    <FaMapMarkerAlt color="green" /> {product.address}
+                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,14) + ".."}
                   </p>
                 </div>
               </div>
@@ -70,3 +78,5 @@ const PhotographerHomePage = () => {
 };
 
 export default PhotographerHomePage;
+
+

@@ -9,7 +9,7 @@ const Vendors = () => {
 
   }
   const MehendiHomePage = ()=>{
-    navigate('MehendiHomePage');
+    navigate('/MehendiHomePage');
   }
   return (
 

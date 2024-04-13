@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
+// import './Mehendi.css';
 
-const MehendiHomePage = () => {
+
+const MehendiHomePage = () => { 
 
   
   const [products, setProducts] = useState([]);
@@ -52,7 +54,7 @@ const MehendiHomePage = () => {
                     <FaStar color="crimson" /> {product.rating || "N/A"}
                   </p>
                   <p className="font custom-text-size">
-                    <FaMapMarkerAlt color="green" /> {product.address}
+                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)}
                   </p>
                 </div>
               </div>
