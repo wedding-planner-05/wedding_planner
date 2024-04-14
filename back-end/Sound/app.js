@@ -2,6 +2,7 @@ import express from 'express' ;
 import bodyParser from 'body-parser'; //it convert raw data into usable formate,it is used to encode data from server 
 import SoundRouter from './router/sound.router.js';
 import SoundInfoRouter from './router/sound_info.router.js';
+import cors from 'cors'
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -20,11 +21,11 @@ app.use(bodyParser.urlencoded({extended:true})) ; // use method is use to add mi
 app.use(bodyParser.json()) ;
 
 app.use(express.static(path.join(__dirname,"public"))) ;
-
+app.use(cors())
 app.use('/soundProfile',SoundRouter);
 app.use('/soundInfo',SoundInfoRouter);
 
 
 app.listen(3003,()=>{
-    console.log("server started") ;
+    console.log("3003 server started") ;
 });

@@ -3,34 +3,52 @@ import { DataTypes } from "sequelize";
 import sequelize from "../dbCongi/dbConnection.js";
 
 const soundVendorDetails = sequelize.define("sound_vendor_details",{
-    vendor_id :{
-        type : DataTypes.INTEGER ,
-        references : {
-            model : "sound_vendors",
-            key : "id"
-        },
-        allowNull : false 
+    // vendor_id :{
+    //     type : DataTypes.INTEGER ,
+    //     references : {
+    //         model : "sound_vendors",
+    //         key : "id"
+    //     },
+    //     allowNull : false 
+    // },
+    name : {
+        type:DataTypes.STRING,
+        allowNull: false
     },
     type : {
         type : DataTypes.STRING,
         allowNull : false ,
+        defaultValue: 'sound'
     },
-    image : {
+    imageUrl : {
         type : DataTypes.STRING ,
         allowNull : false 
     },
-    charges : { 
+    serviceCharge : { 
         type : DataTypes.INTEGER ,
         allowNull : false    
+    },
+    address:{
+        type : DataTypes.STRING,
+        allowNull : false
+    },
+    rating : {
+        type : DataTypes.STRING ,
+        allowNull:false
     },
     description : {
         type : DataTypes.STRING,
         allowNull : false      
     },
-    status : {
-        type : DataTypes.BOOLEAN ,
-        allowNull :false 
+    contactno : {
+        type : DataTypes.STRING,
+        allowNull: true
     }
+
+    // status : {
+    //     type : DataTypes.BOOLEAN ,
+    //     allowNull :false 
+    // }
 })
 
 sequelize.sync().then(()=>{
