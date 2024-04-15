@@ -11,6 +11,7 @@ import UserSignIn from "./Components/UserSignIn/UserSignIn.jsx";
 import VendorSignIn from "./Components/VendorSignIn/VendorSignIn.jsx";
 import SoundHomePage from "./Sound/SoundHomePage.jsx";
 import SoundVendorDetails from "./Sound/SoundVendorDetails.jsx";
+import CaterPage from "./CaterVendor/CaterPage.jsx";
 
 const App = () => {
   return<>
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="/MehendiHomePage" element={<MehendiHomePage/>}/>
           <Route path="/vendorSignUp" element={<SignupVendor/>}/>
           <Route path="/userSignIn" element={<UserSignIn/>} />
-          {/* <Route path="/CaterVendor" element ={<Cater/>}/> */}
+          <Route path="/CaterVendor" element ={<CaterPage/>}/>
           <Route path="/vendorSignIn" element={<VendorSignIn/>}/>
           <Route path="/SoundHomePage" element={<SoundHomePage/>}/>
           <Route path="/SoundVendorDetails" element={<SoundVendorDetails/>} />
