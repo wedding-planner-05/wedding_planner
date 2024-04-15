@@ -4,7 +4,9 @@ import { IoLogoInstagram } from "react-icons/io";
 import { FaYoutube } from "react-icons/fa";
 import { TiSocialFacebookCircular } from "react-icons/ti";
 import './Navbar.css'
-
+import { Link } from 'react-router-dom';
+import { IoMdPerson } from "react-icons/io";
+import { RiAdminFill } from "react-icons/ri";
 
 function Navbar() {
   return (
@@ -31,9 +33,23 @@ function Navbar() {
              
             </div>
             <div className='signIn-signUp'>
-              <span><a href="#">Are you a vendor ?</a></span>
-              <button className='btn btn-danger'>Login</button>
+
+            <span>
+            <Link to="/vendorSignUp">Are you a vendor ?</Link>
+          </span>
+          <button className="btn btn-danger logIn">Login</button>
+
+          <div className="vendor-user-option">
+             <Link to='/userSignIn' className="d-flex align-items-center justify-content-around" style={{width:"100%",height:"50%"}} >
+              <span><IoMdPerson/></span> <span>Customer</span>
+              </Link> 
+              <Link to='/vendorSignIn' className="d-flex align-items-center justify-content-around" style={{width:"100%",height:"50%"}}>
+              <span><RiAdminFill/></span> <span>Vendor</span>
+          </Link>
+
+
             </div>
+      </div>
       </div>
     </div>
   )

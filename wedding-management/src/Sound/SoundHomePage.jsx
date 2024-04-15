@@ -1,45 +1,29 @@
-import React, { useEffect, useState } from "react";
-import "./Photo.css";
-import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom';
 
+const SoundHomePage = () => {
+    const [products,setProducts] = useState([]) ;
+    const navigate = useNavigate()
+    useEffect(()=>{
+        axios.get("http://localhost:8000/sound/soundInfo/viewAllVendors").then((response)=>{
+        setProducts(response.data.data)
+        }).catch()
+    },[])
 
-const PhotographerHomePage = () => {
-  
-  const navigate = useNavigate();
-
-    const PhotoVendorDetails =(product)=> {
-    navigate('/PhotoVendorDetails', {state:product});
-
-  }
-  
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    console.log("after");
-    axios
-      .get("http://localhost:4000/vendorfunc/viewalldresses")
-      
-      .then((response) => {
-        console.log(response.data.data);
-        setProducts(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+    const SoundVendorDetails = (data)=>{
+        navigate("/SoundVendorDetails",{state:data})
+    }
   return <>
-      
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
+  
+  <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
-        <section onClick={()=>PhotoVendorDetails(product)} key={index} className="main-page m-3">
+        <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
           <div
             key={index}
             className="p-2 row details-block "
           >
-            {/* Photographer Image */}
             <div className="p-0">
               <img
                 className="img-fluid custom-img"
@@ -47,7 +31,6 @@ const PhotographerHomePage = () => {
                 alt={product.name}
               />
             </div>
-            {/* Photographer Details */}
             <div className="p-1 font-size">
               <div className="row">
                 <div className="col">
@@ -74,9 +57,8 @@ const PhotographerHomePage = () => {
         </section>
       ))}
     </div>
+  
   </>
-};
+}
 
-export default PhotographerHomePage;
-
-
+export default SoundHomePage

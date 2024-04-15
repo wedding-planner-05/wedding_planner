@@ -1,0 +1,39 @@
+.zoom-img {
+    width: 100%;
+    max-width: 50rem;
+    border-radius: 5px;
+  }
+  
+  .custom-label {
+    border: 1px solid black;
+    height: 2.5rem;
+    padding-left: 1rem;
+  }
+  
+  .custom-label-size {
+    width: 100%;
+    max-width: 30rem;
+  }
+  
+  .block-details-1 {
+    box-shadow: 0 0 0.3rem black;
+    background-color: white;
+    border-radius: 5px;
+    height: 7rem;
+    width: 80%;
+    max-width: 30rem;
+    top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .img-container {
+    width: 100%;
+    max-width: 11rem;
+  }
+  
+  .custom-border {
+    border: 1px solid black;
+    box-shadow: 0 0 0.5rem black;
+  }
+  
