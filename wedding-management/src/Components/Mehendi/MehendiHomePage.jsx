@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
-<<<<<<< HEAD
 
 const MehendiHomePage = () => {
-=======
-// import './Mehendi.css';
 
-
-const MehendiHomePage = () => { 
->>>>>>> 200321ccc5a57fb194b1f477a0eeb7917d36f8ae
-
-  
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     console.log("after");
     axios
       .get("http://localhost:3000/vendorfunc/viewalldresses")
-      
+
       .then((response) => {
         console.log(response.data.data);
         setProducts(response.data.data);
@@ -29,7 +21,7 @@ const MehendiHomePage = () => {
   }, []);
 
   return <>
-      
+
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section key={index} className="main-page m-3">
@@ -59,11 +51,11 @@ const MehendiHomePage = () => {
                     <FaStar color="crimson" /> {product.rating || "N/A"}
                   </p>
                   <p className="font custom-text-size">
-<<<<<<< HEAD
+
                     <FaMapMarkerAlt color="green" /> {product.address}
-=======
-                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)}
->>>>>>> 200321ccc5a57fb194b1f477a0eeb7917d36f8ae
+
+                    <FaMapMarkerAlt color="green" /> {product.address.slice(0, 14)}
+
                   </p>
                 </div>
               </div>
