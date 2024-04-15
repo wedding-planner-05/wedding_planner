@@ -9,7 +9,7 @@ const router = express.Router();
 router.post(
   "/signUp",
   // body("name").notEmpty(),
-  // body("name").isAlpha(),
+  // body("name").isAlpha(), 
   // body("contact").isNumeric(),
   // body("contact").notEmpty(),
   body("email").isEmail(),
@@ -27,15 +27,15 @@ router.post(
 
 router.post(
   "/update",
-  body("name").notEmpty(),
-  body("name").isAlpha(),
-  body("contact").isNumeric(),
-  body("contact").notEmpty(),
-  body("email").isEmail(),
-  body("password").isLength({ min: 5 }),
-  body("address").notEmpty(),
+  // body("name").notEmpty(),
+  // body("name").isAlpha(),
+  // body("contact").isNumeric(),
+  // body("contact").notEmpty(),
+  // body("email").isEmail(),
+  // body("password").isLength({ min: 5 }),
+  // body("address").notEmpty(),
   upDate
 );
 
-router.delete("/deleteSound",deleteSound)
+// router.delete("/deleteSound",deleteSound) 
 export default router;

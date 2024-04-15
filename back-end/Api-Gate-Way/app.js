@@ -8,7 +8,7 @@ const app = express.Router() ;
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json()) ;
 app.use(express.json()) ;
-
+app
 
 import fastgateway from 'fast-gateway'
 const port = 8000 ;

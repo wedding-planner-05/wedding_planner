@@ -4,13 +4,19 @@ import { FaHeartPulse } from "react-icons/fa6";
 import {useNavigate} from 'react-router-dom';
 const Vendors = () => {
   const navigate = useNavigate();
+
   const PhotographerHomePage = ()=>{
     navigate('/PhotographerHomePage');
-
   }
+
   const MehendiHomePage = ()=>{
     navigate('/MehendiHomePage');
   }
+  const SoundHomePage = ()=>{
+    navigate("/SoundHomePage")
+      console.log("click on sound page");
+  }
+
   return (
 
     <div className="vendor-div container mt-5 p-5">
@@ -74,7 +80,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor4.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-warning text-white">View More</button>
+            <button onClick={()=>SoundHomePage()} className="btn btn-warning text-white">Music / Band</button>
           </div>
         </div>
         <div
