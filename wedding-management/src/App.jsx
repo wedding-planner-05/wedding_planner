@@ -3,6 +3,31 @@ import "./App.css";
 import Home from "./Home-Page/Home.jsx";
 import React from 'react';
 import {Route,Routes} from 'react-router-dom';
+<<<<<<< HEAD
+
+
+import PhotographerHomePage from './Photographer/PhotographerHomePage';
+import MehendiHomePage from "../Mehendi/MehendiHomePage.jsx";
+
+const App = () => {
+  return<>
+  {/* <Home/> */}
+  {/* <PhotographerHomePage/> */}
+
+
+
+
+  <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/PhotographerHomePage" element={<PhotographerHomePage/>} />
+          <Route path="/MehendiHomePage" element={<MehendiHomePage/>}/>
+          
+  </Routes>
+
+      </>
+     
+
+=======
 import PhotographerHomePage from "./Photographer/PhotographerHomePage.jsx";
 import PhotoVendorDetails from "./Photographer/PhotoVendorDetails.jsx";
 import SignupVendor from "./SignupVendor/SignupVendor.jsx";
@@ -27,5 +52,6 @@ const App = () => {
           
   </Routes> 
       </>
+>>>>>>> 200321ccc5a57fb194b1f477a0eeb7917d36f8ae
 }
 export default App ;
