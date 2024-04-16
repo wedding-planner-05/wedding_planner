@@ -10,4 +10,4 @@ sequelize.authenticate().then(()=>{
     console.log("Database not connected");
 })
 
-export default sequelize ;
+export default sequelize;
