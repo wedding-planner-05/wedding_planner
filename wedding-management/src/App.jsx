@@ -13,6 +13,7 @@ import UserSignIn from "./Components/UserSignIn/UserSignIn.jsx";
 import VendorSignIn from "./Components/VendorSignIn/VendorSignIn.jsx";
 import SoundHomePage from "./Sound/SoundHomePage.jsx";
 import SoundVendorDetails from "./Sound/SoundVendorDetails.jsx";
+import UserOtp from "./UserOtp/UserOtp.jsx";
 
 const App = () => {
   return<>
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/vendorSignIn" element={<VendorSignIn/>}/>
           <Route path="/SoundHomePage" element={<SoundHomePage/>}/>
           <Route path="/SoundVendorDetails" element={<SoundVendorDetails/>} />
+          <Route path="/otpVerify" element={<UserOtp/>} />
           
   </Routes> 
       </>

@@ -1,13 +1,14 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../dbConfig/dbconfig";
+import sequelize from "../dbConfig/dbconfig.js";
 import bcrypt from "bcryptjs"
 
-const User = sequelize.define("user",{
+export const User = sequelize.define("user",{
     id : {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
+
     email : {
         type: DataTypes.STRING,
         unique: true,
