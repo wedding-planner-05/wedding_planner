@@ -1,9 +1,8 @@
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import React from "react";
 
 const SignInWithGoogle = () => {
-  
   return (
     <GoogleLogin
       onSuccess={(credentialResponse) => {
@@ -16,6 +15,15 @@ const SignInWithGoogle = () => {
         console.log("Login Failed");
       }}
     />
+
+    // useGoogleOneTapLogin({
+    //   onSuccess: (credentialResponse) => {
+    //     console.log(credentialResponse);
+    //   },
+    //   onError: () => {
+    //     console.log("Login Failed");
+    //   },
+    // })
   );
 };
 
