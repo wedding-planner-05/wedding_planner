@@ -22,10 +22,11 @@ app.use(bodyParser.json()) ;
 
 app.use(express.static(path.join(__dirname,"public"))) ;
 app.use(cors())
+
 app.use('/soundProfile',SoundRouter);
 app.use('/soundInfo',SoundInfoRouter);
 
 
 app.listen(3003,()=>{
     console.log("3003 server started") ;
-});
+}); 

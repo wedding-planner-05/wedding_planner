@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
+
 
 const SoundHomePage = () => {
     const [products,setProducts] = useState([]) ;
     const navigate = useNavigate()
+
+
     useEffect(()=>{
-        axios.get("http://localhost:8000/sound/soundInfo/viewAllVendors").then((response)=>{
+        axios.get("http://localhost:3000/sound/soundInfo/viewAllVendors").then((response)=>{
         setProducts(response.data.data)
         }).catch()
     },[])
@@ -15,9 +18,12 @@ const SoundHomePage = () => {
     const SoundVendorDetails = (data)=>{
         navigate("/SoundVendorDetails",{state:data})
     }
+
   return <>
   
-  <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
+    <SoundData.Provider value={products}>
+
+    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
           <div
@@ -57,6 +63,8 @@ const SoundHomePage = () => {
         </section>
       ))}
     </div>
+
+    </SoundData.Provider>
   
   </>
 }

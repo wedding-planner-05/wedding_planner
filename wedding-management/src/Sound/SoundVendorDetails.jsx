@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaEnvelope, FaPhoneAlt, FaStar } from 'react-icons/fa';
 import { FaIndianRupeeSign, FaLocationDot } from 'react-icons/fa6';
 import { useLocation } from 'react-router-dom';
@@ -8,6 +8,8 @@ import Navbar from '../Components/Navbar/Navbar';
 const SoundVendorDetails = () => {
     const location = useLocation()
     const data = location.state
+
+    console.log(typeof products );
     return (
         <div className="container-fluid">
             <Navbar/>
@@ -59,6 +61,7 @@ const SoundVendorDetails = () => {
 
           {/* <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             {products.map((data, index) => (
+
               <div
                 key={index}
                 className="col-6 col-md-4 col-lg-3 img-container m-2"
