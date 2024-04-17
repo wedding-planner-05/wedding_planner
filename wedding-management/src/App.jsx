@@ -3,17 +3,18 @@ import "./App.css";
 import Home from "./Home-Page/Home.jsx";
 import React from 'react';
 import {Route,Routes} from 'react-router-dom';
-
 import PhotographerHomePage from "./Photographer/PhotographerHomePage.jsx";
 import DressHomePage from './Dress/DressHomePage.jsx';
 import PhotoVendorDetails from "./Photographer/PhotoVendorDetails.jsx";
 import SignupVendor from "./SignupVendor/SignupVendor.jsx";
-import MehendiHomePage from "./Components/Mehendi/MehendiHomePage.jsx";
+import MehendiHomePage from "./Mehendi/MehendiHomePage.jsx";
 import UserSignIn from "./Components/UserSignIn/UserSignIn.jsx";
 import VendorSignIn from "./Components/VendorSignIn/VendorSignIn.jsx";
 import SoundHomePage from "./Sound/SoundHomePage.jsx";
 import SoundVendorDetails from "./Sound/SoundVendorDetails.jsx";
 import UserOtp from "./UserOtp/UserOtp.jsx";
+import GardenHomePage from "./Garden/GardenHomePage.jsx";
+import CaterHomePage from "./Cater/CaterHomePage.jsx";
 
 const App = () => {
   return<>
@@ -30,6 +31,8 @@ const App = () => {
           <Route path="/SoundHomePage" element={<SoundHomePage/>}/>
           <Route path="/SoundVendorDetails" element={<SoundVendorDetails/>} />
           <Route path="/otpVerify" element={<UserOtp/>} />
+          <Route path='/GardenHomePage' element={<GardenHomePage/>}/>
+          <Route path='/CaterHomePage' element={<CaterHomePage/>}/>
           
   </Routes> 
       </>

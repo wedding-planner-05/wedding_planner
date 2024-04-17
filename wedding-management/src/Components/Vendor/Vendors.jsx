@@ -9,17 +9,20 @@ const Vendors = () => {
   const PhotographerHomePage = ()=>{
     navigate('/PhotographerHomePage');
   }
-
   const MehendiHomePage = ()=>{
     navigate('/MehendiHomePage');
   }
   const SoundHomePage = ()=>{
     navigate("/SoundHomePage")
-      console.log("click on sound page");
   }
-
   const DressHomePage = ()=>{
     navigate("/DressHomePage");
+  }
+  const GardenHomePage = ()=>{
+    navigate("/GardenHomePage");
+  }
+  const CaterHomePage = ()=>{
+    navigate("/CaterHomePage");
   }
 
   return (
@@ -97,7 +100,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor5.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-warning text-white">View More</button>
+            <button onClick={()=>GardenHomePage()} className="btn btn-warning text-white">Gardens</button>
           </div>
         </div>
         <div
@@ -109,7 +112,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor6.png" alt="teri " />
           <div className="vendor-button">
-            <button className="btn btn-warning text-white">View More</button>
+            <button onClick={()=>CaterHomePage()} className="btn btn-warning text-white">Caters</button>
           </div>
         </div>
       </div>
