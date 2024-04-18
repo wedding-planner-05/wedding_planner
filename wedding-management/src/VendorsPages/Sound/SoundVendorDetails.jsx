@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { FaEnvelope, FaPhoneAlt, FaStar } from 'react-icons/fa';
 import { FaIndianRupeeSign, FaLocationDot } from 'react-icons/fa6';
 import { useLocation } from 'react-router-dom';
-import AboutUs from '../Components/AboutUs/AboutUs';
-import Navbar from '../Components/Navbar/Navbar';
+import AboutUs from '../../Components/AboutUs/AboutUs';
+import Navbar from '../../Components/Navbar/Navbar';
 
 const SoundVendorDetails = () => {
     const location = useLocation()
