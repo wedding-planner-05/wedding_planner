@@ -19,7 +19,7 @@ const DressHomePage = () => {
   useEffect(() => {
     console.log("after");
     axios
-      .get("http://localhost:3000/vendorfunc/viewalldresses")
+      .get("http://localhost:3000/dress/vendorfunc/viewalldresses")
       
       .then((response) => {
         console.log(response.data.data);

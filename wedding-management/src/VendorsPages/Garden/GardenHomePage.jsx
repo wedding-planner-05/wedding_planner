@@ -1,6 +1,21 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa';
+// import { useNavigate } from 'react-router-dom';
 
 const GardenHomePage = () => {
+  const [products,setProducts] = useState([]) ;
+  // const navigate = useNavigate()
+
+
+  useEffect(()=>{
+      axios.get("http://localhost:3000/garden/garden-details/viewAll").then((response)=>{
+      console.log(response.data.data)
+      setProducts(response.data.data)
+      }).catch(err=>{
+        console.log(err);
+      })
+  },[])
 return<>
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
@@ -14,7 +29,7 @@ return<>
               <img
                 className="img-fluid custom-img"
                 src={product.imageUrl}
-                alt={product.name}
+                alt={product.title}
               />
             </div>
             {/* Photographer Details */}
@@ -22,7 +37,7 @@ return<>
               <div className="row">
                 <div className="col">
                   <div className="h6" style={{ width: "170%" }}>
-                    <strong>{product.name}</strong>
+                    <strong>{product.title}</strong>
                   </div>
                   <p className="custom-text-size">Photo + Video</p>
                 </div>
@@ -34,13 +49,14 @@ return<>
 
                     {/* <FaMapMarkerAlt color="green" /> {product.address} */}
 
-                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)}
+                    {/* <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)} */}
+                    <FaMapMarkerAlt color="green" /> 
 
                   </p>
                 </div>
               </div>
               <h6 className="mb-0">
-                <FaRupeeSign /> {product.serviceCharge || "Price not available"}{" "}
+                <FaRupeeSign /> {product.price || "Price not available"}{" "}
                 Onwards
               </h6>
             </div>
