@@ -12,7 +12,9 @@ const SoundHomePage = () => {
     useEffect(()=>{
         axios.get("http://localhost:3000/sound/soundInfo/viewAllVendors").then((response)=>{
         setProducts(response.data.data)
-        }).catch()
+        }).catch(err=>{
+          console.log(err);
+        })
     },[])
 
     const SoundVendorDetails = (data)=>{
@@ -21,7 +23,7 @@ const SoundHomePage = () => {
 
   return <>
   
-    <SoundData.Provider value={products}>
+    {/* <SoundData.Provider value={products}> */}
 
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
@@ -64,7 +66,7 @@ const SoundHomePage = () => {
       ))}
     </div>
 
-    </SoundData.Provider>
+    {/* </SoundData.Provider> */}
   
   </>
 }
