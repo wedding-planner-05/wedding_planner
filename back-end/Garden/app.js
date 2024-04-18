@@ -29,6 +29,8 @@ app.use('/otp', otpRoutes);   // MailSender Code ye wala
 app.use("/garden-vendor", GardenLoginRoute);
 app.use("/garden-details", GardenDetailsRoute);
 
-app.listen(3000, () => {
+const port = 3003 ;
+
+app.listen(port, () => {
     console.log("Server Started...");
 });

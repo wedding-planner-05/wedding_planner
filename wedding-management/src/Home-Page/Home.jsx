@@ -6,9 +6,9 @@ import Header from "../Components/Header/Header";
 
 
 import Vendors from "../Components/Vendor/Vendors";
-import ContactUs from "../Components/Contact/ContactUs";
 import Footer from "../Components/Footer/Footer";
 import AboutUs from "../Components/AboutUs/AboutUs";
+import ContactUs from "../Components/ContactUs/ContactUs";
 
 
 function Home() {
@@ -16,15 +16,10 @@ function Home() {
     <>
       <Navbar />  
       <Header />
-      <Vendors />
+      <Vendors /> 
       <AboutUs/>
-      <ContactUs />
+      <ContactUs/>
       <Footer/>
-
-
-      {/* <PhotoVendorDetails/> */}
-      {/* <PhotoVendorPage/> */}
-
     </>
   );
 }

@@ -26,7 +26,8 @@ app.use(cors())
 app.use('/soundProfile',SoundRouter);
 app.use('/soundInfo',SoundInfoRouter);
 
+const port = 3006 ;    
 
-app.listen(3003,()=>{
+app.listen(port,()=>{
     console.log("3003 server started") ;
 }); 
