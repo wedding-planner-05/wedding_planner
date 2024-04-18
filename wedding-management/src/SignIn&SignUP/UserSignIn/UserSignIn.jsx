@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Components/Navbar/Navbar";
 import "./UserSignIn.css";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";

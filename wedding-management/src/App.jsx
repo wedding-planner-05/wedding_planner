@@ -3,24 +3,23 @@ import "./App.css";
 import Home from "./Home-Page/Home.jsx";
 import React from 'react';
 import {Route,Routes} from 'react-router-dom';
-import PhotographerHomePage from "./Photographer/PhotographerHomePage.jsx";
-import DressHomePage from './Dress/DressHomePage.jsx';
-import PhotoVendorDetails from "./Photographer/PhotoVendorDetails.jsx";
-import SignupVendor from "./SignupVendor/SignupVendor.jsx";
-import MehendiHomePage from "./Mehendi/MehendiHomePage.jsx";
-import UserSignIn from "./Components/UserSignIn/UserSignIn.jsx";
-import VendorSignIn from "./Components/VendorSignIn/VendorSignIn.jsx";
-import SoundHomePage from "./Sound/SoundHomePage.jsx";
-import SoundVendorDetails from "./Sound/SoundVendorDetails.jsx";
-import UserOtp from "./UserOtp/UserOtp.jsx";
-import GardenHomePage from "./Garden/GardenHomePage.jsx";
-import CaterHomePage from "./Cater/CaterHomePage.jsx";
+import PhotographerHomePage from "./VendorsPages/Photographer/PhotographerHomePage.jsx";
+import DressHomePage from './VendorsPages/Dress/DressHomePage.jsx';
+import PhotoVendorDetails from "./VendorsPages/Photographer/PhotoVendorDetails.jsx";
+import SignupVendor from "./SignIn&SignUP/SignupVendor/SignupVendor.jsx";
+import MehendiHomePage from "./VendorsPages/Mehendi/MehendiHomePage.jsx";
+import UserSignIn from "./SignIn&SignUP/UserSignIn/UserSignIn.jsx";
+import VendorSignIn from "./SignIn&SignUP/VendorSignIn/VendorSignIn.jsx";
+import SoundHomePage from "./VendorsPages/Sound/SoundHomePage.jsx";
+import SoundVendorDetails from "./VendorsPages/Sound/SoundVendorDetails.jsx";
+import UserOtp from "./SignIn&SignUP/UserOtp/UserOtp.jsx";
+import GardenHomePage from "./VendorsPages/Garden/GardenHomePage.jsx";
+import CaterHomePage from "./VendorsPages/Cater/CaterHomePage.jsx";
 
 const App = () => {
   return<>
    <Routes>
           <Route path="/" element={<Home/>} />
-
           <Route path="/DressHomePage" element={<DressHomePage/>} />
           <Route path="/PhotographerHomePage" element={<PhotographerHomePage/>} />
           <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails/>} />
