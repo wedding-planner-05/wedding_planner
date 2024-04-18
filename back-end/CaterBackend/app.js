@@ -162,7 +162,7 @@ app.post("/addinBulk", async (req, res, next) => {
         return res.status(501).json({ message: "Internal server error" })
     }
 })
-const PORT = 8081;
+const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

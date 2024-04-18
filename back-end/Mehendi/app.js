@@ -43,7 +43,8 @@ app.use("/vendorfunc",VendorFuncRouter);
 
 app.use(cors());
 
+const port = 3004 ;
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server started");
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../App.css";
+// import "../../App.css";
 import "./ContactUs.css";
 import { FaHeartPulse } from "react-icons/fa6";
 import {
@@ -8,17 +8,16 @@ import {
   FaPhone,
   FaPhoneAlt,
 } from "react-icons/fa";
-
 //
 const ContactUs = () => {
   return (
-    <div className="container-fluid p-0 contact-us">
+    <div className="container-fluid mt-5 p-0">
       {/* Header Section */}
       {/* <div className="header-line"></div> */}
 
       {/* Contact Information Section */}
       <div className="text-center m-4">
-        <h5 style={{ color: "crimson" }}>Contact us</h5>
+        <h4 style={{ color: "crimson" }}>Contact us</h4>
         <span className="custom-icons" style={{ color: "crimson" }}>
           ___________
           <FaHeartPulse />

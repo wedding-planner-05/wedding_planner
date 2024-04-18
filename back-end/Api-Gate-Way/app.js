@@ -8,22 +8,33 @@ const port = 3000;
 const server = fastgateway({
   routes: [
     {
-      prefix: "garden",
+      prefix: "cater",
       target: "http://localhost:3001",
     },
     {
-      prefix: "sound",
+      prefix: "dress",
+      target: "http://localhost:3002",
+    },
+    {
+      prefix: "garden",
       target: "http://localhost:3003",
     },
     {
-      prefix: "photoGrapher",
-      target: "http://localhost:3002",
+      prefix:'mehendi',
+      target:'http://localhost:3004'
+    },{
+      prefix:"photographer",
+      target:'http://localhost:3005'
+    },
+    {
+      prefix:'sound',
+      target:"http://localhost:3006"
     },
     {
       prefix: "user",
       target: "http://localhost:3000",
     },
-  ],
+  ]
 });
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -61,28 +72,28 @@ server.post("/userRouter", async (request, response, next) => {
   }
 });
 
-const tryStartServer = () => {
-  server
-    .start(port)
-    .then(() => {
-      console.log(`Server started at port no : ${port}`);
-    })
-    .catch((err) => {
-      if (err.code === "EADDRINUSE") {
-        console.log(`Port ${port} is already in use. Trying another port...`);
-        port++;
-        console.log(port);
-        tryStartServer(); // Try starting the server again with the new port
-      } else {
-        console.error("Error:", err);
-      }
-    });
-};
+// const tryStartServer = () => {
+//   server
+//     .start(port)
+//     .then(() => {
+//       console.log(`Server started at port no : ${port}`);
+//     })
+//     .catch((err) => {
+//       if (err.code === "EADDRINUSE") {
+//         console.log(`Port ${port} is already in use. Trying another port...`);
+//         port++;
+//         console.log(port);
+//         tryStartServer(); // Try starting the server again with the new port
+//       } else {
+//         console.error("Error:", err);
+//       }
+//     });
+// };
 
-tryStartServer();
+// tryStartServer();
 
-// server.start(port).then((result)=>{
-//     console.log(`server started at port no : ${port}`);
-// }).catch(err=>{
-//     console.log("Hello World",err);
-// })
+server.start(port).then((result)=>{
+    console.log(`server started at port no : ${port}`);
+}).catch(err=>{
+    console.log("Hello World",err);
+})

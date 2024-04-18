@@ -1,6 +1,10 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 
 const CaterHomePage = () => {
+  useEffect(()=>{
+  axios.get("").then().catch() ;    
+  },[])
   return (
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
