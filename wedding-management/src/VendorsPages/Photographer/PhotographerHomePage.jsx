@@ -18,10 +18,12 @@ const PhotographerHomePage = () => {
 
   useEffect(() => {
     console.log("after");
-    axios.get("http://localhost:3000/photographer/photographer-details/view-all-photographer")
+    axios
+      .get("http://localhost:4000/vendorfunc/viewalldresses")
+      
       .then((response) => {
-        // console.log(response.data.Photographers);
-        setProducts(response.data.Photographers);
+        console.log(response.data.data);
+        setProducts(response.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +44,7 @@ const PhotographerHomePage = () => {
               <img
                 className="img-fluid custom-img"
                 src={product.imageUrl}
-                alt={product.title}
+                alt={product.name}
               />
             </div>
             {/* Photographer Details */}
@@ -50,7 +52,7 @@ const PhotographerHomePage = () => {
               <div className="row">
                 <div className="col">
                   <div className="h6" style={{ width: "170%" }}>
-                    <strong>{product.title}</strong>
+                    <strong>{product.name}</strong>
                   </div>
                   <p className="custom-text-size">Photo + Video</p>
                 </div>
@@ -64,7 +66,7 @@ const PhotographerHomePage = () => {
                 </div>
               </div>
               <h6 className="mb-0">
-                <FaRupeeSign /> {product.price || "Price not available"}{" "}
+                <FaRupeeSign /> {product.serviceCharge || "Price not available"}{" "}
                 Onwards
               </h6>
             </div>

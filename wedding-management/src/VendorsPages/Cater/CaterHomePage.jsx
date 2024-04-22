@@ -1,18 +1,9 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
-import { IoLogoAndroid } from 'react-icons/io'
+import React, { useEffect } from 'react'
 
 const CaterHomePage = () => {
-  const [products,setProducts]=useState([])
-
   useEffect(()=>{
-  axios.get("http://localhost:3000/garden/garden-details/view-all-garden").then(result=>{
-      // console.log(result.data.gardens);
-      setProducts(result.data.gardens)
-  }).catch(err=>{
-    console.log(err);
-  }) ;    
+  axios.get("").then().catch() ;    
   },[])
   return (
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
@@ -27,7 +18,7 @@ const CaterHomePage = () => {
               <img
                 className="img-fluid custom-img"
                 src={product.imageUrl}
-                alt={product.title}
+                alt={product.name}
               />
             </div>
             {/* Photographer Details */}
@@ -35,28 +26,25 @@ const CaterHomePage = () => {
               <div className="row">
                 <div className="col">
                   <div className="h6" style={{ width: "170%" }}>
-                    <strong>{product.title}</strong>
+                    <strong>{product.name}</strong>
                   </div>
                   <p className="custom-text-size">Photo + Video</p>
                 </div>
                 <div className="col text-end">
                   <p className="h6">
-                    <FaStar color="crimson" /> 
-                        {/* {product.rating || "N/A"} */}
+                    <FaStar color="crimson" /> {product.rating || "N/A"}
                   </p>
                   <p className="font custom-text-size">
 
-                    <FaMapMarkerAlt color="green" /> {product.location}
+                    {/* <FaMapMarkerAlt color="green" /> {product.address} */}
 
-                    <FaMapMarkerAlt color="green" /> 
-                    {/* {product.location.slice(0,14)} */}
-                    <FaMapMarkerAlt color="green" /> 
+                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)}
 
                   </p>
                 </div>
               </div>
               <h6 className="mb-0">
-                <FaRupeeSign /> {product.price || "Price not available"}{" "}
+                <FaRupeeSign /> {product.serviceCharge || "Price not available"}{" "}
                 Onwards
               </h6>
             </div>

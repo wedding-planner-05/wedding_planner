@@ -8,14 +8,12 @@ const router = express.Router();
 let upload = multer({ dest: "public/images/" })
 
 router.post('/addInBulk',addInBulk);
-router.get('/viewAll',viewAllInBulk);
+router.post('/viewAll',viewAllInBulk);
 
 router.post("/add", upload.single("filename"), checkValidation, add);
 router.post('/update/:id', upload.single("filename"), checkValidation, updateGarden);
-
 router.delete('/remove/:id', remove);
 router.get("/viewprofile/:id", viewProfile);
-
 router.get("/view-all-garden", viewAllGarden);
 
 export default router;
