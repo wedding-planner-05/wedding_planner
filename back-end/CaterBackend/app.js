@@ -150,7 +150,6 @@ app.post("/addinBulk", async (req, res, next) => {
             let imageUrl = item.imageUrl;
 
             console.log(name + " " + servicecharge + " " + description + " " + " " + contactno + " " + categoryId + " " + imageUrl);
-            console.log
             console.log("this is your image url so check it",imageUrl);
             await CaterDetails.create({
                 name, servicecharge,description,contactno,categoryId,imageUrl

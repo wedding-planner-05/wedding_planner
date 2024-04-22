@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 .navbar-div {
-    height: auto;
+    height: 20px;
     width: 98vw;
     margin-top: 10px;
-    border: 50px;
-}
+    border: 1px solid;
+}                                                                                   
 
 .navbar-social-media {
-    height: 2.5vw;
+    height: 3vw;
     width: 100%;
     background-color: crimson;
 }
@@ -38,7 +38,7 @@
 
 .logo {
     background-color: crimson;
-    width: 17vw;
+    /* width: 3rem; */
     height: 100%;
     display: flex;
     justify-content: center;
@@ -47,21 +47,10 @@
 }
 
 .logo img {
-    width: 11vw;
-    height: 2.5vw;
+    width: 7.5rem;
+    height: 2rem;
 }
 
-.button {
-    width: 30vw;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.button div a {
-    text-decoration: none;
-    color: black;
-}
 
 .signIn-signUp {
     width: 20vw;
@@ -75,14 +64,19 @@
 .signIn-signUp a {
     text-decoration: none;
     color: black;
+    font-size: 1vw;
 }
+.lohIn-button{
+    position: relative;
+    /* border:1px solid; */
 
+}
 .vendor-user-option{
     position: absolute;
-    top: 102px;
+    top: 200px;
     right: 49px;
     z-index: 2;
-    display: none;
+    display: none !important;
     width: 150px;
     height: 70px;
     border-radius: 10px;
@@ -91,11 +85,11 @@
     background-color: white;
 }
 
-.logIn:hover +.vendor-user-option,.vendor-user-option:hover{
-    display: block;
+    /* .logIn:hover +.vendor-user-option,.vendor-user-option:hover{
+        display: block;
 
-}
-.vendor-user-option:hover{
-    display: block;
+    }
+    .vendor-user-option:hover{
+        display: block;
 
-}
+    } */

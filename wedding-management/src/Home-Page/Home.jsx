@@ -15,11 +15,11 @@ function Home() {
   return (
     <>
       <Navbar />  
-      <Header />
+      {/* <Header />
       <Vendors /> 
       <AboutUs/>
       <ContactUs/>
-      <Footer/>
+      <Footer/> */}
     </>
   );
 }
