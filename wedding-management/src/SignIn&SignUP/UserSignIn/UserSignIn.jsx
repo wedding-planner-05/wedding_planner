@@ -19,7 +19,7 @@ const UserSignIn = () => {
   return (
     <>
       <div className="container-fluid">
-        {/* <Navbar /> */}
+        <Navbar />
         <div className="container pr-0 mt-3 ">
           <div className="signin row justify-content-center">
             <div className="card d-flex align-items-center justify-content-center  col-md-6 col-sm-6">
