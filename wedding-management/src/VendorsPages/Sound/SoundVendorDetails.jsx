@@ -1,20 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaEnvelope, FaPhoneAlt, FaStar } from 'react-icons/fa';
 import { FaIndianRupeeSign, FaLocationDot } from 'react-icons/fa6';
 import { useLocation } from 'react-router-dom';
 import AboutUs from '../../Components/AboutUs/AboutUs';
 import Navbar from '../../Components/Navbar/Navbar';
+import "./SoundVendorDetails.css"
+
 
 const SoundVendorDetails = () => {
     const location = useLocation()
     const data = location.state
+    console.log(data);
 
-    console.log(typeof products );
+    const [show,setShow ] = useState(false)
+
+    const showName = ()=>{
+        if(show==true)
+            setShow(false)
+          else
+            setShow(true)
+          
+        }
+      
     return (
         <div className="container-fluid">
             <Navbar/>
-
-          {/* <div className="row justify-content-center mt-5 mb-5 pb-5"> */}
           <div className="row justify-content-center mt-5 mb-5 pb-5">
     
             <div className="col-md-6 col-lg-4 position-relative mb-5">
@@ -48,10 +58,11 @@ const SoundVendorDetails = () => {
               <div className="custom-label mb-3 p-2" htmlFor="">
                 <FaIndianRupeeSign />{data.serviceCharge}
               </div>
-              <div className="d-flex justify-content-around">
-                <button className="btn btn-success rounded-5 px-5">
-                  <FaPhoneAlt /> Contact
-                </button>
+              <div className="d-flex justify-content-around position-relative">
+                <button onClick={()=>{showName()}} className="btn btn-success rounded-5 px-5"><FaPhoneAlt /> Contact</button>
+                { show &&  <div className='contact-div' style={{position:"absolute",top:"120%",left:"0"}}>
+                  </div>
+                }
                 <button className="btn btn-danger rounded-5 px-5">
                   <FaEnvelope /> Email
                 </button>

@@ -17,7 +17,7 @@ const PhotographerHomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log("after");
+    // console.log("after");
     axios.get("http://localhost:3000/photographer/photographer-details/view-all-photographer")
       .then((response) => {
         // console.log(response.data.Photographers);
