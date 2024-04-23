@@ -4,23 +4,36 @@ import "./UserSignIn.css";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import SignInWithGoogle from "../SIgnInWithGoogle/SIgnInWithGoogle";
+import axios from "axios";
 
 
 const UserSignIn = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+
+  const [email , setEmail] = useState('')
+  const [password , setPassword] = useState('')
 
   const navigate = useNavigate()
-  const onSubmit = ()=>{
-          navigate('/otpVerify')     
-    }
+  
+  // const onSubmit = ()=>{
+  //         navigate('/otpVerify')     
+  //   }
+  const signIn = ()=>{
+    axios.post('http://localhost:3000/user/userRouter',{email,password}).then(result=>{
+    if(result.data.code == 200){
+      localStorage.setItem('isLogged', true);
+      navigate('/') ;
+    }  
+  }).catch(err=>{
+      console.log(err);
+    })
+  } 
 
 
   return (
     <>
       <div className="container-fluid">
-        {/* <Navbar /> */}
-        <div className="container pr-0 mt-3 ">
+        <Navbar />
+         <div className="container pr-0 mt-3 ">
           <div className="signin row justify-content-center">
             <div className="card d-flex align-items-center justify-content-center  col-md-6 col-sm-6">
               <img
@@ -51,7 +64,7 @@ const UserSignIn = () => {
                     className="form-control data-enter"
                     placeholder="Enter Password"
                   />
-                <button style={{backgroundColor:"crimson",color:"white",boxShadow:"none"}} type="submit" onClick={()=>onSubmit()} className= "mt-5 col-12 btn mb-2">Confirm</button>
+                <button style={{backgroundColor:"crimson",color:"white",boxShadow:"none"}} type="submit" onClick={()=>signIn()} className= "mt-5 col-12 btn mb-2">Confirm</button>
                 </div>
                 <div style={{color:"black" ,cursor:"pointer"}} className="col-12 col-md-9"><span> Forget Password </span></div>
                 <div className="col-9 d-flex justify-content-center" >_____________or_____________</div>

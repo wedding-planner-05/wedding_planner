@@ -4,6 +4,9 @@ import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import "./PhotoVendorDetails.css";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import ContactUs from "../../Components/ContactUs/ContactUs";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
 
 
 const PhotoVendorDetails = () => {
@@ -14,20 +17,21 @@ const PhotoVendorDetails = () => {
 
   console.log(data);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/vendorfunc/viewalldresses")
-      .then((response) => {
-        console.log(response.data.data);
-        setProducts(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/vendorfunc/viewalldresses")
+  //     .then((response) => {
+  //       console.log(response.data.data);
+  //       setProducts(response.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   
-  return (
+  return <>
+    <Navbar/>
     <div className="container-fluid">
       {/* <div className="row justify-content-center mt-5 mb-5 pb-5"> */}
       <div className="row justify-content-center mt-5 mb-5 pb-5">
@@ -38,10 +42,10 @@ const PhotoVendorDetails = () => {
               className="zoom-img img-fluid"
               src={data.imageUrl}
               alt="image not available"
-            />
+              />
           </div>
           <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
-            <h5>{data.name}</h5>
+            <h5>{data.title}</h5>
             <small className="mb-5">
               <FaStar color="green" />{data.rating}
             </small>
@@ -61,7 +65,7 @@ const PhotoVendorDetails = () => {
             Starting packages
           </div>
           <div className="custom-label mb-3 p-2" htmlFor="">
-            <FaIndianRupeeSign />{data.serviceCharge}
+            <FaIndianRupeeSign />{data.price}
           </div>
           <div className="d-flex justify-content-around">
             <button className="btn btn-success rounded-5 px-5">
@@ -75,25 +79,12 @@ const PhotoVendorDetails = () => {
       </div>
 
       <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-        {products.map((data, index) => (
-          <div
-            key={index}
-            className="col-6 col-md-4 col-lg-3 img-container m-2"
-          >
-            <img
-              className="img-fluid custom-img"
-              src={data.imageUrl}
-              alt={data.name}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
         <div>{data.description}</div>
-
       </div>
     </div>
-  );
+    <ContactUs/>
+    <Footer/>
+  </>
 };
 
 export default PhotoVendorDetails;

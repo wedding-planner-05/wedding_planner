@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEnvelope } from "react-icons/fa";
 import "./Footer.css";
+import Navbar from "../Navbar/Navbar";
 
 const Footer = () => {
   return (

@@ -3,12 +3,6 @@ import sequelize from "../dbConfig/dbconfig.js";
 import bcrypt from "bcryptjs"
 
 export const User = sequelize.define("user",{
-    id : {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-
     email : {
         type: DataTypes.STRING,
         unique: true,
@@ -29,7 +23,7 @@ User.checkpassword = (originalPassword,encryptedPassword)=>{
     return bcrypt.compareSync(originalPassword,encryptedPassword) ;
 }
 
-sequelize.sync().then(()=>{
+sequelize.sync({force:true}).then(()=>{
     console.log("User table created successfully");
 }).catch(()=>{
     console.log("User table is not created");
