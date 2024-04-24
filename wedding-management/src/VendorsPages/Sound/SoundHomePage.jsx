@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../Components/Navbar/Navbar';
 
 
 const SoundHomePage = () => {
@@ -24,7 +25,7 @@ const SoundHomePage = () => {
   return <>
   
     {/* <SoundData.Provider value={products}> */}
-
+<Navbar/>
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
