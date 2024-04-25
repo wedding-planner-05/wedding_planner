@@ -38,7 +38,7 @@ function DashBord() {
                             <h1 className='ml-5'>Vendor Profile</h1>
                             <h4 className='container ml-5'>password Update</h4>
                             <div className='d-flex align-item-center profile justify-content-center row'>
-                                <div className='ml-4 col-md-1'>
+                                <div className='ml-4 col-md-1 col-lg-1'>
                                     <img src="/images/logo.png" alt="" className='imgex' />
                                 </div>
                                 <div className='ml-4 displayblock col-md-4'>

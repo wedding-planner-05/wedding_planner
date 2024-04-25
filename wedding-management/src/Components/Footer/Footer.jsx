@@ -6,7 +6,7 @@ import Navbar from "../Navbar/Navbar";
 const Footer = () => {
   return (
     <footer className="bg-light mt-5">
-      <div className="container-fluid p-2">
+      <div className="container-fluid">
         <div className="row justify-content-around m-4">
           <div className="col-md-4">
             <div className="text-center">

@@ -38,8 +38,7 @@ app.post("/signup", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
-
-app.post("/login", async (req, res) => {
+app.post("/cater/signin", async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -47,7 +46,7 @@ app.post("/login", async (req, res) => {
 
         if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ username: user.username }, JWT_SECRET);
-            res.status(200).json({ login: true, message: "Login successful", token });
+            res.status(201).json({ login: true, message: "Login successful", token });
         } else {
             res.status(401).json({ login: false, message: "Invalid credentials" });
         }
@@ -87,33 +86,6 @@ app.get("/getData", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
-
-// const parseExcelFile = (filePath) => {
-//     const workbook = xlsx.readFile(filePath);
-//     const sheetName = workbook.SheetNames[0];
-//     const worksheet = workbook.Sheets[sheetName];
-//     console.log("Work sheet is ",worksheet);
-//     console.log(xlsx.utils.sheet_to_json(worksheet));
-
-//     return xlsx.utils.sheet_to_json(worksheet);
-// };
-
-// app.post("/upload", upload.single("excelFile"), async (req, res) => {
-//     try {
-//         if (!req.file) {
-//             return res.status(400).json({ error: "No file uploaded at that" });
-//         }
-//         const excelData = parseExcelFile("dataregardCater1.xlsx");
-//         // console.log(excelData);
-
-//         await CaterDetails.bulkCreate(excelData);
-
-//         res.status(200).json({ message: "Excel data uploaded successfully" });
-//     } catch (error) {
-//         console.error("Error while uploading Excel data:", error);
-//         res.status(500).json({ error: "Internal server error" });
-//     }
-// });
 
 
 app.post("/addinBulk", async (req, res, next) => {
