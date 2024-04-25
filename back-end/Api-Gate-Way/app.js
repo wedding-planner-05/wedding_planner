@@ -11,6 +11,7 @@ const server = fastgateway({
     {
       prefix: "cater",
       target: "http://localhost:3001",
+      
     },
     {
       prefix: "dress",

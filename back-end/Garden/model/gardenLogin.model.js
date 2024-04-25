@@ -24,6 +24,10 @@ const GardenLogin = sequelize.define("gardenLogins", {
     },
 });
 
+GardenLogin.checkPassword = (password, encryptedPassword) => {
+    return bcyrpt.compareSync(password, encryptedPassword);
+}
+
 sequelize.sync()
     .then(() => {
         console.log("Garden Details Tables created successfully.");

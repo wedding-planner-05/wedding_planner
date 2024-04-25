@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-http-proxy": "^2.0.0",
-    "fast-gateway": "^3.4.5",
+    "fast-gateway": "^3.4.6",
     "mysql2": "^3.9.3",
     "nodemon": "^3.1.0",
     "sequelize": "^6.37.2"

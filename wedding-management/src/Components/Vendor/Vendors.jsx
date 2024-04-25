@@ -22,7 +22,7 @@ const Vendors = () => {
     navigate("/GardenHomePage");
   }
   const CaterHomePage = ()=>{
-    navigate("/CaterHomePage");
+    navigate("/caterpage");
   }
 
   return (

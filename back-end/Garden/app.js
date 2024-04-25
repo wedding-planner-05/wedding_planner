@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/otp', otpRoutes);   // MailSender Code ye wala
 
-app.use("/garden-vendor", GardenLoginRoute);
+app.use("/garden", GardenLoginRoute);
 app.use("/garden-details", GardenDetailsRoute);
 
 const port = 3003 ;
