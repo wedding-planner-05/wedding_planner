@@ -77,7 +77,7 @@ const SoundVendorDetails = () => {
                 <button style={{width:'135px',height:'40px'}} className="btn btn-danger rounded-5 px-3">
                   <FaEnvelope /> Email
                 </button>
-              </div>
+                </div>
             </div>
           </div>
 

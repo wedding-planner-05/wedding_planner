@@ -3,12 +3,12 @@ import React from 'react'
 import "./Header.css"
 const Header = () => {
   return (
-    <div className='container-fluid'>
+    <div className='container'>
             <div className='header mt-3 row'>
-                <div className='groom-image col-md-4'>
+                <div className='groom-image col-md-3'>
                     <img src="/images/groom.png" alt="" />
                 </div>
-                <div className='header-text text-center col-md-4'>
+                <div className='header-text text-center col-md-3'>
                        <div className="dreams mt-3">
                        <h3>
                         Turning Dreams <br />into Reality.....
@@ -20,11 +20,11 @@ const Header = () => {
                         </a>
                        </div>
                        <div className="header-text-image">
-                        <img src="/images/images2.png" alt="" />
+                        {/* <img src="/images/images2.png" alt="" /> */}
                        </div>
                                             
                 </div>
-                <div className='bride-image col-md-4'>
+                <div className='bride-image col-md-3'>
                     <img src="/images/bride.png" alt="" />
                 </div>
             </div>

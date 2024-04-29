@@ -48,7 +48,9 @@ function SignInVendor() {
                 });
         }
     };
-
+    const VendoSignUp = ()=>{
+          navigate("/vendorSignUp")
+    }
     return (
         <>
             <Navbar />
@@ -89,18 +91,18 @@ function SignInVendor() {
                                 <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Forgot Password</Link></span>
                                 <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Help</Link></span>
                             </div>
-                            <div className='mt-4'>
+                            {/* <div className='mt-4'>
                                 <GoogleAuth setIsLogin={setisLogin} />
-                            </div>
+                            </div> */}
                             <div className='lines'>
                                 <span></span><span style={{ border: "none" }}><i class='bx bx-heart'></i></span><span></span>
                             </div>
                             <div></div>
+                        </form>
                             <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
                                 {/* <div className='texts'>ARE YOU A VENDOR</div> */}
-                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS signin</button></div>
+                                <div onClick={()=>VendoSignUp()} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>Vendor signup</button></div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

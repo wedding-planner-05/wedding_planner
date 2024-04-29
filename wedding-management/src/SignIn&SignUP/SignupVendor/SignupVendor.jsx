@@ -73,6 +73,9 @@ function SignupVendor() {
                 });
         }
     };
+    const VendorSignIn =()=>{
+        navigate('/vendorSignIn')
+    }
 
     return (
         <>
@@ -107,7 +110,7 @@ function SignupVendor() {
                                 <input type="password" placeholder='Enter Your password' className='inputPlace p-3 mb-3 col-md-12  mt-4 ' onChange={(e) => {
                                     setPassword(e.target.value);
                                     getStrength(e.target.value);
-                                }} style={{border:"2px solid #D5133A"}}/>
+                                }} />
                             </label>
 
                             <div>
@@ -130,11 +133,11 @@ function SignupVendor() {
                                 <span></span><span style={{ border: "none" }}><i class='bx bx-heart'></i></span><span></span>
                             </div>
                             <div></div>
+                        </form>
                             <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
                                 {/* <div className='texts'>ARE YOU A VENDOR</div> */}
-                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNUP</button></div>
+                                <div onClick={()=>{VendorSignIn()}} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNIN</button></div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

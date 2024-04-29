@@ -20,6 +20,7 @@ import DashBord from "./DashBord/DashBord3.jsx";
 import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
 // import CaterPageInfos from "./VendorsPages/Cater/CaterPageInfos.jsx";
 import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
+import AboutUs from "./Components/AboutUs/AboutUs.jsx";
 
 const App = () => {
   return <>

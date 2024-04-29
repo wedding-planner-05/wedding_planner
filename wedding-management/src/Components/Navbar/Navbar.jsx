@@ -7,12 +7,17 @@ import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
+import AboutUs from '../AboutUs/AboutUs';
+
 
 function Navbar() {
   const [isSignIn,setLogged] = useState(false)
-
+  
   const navigate = useNavigate()
   
+  const AboutUs = ()=>{
+    navigate('/AboutUs')
+  }
   useEffect(()=>{
     setLogged(localStorage.getItem('isLogged'))
   },[])
@@ -43,21 +48,21 @@ function Navbar() {
           <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item active">
-          <a className="nav-link" href="#">Features</a>
+          <a className="nav-link" href="#">Services</a>
         </li>
         <li className="nav-item active">
-          <a className="nav-link" href="#">Pricing</a>
+          <a className="nav-link" href="#">Contact</a>
         </li>
         <li className="nav-item active">
           <a className="nav-link " href="#">
-            Dropdown link
+            About Us
           </a>
         </li>
       </ul>
       {isSignIn=='false' && <ul className="navbar-nav align-items-center col-md-4 justify-content-end gap-3">
         <li className="nav-item active">
         <a className="nav-link" href="#">
-          <Link to="/vendorSignUp"><text style={{textDecoration:"none",color:"black"}}>Vendor LogIn ?</text></Link>
+          <Link to="/vendorSignIn"><text style={{textDecoration:"none",color:"black"}}>Vendor LogIn ?</text></Link>
         </a>        
         </li>
         <li className='logIn-button'>
