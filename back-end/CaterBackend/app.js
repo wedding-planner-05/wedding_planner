@@ -25,7 +25,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/signup", async (req, res) => {
+app.post("cater/signup", async (req, res) => {
     const { email, password } = req.body;
 
     try {

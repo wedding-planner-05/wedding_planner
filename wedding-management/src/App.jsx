@@ -18,21 +18,21 @@ import DashBord1 from "./DashBord/DashBord1.jsx";
 import DashBord2 from "./DashBord/DashBord2.jsx";
 import DashBord from "./DashBord/DashBord3.jsx";
 import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
-// import CaterPageInfos from "./VendorsPages/Cater/CaterPageInfos.jsx";
 import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
+import Auth from "../Auth/Auth.jsx";
 
 const App = () => {
   return <>
     <Routes>
       <Route path="/userSignIn" element={<UserSignIn />} />
       <Route path="/vendorSignIn" element={<VendorSignIn />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/vendorSignUp" element={<SignupVendor />} />
+      <Route path="/" element={<Auth><Home /></Auth>} />
       <Route path="/otpVerify" element={<UserOtp />} />
       <Route path="/DressHomePage" element={<DressHomePage />} />
       <Route path="/PhotographerHomePage" element={<PhotographerHomePage />} />
       <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails />} />
       <Route path="/MehendiHomePage" element={<MehendiHomePage />} />
-      <Route path="/vendorSignUp" element={<SignupVendor />} />
       <Route path="/SoundHomePage" element={<SoundHomePage />} />
       <Route path="/SoundVendorDetails" element={<SoundVendorDetails />} />
       <Route path='/GardenHomePage' element={<GardenHomePage />} />

@@ -28,12 +28,12 @@ function SignInVendor() {
         } else {
             axios.post(`http://localhost:3000/${choise}/${choise}/signin`, { email, password })
                 .then(result => {
-                    if (result.status=="200"||result.status=="201") {
+                    if (result.status == "200" || result.status == "201") {
                         console.log(result);
-                        console.log("success");
+                        console.log("successfull");
                         toast.success("Login Success")
-                        // let vendor =JSON.stringify(result.data.data);
-                        localStorage.setItem("isLoggin",true);
+                        sessionStorage.setItem("current-user", email);
+                        sessionStorage.setItem("isLoggedIn", "true");
                         navigate("/")
                     }
                     else {
@@ -63,7 +63,7 @@ function SignInVendor() {
                         <form className='d-flex flex-column formdiv text-center  col-md-12' onSubmit={handleSubmit}>
                             <h3 className='text-center mt-2 fontstyles'>VENDOR SIGNIN</h3>
                             <label htmlFor="">
-                                <select name="" id="" className='col-md-12 pt-3 pb-3 selection' onChange={(e) => { setChoise(e.target.value) }} style={{border:"2px solid #D5133A", filter: "drop-shadow(0 0 0.25rem #D5133A)"}}>
+                                <select name="" id="" className='col-md-12 pt-3 pb-3 selection' onChange={(e) => { setChoise(e.target.value) }} style={{ border: "2px solid #D5133A", filter: "drop-shadow(0 0 0.25rem #D5133A)" }}>
                                     <option value="">Select Vendor Type</option>
                                     <option value="cater">cater</option>
                                     <option value="dress">dress</option>
@@ -74,14 +74,14 @@ function SignInVendor() {
                                 </select>
                             </label>
                             <label htmlFor="">
-                                <input type="email" placeholder='Enter Your Email' className='inputPlace p-3 mb-3 col-md-12 mt-5 ' onChange={e => setEmail(e.target.value)} style={{border:"2px solid #D5133A"}} />
+                                <input type="email" placeholder='Enter Your Email' className='inputPlace p-3 mb-3 col-md-12 mt-5 ' onChange={e => setEmail(e.target.value)} style={{ border: "2px solid #D5133A" }} />
                             </label>
 
                             <label htmlFor=''>
                                 <input type="password" placeholder='Enter Your password' className='inputPlace p-3 mb-3 col-md-12  mt-4 ' onChange={(e) => {
                                     setPassword(e.target.value);
                                     getStrength(e.target.value);
-                                }} style={{border:"2px solid #D5133A"}}/>
+                                }} style={{ border: "2px solid #D5133A" }} />
                             </label>
 
                             <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
@@ -98,7 +98,7 @@ function SignInVendor() {
                             <div></div>
                             <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
                                 {/* <div className='texts'>ARE YOU A VENDOR</div> */}
-                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS signin</button></div>
+                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }} onClick={() => { navigate("/vendorSignUp") }}>BUISNESS SIGNUP</button></div>
                             </div>
                         </form>
                     </div>
