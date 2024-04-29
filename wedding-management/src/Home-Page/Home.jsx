@@ -13,9 +13,9 @@ import ContactUs from "../Components/ContactUs/ContactUs";
 
 function Home() {
   
-  useEffect(() => {
-    sessionStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear();
+  // }, []);
 
     return (
     <>

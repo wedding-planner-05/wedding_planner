@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .header{
-    
+    border: 1px solid    ;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .groom-image img , .bride-image img{
     height: 30vw;

@@ -73,6 +73,9 @@ function SignupVendor() {
                 });
         }
     };
+    const VendorSignIn =()=>{
+        navigate('/vendorSignIn')
+    }
 
     return (
         <>
@@ -132,6 +135,8 @@ function SignupVendor() {
                             <div></div>
                         </form>
                             <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
+                                {/* <div className='texts'>ARE YOU A VENDOR</div> */}
+                                <div onClick={()=>{VendorSignIn()}} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNIN</button></div>
                                 <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}onClick={()=>{navigate("/vendorSignIn")}}>BUISNESS SIGNIN</button></div>
                             </div>
                     </div>

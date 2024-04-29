@@ -19,6 +19,7 @@ import DashBord2 from "./DashBord/DashBord2.jsx";
 import DashBord from "./DashBord/DashBord3.jsx";
 import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
 import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
+import AboutUs from "./Components/AboutUs/AboutUs.jsx";
 import Auth from "../Auth/Auth.jsx";
 
 const App = () => {

@@ -3,7 +3,7 @@ import "./AboutUs.css";
 
 const AboutUs = () => {
   return (
-    <div className="container-fluid mt-5">
+    <div className="about-us container-fluid mt-5">
       <div className="text-center">
         <h4 className="" style={{ color: "crimson" }}>
           About us
@@ -20,14 +20,14 @@ const AboutUs = () => {
       >
         <div className="col-md-6 p-5">
           <p>
-            Welcome to the National Hookah Community Association "NHCA". We are
-            a diverse alliance of businesses from all ends of the Hookah
+            Welcome to the National  Community Association "NHCA". We are
+            a diverse alliance of businesses from all ends of the 
             experience, from manufacturers and importers of molasses, pipes and
-            accessories to distributors, Hookah lounges and Hookah/shisha retail
-            stores. If you are a Hookah business, please join us and help us
+            accessories to distributors,lounges and /shisha retail
+            stores. If you are a business, please join us and help us
             defend and protect your business, our culture and community. If you
             are an interested member of the public, welcome. Please enjoy
-            learning about Hookah and its unique culture and practice.
+            learning about and its unique culture and practice.
           </p>
         </div>
         <div className="px-5 col-md-6 p-4 d-flex">
