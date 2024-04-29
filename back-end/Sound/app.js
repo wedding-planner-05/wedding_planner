@@ -29,5 +29,5 @@ app.use('/soundInfo',SoundInfoRouter);
 const port = 3006 ;    
 
 app.listen(port,()=>{
-    console.log("3003 server started") ;
+    console.log("3006 server started") ;
 }); 

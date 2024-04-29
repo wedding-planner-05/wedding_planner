@@ -10,13 +10,9 @@ import { RiAdminFill } from "react-icons/ri";
 
 function Navbar() {
   const [isSignIn,setLogged] = useState(false)
-  console.log(isSignIn);
   const navigate = useNavigate()
-
-  // console.log(localStorage.getItem('isLogged'));
   
   useEffect(()=>{
-    // localStorage.setItem('isLogged',false)
     setLogged(localStorage.getItem('isLogged'))
   },[])
 

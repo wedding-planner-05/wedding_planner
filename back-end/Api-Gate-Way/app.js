@@ -23,18 +23,19 @@ const server = fastgateway({
     {
       prefix:'mehendi',
       target:'http://localhost:3004'
-    },{
+    },
+    {
       prefix:"photographer",
       target:'http://localhost:3005'
     },
     {
       prefix:'sound',
       target:"http://localhost:3006"
-    },
-    {
-      prefix: "user",
-      target: "http://localhost:3000",
-    },
+    }
+    // {
+    //   prefix: "user",
+    //   // target: "http://localhost:3000",
+    // },
   ]
 });
 server.use(bodyParser.json());

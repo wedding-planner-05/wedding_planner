@@ -45,9 +45,9 @@ ul li {
     transition: all 0.3s ease-in-out;
 }
 
-ul li:hover {
+/* ul li:hover {
     font-size: 1.5rem;
-}
+} */
 
 .content {
     margin-left: 0.5rem;

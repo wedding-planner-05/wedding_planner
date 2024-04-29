@@ -1,32 +1,32 @@
 import React from "react";
 import { FaEnvelope } from "react-icons/fa";
 import "./Footer.css";
-import Navbar from "../Navbar/Navbar";
 
 const Footer = () => {
   return (
     <footer className="bg-light mt-5">
-      <div className="container-fluid p-2">
-        <div className="row justify-content-around m-4">
-          <div className="col-md-4">
+      <div className="mx-3 p-2 contact-main-footer">
+        <div className="row justify-content-around m-4 text-smaller">
+          <div className="col-md-4 " >
             <div className="text-center">
               <img
-                className="img-fluid"
-                width={"25%"}
-                src="images/logo.png"
+                className="img-fluid mb-4"
+                width={"50%"}
+                style={{backgroundColor:'red',borderRadius:'1rem'}}
+                src="images/wedding-planner-high-resolution-logo-white-transparent.png"
                 alt=""
               />
             </div>
             <p>
-              "Welcome to Wedding planning, where we turn your wedding dreams
+              Welcome to Wedding planning, where we turn your wedding dreams
               into reality. From venue selection to guest management, we're here
               to guide you every step of the way. Let's make your special day
-              truly unforgettable."
+              truly unforgettable.
             </p>
           </div>
           <div className="col-md-2">
             <h6>Start Planning</h6>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled" style={{boxShadow:"none !important"}}>
               <li>
                 <a className="no-decoration" href="#">
                   Search by Vendor
@@ -150,14 +150,15 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div
-          className="row d-flex align-items-center py-2"
+        <div 
+          className="m-0 row d-flex align-items-center py-2"
           style={{ backgroundColor: "crimson", color: "white" }}
         >
-          <div className="col-md-auto">
-            <span className="d-flex align-items-center ps-2">
-              <FaEnvelope className="mr-2" />{" "}
+          <div className="col-md-auto text-center">
+            <span className="text-smaller" >
+              <FaEnvelope className="" />{" "}
               <a
+                style={{color: "white"}}   
                 className="no-decoration ps-3"
                 href="mailto:wedding.planner.techwizards@gmail.com"
               >
