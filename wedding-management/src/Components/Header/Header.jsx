@@ -4,11 +4,11 @@ import "./Header.css"
 const Header = () => {
   return (
     <div className='container-fluid'>
-            <div className='header mt-3'>
-                <div className='groom-image'>
+            <div className='header mt-3 row'>
+                <div className='groom-image col-md-4'>
                     <img src="/images/groom.png" alt="" />
                 </div>
-                <div className='header-text text-center'>
+                <div className='header-text text-center col-md-4'>
                        <div className="dreams mt-3">
                        <h3>
                         Turning Dreams <br />into Reality.....
@@ -24,7 +24,7 @@ const Header = () => {
                        </div>
                                             
                 </div>
-                <div className='bride-image'>
+                <div className='bride-image col-md-4'>
                     <img src="/images/bride.png" alt="" />
                 </div>
             </div>

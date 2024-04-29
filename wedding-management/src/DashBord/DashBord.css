@@ -3,21 +3,23 @@
     box-shadow: 0 0 1rem black;
     width: 220px;
     position: sticky;
+    background-color: crimson;
 }
 .boxes{
-    /* border: 1px solid black; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .list-unstyled li {
-    /* border: 1px solid black; */
     display: flex;
     align-items: center;
     justify-content: start;
     box-shadow: 0 0 0.5rem black;
     padding: 0.5rem;
     border-radius: 5rem;
+}
+.list-unstyled li span{
+     color: white;
 }
 .images {
     top: 0;
@@ -48,6 +50,11 @@ ul li {
 /* ul li:hover {
     font-size: 1.5rem;
 } */
+
+.boxfrom input{
+    border: 2px solid #d51;
+    box-shadow: 0 0 0.2rem D5133A;
+}
 
 .content {
     margin-left: 0.5rem;

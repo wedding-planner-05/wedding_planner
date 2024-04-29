@@ -10,6 +10,7 @@ import { RiAdminFill } from "react-icons/ri";
 
 function Navbar() {
   const [isSignIn,setLogged] = useState(false)
+
   const navigate = useNavigate()
   
   useEffect(()=>{
@@ -53,7 +54,7 @@ function Navbar() {
           </a>
         </li>
       </ul>
-      {isSignIn==='false' && <ul className="navbar-nav align-items-center col-md-4 justify-content-end gap-3">
+      {isSignIn=='false' && <ul className="navbar-nav align-items-center col-md-4 justify-content-end gap-3">
         <li className="nav-item active">
         <a className="nav-link" href="#">
           <Link to="/vendorSignUp"><text style={{textDecoration:"none",color:"black"}}>Vendor LogIn ?</text></Link>
@@ -63,7 +64,7 @@ function Navbar() {
           <button onClick={()=>signIn()} className="btn btn-danger logIn">Login</button>
         </li>
       </ul>}
-      {isSignIn==='true' && <ul className="navbar-nav align-items-center col-md-4 justify-content-end gap-3">
+      {isSignIn=='true' && <ul className="navbar-nav align-items-center col-md-4 justify-content-end gap-3">
         <li className='logIn-button'>
           <button onClick={()=>signOut()} className="btn btn-danger logIn">SignOut</button>      
         </li>

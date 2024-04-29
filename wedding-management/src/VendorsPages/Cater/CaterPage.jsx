@@ -1,23 +1,28 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa';
-// import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import "./CaterPage.css"
+import CaterContactpage from './CaterContactpage';
+import { useNavigate } from 'react-router-dom';
+function CaterPage() {
+  const navigate = useNavigate();
+    const [caterdata, setCaterdata] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:8081/getData").then(result => {
+            console.log(result.data.data);
+            setCaterdata(result.data.data);
+        }
+        ).catch(err => {
+            console.log(err);
+        })
+    }, [])
 
-const GardenHomePage = () => {
-  const [products,setProducts] = useState([]) ;
-
-  useEffect(()=>{
-      axios.get("http://localhost:3000/garden/garden-details/viewAll").then((response)=>{
-      console.log(response.data.data)
-      setProducts(response.data.data)
-      }).catch(err=>{
-        console.log(err);
-      })
-  },[])
-return<>
+    function dataCater(product){
+       navigate("/CaterContactpage",{state:product})
+    }
+    return <>  
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
-      {products.map((product, index) => (
-        <section key={index} className="main-page m-3">
+      {caterdata.map((product, index) => (
+        <section key={index} className="main-page m-3" onClick={()=>dataCater(product)}>
           <div
             key={index}
             className="p-2 row details-block "
@@ -26,8 +31,8 @@ return<>
             <div className="p-0">
               <img
                 className="img-fluid custom-img"
-                src={product.imageUrl}
-                alt={product.title}
+                src= {product.imageUrl}
+                alt={product.name}
               />
             </div>
             {/* Photographer Details */}
@@ -35,36 +40,32 @@ return<>
               <div className="row">
                 <div className="col">
                   <div className="h6" style={{ width: "170%" }}>
-                    <strong>{product.title}</strong>
+                    <strong>{product.name}</strong>
                   </div>
                   <p className="custom-text-size">Photo + Video</p>
                 </div>
                 <div className="col text-end">
                   <p className="h6">
-                    <FaStar color="crimson" /> {product.rating || "N/A"}
+                    {product.rating || "N/A"}
                   </p>
                   <p className="font custom-text-size">
-
-                    {/* <FaMapMarkerAlt color="green" /> {product.address} */}
-
-                    {/* <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)} */}
-                    <FaMapMarkerAlt color="green" /> 
-
+                     {product.address}
                   </p>
                 </div>
               </div>
               <h6 className="mb-0">
-                <FaRupeeSign /> {product.price || "Price not available"}{" "}
+                {product.serviceCharge}
                 Onwards
               </h6>
+              <h5>{product.description}</h5>
+          {/* <button>contact us</button> */}
             </div>
           </div>
         </section>
       ))}
     </div>
+  </>
+};
 
 
-</>
-}
-
-export default GardenHomePage
+export default CaterPage
