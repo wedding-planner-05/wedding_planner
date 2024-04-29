@@ -50,10 +50,12 @@ ul li {
 /* ul li:hover {
     font-size: 1.5rem;
 } */
+
 .boxfrom input{
     border: 2px solid #d51;
     box-shadow: 0 0 0.2rem D5133A;
 }
+
 .content {
     margin-left: 0.5rem;
     height: 100vh;

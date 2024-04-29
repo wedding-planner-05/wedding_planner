@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import Header from "../Components/Header/Header";
 
@@ -12,10 +12,15 @@ import ContactUs from "../Components/ContactUs/ContactUs";
 
 
 function Home() {
-  return (
+  
+  useEffect(() => {
+    sessionStorage.clear();
+  }, []);
+
+    return (
     <>
-      <Navbar />  
-      <Header />
+      <Navbar/>  
+      <Header/>
       <Vendors /> 
       <AboutUs/>
       <ContactUs/>

@@ -1,5 +1,4 @@
 import React from "react";
-// import "../../App.css";
 import "./ContactUs.css";
 import { FaHeartPulse } from "react-icons/fa6";
 import {
@@ -8,15 +7,12 @@ import {
   FaPhone,
   FaPhoneAlt,
 } from "react-icons/fa";
-//
+
 const ContactUs = () => {
   return (
     <div className="container-fluid mt-5 p-0">
-      {/* Header Section */}
-      {/* <div className="header-line"></div> */}
-
       {/* Contact Information Section */}
-      <div className="text-center m-4">
+      <div className="text-center m-4 ">
         <h4 style={{ color: "crimson" }}>Contact us</h4>
         <span className="custom-icons" style={{ color: "crimson" }}>
           ___________
@@ -29,12 +25,12 @@ const ContactUs = () => {
       </div>
 
       {/* Main Content Section */}
-      <section className="container-fluid d-flex justify-content-center align-content-center mb-4">
-        <div className="row container-fluid contact-main p-3">
+      <section className="d-flex justify-content-center align-content-center mb-4">
+        <div className="row contact-main p-3">
           {/* Contact Information Left Section */}
-          <div className="contact-main-left col-2 col-lg-8 col-md-12 p-3 d-flex flex-column justify-content-evenly align-items-start">
+          <div className="col-lg-12 col-md-12 p-3 d-flex flex-column justify-content-evenly align-items-center border-1" style={{backgroundColor:'crimson',color:'white'}}>
             <h4>Contact Information</h4>
-            <div className="d-flex flex-column justify-content-evenly text-smaller row-gap-3">
+            <div className="d-flex flex-column justify-content-evenly text-size-s row-gap-3">
               <span className="">
                 <FaPhoneAlt /> +91 7354560590
               </span>
@@ -65,14 +61,14 @@ const ContactUs = () => {
           </div>
 
           {/* Contact Form Right Section */}
-          <div className="contact-main-right col-2 col-lg-4 col-md-12">
+          <div className="col-lg-12 col-md-6"> 
             {/* Form Fields */}
             <div className="row m-3">
               <div className="col-sm-6">
                 <div className="form-group text-size-s">
-                  <label htmlFor="firstName">First Name</label>
+                  <label htmlFor="firstName" style={{width: '100%'}}>First Name</label> {/* Adjusted label width */}
                   <input
-                    className="custom-vw-vh form-control border-0 border-bottom border-3 rounded-0"
+                    className="form-control rounded-0 custom-input-w"
                     type="text"
                     id="firstName"
                   />
@@ -80,9 +76,9 @@ const ContactUs = () => {
               </div>
               <div className="col-sm-6">
                 <div className="form-group text-size-s">
-                  <label htmlFor="lastName">Last Name</label>
+                  <label htmlFor="lastName" style={{width: '100%'}}>Last Name</label> {/* Adjusted label width */}
                   <input
-                    className="custom-vw-vh form-control border-0 border-bottom border-3 rounded-0"
+                    className="form-control rounded-0 custom-input-w custom-input-w"
                     type="text"
                     id="LastName"
                   />
@@ -94,9 +90,9 @@ const ContactUs = () => {
             <div className="row m-3">
               <div className="col-sm-6">
                 <div className="form-group text-size-s">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email" style={{width: '100%'}}>Email</label> {/* Adjusted label width */}
                   <input
-                    className="custom-vw-vh form-control border-0 border-bottom form-control border-3 rounded-0"
+                    className="form-control rounded-0 custom-input-w"
                     type="email"
                     id="email"
                   />
@@ -104,9 +100,9 @@ const ContactUs = () => {
               </div>
               <div className="col-sm-6">
                 <div className="form-group text-size-s">
-                  <label htmlFor="phone">Phone Number</label>
+                  <label htmlFor="phone" style={{width: '100%'}}>Phone Number</label> {/* Adjusted label width */}
                   <input
-                    className="custom-vw-vh form-control border-0 border-bottom border-3 rounded-0"
+                    className="form-control rounded-0 custom-input-w"
                     type="tel"
                     id="phone"
                   />
@@ -119,13 +115,13 @@ const ContactUs = () => {
               <h6 className="text-dark">Select Subjects</h6>
               <div className="form-check form-check-inline">
                 <input
-                  className="form-check-input text-center border border-black"
+                  className="form-check-input"
                   type="radio"
                   name="inquiryType"
                   id="inlineRadio1"
                 />
                 <label
-                  className="form-check-label text-smaller"
+                  className="form-check-label text-size-s"
                   htmlFor="inlineRadio1"
                 >
                   General Inquiry
@@ -133,13 +129,13 @@ const ContactUs = () => {
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  className="form-check-input border border-black"
+                  className="form-check-input"
                   type="radio"
                   name="inquiryType"
                   id="inlineRadio2"
                 />
                 <label
-                  className="form-check-label text-smaller"
+                  className="form-check-label text-size-s"
                   htmlFor="inlineRadio2"
                 >
                   Other Inquiry
@@ -149,10 +145,10 @@ const ContactUs = () => {
 
             {/* Message Section */}
             <div>
-              <h6 className="text-smaller m-4">Message</h6>
+              <h6 className="text-size-s m-4">Message</h6>
               <div className="form-check form-check-inline">
                 <textarea
-                  className="form-control border border-black text-smaller"
+                  className="form-control rounded-0 custom-input-w text-size-s"
                   rows="4"
                   cols="100"
                   placeholder="Write your message..."
@@ -162,10 +158,7 @@ const ContactUs = () => {
 
             {/* Send Button */}
             <div className="text-end p-4 pe-0">
-              <button
-                className="btn text-white"
-                style={{ backgroundColor: "crimson" }}
-              >
+              <button className="btn text-white" style={{ backgroundColor: "crimson" }}>
                 Send Message
               </button>
             </div>
