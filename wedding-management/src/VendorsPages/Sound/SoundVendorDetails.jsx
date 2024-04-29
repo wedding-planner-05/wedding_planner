@@ -52,9 +52,6 @@ const SoundVendorDetails = () => {
               </div>
             </div>
     
-    
-    
-    
             <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
               <div className="custom-label mb-3 p-2 " htmlFor="">
                 Starting packages
@@ -79,24 +76,7 @@ const SoundVendorDetails = () => {
                 </button>
                 </div>
             </div>
-          </div>
-
-          {/* <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-            {products.map((data, index) => (
-
-              <div
-                key={index}
-                className="col-6 col-md-4 col-lg-3 img-container m-2"
-              >
-                <img
-                  className="img-fluid custom-img"
-                  src={data.imageUrl}
-                  alt={data.name}
-                />
-              </div>
-            ))}
-          </div> */}
-          
+          </div>          
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
     

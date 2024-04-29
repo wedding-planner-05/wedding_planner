@@ -13,23 +13,25 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Navbar from '../Components/Navbar/Navbar';
 
 
 function DashBord() {
 
     return (
         <>
+            <Navbar />
             <div className="container-fluid">
                 <div className="row ">
                     <div className="col-md-3 col-lg-2  asidebar">
 
                         <div>
                             <ul className="list-unstyled">
-                                <li><RxDashboard /><Link to="/Dashboard1"><span>Dashboard</span></Link></li>
-                                <li><RiLockPasswordLine /><Link to="/Dashboard"><span>Password</span></Link></li>
-                                <li><RiContactsLine /><Link to="/Dashboard2"><span>Contact-Us</span></Link></li>
-                                <li><CgList /><span>Catergory-List</span></li>
-                                <li><AiOutlineSetting /><span>Setting</span></li>
+                            <li><Link to="/Dashboard1" className='textnone'><strong style={{color:"black"}}><RxDashboard /></strong><span style={{color:"black"}}>Dashboard</span></Link></li>
+                                <li><Link to="/Dashboard" className='textnone'><strong style={{color:"black"}}><RiLockPasswordLine /></strong><span style={{color:"black"}}>Password</span></Link></li>
+                                <li><Link to="/Dashboard2" className='textnone'><strong style={{color:"black"}}><RiContactsLine /></strong><span style={{color:"black"}}>Contact-Us</span></Link></li>
+                                <li><strong style={{color:"black"}}><CgList /></strong><span style={{color:"black"}}>Catergory-List</span></li>
+                                <li><strong style={{color:"black"}}><AiOutlineSetting /></strong><span style={{color:"black"}}>Setting</span></li>
                             </ul>
                         </div>
                     </div>

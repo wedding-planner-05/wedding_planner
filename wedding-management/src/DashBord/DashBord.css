@@ -1,5 +1,5 @@
 .asidebar {
-    height: 100vh;
+    height: 100dvh;
     box-shadow: 0 0 1rem black;
     width: 220px;
     position: sticky;
@@ -13,10 +13,16 @@
 .list-unstyled li {
     display: flex;
     align-items: center;
-    justify-content: start;
-    box-shadow: 0 0 0.5rem black;
+    justify-content: center;    
+    /* box-shadow: 0 0 0.5rem black; */
     padding: 0.5rem;
     border-radius: 5rem;
+    background: white;
+    /* color: black; */
+}
+
+.textnone{
+    text-decoration: none;
 }
 .list-unstyled li span{
      color: white;
@@ -40,20 +46,27 @@
 .list-unstyled span {
     padding-left: 0.9rem;
 }
-
+.list-unstyled strong{
+    color: white;
+    font-size: 1.5rem;
+}
 ul li {
     margin-bottom: 1.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease-in-out;
+}
+Link{
+    list-style: none;
 }
 
 /* ul li:hover {
     font-size: 1.5rem;
+    text-decoration: none;
 } */
 
 .boxfrom input{
-    border: 2px solid #d51;
-    box-shadow: 0 0 0.2rem D5133A;
+    /* border: 2px solid #d51; */
+    /* box-shadow: 0 0 0.2rem D5133A; */
 }
 
 .content {
