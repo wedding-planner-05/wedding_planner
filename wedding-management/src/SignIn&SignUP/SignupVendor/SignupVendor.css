@@ -26,7 +26,6 @@
 }
 
 .formwrap {
-    /* border: 1px solid black; */
     height: 50rem;
     width: 20rem;
     display: flex;
@@ -73,7 +72,7 @@ input::placeholder {
 }
 
 input {
-    filter: drop-shadow(0 0 0.25rem #D5133A);
+    
     border: none;
 }
 

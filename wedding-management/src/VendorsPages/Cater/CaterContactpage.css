@@ -3,3 +3,8 @@
     width: 100%;
     border: 10px solid black;
 }
+.contact-div{
+    border: 1px solid;
+    height: 4vw;
+    width: 15vw;
+}

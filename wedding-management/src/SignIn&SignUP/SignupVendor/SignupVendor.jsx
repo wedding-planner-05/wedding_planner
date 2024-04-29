@@ -56,7 +56,7 @@ function SignupVendor() {
         } else {
             axios.post(`http://localhost:3000/${choise}/${choise}/signup`, { email, password })
                 .then(result => {
-                    if (result.status == "201") {
+                    if (result.status == "201"||result.status=="200") {
                         console.log(result);
                         console.log("success");
                         toast.success("Success Notification")
@@ -89,7 +89,7 @@ function SignupVendor() {
                         <form className='d-flex flex-column formdiv text-center  col-md-12' onSubmit={handleSubmit}>
                             <h3 className='text-center mt-2 fontstyles'>VENDOR SIGNUP</h3>
                             <label htmlFor="">
-                                <select name="" id="" className='col-md-12 pt-3 pb-3 selection' onChange={(e) => { setChoise(e.target.value) }} style={{border:"2px solid #D5133A", filter: "drop-shadow(0 0 0.25rem #D5133A)"}}>
+                                <select name="" id="" className='col-md-12 pt-3 pb-3 selection' onChange={(e) => { setChoise(e.target.value) }} >
                                     <option value="">Select Vendor Type</option>
                                     <option value="cater">cater</option>
                                     <option value="dress">dress</option>
@@ -100,14 +100,14 @@ function SignupVendor() {
                                 </select>
                             </label>
                             <label htmlFor="">
-                                <input type="email" placeholder='Enter Your Email' className='inputPlace p-3 mb-3 col-md-12 mt-5 ' onChange={e => setEmail(e.target.value)} style={{border:"2px solid #D5133A"}} />
+                                <input type="email" placeholder='Enter Your Email' className='inputPlace p-3 mb-3 col-md-12 mt-5 ' onChange={e => setEmail(e.target.value)}  />
                             </label>
 
                             <label htmlFor=''>
                                 <input type="password" placeholder='Enter Your password' className='inputPlace p-3 mb-3 col-md-12  mt-4 ' onChange={(e) => {
                                     setPassword(e.target.value);
                                     getStrength(e.target.value);
-                                }} style={{border:"2px solid #D5133A"}}/>
+                                }} />
                             </label>
 
                             <div>
@@ -130,11 +130,10 @@ function SignupVendor() {
                                 <span></span><span style={{ border: "none" }}><i class='bx bx-heart'></i></span><span></span>
                             </div>
                             <div></div>
-                            <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
-                                {/* <div className='texts'>ARE YOU A VENDOR</div> */}
-                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNUP</button></div>
-                            </div>
                         </form>
+                            <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
+                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}onClick={()=>{navigate("/vendorSignIn")}}>BUISNESS SIGNIN</button></div>
+                            </div>
                     </div>
                 </div>
             </div>
