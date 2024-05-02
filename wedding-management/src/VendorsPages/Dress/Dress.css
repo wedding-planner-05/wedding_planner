@@ -1,7 +1,7 @@
-/* .main-page {
-    border: 1px red solid;
-} */
-  
+.main-page {
+  /* height: 400px; */
+}
+
 .details-block {
     width: 21rem;
     height: 20rem;
@@ -9,7 +9,7 @@
     box-shadow: 0 0 0.7rem grey;
     border-radius: 0.6rem;
     padding: 1rem;
-    /* border: 5px solid red; */
+    /* border: 5px  solid red; */
   }
   .gapping {
     display: flex;

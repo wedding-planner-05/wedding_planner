@@ -3,6 +3,7 @@ import "./Dress.css";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../Components/Navbar/Navbar";
 
 
 const DressHomePage = () => {
@@ -31,7 +32,7 @@ const DressHomePage = () => {
   }, []);
 
   return <>
-      
+      <Navbar/>
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section className="main-page m-3">
@@ -41,8 +42,8 @@ const DressHomePage = () => {
           >
             {/* Photographer Image */}
             <div className="p-0">
-              <img
-                className="img-fluid custom-img"
+              <img style={{height:'200px'}}
+                className="custom-img"
                 src={product.imageUrl}
                 alt={product.name}
               />
@@ -54,7 +55,7 @@ const DressHomePage = () => {
                   <div className="h6" style={{ width: "170%" }}>
                     <strong>{product.name}</strong>
                   </div>
-                  <p className="custom-text-size">Photo + Video</p>
+                  {/* <p className="custom-text-size">Photo + Video</p> */}
                 </div>
                 <div className="col text-end">
                   <p className="h6">

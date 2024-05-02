@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
 const GardenHomePage = () => {
   const [products,setProducts] = useState([]) ;
+  const navigate = useNavigate()
 
   useEffect(()=>{
       axios.get("http://localhost:3000/garden/garden-details/viewAll").then((response)=>{
@@ -14,6 +16,7 @@ const GardenHomePage = () => {
         console.log(err);
       })
   },[])
+
 return<>
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
@@ -37,7 +40,7 @@ return<>
                   <div className="h6" style={{ width: "170%" }}>
                     <strong>{product.title}</strong>
                   </div>
-                  <p className="custom-text-size">Photo + Video</p>
+                  {/* <p className="custom-text-size">Photo + Video</p> */}
                 </div>
                 <div className="col text-end">
                   <p className="h6">

@@ -7,7 +7,7 @@ function CaterPage() {
   const navigate = useNavigate();
     const [caterdata, setCaterdata] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8081/getData").then(result => {
+        axios.get("http://localhost:3000/cater/getData").then(result => {
             console.log(result.data.data);
             setCaterdata(result.data.data);
         }
@@ -42,7 +42,7 @@ function CaterPage() {
                   <div className="h6" style={{ width: "170%" }}>
                     <strong>{product.name}</strong>
                   </div>
-                  <p className="custom-text-size">Photo + Video</p>
+                  {/* <p className="custom-text-size">Photo + Video</p> */}
                 </div>
                 <div className="col text-end">
                   <p className="h6">

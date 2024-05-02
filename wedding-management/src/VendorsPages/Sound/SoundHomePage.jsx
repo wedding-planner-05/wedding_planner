@@ -13,6 +13,7 @@ const SoundHomePage = () => {
     useEffect(()=>{
         axios.get("http://localhost:3000/sound/soundInfo/viewAllVendors").then((response)=>{
         setProducts(response.data.data)
+        
         }).catch(err=>{
           console.log(err);
         })
@@ -34,8 +35,8 @@ const SoundHomePage = () => {
             className="p-2 row details-block "
           >
             <div className="p-0">
-              <img
-                className="img-fluid custom-img"
+              <img style={{width: "100%",height: "200px"}}
+                className=" custom-img"
                 src={product.imageUrl}
                 alt={product.name}
               />
@@ -46,7 +47,7 @@ const SoundHomePage = () => {
                   <div className="h6" style={{ width: "170%" }}>
                     <strong>{product.name}</strong>
                   </div>
-                  <p className="custom-text-size">Photo + Video</p>
+                  {/* <p className="custom-text-size">Photo + Video</p> */}
                 </div>
                 <div className="col text-end">
                   <p className="h6">
