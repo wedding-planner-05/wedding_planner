@@ -69,9 +69,9 @@
     align-items: center;
     column-gap: 1.5vw;
 }
-.lohIn{
+/* .lohIn{
     border: none;
-}
+} */
 .signIn-signUp a {
     text-decoration: none;
     color: black;
@@ -91,11 +91,16 @@
     background-color: white;
 }
 
-.logIn:hover +.vendor-user-option,.vendor-user-option:hover{
+.logIn-LogOut{
+    background-color: crimson !important;
+    border: 1px solid white;
+}
+
+/* .logIn:hover +.vendor-user-option,.vendor-user-option:hover{
     display: block;
 
 }
 .vendor-user-option:hover{
     display: block;
 
-}
+} */

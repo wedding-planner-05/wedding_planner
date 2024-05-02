@@ -28,7 +28,7 @@ const App = () => {
       <Route path="/userSignIn" element={<UserSignIn />} />
       <Route path="/vendorSignIn" element={<VendorSignIn />} />
       <Route path="/vendorSignUp" element={<SignupVendor />} />
-      <Route path="/" element={<Auth><Home /></Auth>} />
+      <Route path="/" element={<Home />} />
       <Route path="/otpVerify" element={<UserOtp />} />
       <Route path="/DressHomePage" element={<DressHomePage />} />
       <Route path="/PhotographerHomePage" element={<PhotographerHomePage />} />
@@ -43,6 +43,7 @@ const App = () => {
       <Route path="/dashboard2" element={<DashBord2 />} />
       <Route path="/CaterContactpage" element={<CaterContactpage />} />
       <Route path="/vendorSignIn" elementm = {<VendorSignIn/>}/>
+
     </Routes>
 
 

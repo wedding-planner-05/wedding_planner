@@ -47,7 +47,9 @@ function SignupVendor() {
         console.log(strengthIndicator);
         setStrength(strengthLabel[strengthIndicator]);
     };
-
+    console.log("choise: ",choise)
+    console.log("email: ",email)
+    console.log("password: ",password)
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -57,9 +59,11 @@ function SignupVendor() {
             axios.post(`http://localhost:3000/${choise}/${choise}/signup`, { email, password })
                 .then(result => {
                     if (result.status == "201"||result.status=="200") {
+                        toast.success("Sign In Success")
                         console.log(result);
                         console.log("success");
-                        toast.success("Success Notification")
+
+                        navigate('/vendorSignIn')
                     }
                     else {
 
@@ -137,7 +141,6 @@ function SignupVendor() {
                             <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
                                 {/* <div className='texts'>ARE YOU A VENDOR</div> */}
                                 <div onClick={()=>{VendorSignIn()}} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNIN</button></div>
-                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}onClick={()=>{navigate("/vendorSignIn")}}>BUISNESS SIGNIN</button></div>
                             </div>
                     </div>
                 </div>

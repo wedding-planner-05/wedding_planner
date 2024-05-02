@@ -3,6 +3,7 @@ import "./Photo.css";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../Components/Navbar/Navbar";
 
 
 const PhotographerHomePage = () => {
@@ -29,7 +30,7 @@ const PhotographerHomePage = () => {
   }, []);
 
   return <>
-      
+      <Navbar/>
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section onClick={()=>PhotoVendorDetails(product)} key={index} className="main-page m-3">
@@ -40,7 +41,8 @@ const PhotographerHomePage = () => {
             {/* Photographer Image */}
             <div className="p-0">
               <img
-                className="img-fluid custom-img"
+                className=" custom-img"
+                style={{width: "100%",height: "200px"}}
                 src={product.imageUrl}
                 alt={product.title}
               />
@@ -52,7 +54,7 @@ const PhotographerHomePage = () => {
                   <div className="h6" style={{ width: "170%" }}>
                     <strong>{product.title}</strong>
                   </div>
-                  <p className="custom-text-size">Photo + Video</p>
+                  {/* <p className="custom-text-size">Photo + Video</p> */}
                 </div>
                 <div className="col text-end">
                   <p className="h6">

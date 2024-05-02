@@ -34,7 +34,7 @@ function SignInVendor() {
                         toast.success("Login Success")
                         sessionStorage.setItem("current-user", email);
                         sessionStorage.setItem("isLoggedIn", "true");
-                        navigate("/")
+                        navigate('/dashboard1')
                     }
                     else {
 
@@ -102,7 +102,6 @@ function SignInVendor() {
                             <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
                                 {/* <div className='texts'>ARE YOU A VENDOR</div> */}
                                 <div onClick={()=>VendoSignUp()} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>Vendor signup</button></div>
-                                <div className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }} onClick={() => { navigate("/vendorSignUp") }}>BUISNESS SIGNUP</button></div>
                             </div>
                     </div>
                 </div>
