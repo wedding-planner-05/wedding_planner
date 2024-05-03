@@ -35,8 +35,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use("/user",UserRouter);
-app.use("/vendor",VendorRouter);
-app.use("/vendorfunc",VendorFuncRouter);
+// app.use("/vendor",VendorRouter);
+app.use("/mehendi",VendorFuncRouter);
 
 
 // app.use("/admin",adminRouter);

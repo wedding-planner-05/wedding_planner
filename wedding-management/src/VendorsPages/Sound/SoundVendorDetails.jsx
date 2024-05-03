@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+// import React, { useContext, useState } from 'react'
 import { FaEnvelope, FaPhoneAlt, FaStar } from 'react-icons/fa';
 import { FaIndianRupeeSign, FaLocationDot } from 'react-icons/fa6';
 import { useLocation } from 'react-router-dom';
@@ -7,14 +7,19 @@ import Navbar from '../../Components/Navbar/Navbar';
 import "./SoundVendorDetails.css"
 import { FaUserAlt } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
-
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import { Rating } from '@mui/material'
+import { Typography } from '@mui/material'
 
 const SoundVendorDetails = () => {
     const location = useLocation()
     const data = location.state
-   
+    console.log(data);
 
-    const [show,setShow ] = useState(false)
+    const [show,setShow ] = React.useState(false) ;
+    const [value,setValue]  = React.useState(2)
+    console.log(value);
 
     const showName = ()=>{
         if(show==true)
@@ -79,6 +84,10 @@ const SoundVendorDetails = () => {
           </div>          
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
+            <Box>
+        <Typography component='legend'></Typography>
+        <Rating name='simple-controlled' value={value} onChange={(event , newValue)=>setValue(newValue)} />
+    </Box>
     
           </div>
           <AboutUs/>

@@ -56,7 +56,7 @@ app.post("/cater/signin", async (req, res) => {
     }
 });
 
-app.post("/save", upload.single("imagesUrl"), (req, res) => {
+app.post("cater/save", upload.single("imagesUrl"), (req, res) => {
     let filename = req.file.filename;
     let name = req.body.name;
     let servicecharge = req.body.servicecharge;
@@ -76,7 +76,7 @@ app.post("/save", upload.single("imagesUrl"), (req, res) => {
 });
 
 
-app.get("/getData", async (req, res) => {
+app.get("cater/viewAllVendors", async (req, res) => {
     try {
         const data = await CaterDetails.findAll();
         console.log(data);
@@ -88,7 +88,7 @@ app.get("/getData", async (req, res) => {
 });
 
 
-app.post("/addinBulk", async (req, res, next) => {
+app.post("cater/addinBulk", async (req, res, next) => {
 
     const workbook = xlsx.readFile('dataregardCater1.xlsx');
     const sheet_name = workbook.SheetNames[0];
