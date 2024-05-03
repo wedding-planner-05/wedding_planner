@@ -1,0 +1,8 @@
+user.email=satishsjr101@gmail.com
+user.name=satish
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+safe.directory=D:/git-wedding-planner-satish
+safe.directory=D:/
