@@ -29,7 +29,7 @@ const Vendors = () => {
 
     <div className="vendor-div container mt-5 p-5">
         <h3 className="vendor-text">Vendors Categories</h3>
-   <span className="vendor-heart" style={{color:"crimson"}}>______________<FaHeartPulse/>  _______________</span><br />
+   {/* <span className="vendor-heart" style={{color:"crimson"}}>______________<FaHeartPulse/>  _______________</span><br /> */}
 
 <br />
 

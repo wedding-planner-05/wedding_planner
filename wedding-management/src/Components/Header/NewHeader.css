@@ -1,0 +1,24 @@
+.header{
+    position: relative;
+    height: 530px;
+}
+.header img{
+    height: 570px;
+    opacity: 0.6;
+    width: 100%;
+}
+.search-bar{
+    background-color: crimson;
+    position: absolute;
+    color: white;
+    border: 1px solid;
+    top: 70%;
+    left: 30%;
+    height: auto;
+    width: auto;
+}
+.search-bar select{
+    height: 40px;
+    border: none;
+    /* border-left: 1px solid; */
+}

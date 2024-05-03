@@ -23,8 +23,8 @@ app.use(bodyParser.json()) ;
 app.use(express.static(path.join(__dirname,"public"))) ;
 app.use(cors())
 
-app.use('/sound',SoundRouter);
-app.use('/soundInfo',SoundInfoRouter);
+// app.use('/sound',SoundRouter);
+app.use('/sound',SoundInfoRouter);
 
 const port = 3006 ;    
 

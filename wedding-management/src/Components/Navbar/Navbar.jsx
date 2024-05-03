@@ -40,11 +40,11 @@ function Navbar() {
       // const home = ()=>{
       //   navigate('/')
       // }
-      console.log(user);
+      // console.log(user);
       return (
         <nav style={{height:"12vh"}} className="navbar navbar-expand-lg navbar-light bg-light">
         <div onClick={()=>home()} className='logo col-6 col-md-3 col-lg-2'>
-              <a href="#">
+              <a href="/">
               <img src="images/wedding-planner-high-resolution-logo-white-transparent.png" alt="" />
               </a>
         </div>
