@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from "express";
 import bodyParser from "body-parser";
-import GardenLoginRoute from './route/gardenLogin.route.js'
+// import GardenLoginRoute from './route/gardenLogin.route.js'
 import GardenDetailsRoute from './route/gardenDetails.route.js';
 
 import cors from 'cors';
@@ -22,8 +22,9 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/garden", GardenLoginRoute);
-app.use("/garden-details", GardenDetailsRoute);
+// app.use("/garden-", GardenLoginRoute);
+
+app.use("/garden", GardenDetailsRoute);
 
 const port = 3003 ;
 

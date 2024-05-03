@@ -13,34 +13,8 @@ import axios from 'axios';
 
 function Navbar() {
   const {user, loginWithRedirect , isAuthenticated ,isLoading , logout} = useAuth0();
-  // const {email} = user ;
-  // isAuthenticated && axios.post('http://localhost:3000/userSingIn',{email : user.email})
-  // const [isSignIn,setLogged] = useState(false)
-  
-  // const navigate = useNavigate()
-  
-  // const AboutUs = ()=>{
-  //   navigate('/AboutUs')
-  // }
-  // useEffect(()=>{
-  
-  // },[])
-
-  // const signOut = ()=>{
-  //   localStorage.setItem('isLogged',false)
-  //       setLogged('false');
-  //       navigate('/')
-  //     }
-      // const signIn = ()=>{
-      //   // localStorage.setItem('isLogged',null)
-      //   //setLogged(null);
-      //   navigate('/userSignIn')
-      // }
-      
-      // const home = ()=>{
-      //   navigate('/')
-      // }
-      // console.log(user);
+    
+      console.log(user);
       return (
         <nav style={{height:"12vh"}} className="navbar navbar-expand-lg navbar-light bg-light">
         <div onClick={()=>home()} className='logo col-6 col-md-3 col-lg-2'>

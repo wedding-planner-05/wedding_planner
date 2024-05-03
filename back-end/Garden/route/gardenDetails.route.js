@@ -1,11 +1,15 @@
 import express from "express";
-import { viewAllGarden, add, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk } from "../controller/gardenDatails.controller.js";
+import { viewAllGarden, add, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, updateProfile } from "../controller/gardenDatails.controller.js";
 import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 const router = express.Router();
 
 // http://localhost:3000/garden-vendor/
 let upload = multer({ dest: "public/images/" })
+
+router.post("/signin", signin);
+router.post("/signup", signup);
+router.post('/update-profile/:id', updateProfile);
 
 router.post('/addInBulk',addInBulk);
 router.get('/viewAll',viewAllInBulk);

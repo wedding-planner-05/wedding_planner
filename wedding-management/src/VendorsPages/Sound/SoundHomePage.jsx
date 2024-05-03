@@ -59,7 +59,7 @@ const SoundHomePage = () => {
                     <FaStar color="crimson" /> {product.rating || "N/A"}
                   </p>
                   <p className="font custom-text-size">
-                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,14) + ".."}
+                    <FaMapMarkerAlt color="green" /> {product.address.slice(0,13) + ".."}
                   </p>
                 </div>
               </div>

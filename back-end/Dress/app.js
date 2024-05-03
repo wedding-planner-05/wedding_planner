@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import UserRouter from "./router/user.route.js";
-import VendorRouter from "./router/vendor.route.js";
+// import VendorRouter from "./router/vendor.route.js";
 import  cors  from "cors";
 import VendorFuncRouter from "./router/vendorfunc.route.js"
 import path from "path";
@@ -35,8 +35,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use("/user",UserRouter);
-app.use("/vendor",VendorRouter);
-app.use("/vendorfunc",VendorFuncRouter);
+//app.use("/vendor",VendorRouter);
+app.use("/dress",VendorFuncRouter);
 
 
 // app.use("/admin",adminRouter);
