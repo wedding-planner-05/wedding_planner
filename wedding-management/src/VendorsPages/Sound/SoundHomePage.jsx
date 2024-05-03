@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 
 
@@ -9,19 +9,24 @@ const SoundHomePage = () => {
     const [products,setProducts] = useState([]) ;
     const navigate = useNavigate()
 
+    const location = useLocation() ;
+    const data = location.state ; 
 
     useEffect(()=>{
-        axios.get("http://localhost:3000/sound/soundInfo/viewAllVendors").then((response)=>{
-        setProducts(response.data.data)
-        
+    if(data){
+      setProducts(data);
+    }else{ 
+        axios.get("http://localhost:3000/sound/sound/viewAllVendors").then((response)=>{
+          setProducts(response.data.data)
         }).catch(err=>{
           console.log(err);
         })
+      }
     },[])
-
-    const SoundVendorDetails = (data)=>{
+      
+      const SoundVendorDetails = (data)=>{
         navigate("/SoundVendorDetails",{state:data})
-    }
+      }
 
   return <>
   
@@ -67,8 +72,7 @@ const SoundHomePage = () => {
         </section>
       ))}
     </div>
-
-    {/* </SoundData.Provider> */}
+      
   
   </>
 }

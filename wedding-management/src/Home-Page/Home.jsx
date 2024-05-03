@@ -1,7 +1,7 @@
 
 import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import Header from "../Components/Header/Header";
+// import Header from "../Components/Header/Header";
 
 
 
@@ -9,18 +9,14 @@ import Vendors from "../Components/Vendor/Vendors";
 import Footer from "../Components/Footer/Footer";
 import AboutUs from "../Components/AboutUs/AboutUs";
 import ContactUs from "../Components/ContactUs/ContactUs";
+import NewHeader from "../Components/Header/NewHeader";
 
 
 function Home() {
-  
-  // useEffect(() => {
-  //   localStorage.clear();
-  // }, []);
-
     return (
     <>
       <Navbar/>  
-      <Header/>
+      <NewHeader/>
       <Vendors /> 
       <AboutUs/>
       <ContactUs/>
