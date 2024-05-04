@@ -4,6 +4,7 @@ import multer from 'multer'
 import { body } from 'express-validator';
 import soundVendorDetails from '../model/sound_info.js';
 import xlsx from 'xlsx';
+import { verifyVendor } from '../verify/verifyToken.js';
 
 let router = express.Router() ;
 
