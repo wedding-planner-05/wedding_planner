@@ -93,26 +93,6 @@ server.post("/userRouter", async (request, response, next) => {
   }
 });
 
-// const tryStartServer = () => {
-//   server
-//     .start(port)
-//     .then(() => {
-//       console.log(`Server started at port no : ${port}`);
-//     })
-//     .catch((err) => {
-//       if (err.code === "EADDRINUSE") {
-//         console.log(`Port ${port} is already in use. Trying another port...`);
-//         port++;
-//         console.log(port);
-//         tryStartServer(); // Try starting the server again with the new port
-//       } else {
-//         console.error("Error:", err);
-//       }
-//     });
-// };
-
-// tryStartServer();
-
 server.start(port).then((result)=>{
     console.log(`server started at port no : ${port}`);
 }).catch(err=>{

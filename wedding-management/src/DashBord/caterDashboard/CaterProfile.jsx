@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
 import "./DashBord.css";
 
-function DashBord1() {
+function CaterProfile() {
   const [file, setFile] = useState(null);
   function handleFileChange(event) {
     const selectedFile = event.target.files[0];
@@ -293,4 +293,4 @@ function DashBord1() {
   );
 }
 
-export default DashBord1;
+export default CaterProfile;

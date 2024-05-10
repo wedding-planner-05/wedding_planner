@@ -35,11 +35,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use("/user",UserRouter);
-//app.use("/vendor",VendorRouter);
 app.use("/dress",VendorFuncRouter);
-
-
-// app.use("/admin",adminRouter);
 
 app.use(cors());
 const port = 3002;

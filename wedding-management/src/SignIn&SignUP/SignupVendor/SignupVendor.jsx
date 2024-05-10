@@ -4,10 +4,10 @@ import './SignupVendor.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { AiFillGooglePlusCircle } from "react-icons/ai";
-import { Carousel } from 'react-responsive-carousel';
+// import { AiFillGooglePlusCircle } from "react-icons/ai";
+// import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import GoogleAuth from './GoogleAuth';
+// import GoogleAuth from './GoogleAuth';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 
@@ -50,10 +50,11 @@ function SignupVendor() {
     console.log("choise: ",choise)
     console.log("email: ",email)
     console.log("password: ",password)
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (email == "" && password == "") {
+        if (email == "" || password == "") {
             toast.error("plese fill the details")
         } else {
             axios.post(`http://localhost:3000/${choise}/${choise}/signup`, { email, password })
@@ -130,9 +131,9 @@ function SignupVendor() {
                                 <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Forgot Password</Link></span>
                                 <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Help</Link></span>
                             </div>
-                            <div className='mt-4'>
+                            {/* <div className='mt-4'>
                                 <GoogleAuth setIsLogin={setisLogin} />
-                            </div>
+                            </div> */}
                             <div className='lines'>
                                 <span></span><span style={{ border: "none" }}><i class='bx bx-heart'></i></span><span></span>
                             </div>
