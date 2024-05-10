@@ -142,10 +142,11 @@ function SignInVendor() {
         if (email == "" && password == "") {
             toast.error("plese fill the details")
         } else {
-            axios.post(`http://localhost:3000/${choise}/${choise}/signin`, { email, password,vendorType})
+            axios.post(`http://localhost:3000/${choise}/${choise}/signin`, { email, password})
                 .then(result => {
                     if (result.status == "200" || result.status == "201") {
-                        console.log(JSON.stringify(result.data.data.id));
+                        console.log(JSON.stringify(result.data.gardenobj));
+
                         console.log("successfull");
                         toast.success("Login Success")
                         sessionStorage.setItem("current-user", JSON.stringify(result.data.data));
@@ -206,17 +207,17 @@ function SignInVendor() {
                                 <span className='col-md-4 text-center'><Link style={{ textDecoration:'none' ,color:'black' }}>Forgot Password</Link></span>
                                 <span className='col-md-4 text-center'><Link style={{ textDecoration:'none' ,color:'black' }}>Help</Link></span>
                             </div>
-                            {/* <div className='mt-4'>
-                                <GoogleAuth setIsLogin={setisLogin} />
-                            </div> */}
+                  
                             <div className='lines'>
                                 <span></span><span style={{ border: "none" }}><i class='bx bx-heart'></i></span><span></span>
                             </div>
                             <div></div>
                         </form>
-                            <div className='d-flex align-item-center justify-content-between flex-wrap mt-3'>
-                                {/* <div className='texts'>ARE YOU A VENDOR</div> */}
-                                <div onClick={()=>VendoSignUp()} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>Vendor signup</button></div>
+                            <div style={{width:'100%'}} className='d-flex justify-content-around flex-wrap mt-5'>
+
+                                <h6 className='p-2'>Are you a vendor</h6>
+                                <button onClick={()=>VendoSignUp()} style={{borderRadius:'20px',backgroundColor:'crimson',color:'white' }} className='btn'> vendor signUp </button>
+                                {/* <div onClick={()=>VendoSignUp()} className='text-center col-md-12'><button  className='buttonVendor text-center' style={{ height: "2rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>Vendor signup</button></div> */}
                             </div>
                     </div>
                 </div>

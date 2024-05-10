@@ -14,7 +14,6 @@ import axios from 'axios';
 function Navbar() {
   const {user, loginWithRedirect , isAuthenticated ,isLoading , logout} = useAuth0();
     
-      console.log(user);
       return (
         <nav style={{height:"12vh"}} className="navbar navbar-expand-lg navbar-light bg-light">
         <div onClick={()=>home()} className='logo col-6 col-md-3 col-lg-2'>
