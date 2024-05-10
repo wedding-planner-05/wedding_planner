@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { FaWhatsapp } from "react-icons/fa";
-import { IoLogoInstagram } from "react-icons/io";
-import { FaYoutube } from "react-icons/fa";
-import { TiSocialFacebookCircular } from "react-icons/ti";
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { IoMdPerson } from "react-icons/io";
-import { RiAdminFill } from "react-icons/ri";
 import AboutUs from '../AboutUs/AboutUs';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';

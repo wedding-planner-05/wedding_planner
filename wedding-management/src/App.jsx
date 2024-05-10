@@ -21,6 +21,8 @@ import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
 import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
 import AboutUs from "./Components/AboutUs/AboutUs.jsx";
 import Auth from "../Auth/Auth.jsx";
+// import CaterProfile from "./VendorsPages/Cater/CaterDashBoard/CaterProfile.jsx";
+import CaterContactDashBoard from "./DashBord/caterDashboard/CaterContactDashBoard.jsx";
 
 const App = () => {
   return <>
@@ -43,6 +45,7 @@ const App = () => {
       <Route path="/dashboard2" element={<DashBord2 />} />
       <Route path="/CaterContactpage" element={<CaterContactpage />} />
       <Route path="/vendorSignIn" elementm = {<VendorSignIn/>}/>
+      <Route path="/gardendashoard" element={<CaterContactDashBoard/>}/>
 
     </Routes>
 
