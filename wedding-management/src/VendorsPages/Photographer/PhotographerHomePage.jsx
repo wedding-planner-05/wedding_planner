@@ -3,6 +3,7 @@ import "./Photo.css";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../Components/Navbar/Navbar";
 
 
 const PhotographerHomePage = () => {
@@ -22,7 +23,7 @@ const PhotographerHomePage = () => {
     // console.log("after");
     axios.get("http://localhost:3000/photographer/photographer/viewAllVendors/")
       .then((response) => {
-        // console.log(response.data.Photographers);
+        console.log(response.data.Photographers);
         setProducts(response.data.Photographers);
       })
       .catch((err) => {
@@ -35,19 +36,23 @@ const PhotographerHomePage = () => {
       }
 
   return <>
+    <Navbar/>
+    <div className=' vendors-box d-flex justify-content-between'>
 
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
-    <div className='container filter-box d-flex align-items-center justify-content-center gap-4 mt-4 mb-4'>
-      <div>select by price {"=>"}</div>
-      <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px', border:'1px solid crimson'}}>view all</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:5000})} className='btn'>{'<='}5000</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:10000})} className='btn'>{'<='}10000</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"> =",price:10000})} className='btn'>{'>='}10000</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:20000})} className='btn'>{'<='}20000</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:30000})} className='btn'>{'<='}30000</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:35000})} className='btn'>{'<='}35000</button>
-      <button style={{height:'40px', border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"> =",price:35000})} className='btn'>{'>='}35000</button>
+    <div className='filter-box'>
+    <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
+      <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:5000})} className='btn'>{'<='}5000</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:10000})} className='btn'>{'<='}10000</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"> =",price:10000})} className='btn'>{'>='}10000</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:20000})} className='btn'>{'<='}20000</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:30000})} className='btn'>{'<='}30000</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :"<=",price:35000})} className='btn'>{'<='}35000</button>
+      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>setPriceFilter({operation :">=",price:35000})} className='btn'>{'>='}35000</button>
+    </div> 
     </div>
+    <div className="container-fluid cards d-flex flex-wrap justify-content-evenly align-items-center">
+
       {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
         <section onClick={()=>PhotoVendorDetails(product)} key={index} className="main-page m-3">
           <div
@@ -89,6 +94,7 @@ const PhotographerHomePage = () => {
           </div>
         </section>
       ))}
+    </div>
     </div>
   </>
 };

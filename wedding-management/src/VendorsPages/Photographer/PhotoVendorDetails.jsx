@@ -6,6 +6,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import ContactUs from "../../Components/ContactUs/ContactUs";
 import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
 
 
 const PhotoVendorDetails = () => {
@@ -17,6 +18,7 @@ const PhotoVendorDetails = () => {
   console.log(data);
   
   return <>
+  <Navbar/>
     <div className="container-fluid">
       {/* <div className="row justify-content-center mt-5 mb-5 pb-5"> */}
       <div className="row justify-content-center mt-5 mb-5 pb-5">

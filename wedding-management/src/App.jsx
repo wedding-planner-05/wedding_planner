@@ -18,11 +18,11 @@ import DashBord1 from "./DashBord/DashBord1.jsx";
 import DashBord2 from "./DashBord/DashBord2.jsx";
 import DashBord from "./DashBord/DashBord3.jsx";
 import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
-import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
-import AboutUs from "./Components/AboutUs/AboutUs.jsx";
-import Auth from "../Auth/Auth.jsx";
+// import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
+// import AboutUs from "./Components/AboutUs/AboutUs.jsx";
+// import Auth from "../Auth/Auth.jsx";
 // import CaterProfile from "./VendorsPages/Cater/CaterDashBoard/CaterProfile.jsx";
-import CaterContactDashBoard from "./DashBord/caterDashboard/CaterContactDashBoard.jsx";
+// import CaterContactDashBoard from "./DashBord/caterDashboard/CaterContactDashBoard.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 
 const App = () => {
@@ -45,9 +45,9 @@ const App = () => {
       <Route path="/dashboard" element={<DashBord />} />
       <Route path="/dashboard1" element={<DashBord1 />} />
       <Route path="/dashboard2" element={<DashBord2 />} />
-      <Route path="/CaterContactpage" element={<CaterContactpage />} />
+      {/* <Route path="/CaterContactpage" element={<CaterContactpage />} /> */}
       <Route path="/vendorSignIn" elementm = {<VendorSignIn/>}/>
-      <Route path="/gardendashoard" element={<CaterContactDashBoard/>}/>
+      {/* <Route path="/gardendashoard" element={<CaterContactDashBoard/>}/> */}
 
     </Routes>
 
