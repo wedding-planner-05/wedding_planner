@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Dress.css";
+// import "./Dress.css";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +32,7 @@ const DressHomePage = () => {
   }, []);
 
   return <>
-      <Navbar/>
+      {/* <Navbar/> */}
     <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section className="main-page m-3">

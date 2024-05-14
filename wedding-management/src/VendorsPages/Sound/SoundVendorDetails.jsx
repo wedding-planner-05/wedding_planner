@@ -3,7 +3,6 @@ import { FaEnvelope, FaPhoneAlt, FaStar } from 'react-icons/fa';
 import { FaIndianRupeeSign, FaLocationDot } from 'react-icons/fa6';
 import { useLocation } from 'react-router-dom';
 import AboutUs from '../../Components/AboutUs/AboutUs';
-import Navbar from '../../Components/Navbar/Navbar';
 import "./SoundVendorDetails.css"
 import { FaUserAlt } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
@@ -11,9 +10,12 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import { Rating } from '@mui/material'
 import { Typography } from '@mui/material'
+import { useAuth0 } from '@auth0/auth0-react';
 
 const SoundVendorDetails = () => {
-    const location = useLocation()
+
+  const {isAuthenticated, loginWithRedirect} = useAuth0()
+  const location = useLocation()
     const data = location.state
     console.log(data);
 
@@ -22,19 +24,25 @@ const SoundVendorDetails = () => {
     console.log(value);
 
     const showName = ()=>{
+      if(!isAuthenticated){
+        const result =  window.confirm('please singn In first')
+        if(result)
+          loginWithRedirect()
+      }
+      else{
         if(show==true)
-            setShow(false)
-          else
-            setShow(true)
-          
+          setShow(false)
+        else{
+          setShow(isAuthenticated)
         }
+      }
+    }
       
     return (
       <div>
-          <Navbar/>
       <div className="container">
-
-          <div className="row justify-content-center mt-5 mb-5 pb-5">
+      <div>
+          <div className="row justify-content-center pb-5">
     
             <div className="col-md-6 col-lg-4 position-relative mb-5">
               <div>
@@ -91,6 +99,7 @@ const SoundVendorDetails = () => {
     
           </div>
           <AboutUs/>
+        </div>
         </div>
         </div>
       );

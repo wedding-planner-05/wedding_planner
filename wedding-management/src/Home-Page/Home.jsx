@@ -15,7 +15,6 @@ import NewHeader from "../Components/Header/NewHeader";
 function Home() {
     return (
     <>
-      <Navbar/>  
       <NewHeader/>
       <Vendors /> 
       <AboutUs/>

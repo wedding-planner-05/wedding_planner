@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-.navbar-div {
-    height: auto;
-    width: 98vw;
-    margin-top: 10px;
-    border: 50px;
-}
-
 .navbar-social-media {
     height: 2.5vw;
     width: 100%;

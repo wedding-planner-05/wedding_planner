@@ -6,7 +6,6 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import ContactUs from "../../Components/ContactUs/ContactUs";
 import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
 
 
 const PhotoVendorDetails = () => {
@@ -16,22 +15,8 @@ const PhotoVendorDetails = () => {
   const data = location.state;
 
   console.log(data);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:4000/vendorfunc/viewalldresses")
-  //     .then((response) => {
-  //       console.log(response.data.data);
-  //       setProducts(response.data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
   
   return <>
-    <Navbar/>
     <div className="container-fluid">
       {/* <div className="row justify-content-center mt-5 mb-5 pb-5"> */}
       <div className="row justify-content-center mt-5 mb-5 pb-5">
