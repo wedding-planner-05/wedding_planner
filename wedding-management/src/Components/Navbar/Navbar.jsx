@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
-import AboutUs from '../AboutUs/AboutUs';
 import { useAuth0 } from "@auth0/auth0-react";
-import axios from 'axios';
 
 function Navbar() {
   const {user, loginWithRedirect , isAuthenticated ,isLoading , logout} = useAuth0();
     
       return (
-        <nav style={{height:"12vh"}} className="navbar navbar-expand-lg navbar-light bg-light">
+           
+        <nav style={{height:"12vh",width:'100%',position:"fixed",zIndex:'4'}} className="navbar hello navbar-expand-lg navbar-light bg-light">
         <div onClick={()=>home()} className='logo col-6 col-md-3 col-lg-2'>
               <a href="/">
               <img src="images/wedding-planner-high-resolution-logo-white-transparent.png" alt="" />

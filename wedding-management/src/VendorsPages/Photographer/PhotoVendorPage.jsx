@@ -1,9 +1,6 @@
 import React from "react";
 import PhotographerHomePage from "./PhotographerHomePage";
-import 
-
-
-ContactUs from "../ContactUs/ContactUs";
+import ContactUs from "../ContactUs/ContactUs";
 import Footer from "../Footer/Footer";
 import AboutUs from "../AboutUs/AboutUs";
   

@@ -23,9 +23,11 @@ import AboutUs from "./Components/AboutUs/AboutUs.jsx";
 import Auth from "../Auth/Auth.jsx";
 // import CaterProfile from "./VendorsPages/Cater/CaterDashBoard/CaterProfile.jsx";
 import CaterContactDashBoard from "./DashBord/caterDashboard/CaterContactDashBoard.jsx";
+import Navbar from "./Components/Navbar/Navbar.jsx";
 
 const App = () => {
   return <>
+  <Navbar/>
     <Routes>
       <Route path="/userSignIn" element={<UserSignIn />} />
       <Route path="/vendorSignIn" element={<VendorSignIn />} />

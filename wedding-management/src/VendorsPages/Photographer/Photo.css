@@ -4,12 +4,11 @@
   
   .details-block {
     width: 21rem;
-    height: 20rem;
-    /* max-width: 480px; */
+    height: 23rem;
+    max-width: 480px;
     box-shadow: 0 0 0.7rem grey;
     border-radius: 0.6rem;
     padding: 1rem;
-    /* border: 5px solid red; */
   }
   .gapping {
     display: flex;
@@ -20,18 +19,16 @@
     column-gap: 2rem;
   }
   .custom-img {
-    /* border: 1px solid green; */
     border-radius: 0.6rem;
     width: 100%;
     height:200px;
     object-fit: cover;
-    /* height: auto; */
   }
   .custom-text-size{
-  font-size: x-small;
+  font-size: x-small;
   
   } 
-  /* .address {
-    text-align:left;
-    color:red;
-  } */
+  .filter-box{
+    height: 70px;
+    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px; */
+}
