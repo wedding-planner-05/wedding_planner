@@ -10,7 +10,7 @@ import {
 
 const ContactUs = () => {
   return (
-    <div className="container-fluid mt-5 p-0">
+    <div className="container-fluid mt-5 p-0" id="Contactus">
       {/* Contact Information Section */}
       <div className="text-center m-4 ">
         <h4 style={{ color: "crimson" }}>Contact us</h4>

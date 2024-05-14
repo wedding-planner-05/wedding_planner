@@ -13,10 +13,11 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../../Components/Navbar/Navbar';
 
 
-function DashBord() {
+
+function GardenResetPassDashBoard() {
 
     return (
         <>
@@ -27,11 +28,11 @@ function DashBord() {
 
                         <div>
                             <ul className="list-unstyled">
-                            <li><Link to="/Dashboard1" className='textnone'><strong style={{color:"black"}}><RxDashboard /></strong><span style={{color:"black"}}>Dashboard</span></Link></li>
-                                <li><Link to="/Dashboard" className='textnone'><strong style={{color:"black"}}><RiLockPasswordLine /></strong><span style={{color:"black"}}>Password</span></Link></li>
-                                <li><Link to="/Dashboard2" className='textnone'><strong style={{color:"black"}}><RiContactsLine /></strong><span style={{color:"black"}}>Contact-Us</span></Link></li>
-                                <li><strong style={{color:"black"}}><CgList /></strong><span style={{color:"black"}}>Catergory-List</span></li>
-                                <li><strong style={{color:"black"}}><AiOutlineSetting /></strong><span style={{color:"black"}}>Setting</span></li>
+                                <li><Link to="/GardenHomeDetailsDashBoard" className='textnone'><strong style={{ color: "black" }}><RxDashboard /></strong><span style={{ color: "black" }}>Dashboard</span></Link></li>
+                                <li><Link to="/GardenResetPassDashBoard" className='textnone'><strong style={{ color: "black" }}><RiLockPasswordLine /></strong><span style={{ color: "black" }}>Password</span></Link></li>
+                                <li><Link to="/GardenContactDashBoard" className='textnone'><strong style={{ color: "black" }}><RiContactsLine /></strong><span style={{ color: "black" }}>Contact-Us</span></Link></li>
+                                <li><strong style={{ color: "black" }}><CgList /></strong><span style={{ color: "black" }}>Catergory-List</span></li>
+                                <li><strong style={{ color: "black" }}><AiOutlineSetting /></strong><span style={{ color: "black" }}>Setting</span></li>
                             </ul>
                         </div>
                     </div>
@@ -49,6 +50,7 @@ function DashBord() {
                                     <p><CiLocationOn />Madhya Pradesh</p>
                                 </div>
                             </div> */}
+                            <h1>WelCome Garden'S</h1>
                             <div>
                                 <div className='col-md-12'>
                                     <div className="container-fluid boxfrom">
@@ -103,4 +105,4 @@ function DashBord() {
     );
 }
 
-export default DashBord;
+export default GardenResetPassDashBoard;

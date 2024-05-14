@@ -20,17 +20,22 @@ function Navbar() {
     <div className="collapse navbar-collapse col-md-5 col-lg-10" id="navbarNavDropdown">
       <ul className="navbar-nav align-items-center col-md-8 justify-content-center gap-5">
         <li className="nav-item active">
-          <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+          <a className="nav-link" href="#header">Home <span className="sr-only">(current)</span></a>
         </li>
         <li className="nav-item active">
-          <a className="nav-link" href="#">Services</a>
+          <a className="nav-link" href="#Services">Services</a>
         </li>
         <li className="nav-item active">
-          <a className="nav-link" href="#">Contact</a>
+          <a className="nav-link" href="#Contactus">Contact</a>
         </li>
         <li className="nav-item active">
-          <a className="nav-link " href="#">
+          <a className="nav-link " href="#AboutUs">
             About Us
+          </a>
+        </li>
+        <li className="nav-item active">
+          <a className="nav-link " href="#Footer">
+            More
           </a>
         </li>
       </ul>

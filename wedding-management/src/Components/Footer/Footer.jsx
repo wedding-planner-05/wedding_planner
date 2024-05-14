@@ -6,7 +6,7 @@ import { FaYoutube } from "react-icons/fa6";
 import './Footer.css'
 export const Footer = () => {
     return <>
-        <footer style={{border:"1px solid"}} className="footer">
+        <footer style={{border:"1px solid"}} className="footer" id="Footer">
             <div className="container">
                 <div className="d-flex gap-5">
                     <div className="footer-col ml-3">

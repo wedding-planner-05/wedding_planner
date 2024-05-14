@@ -31,7 +31,7 @@ const NewHeader = () => {
   }
   return (<>
     <ToastContainer/>
-    <div className='header container'>
+    <div className='header container' id = "header">
       <img src="/images/file_2024-05-02_15.20.08.png" alt="" />
          <div className="search-bar d-flex">
                           <div style={{width:"17vw"}} className='d-flex flex-column'>
