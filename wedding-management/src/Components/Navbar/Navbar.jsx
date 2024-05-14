@@ -24,7 +24,7 @@ function Navbar() {
               alt=""
             />
           </a>
-        </div>
+         </div>
         <button
           className="navbar-toggler"
           type="button"

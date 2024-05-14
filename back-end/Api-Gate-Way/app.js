@@ -3,7 +3,7 @@ import fastgateway from "fast-gateway";
 // import { User } from "./model/user.model.js";
 import express from "express";
 import { User } from "./model/user.model.js";
-import otpRouter from "../MailOtpSender/otpSender.route.js"
+// import otpRouter from "../MailOtpSender/otpSender.route.js"
 
 import cors from 'cors' ;
 const port = 3000;
@@ -50,7 +50,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(cors())
 
-server.post('/otp',otpRouter);
+// server.post('/otp',otpRouter);
 
 server.post('/userSingIn',async (request, response, next) => {
     try {

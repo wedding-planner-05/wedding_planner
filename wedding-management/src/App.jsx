@@ -14,16 +14,23 @@ import SoundHomePage from "./VendorsPages/Sound/SoundHomePage.jsx";
 import SoundVendorDetails from "./VendorsPages/Sound/SoundVendorDetails.jsx";
 import UserOtp from "./SignIn&SignUP/UserOtp/UserOtp.jsx";
 import GardenHomePage from "./VendorsPages/Garden/GardenHomePage.jsx";
-import DashBord1 from "./DashBord/DashBord1.jsx";
-import DashBord2 from "./DashBord/DashBord2.jsx";
-import DashBord from "./DashBord/DashBord3.jsx";
 import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
-// import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
-// import AboutUs from "./Components/AboutUs/AboutUs.jsx";
-// import Auth from "../Auth/Auth.jsx";
-// import CaterProfile from "./VendorsPages/Cater/CaterDashBoard/CaterProfile.jsx";
-// import CaterContactDashBoard from "./DashBord/caterDashboard/CaterContactDashBoard.jsx";
+import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
+import Auth from "../Auth/Auth.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
+import CaterHomeDetailsDashBoard from "./DashBord/caterDashboard/CaterHomeDetailsDashBoard.jsx";
+import CaterResetPassDashBoard from "./DashBord/caterDashboard/CaterResetPassDashBoard.jsx";
+import CaterContactDash from "./DashBord/caterDashboard/CaterContactDash.jsx";
+import DressHomeDetailsDashBoard from "./DashBord/DressDashBoard/DressHomeDetailsDashBoard.jsx";
+import DressResetPassDashBoard from "./DashBord/DressDashBoard/DressResetPassDashBoard.jsx";
+import SoundHomeDetailsDashBoard from "./DashBord/SoundDashBoard/SoundHomeDetailsDashBoard.jsx";
+import SoundResetPassDashBoard from "./DashBord/SoundDashBoard/SoundResetPassDashBoard.jsx";
+import GardenContactDashBoard from "./DashBord/Garden/GardenContactDashBoard.jsx";
+import GardenHomeDetailsDashBoard from "./DashBord/Garden/GardenHomeDetailsDashBoard.jsx";
+import GardenResetPassDashBoard from "./DashBord/Garden/GardenResetPassDashBoard.jsx";
+import DressContactDashBoard from "./DashBord/DressDashBoard/DressContactDashBoard.jsx";
+import SoundContactDashBoard from "./DashBord/SoundDashBoard/SoundContactDashBoard.jsx";
+
 
 const App = () => {
   return <>
@@ -42,13 +49,34 @@ const App = () => {
       <Route path="/SoundVendorDetails" element={<SoundVendorDetails />} />
       <Route path='/GardenHomePage' element={<GardenHomePage />} />
       <Route path="/caterpage" element={<CaterPage />} />
-      <Route path="/dashboard" element={<DashBord />} />
-      <Route path="/dashboard1" element={<DashBord1 />} />
-      <Route path="/dashboard2" element={<DashBord2 />} />
-      {/* <Route path="/CaterContactpage" element={<CaterContactpage />} /> */}
+      <Route path="/CaterContactpage" element={<CaterContactpage />} />
       <Route path="/vendorSignIn" elementm = {<VendorSignIn/>}/>
-      {/* <Route path="/gardendashoard" element={<CaterContactDashBoard/>}/> */}
 
+{/* ----------------------------------------------CATER DASHBOARD--------------------------------------------- */}
+
+      <Route path="/CaterHomeDetailsDashBoard" element={<CaterHomeDetailsDashBoard/>}/>
+      <Route path="/CaterResetPassDashBoard" element={<CaterResetPassDashBoard/>}/>
+      <Route path="/CaterContactDash" element={<CaterContactDash/>}/>
+
+{/* ----------------------------------------------DRESS DASHBOARD--------------------------------------------- */}
+
+      <Route path="/DressHomeDetailsDashBoard" element={<DressHomeDetailsDashBoard/>}/>
+      <Route path="/DressResetPassDashBoard" element={<DressResetPassDashBoard/>}/>
+      <Route path="/DressContactDashBoard" element={<DressContactDashBoard/>}/>
+
+{/* ----------------------------------------------SOUND DASHBOARD--------------------------------------------- */}
+
+      <Route path="/SoundHomeDetailsDashBoard" element={<SoundHomeDetailsDashBoard/>}/>
+      <Route path="/SoundResetPassDashBoard" element={<SoundResetPassDashBoard/>}/>
+      <Route path="/SoundContactDashBoard" element={<SoundContactDashBoard/>}/>
+
+{/* ----------------------------------------------GARDEN DASHBOARD--------------------------------------------- */}
+      <Route path="/GardenHomeDetailsDashBoard" element={<GardenHomeDetailsDashBoard/>}/>
+      <Route path="/GardenResetPassDashBoard" element={<GardenResetPassDashBoard/>}/>
+      <Route path="/GardenContactDashBoard" element={<GardenContactDashBoard/>}/>
+
+      
+     
     </Routes>
 
 
