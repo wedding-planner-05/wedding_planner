@@ -37,7 +37,7 @@ function DashBord() {
                     </div>
                     <div className="col content  boxborder">
                         <div>
-                            <h1 className='ml-5'>Vendor Profile</h1>
+                            {/* <h1 className='ml-5'>Vendor Profile</h1>
                             <h4 className='container ml-5'>password Update</h4>
                             <div className='d-flex align-item-center profile justify-content-center row'>
                                 <div className='ml-4 col-md-1 col-lg-1'>
@@ -48,7 +48,7 @@ function DashBord() {
                                     <p><AiOutlineCamera />photoGrapher</p>
                                     <p><CiLocationOn />Madhya Pradesh</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div>
                                 <div className='col-md-12'>
                                     <div className="container-fluid boxfrom">
