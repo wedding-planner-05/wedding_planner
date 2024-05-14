@@ -37,7 +37,7 @@ function DashBord2() {
                     </div>
                     <div className="col content text-center boxborder">
                         <div>
-                            <h1 className='ml-5'>Vendor Profile</h1>
+                            {/* <h1 className='ml-5'>Vendor Profile</h1>
                             <div className='d-flex align-item-center profile justify-content-center'>
                                 <div className='ml-4 col-md-1'>
                                     <img src="/images/logo.png" alt="" className='imgex' />
@@ -47,7 +47,7 @@ function DashBord2() {
                                     <p><AiOutlineCamera />photoGrapher</p>
                                     <p><CiLocationOn />Madhya Pradesh</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div>
                                 <div className='col '>
                                     <div className="container-fluid ">

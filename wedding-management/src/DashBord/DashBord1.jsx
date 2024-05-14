@@ -70,8 +70,8 @@ function DashBord1() {
           </div>
           <div className="col content  boxborder">
             <div>
-              <h1 className="ml-5">Vendor Profile</h1>
-              <div className="d-flex align-item-center profile justify-content-start row-md-1">
+              {/* <h1 className="ml-5">Vendor Profile</h1> */}
+              {/* <div className="d-flex align-item-center profile justify-content-start row-md-1">
                 <div className="ml-4 col-md-1">
                   <img src="/images/user.jpeg" alt="" className="imgex" />
                 </div>
@@ -89,7 +89,7 @@ function DashBord1() {
                     Madhya Pradesh
                   </p>
                 </div>
-              </div>
+              </div> */}
               <hr />
               <div>
                 <div className="col-md-12">
