@@ -16,7 +16,6 @@ import UserOtp from "./SignIn&SignUP/UserOtp/UserOtp.jsx";
 import GardenHomePage from "./VendorsPages/Garden/GardenHomePage.jsx";
 import CaterPage from "./VendorsPages/Cater/CaterPage.jsx";
 import CaterContactpage from "./VendorsPages/Cater/CaterContactpage.jsx";
-
 import Auth from "../Auth/Auth.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import CaterHomeDetailsDashBoard from "./DashBord/caterDashboard/CaterHomeDetailsDashBoard.jsx";

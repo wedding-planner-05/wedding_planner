@@ -2,9 +2,10 @@
     border: 1px solid;
     width: 100%;
     height: auto;
+    padding-top: 40px;
 }
 .cards{
-    margin-top: 100px;
+    /* margin-top: 100px; */
     width: 80%;
 }
 .filter-box{
@@ -14,7 +15,7 @@
 .filter-box-inner{
     height:90vh; 
     position: fixed;
-    margin-top: 85px;
+    /* margin-top: 85px; */
     width: 15%;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     z-index: 3;

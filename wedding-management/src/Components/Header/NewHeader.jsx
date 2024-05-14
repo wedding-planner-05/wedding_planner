@@ -31,8 +31,8 @@ const NewHeader = () => {
   }
   return (<>
     <ToastContainer/>
-    <div className='header container' id = "header">
-      <img src="/images/file_2024-05-02_15.20.08.png" alt="" />
+    <div className='header container mt-0 pt-0 h-auto'>
+      <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" />
          <div className="search-bar d-flex">
                           <div style={{width:"17vw"}} className='d-flex flex-column'>
                             <select onChange={(e)=>setLocation(e.target.value)} name="pets" id="pet-select">

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
+.navbar{
+    margin-top: 0 !important;
+}
 .navbar-social-media {
     height: 2.5vw;
     width: 100%;
@@ -88,12 +90,3 @@
     background-color: crimson !important;
     border: 1px solid white;
 }
-
-/* .logIn:hover +.vendor-user-option,.vendor-user-option:hover{
-    display: block;
-
-}
-.vendor-user-option:hover{
-    display: block;
-
-} */

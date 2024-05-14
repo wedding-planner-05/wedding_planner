@@ -51,7 +51,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor1.png" alt="teri " />
           <div className="vendor-button">
-            <button onClick={()=>DressHomePage()} className="btn btn-warning text-white">wedding wears</button>
+            <button onClick={()=>DressHomePage()} className="btn text-white">wedding wears</button>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor2.png" alt="teri " />
           <div className="vendor-button">
-            <button onClick={()=>MehendiHomePage()} className="btn btn-warning text-white">Mehendi</button>
+            <button onClick={()=>MehendiHomePage()} className="btn text-white">Mehendi</button>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor3.png" alt="teri " />
           <div className="vendor-button">
-            <button onClick={()=>PhotographerHomePage()} className="btn btn-warning text-white">Photographer</button>
+            <button onClick={()=>PhotographerHomePage()} className="btn text-white">Photographer</button>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor4.png" alt="teri " />
           <div className="vendor-button">
-            <button onClick={()=>SoundHomePage()} className="btn btn-warning text-white">Music / Band</button>
+            <button onClick={()=>SoundHomePage()} className="btn text-white">Music / Band</button>
           </div>
         </div>
         <div
@@ -102,7 +102,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor5.png" alt="teri " />
           <div className="vendor-button">
-            <button onClick={()=>GardenHomePage()} className="btn btn-warning text-white">Gardens</button>
+            <button onClick={()=>GardenHomePage()} className="btn text-white">Gardens</button>
           </div>
         </div>
         <div
@@ -114,7 +114,7 @@ const Vendors = () => {
         >
           <img src="/images/vendor6.png" alt="teri " />
           <div className="vendor-button">
-            <button onClick={()=>CaterHomePage()} className="btn btn-warning text-white">Caters</button>
+            <button onClick={()=>CaterHomePage()} className="btn text-white">Caters</button>
           </div>
         </div>
       </div>
