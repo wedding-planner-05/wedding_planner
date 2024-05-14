@@ -11,10 +11,10 @@ import { TbHandClick } from "react-icons/tb";
 import { AiOutlineCamera } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
-import Navbar from "../Components/Navbar/Navbar";
 import "./DashBord.css";
+import Navbar from "../../Components/Navbar/Navbar";
 
-function DashBord1() {
+function GardenHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
   function handleFileChange(event) {
     const selectedFile = event.target.files[0];
@@ -26,7 +26,7 @@ function DashBord1() {
       <Navbar />
       <div className="container-fluid">
         <div className="row ">
-          <div className="col-md-3 col-lg-2  asidebar">
+          {/* <div className="col-md-3 col-lg-2  asidebar">
             <div>
               <ul className="list-unstyled">
                 <li>
@@ -67,6 +67,18 @@ function DashBord1() {
                 </li>
               </ul>
             </div>
+          </div> */}
+          <div className="col-md-3 col-lg-2  asidebar">
+
+            <div>
+              <ul className="list-unstyled">
+                <li><Link to="/GardenHomeDetailsDashBoard" className='textnone'><strong style={{ color: "black" }}><RxDashboard /></strong><span style={{ color: "black" }}>Dashboard</span></Link></li>
+                <li><Link to="/GardenResetPassDashBoard" className='textnone'><strong style={{ color: "black" }}><RiLockPasswordLine /></strong><span style={{ color: "black" }}>Password</span></Link></li>
+                <li><Link to="/GardenContactDashBoard" className='textnone'><strong style={{ color: "black" }}><RiContactsLine /></strong><span style={{ color: "black" }}>Contact-Us</span></Link></li>
+                <li><strong style={{ color: "black" }}><CgList /></strong><span style={{ color: "black" }}>Catergory-List</span></li>
+                <li><strong style={{ color: "black" }}><AiOutlineSetting /></strong><span style={{ color: "black" }}>Setting</span></li>
+              </ul>
+            </div>
           </div>
           <div className="col content  boxborder">
             <div>
@@ -90,6 +102,7 @@ function DashBord1() {
                   </p>
                 </div>
               </div> */}
+              <h1>WelCome Garden'S</h1>
               <hr />
               <div>
                 <div className="col-md-12">
@@ -293,4 +306,4 @@ function DashBord1() {
   );
 }
 
-export default DashBord1;
+export default GardenHomeDetailsDashBoard;

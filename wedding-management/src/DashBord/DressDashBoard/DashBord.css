@@ -14,11 +14,9 @@
     display: flex;
     align-items: center;
     justify-content: center;    
-    /* box-shadow: 0 0 0.5rem black; */
     padding: 0.5rem;
     border-radius: 5rem;
     background: white;
-    /* color: black; */
 }
 
 .textnone{
@@ -93,7 +91,6 @@ Link{
 .profile {
     height: 150px;
     margin-top: 2.5rem;
-    /* border: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
 }
@@ -155,7 +152,6 @@ Link{
         margin-top: 2rem;
     }
     .formborder{
-        /* border:1px solid black; */
         padding: 2rem;
         margin-top: 15rem;
     }
@@ -166,8 +162,7 @@ Link{
         place-items: center;
         border-radius: 50%;
         box-shadow: 0 0 1rem black;
-        /* border: 1px solid black; */
-        /* margin-left: -55rem; */
+
     }
     .displayblock{
         display: none;
@@ -184,7 +179,6 @@ Link{
            font-size: 1rem;
     }
     .boxfrom{
-        /* border: 1px solid black; */
         display:flex;
         align-items: center;
         justify-content: center;
