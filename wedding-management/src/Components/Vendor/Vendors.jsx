@@ -50,8 +50,8 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor1.png" alt="teri " />
-          <div className="vendor-button">
-            <button onClick={()=>DressHomePage()} className="btn text-white">wedding wears</button>
+          <div className="vendor-button text-white"
+            onClick={()=>DressHomePage()}>Wedding Wears
           </div>
         </div>
 
@@ -63,9 +63,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor2.png" alt="teri " />
-          <div className="vendor-button">
-            <button onClick={()=>MehendiHomePage()} className="btn text-white">Mehendi</button>
-          </div>
+          <div className="vendor-button text-white" onClick={()=>MehendiHomePage()}> Mehendi</div>
         </div>
 
         <div
@@ -76,8 +74,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor3.png" alt="teri " />
-          <div className="vendor-button">
-            <button onClick={()=>PhotographerHomePage()} className="btn text-white">Photographer</button>
+          <div className="vendor-button text-white"onClick={()=>PhotographerHomePage()} >Photographer
           </div>
         </div>
 
@@ -89,9 +86,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor4.png" alt="teri " />
-          <div className="vendor-button">
-            <button onClick={()=>SoundHomePage()} className="btn text-white">Music / Band</button>
-          </div>
+          <div className="vendor-button text-white" onClick={()=>SoundHomePage()}>Music / Band</div>
         </div>
         <div
           className="vendor-img d-flex justify-content-center align-item-center"
@@ -101,9 +96,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor5.png" alt="teri " />
-          <div className="vendor-button">
-            <button onClick={()=>GardenHomePage()} className="btn text-white">Gardens</button>
-          </div>
+          <div className="vendor-button text-white" onClick={()=>GardenHomePage()}>Gardens</div>
         </div>
         <div
           className="vendor-img d-flex justify-content-center align-item-center"
@@ -113,9 +106,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor6.png" alt="teri " />
-          <div className="vendor-button">
-            <button onClick={()=>CaterHomePage()} className="btn text-white">Caters</button>
-          </div>
+          <div className="vendor-button text-white" onClick={()=>CaterHomePage()} >Caters</div>
         </div>
       </div>
     </div>

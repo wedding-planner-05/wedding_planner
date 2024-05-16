@@ -20,7 +20,7 @@ const DressHomePage = () => {
   useEffect(() => {
     console.log("after");
     axios
-      .get("http://localhost:3000/dress/vendorfunc/viewalldresses")
+      .get("http://localhost:3000/dress/dress/viewAllVendors")
       
       .then((response) => {
         console.log(response.data.data);
@@ -33,7 +33,7 @@ const DressHomePage = () => {
 
   return <>
       {/* <Navbar/> */}
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
+    <div className="container-fluid d-flex pt-5 flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section className="main-page m-3">
           <div

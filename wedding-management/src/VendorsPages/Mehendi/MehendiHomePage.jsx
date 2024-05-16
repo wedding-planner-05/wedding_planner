@@ -11,7 +11,7 @@ const MehendiHomePage = () => {
   useEffect(() => {
     console.log("after");
     axios
-      .get("http://localhost:3000/mehendi/vendorfunc/viewalldresses")
+      .get("http://localhost:3000/mehendi/mehendi/viewAllVendors")
       
       .then((response) => {
         console.log(response.data.data);
@@ -24,7 +24,7 @@ const MehendiHomePage = () => {
 
   return <>
       
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
+    <div className="container-fluid d-flex flex-wrap justify-content-evenly pt-5 align-items-center">
       {products.map((product, index) => (
         <section key={index} className="main-page m-3">
           <div
