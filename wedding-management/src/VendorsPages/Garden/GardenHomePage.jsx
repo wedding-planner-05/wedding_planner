@@ -9,16 +9,16 @@ const GardenHomePage = () => {
   const navigate = useNavigate()
 
   useEffect(()=>{
-      axios.get("http://localhost:3000/garden/garden-details/viewAll").then((response)=>{
-      console.log(response.data.data)
-      setProducts(response.data.data)
+      axios.get("http://localhost:3000/garden/garden/viewAllVendors").then((response)=>{
+      console.log(response.data.gardens)
+      setProducts(response.data.gardens)
       }).catch(err=>{
         console.log(err);
       })
   },[])
 
 return<>
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
+    <div className="container-fluid pt-5 d-flex flex-wrap justify-content-evenly align-items-center">
       {products.map((product, index) => (
         <section key={index} className="main-page m-3">
           <div

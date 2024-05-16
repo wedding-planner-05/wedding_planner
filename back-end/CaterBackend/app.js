@@ -10,6 +10,7 @@ import { fileURLToPath } from "url"; // corrected import
 import path from "path"; // added import
 import CaterDetails from "./model/CaterDetails.model.js";
 import xlsx from "xlsx"; // Added import for xlsx library
+import { log } from "console";
 // import { log } from "util";
 
 const app = express();
@@ -25,9 +26,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("cater/signup", async (req, res) => {
+app.post("/cater/signup", async (req, res) => {
     const { email, password } = req.body;
-
+    console.log(req.body);
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({ email, password: hashedPassword });
@@ -56,7 +57,7 @@ app.post("/cater/signin", async (req, res) => {
     }
 });
 
-app.post("cater/save", upload.single("imagesUrl"), (req, res) => {
+app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
     let filename = req.file.filename;
     let name = req.body.name;
     let servicecharge = req.body.servicecharge;
@@ -76,7 +77,7 @@ app.post("cater/save", upload.single("imagesUrl"), (req, res) => {
 });
 
 
-app.get("cater/viewAllVendors", async (req, res) => {
+app.get("/cater/viewAllVendors", async (req, res) => {
     try {
         const data = await CaterDetails.findAll();
         console.log(data);
@@ -88,7 +89,7 @@ app.get("cater/viewAllVendors", async (req, res) => {
 });
 
 
-app.post("cater/addinBulk", async (req, res, next) => {
+app.post("/cater/addinBulk", async (req, res, next) => {
 
     const workbook = xlsx.readFile('dataregardCater1.xlsx');
     const sheet_name = workbook.SheetNames[0];

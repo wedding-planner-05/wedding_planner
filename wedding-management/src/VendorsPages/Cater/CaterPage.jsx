@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import "./CaterPage.css"
-import CaterContactpage from './CaterContactpage';
+// import CaterContactpage from './CaterContactpage';
 import { useNavigate } from 'react-router-dom';
 function CaterPage() {
   const navigate = useNavigate();
     const [caterdata, setCaterdata] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:3000/cater/getData").then(result => {
-            console.log(result.data.data);
+
+        axios.get("http://localhost:3000/cater/cater/viewAllVendors").then(result => {
+          console.log('hello java');
+          console.log(result.data.data);
             setCaterdata(result.data.data);
         }
         ).catch(err => {
@@ -20,7 +22,7 @@ function CaterPage() {
        navigate("/CaterContactpage",{state:product})
     }
     return <>  
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center">
+    <div className="container-fluid d-flex flex-wrap pt-5 justify-content-evenly align-items-center">
       {caterdata.map((product, index) => (
         <section key={index} className="main-page m-3" onClick={()=>dataCater(product)}>
           <div
