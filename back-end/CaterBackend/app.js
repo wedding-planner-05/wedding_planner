@@ -12,6 +12,7 @@ import xlsx from "xlsx"; // Added import for xlsx library
 import CaterFormDetails from "./model/CaterFormDetails.js";
 
 
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,9 +26,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("cater/signup", async (req, res) => {
+app.post("/cater/signup", async (req, res) => {
     const { email, password } = req.body;
-
+    console.log(req.body);
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({ email, password: hashedPassword });
@@ -98,7 +99,7 @@ app.post("/cater/addformdetails", upload.single("file"),(req, res) => {
 })
 
 
-app.get("cater/viewAllVendors", async (req, res) => {
+app.get("/cater/viewAllVendors", async (req, res) => {
     try {
         const data = await CaterDetails.findAll();
         console.log(data);
@@ -110,7 +111,7 @@ app.get("cater/viewAllVendors", async (req, res) => {
 });
 
 
-app.post("cater/addinBulk", async (req, res, next) => {
+app.post("/cater/addinBulk", async (req, res, next) => {
 
     const workbook = xlsx.readFile('dataregardCater1.xlsx');
     const sheet_name = workbook.SheetNames[0];

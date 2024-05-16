@@ -20,6 +20,6 @@ router.post('/update/:id', upload.single("filename"), checkValidation, updateGar
 router.delete('/remove/:id', remove);
 router.get("/viewprofile/:id", viewProfile);
 
-router.get("/view-all-garden", viewAllGarden);
+router.get("/viewAllVendors", viewAllGarden);
 
 export default router;
