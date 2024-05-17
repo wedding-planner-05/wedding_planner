@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, isLoading, logout } =
     useAuth0();
-
+  console.log(user);
   return (
     <div style={{ paddingTop: "3%" }} className="">
       <nav
@@ -24,7 +24,7 @@ function Navbar() {
               alt=""
             />
           </a>
-         </div>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -81,12 +81,12 @@ function Navbar() {
             <div className="">
               {isAuthenticated && (
                 <span>
-                  {user.nickname}
                   <img
                     style={{
                       width: "50px",
                       height: "50px",
                       borderRadius: "50px",
+                      marginRight: "1rem",
                     }}
                     src={user.picture}
                     alt=""

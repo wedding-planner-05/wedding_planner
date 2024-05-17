@@ -1,7 +1,7 @@
 
 import "./App.css";
 import Home from "./Home-Page/Home.jsx";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PhotographerHomePage from "./VendorsPages/Photographer/PhotographerHomePage.jsx";
 import DressHomePage from './VendorsPages/Dress/DressHomePage.jsx';
@@ -30,11 +30,34 @@ import GardenHomeDetailsDashBoard from "./DashBord/Garden/GardenHomeDetailsDashB
 import GardenResetPassDashBoard from "./DashBord/Garden/GardenResetPassDashBoard.jsx";
 import DressContactDashBoard from "./DashBord/DressDashBoard/DressContactDashBoard.jsx";
 import SoundContactDashBoard from "./DashBord/SoundDashBoard/SoundContactDashBoard.jsx";
+import DressDetailPage from "./VendorsPages/Dress/DressDetailPage.jsx";
+import Loader from "./Components/LoaderComponent/Loader.jsx";
+import axios from "axios";
+import GardenDetailPage from "./VendorsPages/Garden/GardenDetailPage.jsx";
 
 
 const App = () => {
+      const [loading ,setLoading] = useState(false)
+
+      useEffect(()=>{
+            axios.interceptors.request.use((config)=>{
+                  setLoading(true)
+                  return config
+            },(error)=>{
+                  return Promise.reject(error)
+            })
+            axios.interceptors.response.use((config)=>{
+                  setLoading(false)
+                  return config
+            },(error)=>{
+                  return Promise.reject(error)
+            })
+      },[])
+
+
   return <>
   <Navbar/>
+      {/* <Loader show={loading}/> */}
     <Routes>
       <Route path="/userSignIn" element={<UserSignIn />} />
       <Route path="/vendorSignIn" element={<VendorSignIn />} />
@@ -42,12 +65,14 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/otpVerify" element={<UserOtp />} />
       <Route path="/DressHomePage" element={<DressHomePage />} />
+      <Route path='/DressDetailPage' element={<DressDetailPage/>}/>
       <Route path="/PhotographerHomePage" element={<PhotographerHomePage />} />
       <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails />} />
       <Route path="/MehendiHomePage" element={<MehendiHomePage />} />
       <Route path="/SoundHomePage" element={<SoundHomePage />} />
       <Route path="/SoundVendorDetails" element={<SoundVendorDetails />} />
       <Route path='/GardenHomePage' element={<GardenHomePage />} />
+      <Route path='/GardenVendorDetails' element={<GardenDetailPage/>}/>
       <Route path="/caterpage" element={<CaterPage />} />
       <Route path="/CaterContactpage" element={<CaterContactpage />} />
       <Route path="/vendorSignIn" elementm = {<VendorSignIn/>}/>

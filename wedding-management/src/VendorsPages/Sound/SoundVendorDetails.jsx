@@ -11,7 +11,6 @@ import Box from '@mui/material/Box'
 import { Rating } from '@mui/material'
 import { Typography } from '@mui/material'
 import { useAuth0 } from '@auth0/auth0-react';
-import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 
 const SoundVendorDetails = () => {

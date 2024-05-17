@@ -148,8 +148,8 @@ const PhotographerHomePage = () => {
   useEffect(() => {
     axios.get("http://localhost:3000/photographer/photographer/viewAllVendors/")
       .then((response) => {
-        console.log(response.data.Photographers);
-        setProducts(response.data.Photographers);
+        console.log(response.data.data);
+        setProducts(response.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -168,7 +168,7 @@ const PhotographerHomePage = () => {
 
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className='vendors-box d-flex justify-content-between'>
         <div className='filter-box'>
           <div  className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
@@ -186,7 +186,7 @@ const PhotographerHomePage = () => {
 
         {products.filter(filterHandler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
-          <div className="container-fluid cards d-flex flex-wrap justify-content-evenly align-items-center">
+          <div className="container-fluid cards d-flex flex-wrap justify-content-evenly align-items-center pt-5">
             {products.filter(filterHandler).map((product, index) => (
               <section onClick={() => PhotoVendorDetails(product)} key={index} className="main-page m-3">
                 <div key={index} className="p-2 row details-block ">
