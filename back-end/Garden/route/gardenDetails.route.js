@@ -4,7 +4,7 @@ import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 const router = express.Router();
 
-// http://localhost:3000/garden-vendor/
+
 let upload = multer({ dest: "public/images/" })
 
 router.post("/signin", signin);
