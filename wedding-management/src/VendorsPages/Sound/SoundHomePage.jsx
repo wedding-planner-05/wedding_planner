@@ -8,7 +8,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 
 const SoundHomePage = () => {
     const [products,setProducts] = useState([]) ;
-    const [priceFilter, setPriceFilter] = useState({operation :"",price:0});
+    
     
     const [minValue,setMinValue] = useState(0) ;
     const [maxValue,setMaxValue] = useState(1000000) ;
@@ -43,7 +43,6 @@ const SoundHomePage = () => {
     }
 
       const filterHandeler = (ele)=>{
-          // return priceFilter.price? priceFilter.operation=='<=' ? ele.serviceCharge <= priceFilter.price : ele.serviceCharge >= priceFilter.price  : true
           return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
       }
 

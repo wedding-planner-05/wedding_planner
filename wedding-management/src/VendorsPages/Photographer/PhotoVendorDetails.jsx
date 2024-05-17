@@ -12,13 +12,13 @@ import Navbar from "../../Components/Navbar/Navbar";
 const PhotoVendorDetails = () => {
   const [products, setProducts] = useState([]);
 
-  const location = useLocation() ;
+  const location = useLocation();
   const data = location.state;
 
   console.log(data);
-  
+
   return <>
-  <Navbar/>
+    <Navbar />
     <div className="container-fluid">
       {/* <div className="row justify-content-center mt-5 mb-5 pb-5"> */}
       <div className="row justify-content-center mt-5 mb-5 pb-5">
@@ -29,7 +29,7 @@ const PhotoVendorDetails = () => {
               className="zoom-img img-fluid"
               src={data.imageUrl}
               alt="image not available"
-              />
+            />
           </div>
           <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
             <h5>{data.title}</h5>
@@ -69,8 +69,8 @@ const PhotoVendorDetails = () => {
         <div>{data.description}</div>
       </div>
     </div>
-    <ContactUs/>
-    <Footer/>
+    <ContactUs />
+    <Footer />
   </>
 };
 

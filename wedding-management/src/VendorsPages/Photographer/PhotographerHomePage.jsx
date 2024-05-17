@@ -8,7 +8,7 @@
 
 
 // const PhotographerHomePage = () => {
-  
+
 //   const navigate = useNavigate();
 
 //   const [minValue,setMinValue] = useState(0) ;
@@ -19,10 +19,10 @@
 //     navigate('/PhotoVendorDetails', {state:product});
 
 //   }
-  
+
 //   const [products, setProducts] = useState([]);
 //   const [priceFilter, setPriceFilter] = useState({operation :"",price:0});
-  
+
 
 //   useEffect(() => {
 //     // console.log("after");
@@ -35,7 +35,7 @@
 //         console.log(err);
 //       });
 //   }, []);
-  
+
 //   const handlerViewall = (minValue,maxValue)=>{
 //     setMinValue(minValue);
 //     setMaxValue(maxValue);
@@ -45,8 +45,8 @@
 //       console.log(ele);
 //       console.log(min);
 //         return ele ? ele.price >= minValue && ele.price <= maxValue : setProductAvailable(true)
-       
-      
+
+
 //       }
 
 
@@ -132,7 +132,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import { RiH3 } from "react-icons/ri";
 
 const PhotographerHomePage = () => {
-  
+
   const navigate = useNavigate();
 
   const [minValue, setMinValue] = useState(0);
@@ -142,7 +142,7 @@ const PhotographerHomePage = () => {
   const PhotoVendorDetails = (product) => {
     navigate('/PhotoVendorDetails', { state: product });
   }
-  
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -155,7 +155,7 @@ const PhotographerHomePage = () => {
         console.log(err);
       });
   }, []);
-  
+
   const handlerViewall = (min, max) => {
     setMinValue(min);
     setMaxValue(max);
@@ -168,24 +168,24 @@ const PhotographerHomePage = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className='vendors-box d-flex justify-content-between'>
         <div className='filter-box'>
-          <div  className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
+          <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
             <button onClick={() => handlerViewall(0, 1000000)} className='btn' style={{ height: '40px', width: "110px", border: '1px solid crimson' }}>view all</button>
             <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(0, 5000)} className='btn'>{'<='}0-5000</button>
-            <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>handlerViewall(5000,10000)} className='btn'>5000-10000</button>
-      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>handlerViewall(10000,15000)} className='btn'>10000-15000</button>
-      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>handlerViewall(15000,20000)} className='btn'>15000-20000</button>
-      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>handlerViewall(20000,25000)} className='btn'>20000-25000</button>
-      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>handlerViewall(25000,30000)} className='btn'>25000-30000</button>
-      <button style={{height:'40px',width:"110px" , border:'1px solid crimson'}} onClick={()=>handlerViewall(30000,100000)} className='btn'>30000</button>
-      
+            <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(5000, 10000)} className='btn'>5000-10000</button>
+            <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(10000, 15000)} className='btn'>10000-15000</button>
+            <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(15000, 20000)} className='btn'>15000-20000</button>
+            <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(20000, 25000)} className='btn'>20000-25000</button>
+            <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(25000, 30000)} className='btn'>25000-30000</button>
+            <button style={{ height: '40px', width: "110px", border: '1px solid crimson' }} onClick={() => handlerViewall(30000, 100000)} className='btn'>30000</button>
+
           </div>
         </div>
 
-        {products.filter(filterHandler).length === 0 && isProductAvailable ? 
-          <h3>No products available in the selected price range</h3> : 
+        {products.filter(filterHandler).length === 0 && isProductAvailable ?
+          <h3>No products available in the selected price range</h3> :
           <div className="container-fluid cards d-flex flex-wrap justify-content-evenly align-items-center">
             {products.filter(filterHandler).map((product, index) => (
               <section onClick={() => PhotoVendorDetails(product)} key={index} className="main-page m-3">
