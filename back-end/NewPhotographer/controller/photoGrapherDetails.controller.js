@@ -196,7 +196,7 @@ export const viewAllPhotographer = async (request, response, next) => {
     try {
         const allPhotographers = await PhotoGrapherDetails.findAll();
         if (allPhotographers.length > 0)
-            return response.status(200).json({ message: "View All Photographers success...", Photographers: allPhotographers });
+            return response.status(200).json({ message: "View All Photographers success...", data: allPhotographers });
         return response.status(404).json({ message: "No Photographers found" });
     } catch (err) {
         console.error(err);
