@@ -23,7 +23,7 @@ function CaterContactpage() {
 
     return (
         <div>
-            <Navbar/>
+            {/* <Navbar/> */}
         <div className="container">
   
             <div className="row justify-content-center mt-5 mb-5 pb-5">

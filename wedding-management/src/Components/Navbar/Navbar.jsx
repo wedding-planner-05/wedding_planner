@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
+import {HashLink} from "react-router-hash-link";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, isLoading, logout } =
     useAuth0();
-
+  console.log(user);
   return (
     <div style={{ paddingTop: "3%" }} className="">
       <nav
@@ -24,7 +25,7 @@ function Navbar() {
               alt=""
             />
           </a>
-         </div>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -42,24 +43,24 @@ function Navbar() {
         >
           <ul className="navbar-nav align-items-center col-md-8 justify-content-center gap-5">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <HashLink className="nav-link" smooth to="#/header">
                 Home <span className="sr-only">(current)</span>
-              </a>
+              </HashLink>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <HashLink className="nav-link" smooth to="#Services">
                 Services
-              </a>
+              </HashLink>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <HashLink className="nav-link" smooth to="#Contactus">
                 Contact
-              </a>
+              </HashLink>
             </li>
             <li className="nav-item active">
-              <a className="nav-link " href="#">
+              <HashLink className="nav-link " smooth to="#AboutUs">
                 About Us
-              </a>
+              </HashLink>
             </li>
           </ul>
 
@@ -81,12 +82,12 @@ function Navbar() {
             <div className="">
               {isAuthenticated && (
                 <span>
-                  {user.nickname}
                   <img
                     style={{
                       width: "50px",
                       height: "50px",
                       borderRadius: "50px",
+                      marginRight: "1rem",
                     }}
                     src={user.picture}
                     alt=""

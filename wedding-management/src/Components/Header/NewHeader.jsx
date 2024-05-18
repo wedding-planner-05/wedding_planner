@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const NewHeader = () => {
   const [vendor,setVendor] = useState("") ;
   const [address,setLocation] = useState("") ;
+  console.log('Address is ',address);
   const [vendorData,setVendorData]  = useState([]);
 
   const navigate = useNavigate() ;
@@ -19,11 +20,33 @@ const NewHeader = () => {
         }
         else{
             axios.get(`http://localhost:3000/${vendor}/${vendor}/viewAllVendors`).then((response)=>{
+                console.log('hello');
                 console.log(response.data.data)
                 const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
                 console.log(filterData);
                 setVendorData(filterData)
-                navigate('/SoundHomePage' , {state : filterData})
+                switch(vendor){
+                  case 'sound' : {
+                    navigate('/SoundHomePage' , {state : filterData})
+                  }
+                    break ;
+                  case 'dress' :  {
+                    navigate('/DressHomePage' , {state : filterData})
+                  }
+                    break ;
+                  case 'garden'  : {
+                    navigate('/caterpage' , {state : filterData}) ;
+                  }
+                    break ;
+                  case 'mehendi' :{
+                    navigate('/MehendiHomePage' , {state : filterData}) ;
+                  }
+                  break ;
+                  case 'photographer' : {
+                    navigate('/PhotographerHomePage' , {state : filterData}) ;
+                  }
+                  break ;
+                }
             }).catch(err=>{
                 console.log(err);  
             })
@@ -31,7 +54,7 @@ const NewHeader = () => {
   }
   return (<>
     <ToastContainer/>
-    <div className='header container mt-0 pt-0 h-auto'>
+    <div className='header container mt-0 pt-0 h-auto' id='header'>
       <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" />
         
           <div className="search-bar d-flex align-items-center" >
