@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import ForgotPassword from '../ForgorPassword/ForgotPassword';
 
 
 function SignInVendor() {
@@ -98,18 +99,18 @@ function SignInVendor() {
                             <label htmlFor=''>
                                 <input type="password" placeholder='Enter Your password' className='p-2 mb-2 col-md-12  mt-2 ' onChange={(e) => {
                                     setPassword(e.target.value);
-                                    getStrength(e.target.value);
+                                    // getStrength(e.target.value);
                                 }} />
                             </label>
 
                             <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
                             <div className='row mt-3 text-center d-flex justify-content-around'>
-                                <span className='col-md-4 text-center'><Link style={{ textDecoration: 'none', color: 'black' }}>Forgot Password</Link></span>
+                                <span className='col-md-4 text-center'><Link style={{ textDecoration: 'none', color: 'black' }} to="/forgotPassword">Forgot Password</Link></span>
                                 <span className='col-md-4 text-center'><Link style={{ textDecoration: 'none', color: 'black' }}>Help</Link></span>
                             </div>
 
                             <div className='lines'>
-                                <span></span><span style={{ border: "none" }}><i class='bx bx-heart'></i></span><span></span>
+                                <span></span><span style={{ border: "none" }}><i className='bx bx-heart'></i></span><span></span>
                             </div>
                             <div></div>
                         </form>
