@@ -156,7 +156,8 @@ export const addDress = (request,response,next)=>{
 
 export const viewAlldresses = (request,response,next)=>{
     VendorFunc.findAll().then((result)=>{
-        return response.status(200).json({data:result, message:"view all dresses"});
+        console.log("called..")
+        return response.status(200).json({data:result,message:"view all dresses"});
     }).catch(err=>{
         console.log(err)
         return res.status(401).json({message:"Something went wrong"})

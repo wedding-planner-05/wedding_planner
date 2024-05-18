@@ -225,7 +225,7 @@ export const viewAllGarden = async (request, response, next) => {
     try {
         const allGardens = await GardenDetails.findAll();
         if (allGardens.length > 0)
-            return response.status(200).json({ message: "View All Gardens success...", gardens: allGardens });
+            return response.status(200).json({ message: "View All Gardens success...", data: allGardens });
         return response.status(404).json({ message: "No gardens found" });
     } catch (err) {
         console.error(err);

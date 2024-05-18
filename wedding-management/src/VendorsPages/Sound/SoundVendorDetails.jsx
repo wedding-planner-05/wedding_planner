@@ -11,7 +11,6 @@ import Box from '@mui/material/Box'
 import { Rating } from '@mui/material'
 import { Typography } from '@mui/material'
 import { useAuth0 } from '@auth0/auth0-react';
-import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 
 const SoundVendorDetails = () => {
@@ -44,7 +43,7 @@ const SoundVendorDetails = () => {
         {/* <Navbar/> */}
       <div className="container">
       <div className='hello2'>
-          <div className="row border border-danger justify-content-center pb-5">
+          <div className="row  justify-content-center mt-5 pt-5 pb-5">
     
             <div className=" col-md-6 col-lg-4 position-relative mb-5">
               <div>
