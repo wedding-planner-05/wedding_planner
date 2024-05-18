@@ -33,7 +33,8 @@ const NewHeader = () => {
     <ToastContainer/>
     <div className='header container mt-0 pt-0 h-auto'>
       <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" />
-         <div className="search-bar d-flex">
+        
+          <div className="search-bar d-flex align-items-center" >
                           <div style={{width:"17vw"}} className='d-flex flex-column'>
                             <select onChange={(e)=>setLocation(e.target.value)} name="pets" id="pet-select">
                                 <option value="">Choose Location</option>
@@ -59,20 +60,23 @@ const NewHeader = () => {
                                 <option value="Airport Road, Indore">Airport Road, Indore</option>
                             </select>
                           </div>
+                          
                           <div onChange={(e)=>setVendor(e.target.value)} style={{width:"17vw"}} className='d-flex flex-column'>
-                            <select name="pets" id="pet-select">
-                                <option value="">Choose Vendor</option>
-                                <option value="cater">Cater</option>
-                                <option value="dress">Dress</option>
-                                <option value="garden">Garden</option>
-                                <option value="mehendi">Mehendi</option>
-                                <option value="photographer">Photographer</option>
-                                <option value="sound">Music/Band</option>
-                            </select>
+                              <select name="pets" id="pet-select">
+                                  <option value="">Choose Vendor</option>
+                                  <option value="cater">Cater</option>
+                                  <option value="dress">Dress</option>
+                                  <option value="garden">Garden</option>
+                                  <option value="mehendi">Mehendi</option>
+                                  <option value="photographer">Photographer</option>
+                                  <option value="sound">Music/Band</option>
+                              </select>
                           </div>
+
                           <button onClick={()=>getStarted()} className='btn text-white'>Get Started</button>
-                        </div>
-    </div>
+          </div>
+        
+          </div>
     </>
   )
 }

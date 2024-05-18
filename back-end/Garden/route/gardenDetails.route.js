@@ -9,7 +9,9 @@ let upload = multer({ dest: "public/images/" })
 
 router.post("/signin", signin);
 router.post("/signup", signup);
-router.post('/update-profile/:id', updateProfile);
+// router.post('/update-profile/:id', updateProfile);
+router.post('/update', updateProfile);
+
 
 router.post('/addInBulk',addInBulk);
 router.get('/viewAll',viewAllInBulk);

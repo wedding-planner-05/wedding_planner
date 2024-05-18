@@ -30,6 +30,8 @@ import GardenHomeDetailsDashBoard from "./DashBord/Garden/GardenHomeDetailsDashB
 import GardenResetPassDashBoard from "./DashBord/Garden/GardenResetPassDashBoard.jsx";
 import DressContactDashBoard from "./DashBord/DressDashBoard/DressContactDashBoard.jsx";
 import SoundContactDashBoard from "./DashBord/SoundDashBoard/SoundContactDashBoard.jsx";
+import ForgetPassword from "./SignIn&SignUP/ForgorPassword/ForgotPassword.jsx";
+import ResetPassword from "./SignIn&SignUP/ResetPassword/ResetPassword.jsx";
 
 
 const App = () => {
@@ -39,6 +41,10 @@ const App = () => {
       <Route path="/userSignIn" element={<UserSignIn />} />
       <Route path="/vendorSignIn" element={<VendorSignIn />} />
       <Route path="/vendorSignUp" element={<SignupVendor />} />
+
+      <Route path="/forgotPassword" element={<ForgetPassword/>}/>
+      <Route path="/resetPassword" element={<ResetPassword/>}/>
+
       <Route path="/" element={<Home />} />
       <Route path="/otpVerify" element={<UserOtp />} />
       <Route path="/DressHomePage" element={<DressHomePage />} />

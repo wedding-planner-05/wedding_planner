@@ -127,9 +127,9 @@ function SignupVendor() {
                                 </div>
                             </div>
                             <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
-                            <div className='row mt-3 text-center d-flex justify-content-around'>
-                                <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Forgot Password</Link></span>
-                                <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Help</Link></span>
+                            <div className='row text-center d-flex justify-content-around'>
+                                {/* <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Forgot Password</Link></span> */}
+                                {/* <span className='col-md-4 text-center'><Link style={{ color: "#D5133A" }}>Help</Link></span> */}
                             </div>
                             {/* <div className='mt-4'>
                                 <GoogleAuth setIsLogin={setisLogin} />

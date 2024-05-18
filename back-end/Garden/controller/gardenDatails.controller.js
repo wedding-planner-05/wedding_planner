@@ -2,7 +2,7 @@ import { request, response } from 'express';
 import GardenDetails from '../model/gardenDetails.model.js';
 import xlsx from 'xlsx'
 import GardenLogin from '../model/gardenLogin.model.js';
-
+import bcrypt from 'bcryptjs';
 
 export const signin = async (request, response, next) => {
     try {
@@ -39,27 +39,60 @@ export const signup = async (request, response, next) => {
     }
 }
 
+// export const updateProfile = async (request, response, next) => {
+//     try {
+//         // const id = request.params.id;
+//         const { email, newpassword } = request.body;
+
+//         const gardenLogin = await GardenLogin.findOne({ where: { email }, raw: true });
+
+//         if (!gardenLogin) {
+//             return response.status(404).json({ message: "GardenLogin not found" });
+//         }
+
+//         const updateObj=await GardenLogin.update({ newpassword }
+//             , { where: { email } }
+//         )
+//         return response.status(200).json({ message: "Profile Updated Successfully",data:updateObj});
+
+//     } catch (err) {
+//         console.error(err);
+//         return response.status(500).json({ error: "Internal Server Error", err });
+//     }
+// };
+
 export const updateProfile = async (request, response, next) => {
     try {
-        const id = request.params.id;
-        const { email, password } = request.body;
+        const { email, newpassword } = request.body;
 
-        const gardenLogin = await GardenLogin.findByPk(id);
+        if (!email || !newpassword) {
+            return response.status(400).json({ message: "Email and new password are required" });
+        }
+
+        const gardenLogin = await GardenLogin.findOne({ where: { email } });
+
         if (!gardenLogin) {
             return response.status(404).json({ message: "GardenLogin not found" });
         }
 
-        await GardenLogin.update({ email, password }, {
-            where: { id }
-        });
+        const hashedPassword = await bcrypt.hash(newpassword, 10);
 
-        return response.status(200).json({ message: "Profile Updated Successfully" });
+        const [affectedRows] = await GardenLogin.update(
+            { password: hashedPassword },
+            { where: { email } }
+        )
+
+        if (affectedRows > 0) {
+            return response.status(200).json({ message: "Profile Updated Successfully" });
+        } else {
+            return response.status(500).json({ error: "Failed to update profile" });
+        }
+
     } catch (err) {
         console.error(err);
         return response.status(500).json({ error: "Internal Server Error", err });
     }
 };
-
 
 export const addInBulk = async (req, res, next) => {
 
