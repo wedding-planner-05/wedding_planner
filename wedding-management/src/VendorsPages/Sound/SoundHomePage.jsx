@@ -4,11 +4,13 @@ import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom';
 import "./SoundHomePage.css"
 import Navbar from '../../Components/Navbar/Navbar';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 const SoundHomePage = () => {
     const [products,setProducts] = useState([]) ;
-    
+    const [dataSource,setDataSource] = useState(Array.from({length:20}))
+    const [hasMoreData,setHasMoreData] = useState(true)
     
     const [minValue,setMinValue] = useState(0) ;
     const [maxValue,setMaxValue] = useState(1000000) ;
@@ -21,17 +23,24 @@ const SoundHomePage = () => {
     const data = location.state ; 
 
     useEffect(()=>{
-    if(data){
-      setProducts(data);
-    }else{ 
-        axios.get("http://localhost:3000/sound/sound/viewAllVendors").then((response)=>{
-          setProducts(response.data.data)
-          console.log("data from datavaase",response.data.data);
-        }).catch(err=>{
-          console.log(err);
-        })
-      }
-    },[])
+      if(data){
+          setProducts(data);
+        }else{ 
+            axios.get("http://localhost:3000/sound/sound/viewAllVendors").then((response)=>{
+              setProducts(response.data.data)
+              console.log("data from datavaase",response.data.data);
+            }).catch(err=>{
+              console.log(err);
+            })
+          }
+        },[])
+        
+        setTimeout(()=>{
+          setDataSource(dataSource.concat(Array.from({length:20})))
+        },1000)
+        const moreData = ()=>{}
+
+   
     
     const SoundVendorDetails = (data)=>{
       navigate("/SoundVendorDetails",{state:data})
@@ -66,13 +75,14 @@ const SoundHomePage = () => {
 
     {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
+            // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
           <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
               <div
                 key={index}
                 className="p-2 row details-block "
-              >
+                >
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
@@ -107,6 +117,7 @@ const SoundHomePage = () => {
           ))
           }
     </div>
+                // </InfiniteScroll>
   }      
 
 
