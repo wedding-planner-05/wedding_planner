@@ -8,13 +8,29 @@ function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
   const navigate = useLocation();
-
+  const naviagation = useNavigate()
   const VendorLogOut = () => {
     sessionStorage.clear();
     setIsLogIn(null);
-    alert("hello");
-    navigate("/");
+    naviagation("/");
   };
+
+  const viewProfile = (type)=>{
+     switch(type){
+     case "cater":
+      naviagation("/CaterHomeDetailsDashBoard")
+      break;
+     case "garden":
+      naviagation("/GardenHomeDetailsDashBoard")
+      break;
+     case "dress":
+      naviagation("/DressHomeDetailsDashBoard")
+      break;
+     case "sound":
+      naviagation("/SoundHomeDetailsDashBoard")
+      break;
+     }
+  }
 
   let caterTypes = sessionStorage.getItem("caterType");
 
@@ -56,7 +72,7 @@ function Navbar() {
         >
           <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5">
             <li className="nav-item active">
-              <HashLink className="nav-link" smooth to="#/header">
+              <HashLink className="nav-link" smooth to="#/">
                 Home <span className="sr-only">(current)</span>
               </HashLink>
             </li>
@@ -122,7 +138,7 @@ function Navbar() {
                     <FaRegUser/>
                 </button>
                     <ul className="dropdown-menu" style = {{marginLeft:"-2.5rem", width:"100px",height:'100px' ,padding:'10px'}}>
-                      <li className="border border-dark mb-2"><button className="dropdown-item m-0" href="#">View profile</button></li>
+                      <li className="border border-dark mb-2"><button onClick={()=>viewProfile(sessionStorage.getItem("caterType"))} className="dropdown-item m-0" href="#">View profile</button></li>
                       <li className="mt-0 border border-dark mb-0" onClick={()=>VendorLogOut()}><button  className="dropdown-item " href="#">Log Out</button></li>
                     </ul>
               </div>

@@ -41,13 +41,14 @@ app.post("/cater/signup", async (req, res) => {
 });
 app.post("/cater/signin", async (req, res) => {
     const { email, password } = req.body;
+    console.log(email,password);
 
     try {
         const user = await User.findOne({ where: { email } });
 
         if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ username: user.username }, JWT_SECRET);
-            res.status(201).json({ login: true, message: "Login successful", token });
+            res.status(201).json({ login: true, message: "Login successful", token,User:user });
         } else {
             res.status(401).json({ login: false, message: "Invalid credentials" });
         }
