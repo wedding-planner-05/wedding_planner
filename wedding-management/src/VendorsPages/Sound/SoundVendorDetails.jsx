@@ -20,21 +20,32 @@ const SoundVendorDetails = () => {
     const data = location.state
     console.log(data);
 
-    const [show,setShow ] = React.useState(false) ;
+    const [showContact,setShowContact ] = React.useState(false) ;
+    const [showEmail,setShowEmail ] = React.useState(false) ;
     const [value,setValue]  = React.useState(2)
     console.log(value);
 
-    const showName = ()=>{
+    const showName = (value)=>{
+      console.log(value);
       if(!isAuthenticated){
         const result =  window.confirm('please singn In first')
         if(result)
           loginWithRedirect()
       }
-      else{
-        if(show==true)
-          setShow(false)
+      else if(value == 'contact' ){
+        if(showContact==true)
+          setShowContact(false)
         else{
-          setShow(isAuthenticated)
+          setShowContact(isAuthenticated)
+          setShowEmail(false)
+        }
+      }
+      else if(value == 'email'){
+        if(showEmail==true)
+          setShowEmail(false)
+        else{
+          setShowEmail(isAuthenticated)
+          setShowContact(false)
         }
       }
     }
@@ -74,8 +85,8 @@ const SoundVendorDetails = () => {
                 <FaIndianRupeeSign />{data.serviceCharge}
               </div>
               <div className="d-flex justify-content-evenly position-relative">
-              <button style={{width:'135px',height:'40px'}} onClick={()=>{showName()}} className=" btn btn-success rounded-5 px-3"><FaPhoneAlt /> Contact</button>
-                { show &&  <div className='contact-div p-1'>
+              <button style={{width:'135px',height:'40px'}} onClick={()=>{showName("contact")}} className=" btn btn-success rounded-5 px-3"><FaPhoneAlt /> Contact</button>
+                { showContact &&  <div className='contact-div p-1'>
                   <div className='d-flex gap-3 p-1'>
                   <FaUserAlt /><h6 > {data.name}</h6>
                   </div>
@@ -85,9 +96,17 @@ const SoundVendorDetails = () => {
                   </div>
                   </div>
                 }
-                <button style={{width:'135px',height:'40px'}} className="btn btn-danger rounded-5 px-3">
-                  <FaEnvelope /> Email
-                </button>
+                <button style={{width:'135px',height:'40px'}} onClick={()=>{showName("email")}} className="btn btn-danger rounded-5 px-3"> <FaEnvelope /> Email</button>
+                { showEmail &&  <div className='contact-div p-1'>
+                  <div className='d-flex gap-3 p-1'>
+                  <FaUserAlt /><h6 > {data.type}</h6>
+                  </div>
+                  <div className='d-flex gap-3 p-1 '>
+                  <IoIosCall />
+                  <h6>{data.serviceCharge}</h6>
+                  </div>
+                  </div>
+                }
                 </div>
             </div>
           </div>     

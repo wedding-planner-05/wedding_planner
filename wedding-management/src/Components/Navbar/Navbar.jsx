@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
-import {HashLink} from "react-router-hash-link";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { FaRegUser } from "react-icons/fa";
 function Navbar() {
-  const { user, loginWithRedirect, isAuthenticated, isLoading, logout } =
-    useAuth0();
-  console.log(user);
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
+  const navigate = useLocation();
+
+  const VendorLogOut = () => {
+    sessionStorage.clear();
+    setIsLogIn(null);
+    alert("hello");
+    navigate("/");
+  };
+
+  let caterTypes = sessionStorage.getItem("caterType");
+
   return (
     <div style={{ paddingTop: "3%" }} className="">
       <nav
@@ -18,7 +28,8 @@ function Navbar() {
         }}
         className="navbar fixed-top navbar-expand-lg navbar-light bg-light"
       >
-        <div onClick={() => home()} className="logo col-6 col-md-3 col-lg-2">
+        {/* Logo and toggle button */}
+        <div className="logo col-6 col-md-3 col-lg-2">
           <a href="/">
             <img
               src="images/wedding-planner-high-resolution-logo-white-transparent.png"
@@ -37,11 +48,13 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+        {/* Navigation links */}
         <div
-          className="collapse navbar-collapse col-md-5 col-lg-10"
+          className="collapse navbar-collapse col-md-5 col-lg-6"
           id="navbarNavDropdown"
         >
-          <ul className="navbar-nav align-items-center col-md-8 justify-content-center gap-5">
+          <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5">
             <li className="nav-item active">
               <HashLink className="nav-link" smooth to="#/header">
                 Home <span className="sr-only">(current)</span>
@@ -63,60 +76,71 @@ function Navbar() {
               </HashLink>
             </li>
           </ul>
+        </div>
 
-          <div
-            style={{}}
-            className="navbar-nav align-items-center col-md-4 align-content-between justify-content-end gap-3"
-          >
-            {!isAuthenticated && (
+        {/* User profile and authentication buttons */}
+        <div className="navbar-nav align-items-center col-md-4 align-content-between justify-content-end gap-3 border">
+          {isAuthenticated && (
+            <div>
+              <img
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "50px",
+                  marginRight: "1rem",
+                }}
+                src={user.picture}
+                alt=""
+              />
+            </div>
+          )}
+
+          {isAuthenticated ? (
+            <div>
+              <button
+                className="logIn-logOut"
+                style={{
+                  backgroundColor: "crimson",
+                  height: "40px",
+                  width: "90px",
+                  borderRadius: "10px",
+                  border: "none",
+                  color: "white",
+                }}
+                onClick={() =>
+                  logout({
+                    logoutParams: { returnTo: window.location.origin },
+                  })
+                }
+              >
+                Log Out
+              </button>
+            </div>
+          ) : isLogIn ? (
+              <div className="dropdown vendor-logout-button">
+                <button style={{backgroundColor:'crimson'}} className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <FaRegUser/>
+                </button>
+                    <ul className="dropdown-menu" style = {{marginLeft:"-2.5rem", width:"100px",height:'100px' ,padding:'10px'}}>
+                      <li className="border border-dark mb-2"><button className="dropdown-item m-0" href="#">View profile</button></li>
+                      <li className="mt-0 border border-dark mb-0" onClick={()=>VendorLogOut()}><button  className="dropdown-item " href="#">Log Out</button></li>
+                    </ul>
+              </div>
+          ) : (
+            <div
+              className="d-flex justify-content-between"
+              style={{ width: "250px" }}
+            >
               <div className="nav-item active">
                 <a className="nav-link" href="#">
                   <Link to="/vendorSignIn">
-                    <text style={{ textDecoration: "none", color: "black" }}>
+                    <span style={{ textDecoration: "none", color: "black" }}>
                       Vendor LogIn ?
-                    </text>
+                    </span>
                   </Link>
                 </a>
               </div>
-            )}
-            <div className="">
-              {isAuthenticated && (
-                <span>
-                  <img
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50px",
-                      marginRight: "1rem",
-                    }}
-                    src={user.picture}
-                    alt=""
-                  />
-                </span>
-              )}
-            </div>
-            {isAuthenticated ? (
-              <div>
-                <button
-                  className="logIn-logOut"
-                  style={{
-                    backgroundColor: "crimson",
-                    height: "40px",
-                    width: "90px",
-                    borderRadius: "10px",
-                    border: "none",
-                    color: "white",
-                  }}
-                  onClick={() =>
-                    logout({
-                      logoutParams: { returnTo: window.location.origin },
-                    })
-                  }
-                >
-                  Log Out
-                </button>
-              </div>
-            ) : (
+
               <div className="logIn-button">
                 <button
                   className="logIn-logOut"
@@ -133,8 +157,8 @@ function Navbar() {
                   Log In
                 </button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </nav>
     </div>
@@ -142,10 +166,3 @@ function Navbar() {
 }
 
 export default Navbar;
-{
-  /* { <ul className="navbar-nav align-items-center col-md-4 justify-content-end gap-3">
-        <li className='logIn-button'>
-          <button onClick={()=>signOut()} className="btn btn-danger logIn">SignOut</button>      
-          </li>
-      </ul>} */
-}

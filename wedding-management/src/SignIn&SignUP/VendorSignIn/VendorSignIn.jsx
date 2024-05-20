@@ -36,6 +36,7 @@ function SignInVendor() {
                         toast.success("Login Success")
                         // sessionStorage.setItem("current-user", JSON.stringify(result.data.gardenobj));
                         sessionStorage.setItem("isLoggedIn", "true");
+                        sessionStorage.setItem("caterType", `${choise}`);
                         sessionStorage.setItem("userID", result.data["id"]);
                         console.log(result.data["id"]);
 
@@ -70,17 +71,17 @@ function SignInVendor() {
     }
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <ToastContainer />
-            <div className='col-md-12 d-flex align-item-center justify-content-center'>
+            {/* <div className=' '> */}
 
                 <div className='row boxwrapper container-fluid'>
-                    <div className='col-md-5 imagediv'>
-                        {<img src="/images/Rectangle 12.png" className="col-md-10" alt="" />}
+                    <div className='col-md-3 imagediv'>
+                        {<img src="/images/Rectangle 12.png" style={{height:'90%'}} className="col-md-10" alt="" />}
                     </div>
                     <div className='col-md-4 formwrap'>
-                        <form className='d-flex flex-column formdiv text-center  col-md-12' onSubmit={handleSubmit}>
-                            <h3 className='text-center mt-2 fontstyles'>VENDOR SIGNIN</h3>
+                        <form className='d-flex flex-column formdiv text-center col-md-12' onSubmit={handleSubmit}>
+                            <h3 className='text-center fontstyles'>VENDOR SIGNIN</h3>
                             <label htmlFor="">
                                 <select name="" id="" className='col-md-12 pt-2 pb-2 selection' onChange={(e) => { setChoise(e.target.value) }} >
                                     <option value="">Select Vendor Type</option>
@@ -104,6 +105,7 @@ function SignInVendor() {
                             </label>
 
                             <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
+
                             <div className='row mt-3 text-center d-flex justify-content-around'>
                                 <span className='col-md-4 text-center'><Link style={{ textDecoration: 'none', color: 'black' }} to="/forgotPassword">Forgot Password</Link></span>
                                 <span className='col-md-4 text-center'><Link style={{ textDecoration: 'none', color: 'black' }}>Help</Link></span>
@@ -114,7 +116,7 @@ function SignInVendor() {
                             </div>
                             <div></div>
                         </form>
-                        <div style={{ width: '100%' }} className='d-flex justify-content-around flex-wrap mt-5'>
+                        <div style={{ width: '100%' }} className='d-flex justify-content-around flex-wrap mt-2'>
 
                             <h6 className='p-2'>Are you a vendor</h6>
                             <button onClick={() => VendoSignUp()} style={{ borderRadius: '20px', backgroundColor: 'crimson', color: 'white' }} className='btn'> vendor signUp </button>
@@ -122,7 +124,7 @@ function SignInVendor() {
                         </div>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
 
             <Footer />
         </>
