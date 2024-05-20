@@ -1,5 +1,5 @@
 import express from "express";
-import { viewAllGarden, add, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, update } from "../controller/gardenDatails.controller.js";
+import { viewAllGarden, add, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, resetPassword } from "../controller/gardenDatails.controller.js";
 import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 const router = express.Router();
@@ -10,7 +10,9 @@ let upload = multer({ dest: "public/images/" })
 router.post("/signin", signin);
 router.post("/signup", signup);
 // router.post('/update-profile/:id', updateProfile);
-router.post('/update', update);
+// router.post('/update', update);
+
+router.post('/resetPassword', resetPassword);
 
 router.post('/addInBulk',addInBulk);
 router.get('/viewAll',viewAllInBulk);

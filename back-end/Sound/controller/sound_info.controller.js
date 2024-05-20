@@ -1,6 +1,40 @@
 import SoundDetails from "../model/sound_info.js";
 import { validationResult } from "express-validator";
 import sound_vendor from "../model/sound.js";
+
+export const resetPassword = async (request, response, next) => {
+  try {
+      const { email, newpassword } = request.body;
+
+      if (!email || !newpassword) {
+          return response.status(400).json({ message: "Email and new password are required" });
+      }
+
+      const vendor = await sound_vendor.findOne({ where: { email } });
+
+      if (!vendor) {
+          return response.status(404).json({ message: "Vendor not found" });
+      }
+
+      const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+      const [affectedRows] = await sound_vendor.update(
+          { password: hashedPassword },
+          { where: { email } }
+      )
+
+      if (affectedRows > 0) {
+          return response.status(200).json({ message: "Profile Updated Successfully" });
+      } else {
+          return response.status(500).json({ error: "Failed to update profile" });
+      }
+
+  } catch (err) {
+      console.error(err);
+      return response.status(500).json({ error: "Internal Server Error", err });
+  }
+};
+
 export const signUp = (request, response, next) => {
     const errors = validationResult(request);
     if (!errors.isEmpty())
@@ -13,8 +47,8 @@ export const signUp = (request, response, next) => {
         return response.status(200).json({status: "User SignUp success",Token,res});
       })
       .catch((err) => {
-        if (err.parent.errno === 1062)
-          return response.status(200).json({status: "User already exist.." });
+        // if (err.parent.errno === 1062)
+          // return response.status(200).json({status: "User already exist.." });
         return response.status(200).json({status: "Something went wrong" });
       });
   };
@@ -48,24 +82,57 @@ export const signUp = (request, response, next) => {
     }
   };
   
-  export const upDate = (request, response, next) => {
-    // if (request.body.email.includes("@gmail.com")) {
-      sound_vendor
-        .update(request.body, { where: { id: request.body.id } })
-        .then((res) => {
-          console.log(res);
-          if (res)
-            return response.status(200).json({ data: "Data update successful" });
-          return response.status(200).json({ data: "Data updation failed" });
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.parent.errno == 1062)
-            return response.status(200).json({ data: "user already registerd" });
-          return response.status(200).json({ data: "somthing went wront" });
-        });
+  // export const upDate = (request, response, next) => {
+  //   // if (request.body.email.includes("@gmail.com")) {
+  //     sound_vendor
+  //       .update(request.body, { where: { id: request.body.id } })
+  //       .then((res) => {
+  //         console.log(res);
+  //         if (res)
+  //           return response.status(200).json({ data: "Data update successful" });
+  //         return response.status(200).json({ data: "Data updation failed" });
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //         if (err.parent.errno == 1062)
+  //           return response.status(200).json({ data: "user already registerd" });
+  //         return response.status(200).json({ data: "somthing went wront" });
+  //       });
       
-  };
+  // };
+
+  export const update = async (request, response, next) => {
+    try {
+        const { email, newpassword } = request.body;
+
+        if (!email || !newpassword) {
+            return response.status(400).json({ message: "Email and new password are required" });
+        }
+
+        const vendor = await sound_vendor.findOne({ where: { email } });
+
+        if (!vendor) {
+            return response.status(404).json({ message: "Vendor not found" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+        const [affectedRows] = await sound_vendor.update(
+            { password: hashedPassword },
+            { where: { email } }
+        )
+
+        if (affectedRows > 0) {
+            return response.status(200).json({ message: "Profile Updated Successfully" });
+        } else {
+            return response.status(500).json({ error: "Failed to update profile" });
+        }
+
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error", err });
+    }
+};
   
   export const deleteSound = async(request,response,next)=>{
     try {

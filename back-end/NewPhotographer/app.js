@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use("/" + photographerVendor, PhotoGrapherLoginRoute);
+
 app.use("/photographer", PhotoGrapherDetailsRoute);
 
 const port = 3005;

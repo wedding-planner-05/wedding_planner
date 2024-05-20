@@ -1,5 +1,3 @@
-import { TextField } from "@mui/material";
-import { IoIosGift } from "react-icons/io";
 // import image from './d4d7c1b4-98c5-4859-836b-294d65cbd56c.be0ab837448c28bf10ffa8eb4955cdf8.webp'
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -25,7 +23,7 @@ export default function ResetPassword() {
     if (validatePassword()) {
       if (newpassword === confirmpassword) {
         axios
-          .post(`http://localhost:3000/${vendorType}/${vendorType}/update`, {
+          .post(`http://localhost:3000/${vendorType}/${vendorType}/resetPassword`, {
             email,newpassword,
           })
           .then(() => {
@@ -36,7 +34,7 @@ export default function ResetPassword() {
               showConfirmButton: false,
               timer: 3000,
             });
-            navigate("/signin");
+            navigate("/vendorSignIn");
           })
           .catch((err) => {
             Swal.fire({

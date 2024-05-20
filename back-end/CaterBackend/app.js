@@ -39,6 +39,42 @@ app.post("/cater/signup", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+app.post("/cater/resetPassword", async (request, response,next) => {
+        // console.log('Request body:', request.body);
+        try {
+            const { email, newpassword } = request.body;
+    
+            if (!email || !newpassword) {
+                return response.status(400).json({ message: "Email and new password are required" });
+            }
+    
+            const gardenLogin = await User.findOne({ where: { email } });
+    
+            if (!gardenLogin) {
+                return response.status(404).json({ message: "PhotographerLogin not found" });
+            }
+    
+            const hashedPassword = await bcrypt.hash(newpassword, 10);
+    
+            const [affectedRows] = await User.update(
+                { password: hashedPassword },
+                { where: { email } }
+            )
+    
+            if (affectedRows > 0) {
+                return response.status(200).json({ message: "Profile Updated Successfully" });
+            } else {
+                return response.status(500).json({ error: "Failed to update profile" });
+            }
+    
+        } catch (err) {
+            console.error(err);
+            return response.status(500).json({ error: "Internal Server Error", err });
+        }
+    }
+);
+
 app.post("/cater/signin", async (req, res) => {
     const { email, password } = req.body;
 
