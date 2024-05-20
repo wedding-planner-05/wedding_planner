@@ -29,7 +29,8 @@ function SignInVendor() {
                 .then(result => {
 
                     if (result.status == "200" || result.status == "201") {
-                        console.log(JSON.stringify(result.data.gardenobj));
+                        // console.log(JSON.stringify(result.data.gardenobj));
+                        console.log(result);
 
                         console.log("successfull");
                         toast.success("Login Success")

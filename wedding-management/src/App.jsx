@@ -31,7 +31,7 @@ import GardenResetPassDashBoard from "./DashBord/Garden/GardenResetPassDashBoard
 import DressContactDashBoard from "./DashBord/DressDashBoard/DressContactDashBoard.jsx";
 import SoundContactDashBoard from "./DashBord/SoundDashBoard/SoundContactDashBoard.jsx";
 import DressDetailPage from "./VendorsPages/Dress/DressDetailPage.jsx";
-import Loader from "./Components/LoaderComponent/Loader.jsx";
+// import Loader from "./Components/LoaderComponent/Loader.jsx";
 import axios from "axios";
 import GardenDetailPage from "./VendorsPages/Garden/GardenDetailPage.jsx";
 

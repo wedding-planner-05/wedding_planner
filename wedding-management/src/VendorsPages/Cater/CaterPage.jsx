@@ -107,7 +107,7 @@ const CaterPage = () => {
         axios.get("http://localhost:3001/cater/cater/viewAllVendors").then((response)=>{
           console.log(response);
           setProducts(response.data.data)
-          console.log("data from datavaase",response.data.data);
+          console.log("data from database",response.data.data);
         }).catch(err=>{
           console.log(err);
         })
