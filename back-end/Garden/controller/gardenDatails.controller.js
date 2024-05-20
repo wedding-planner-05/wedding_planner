@@ -104,27 +104,14 @@ export const addInBulk = async (req, res, next) => {
     // Convert the sheet to JSON/
     const data = xlsx.utils.sheet_to_json(sheet);
     console.log(data);
-    var i = 0;
-    for (let item of data) {
-        let title = item.title;
-        let imageUrl = item.imageUrl;
-        let price = item.price;
-        let address = item.address;
-        let rating = item.rating;
-        let description = item.description;
-        console.log(title + " " + imageUrl + " " + price + " " + address + " " + description + ' ' + rating)
-    }
+
     try {
         for (let item of data) {
-            let title = item.title;
-            let imageUrl = item.imageUrl;
-            let price = item.price;
-            let address = item.address;
-            let rating = item.rating;
-            let description = item.description;
+        
+            let {title,location,capacity,contactNo,price,imageUrl,description,rating}=item;
 
             await GardenDetails.create({
-                title, imageUrl, price, address, rating, description
+                title,location,capacity,contactNo,price,imageUrl,description,rating
             })
         }
         return res.status(200).json({ message: "Garden's Details added successfully.." })
