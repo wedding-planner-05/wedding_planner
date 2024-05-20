@@ -97,7 +97,7 @@ const SoundVendorDetails = () => {
                   </div>
                 }
                 <button style={{width:'135px',height:'40px'}} onClick={()=>{showName("email")}} className="btn btn-danger rounded-5 px-3"> <FaEnvelope /> Email</button>
-                { showEmail &&  <div className='contact-div p-1'>
+                { (showEmail) &&  <div className='contact-div p-1'>
                   <div className='d-flex gap-3 p-1'>
                   <FaUserAlt /><h6 > {data.type}</h6>
                   </div>

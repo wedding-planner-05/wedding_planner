@@ -30,7 +30,7 @@ function SignInVendor() {
                 .then(result => {
 
                     if (result.status == "200" || result.status == "201") {
-                        console.log(JSON.stringify(result.data.gardenobj));
+                        // console.log(JSON.stringify(result.data.gardenobj));
 
                         console.log("successfull");
                         toast.success("Login Success")
@@ -60,7 +60,6 @@ function SignInVendor() {
                     }
                 })
                 .catch(err => {
-                    console.log(err);
                     console.log("this is error", err);
                     toast.error(" please Sign Up first")
                 });
