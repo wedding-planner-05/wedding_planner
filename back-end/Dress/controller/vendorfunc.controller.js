@@ -3,6 +3,7 @@ import VendorFunc from "../model/vendorfunc.model.js";
 
 import xlsx from 'xlsx';
 import Vendor from "../model/vendor.model.js";
+import bcrypt from "bcryptjs";
 
 // export const signUp = (request,response,next)=>{
 //     Vendor.create({
@@ -48,6 +49,39 @@ export const signIn = async (request,response,next)=>{
     else
      return response.status(401).json({error: "Unauthorized vendor..ye wla"});
 }
+
+export const resetPassword = async (request, response, next) => {
+    try {
+        const { email, newpassword } = request.body;
+
+        if (!email || !newpassword) {
+            return response.status(400).json({ message: "Email and new password are required" });
+        }
+
+        const vendor = await Vendor.findOne({ where: { email } });
+
+        if (!vendor) {
+            return response.status(404).json({ message: "Vendor not found" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+        const [affectedRows] = await Vendor.update(
+            { password: hashedPassword },
+            { where: { email } }
+        )
+
+        if (affectedRows > 0) {
+            return response.status(200).json({ message: "Profile Updated Successfully" });
+        } else {
+            return response.status(500).json({ error: "Failed to update profile" });
+        }
+
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error", err });
+    }
+};
 
 export const addDress = (request,response,next)=>{
 

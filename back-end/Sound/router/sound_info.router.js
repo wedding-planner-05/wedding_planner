@@ -1,4 +1,4 @@
-import {createProfile,signin,signup,upDate,updateDetails,viewAllVendors,viewProfile} from '../controller/sound_info.controller.js' ;
+import {resetPassword,createProfile,signIn,signUp,updateDetails,viewAllVendors,viewProfile} from '../controller/sound_info.controller.js' ;
 import express from 'express' ;
 import multer from 'multer'
 import { body } from 'express-validator';
@@ -29,18 +29,19 @@ router.post(
     signin
   );
   
-  router.post(
-    "/update",
-    // body("name").notEmpty(),
-    // body("name").isAlpha(),
-    // body("contact").isNumeric(),
-    // body("contact").notEmpty(),
-    // body("email").isEmail(),
-    // body("password").isLength({ min: 5 }),
-    // body("address").notEmpty(),
-    upDate
-  );
+//   router.post(
+//     "/update",
+//     // body("name").notEmpty(),
+//     // body("name").isAlpha(),
+//     // body("contact").isNumeric(),
+//     // body("contact").notEmpty(),
+//     // body("email").isEmail(),
+//     // body("password").isLength({ min: 5 }),
+//     // body("address").notEmpty(),
+//     upDate
+//   );
   
+router.post("/resetPassword",resetPassword);
 
 router.post("/createProfile",upload.single("image"),body("vendor_id").notEmpty(),body("vendor_id").notEmpty()
 ,body("type").notEmpty(),

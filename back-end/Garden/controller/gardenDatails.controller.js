@@ -61,7 +61,7 @@ export const signup = async (request, response, next) => {
 //     }
 // };
 
-export const updateProfile = async (request, response, next) => {
+export const resetPassword = async (request, response, next) => {
     try {
         const { email, newpassword } = request.body;
 

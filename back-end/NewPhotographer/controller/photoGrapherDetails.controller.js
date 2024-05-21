@@ -3,6 +3,41 @@ import PhotoGrapherDetails from '../models/photoGrapherDetails.model.js';
 import xlsx from 'xlsx';
 import PhotoGrapherLogin from '../models/photoGrapherLogin.model.js';
 
+import bcrypt from 'bcryptjs';
+
+export const resetPassword = async (request, response, next) => {
+    console.log('Request body:', request.body);
+    try {
+        const { email, newpassword } = request.body;
+
+        if (!email || !newpassword) {
+            return response.status(400).json({ message: "Email and new password are required" });
+        }
+
+        const gardenLogin = await PhotoGrapherLogin.findOne({ where: { email } });
+
+        if (!gardenLogin) {
+            return response.status(404).json({ message: "PhotographerLogin not found" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+        const [affectedRows] = await PhotoGrapherLogin.update(
+            { password: hashedPassword },
+            { where: { email } }
+        )
+
+        if (affectedRows > 0) {
+            return response.status(200).json({ message: "Profile Updated Successfully" });
+        } else {
+            return response.status(500).json({ error: "Failed to update profile" });
+        }
+
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error", err });
+    }
+};
 
 export const signin = async (request, response, next) => {
     try {
