@@ -1,17 +1,17 @@
-import {createProfile,signIn,signUp,upDate,updateDetails,viewAllVendors,viewProfile} from '../controller/sound_info.controller.js' ;
+import {createProfile,signin,signup,upDate,updateDetails,viewAllVendors,viewProfile} from '../controller/sound_info.controller.js' ;
 import express from 'express' ;
 import multer from 'multer'
 import { body } from 'express-validator';
 import soundVendorDetails from '../model/sound_info.js';
 import xlsx from 'xlsx';
-import { verifyVendor } from '../verify/verifyToken.js';
+// import { verifyVendor } from '../verify/verifyToken.js';
 
 let router = express.Router() ;
 
 let upload = multer({dest : "public/images/"}) ;
 
 router.post(
-    "/signUp",
+    "/signup",
     // body("name").notEmpty(),
     // body("name").isAlpha(), 
     // body("contact").isNumeric(),
@@ -19,14 +19,14 @@ router.post(
     body("email").isEmail(),
     body("password").isLength({ min: 5, max: 12 }).notEmpty(),
     // body("address").notEmpty(),
-    signUp
+    signup
   );
   
   router.post(
-    "/signIn",
+    "/signin",
     body("email").isEmail(),
-    body("password").notEmpty().isLength({ min: 5 }),verifyVendor,
-    signIn
+    body("password").notEmpty().isLength({ min: 5 }),
+    signin
   );
   
   router.post(

@@ -10,6 +10,10 @@ const CaterFormDetails = sequelize.define("CaterFormDetails", {
         type: DataTypes.FLOAT,
         allowNull: false
     },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
     email: {
         type: DataTypes.STRING,
         allowNull: false

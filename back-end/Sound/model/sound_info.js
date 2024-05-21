@@ -3,14 +3,14 @@ import { DataTypes } from "sequelize";
 import sequelize from "../dbCongi/dbConnection.js";
 
 const soundVendorDetails = sequelize.define("sound_vendor_details",{
-    // vendor_id :{
-    //     type : DataTypes.INTEGER ,
-    //     references : {
-    //         model : "sound_vendors",
-    //         key : "id"
-    //     },
-    //     allowNull : false 
-    // },
+    id :{
+        type : DataTypes.INTEGER ,
+        references : {
+            model : "sound_vendors",
+            key : "id"
+        },
+        allowNull : false 
+    },
     name : {
         type:DataTypes.STRING,
         allowNull: false

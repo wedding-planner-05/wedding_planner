@@ -11,7 +11,7 @@ export const signin = async (request, response, next) => {
         const gardenobj = await GardenLogin.findOne({ where: { email }, raw: true });
 
         if (gardenobj && GardenLogin.checkPassword(password, gardenobj.password))
-            return response.status(201).json({ message: "Sign In Success", gardenobj });
+            return response.status(201).json({ message: "Sign In Success", data : gardenobj });
 
         return response.status(401).json({ error: "Unauthorized user" });
     } catch (err) {
@@ -29,7 +29,7 @@ export const signup = async (request, response, next) => {
                 return response.status(201).json({ message: "SignUp Sucess...", data: result });
             }).catch(err => {
                 if (err.parent.errno * 1 == 1062)
-                    return response.status(401).json({ message: "Email is already registered...", Error: err });
+                    return response.status(401).json({ message: "Email is already registered...", Erro: (err.parent.errno*1) });
                 return response.status(401).json({ message: "please enter correct details...", Error: err });
             })
     } catch (err) {

@@ -67,14 +67,15 @@ function SignupVendor() {
                         navigate('/vendorSignIn')
                     }
                     else {
-
                         toast.error("bad request")
                     }
                 })
                 .catch(err => {
                     console.log(err);
-                    console.log("this is error", err);
-                    toast.error("this is load")
+                 if(err.response.data.Erro == 1062)
+                    return toast.error("user already exists");
+                 toast.error("something went wrong");
+        
                 });
         }
     };

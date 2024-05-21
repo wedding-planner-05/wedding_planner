@@ -22,30 +22,44 @@ const NewHeader = () => {
             axios.get(`http://localhost:3000/${vendor}/${vendor}/viewAllVendors`).then((response)=>{
                 console.log('hello');
                 console.log(response.data.data)
-                const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
-                console.log(filterData);
-                setVendorData(filterData)
+               
                 switch(vendor){
                   case 'sound' : {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/SoundHomePage' , {state : filterData})
                   }
                     break ;
                   case 'dress' :  {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/DressHomePage' , {state : filterData})
                   }
                     break ;
                   case 'garden'  : {
+                    console.log(response.data.data);
+                    const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/caterpage' , {state : filterData}) ;
                   }
                     break ;
                   case 'mehendi' :{
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/MehendiHomePage' , {state : filterData}) ;
                   }
                   break ;
                   case 'photographer' : {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/PhotographerHomePage' , {state : filterData}) ;
                   }
                   break ;
+                  case 'cater' : {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
+                    navigate('/GardenHomePage' , {state : filterData}) ;
+                  }
                 }
             }).catch(err=>{
                 console.log(err);  
@@ -56,8 +70,7 @@ const NewHeader = () => {
     <ToastContainer/>
     <div className='header container mt-0 pt-0 h-auto' id='header'>
       <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" />
-        
-          <div className="search-bar d-flex align-items-center" >
+         <div className="search-bar d-flex">
                           <div style={{width:"17vw"}} className='d-flex flex-column'>
                             <select onChange={(e)=>setLocation(e.target.value)} name="pets" id="pet-select">
                                 <option value="">Choose Location</option>
@@ -83,23 +96,20 @@ const NewHeader = () => {
                                 <option value="Airport Road, Indore">Airport Road, Indore</option>
                             </select>
                           </div>
-                          
                           <div onChange={(e)=>setVendor(e.target.value)} style={{width:"17vw"}} className='d-flex flex-column'>
-                              <select name="pets" id="pet-select">
-                                  <option value="">Choose Vendor</option>
-                                  <option value="cater">Cater</option>
-                                  <option value="dress">Dress</option>
-                                  <option value="garden">Garden</option>
-                                  <option value="mehendi">Mehendi</option>
-                                  <option value="photographer">Photographer</option>
-                                  <option value="sound">Music/Band</option>
-                              </select>
+                            <select name="pets" id="pet-select">
+                                <option value="">Choose Vendor</option>
+                                <option value="cater">Cater</option>
+                                <option value="dress">Dress</option>
+                                <option value="garden">Garden</option>
+                                <option value="mehendi">Mehendi</option>
+                                <option value="photographer">Photographer</option>
+                                <option value="sound">Music/Band</option>
+                            </select>
                           </div>
-
                           <button onClick={()=>getStarted()} className='btn text-white'>Get Started</button>
-          </div>
-        
-          </div>
+                        </div>
+    </div>
     </>
   )
 }
