@@ -26,19 +26,23 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/cater/signup", async (req, res) => {
-    const { email, password } = req.body;
-    console.log(req.body);
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await User.create({ email, password: hashedPassword });
-        const token = jwt.sign({ email: user.email }, JWT_SECRET);
-        res.status(201).json({ message: "User signed up successfully", token });
-    } catch (error) {
-        console.error("Error while signing up:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
-});
+app.post("/cater/signup", async (request, response, next) => {
+    // console.log(request.body);
+  
+        const { email, password } = request.body;
+
+        await User.create({ email, password })
+            .then((result) => {
+                return response.status(200).json({ message: "SignUp Sucess...", data: result });
+            }).catch(err => {
+                console.log(err);
+                if (err.parent.errno * 1 == 1062)
+                    return response.status(401).json({ message: "Email is already registered...", Erro: (err.parent.errno*1) });
+                return response.status(401).json({ message: "please enter correct details...", Error: err });
+            })
+}
+)
+
 
 app.post("/cater/resetPassword", async (request, response,next) => {
         // console.log('Request body:', request.body);
@@ -84,7 +88,7 @@ app.post("/cater/signin", async (req, res) => {
 
         if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ username: user.username }, JWT_SECRET);
-            res.status(201).json({ login: true, message: "Login successful", token,User:user });
+            res.status(201).json({ login: true, message: "Login successful", token,data:user });
         } else {
             res.status(401).json({ login: false, message: "Invalid credentials" });
         }
@@ -103,7 +107,7 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
     let categoryId = req.body.categoryId;
     let imageUrl = "images/" + filename;
 
-    const Cater = CaterDetails.create({ name,servicecharge,description,contactno,categoryId, imageUrl});
+    const Cater = CaterFormDetails.create({ name,servicecharge,description,email,contactno,categoryId, imageUrl});
 
     Cater.then(result => {
         res.status(201).json({ message: "Data saved successfully" });

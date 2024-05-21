@@ -1,16 +1,25 @@
 
 import { DataTypes } from "sequelize";
 import sequelize from "../dbCongi/dbConnection.js";
+import { type } from "os";
 
 const soundVendorDetails = sequelize.define("sound_vendor_details",{
-    // vendor_id :{
-    //     type : DataTypes.INTEGER ,
-    //     references : {
-    //         model : "sound_vendors",
-    //         key : "id"
-    //     },
-    //     allowNull : false 
-    // },
+    id :{
+        type : DataTypes.INTEGER ,
+        primaryKey:true,
+        allowNull : false,
+        autoIncrement:true
+        
+        
+    },
+    soundId: {
+        type : DataTypes.INTEGER,
+        allowNull:true ,
+        references : {
+            model : "sound_vendors",
+            key : "id"
+        }
+    },
     name : {
         type:DataTypes.STRING,
         allowNull: false
@@ -58,3 +67,6 @@ sequelize.sync().then(()=>{
 })
 
 export default soundVendorDetails ;
+
+
+

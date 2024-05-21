@@ -219,5 +219,3 @@ export const viewAllGarden = async (request, response, next) => {
         return response.status(500).json({ error: "Internal Server Error" });
     }
 };
-
-
