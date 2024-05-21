@@ -70,7 +70,7 @@ export const resetPassword = async (request, response, next) => {
     
   } catch (error) {
     console.error("Error while signing up:", error);
-    res.status(500).json({ error: "Internal server error" });
+    response.status(500).json({ error: "Internal server error" });
 }
   }
   

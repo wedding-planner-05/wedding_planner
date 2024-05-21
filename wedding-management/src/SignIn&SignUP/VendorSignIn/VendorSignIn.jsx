@@ -9,6 +9,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import ForgotPassword from '../ForgorPassword/ForgotPassword';
+import Swal from 'sweetalert2';
 
 
 function SignInVendor() {
@@ -18,13 +19,47 @@ function SignInVendor() {
     const [choise, setChoise] = useState("");
     const navigate = useNavigate();
 
+    const signUp = ()=>{
+        Swal.fire({
+            title: "Please SignUp First",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "  Ok  "
+          }).then((result) => {
+            if (result.isConfirmed) {
+                navigate("/vendorSignUp")
+            }
+          });
+    }
+
+    const message = ()=>{
+        Swal.fire({
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        
+    }
+    const fillDetail = ()=>{
+        Swal.fire({
+            icon: "info",
+            title: "Please Enter Detail",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         const vendorType = choise;
         if (email == "" && password == "") {
-            toast.error("plese fill the details")
+            // toast.error("plese fill the details")
+            fillDetail()
         } else {
             axios.post(`http://localhost:3000/${choise}/${choise}/signin`, { email, password })
                 .then(result => {
@@ -32,8 +67,9 @@ function SignInVendor() {
                     if (result.status == "200" || result.status == "201") {
                         // console.log(JSON.stringify(result.data.gardenobj));
 
-                        console.log("successfull");
-                        toast.success("Login Success")
+                        message()
+                          
+                        // toast.success("Login Success")
                         // sessionStorage.setItem("current-user", JSON.stringify(result.data.gardenobj));
                         sessionStorage.setItem("isLoggedIn", "true");
                         sessionStorage.setItem("caterType", `${choise}`);
@@ -64,7 +100,8 @@ function SignInVendor() {
                 })
                 .catch(err => {
                     console.log("this is error", err);
-                    toast.error(" please Sign Up first")
+                    // toast.error(" please Sign Up first")
+                    signUp()
                 });
         }
     };
