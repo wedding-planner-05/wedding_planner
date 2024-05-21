@@ -11,7 +11,7 @@ export const signin = async (request, response, next) => {
         const gardenobj = await GardenLogin.findOne({ where: { email }, raw: true });
 
         if (gardenobj && GardenLogin.checkPassword(password, gardenobj.password))
-            return response.status(201).json({ message: "Sign In Success", data : gardenobj });
+            return response.status(201).json({ message: "Sign In Success", gardenobj });
 
         return response.status(401).json({ error: "Unauthorized user" });
     } catch (err) {
@@ -29,7 +29,7 @@ export const signup = async (request, response, next) => {
                 return response.status(201).json({ message: "SignUp Sucess...", data: result });
             }).catch(err => {
                 if (err.parent.errno * 1 == 1062)
-                    return response.status(401).json({ message: "Email is already registered...", Erro: (err.parent.errno*1) });
+                    return response.status(401).json({ message: "Email is already registered...", Error: err });
                 return response.status(401).json({ message: "please enter correct details...", Error: err });
             })
     } catch (err) {
@@ -104,27 +104,14 @@ export const addInBulk = async (req, res, next) => {
     // Convert the sheet to JSON/
     const data = xlsx.utils.sheet_to_json(sheet);
     console.log(data);
-    var i = 0;
-    for (let item of data) {
-        let title = item.title;
-        let imageUrl = item.imageUrl;
-        let price = item.price;
-        let address = item.address;
-        let rating = item.rating;
-        let description = item.description;
-        console.log(title + " " + imageUrl + " " + price + " " + address + " " + description + ' ' + rating)
-    }
+
     try {
         for (let item of data) {
-            let title = item.title;
-            let imageUrl = item.imageUrl;
-            let price = item.price;
-            let address = item.address;
-            let rating = item.rating;
-            let description = item.description;
+        
+            let {title,location,capacity,contactNo,price,imageUrl,description,rating}=item;
 
             await GardenDetails.create({
-                title, imageUrl, price, address, rating, description
+                title,location,capacity,contactNo,price,imageUrl,description,rating
             })
         }
         return res.status(200).json({ message: "Garden's Details added successfully.." })
@@ -232,5 +219,3 @@ export const viewAllGarden = async (request, response, next) => {
         return response.status(500).json({ error: "Internal Server Error" });
     }
 };
-
-
