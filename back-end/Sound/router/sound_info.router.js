@@ -1,4 +1,4 @@
-import {resetPassword,createProfile,signIn,signUp,updateDetails,viewAllVendors,viewProfile} from '../controller/sound_info.controller.js' ;
+import {resetPassword,createProfile,signin,signup,updateDetails,viewAllVendors,viewProfile} from '../controller/sound_info.controller.js' ;
 import express from 'express' ;
 import multer from 'multer'
 import { body } from 'express-validator';
