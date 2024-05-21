@@ -28,7 +28,7 @@ function SignInVendor() {
         } else {
             axios.post(`http://localhost:3000/${choise}/${choise}/signin`, { email, password })
                 .then(result => {
-
+                        console.log(result);
                     if (result.status == "200" || result.status == "201") {
                         // console.log(JSON.stringify(result.data.gardenobj));
 
@@ -37,8 +37,8 @@ function SignInVendor() {
                         // sessionStorage.setItem("current-user", JSON.stringify(result.data.gardenobj));
                         sessionStorage.setItem("isLoggedIn", "true");
                         sessionStorage.setItem("caterType", `${choise}`);
-                        sessionStorage.setItem("userID", result.data["id"]);
-                        console.log(result.data["id"]);
+                        sessionStorage.setItem("userID", result.data.data.id);
+                        console.log('result',result.data.data.id);
 
                         switch (choise) {
                             case "cater":
@@ -53,6 +53,9 @@ function SignInVendor() {
                             case "sound":
                                 navigate("/SoundHomeDetailsDashBoard")
                                 break;
+                            // case "Photographer":
+                            //     navigate("/SoundHomeDetailsDashBoard")
+                            //     break;
                         }
                     }
                     else {

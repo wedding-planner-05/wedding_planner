@@ -2,7 +2,7 @@ import express from "express";
 import { body } from "express-validator";
 
 import { signUp, signIn, upDate ,deleteSound} from "../controller/sound.controller.js";
-import { verifyVendor } from "../verify/verifyToken.js";
+// import { verifyVendor } from "../verify/verifyToken.js";
 
 const router = express.Router();
 
@@ -21,8 +21,7 @@ router.post(
 router.post(
   "/signIn",
   body("email").isEmail(),
-  body("password").notEmpty().isLength({ min: 5 }),verifyVendor,
-  signIn
+  body("password").notEmpty().isLength({ min: 5 }),signIn
 );
 
 router.post(
