@@ -212,17 +212,17 @@ export default function ForgetPassword() {
                     autoFocus
                     className="otp-container"
                     inputStyle={{
-                      backgroundColor: "white",
+                      backgroundColor: "#F6F8FC",
                       color: "",
                       outline: "none",
                       marginRight: "10px",
-                      border: "none",
+                      border: "1px solid #F6F8FC",
                       borderRadius: "10px",
                       width: "30px",
                       height: "40px",
                     }}
                     renderInput={(props) => <input {...props} />}
-                  />
+                    />
                 </div>
                 <div className="input-group mb-3 d-flex justify-content-center mt-5">
                   <button
