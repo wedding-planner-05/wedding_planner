@@ -130,6 +130,7 @@ const CaterPage = () => {
           return ele.servicecharge >= minValue && ele.servicecharge <= maxValue 
       }
 
+      const message = "Hello, I'm interested in your services.And I want to Book a Garden"; 
   
   return <> 
   {/* <Navbar/> */}

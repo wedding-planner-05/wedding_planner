@@ -1,9 +1,5 @@
-import { TextField } from "@mui/material";
 import axios from "axios";
-import { event } from "jquery";
 import { useState } from "react";
-// import {nodemailer} from 'nodemailer'
-import { IoIosGift } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 // import Header from "./Header";
@@ -11,7 +7,6 @@ import OTPInput from "react-otp-input";
 // import image from './d4d7c1b4-98c5-4859-836b-294d65cbd56c.be0ab837448c28bf10ffa8eb4955cdf8.webp'
 import { ToastContainer, toast } from "react-toastify";
 import { Zoom } from "react-toastify";
-import ResetPassword from "../ResetPassword/ResetPassword";
 
 export default function ForgetPassword() {
   const navigate = useNavigate();
@@ -36,6 +31,7 @@ export default function ForgetPassword() {
       axios
         .post("http://localhost:3000/otp/otp/request", { email })
         .then((res) => {
+          console.log("response : ",res);
           // alert("OTP send successfully");
           toast.success("OTP send successfully", {
             position: "top-center",
@@ -71,6 +67,7 @@ export default function ForgetPassword() {
     axios
       .post("http://localhost:3000/otp/otp/verify", { email, otp })
       .then((res) => {
+        console.log("REsponse: ",res);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -215,17 +212,17 @@ export default function ForgetPassword() {
                     autoFocus
                     className="otp-container"
                     inputStyle={{
-                      backgroundColor: "white",
+                      backgroundColor: "#F6F8FC",
                       color: "",
                       outline: "none",
                       marginRight: "10px",
-                      border: "none",
+                      border: "1px solid #F6F8FC",
                       borderRadius: "10px",
                       width: "30px",
                       height: "40px",
                     }}
                     renderInput={(props) => <input {...props} />}
-                  />
+                    />
                 </div>
                 <div className="input-group mb-3 d-flex justify-content-center mt-5">
                   <button

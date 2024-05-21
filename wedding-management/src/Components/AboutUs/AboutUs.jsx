@@ -3,7 +3,7 @@ import "./AboutUs.css";
 
 const AboutUs = () => {
   return (
-    <div className="about-us container-fluid mt-5" id="AboutUs">
+    <div className="about-us container mt-5 mb-5" id="AboutUs">
       <div className="text-center">
         <h4 className="" style={{ color: "crimson" }}>
           About us
@@ -18,25 +18,29 @@ const AboutUs = () => {
           borderRight: "20px solid crimson",
         }}
       >
-        <div className="col-md-6 p-5">
+        <div className="p-5">
           <p>
-            Welcome to the National  Community Association "NHCA". We are
-            a diverse alliance of businesses from all ends of the 
-            experience, from manufacturers and importers of molasses, pipes and
-            accessories to distributors,lounges and /shisha retail
-            stores. If you are a business, please join us and help us
-            defend and protect your business, our culture and community. If you
-            are an interested member of the public, welcome. Please enjoy
-            learning about and its unique culture and practice.
+            A wedding planner website is a digital platform designed to assist
+            couples in organizing their wedding. It typically offers a variety
+            of tools and resources such as: Planning Tools: Checklists,
+            timelines, and budget trackers to help manage every aspect of the
+            wedding. Vendor Directories: Listings and reviews of local vendors
+            including photographers, florists, caterers, and venues. Inspiration
+            and Ideas: Galleries of wedding themes, decor ideas, and real
+            wedding stories for inspiration. Customization Options: Features for
+            creating personalized wedding websites, invitations, and RSVPs.
+            Guest Management: Tools to manage guest lists, seating arrangements,
+            and communication with guests. Expert Advice: Blogs, articles, and
+            Q&A sections with tips from wedding planning professionals.
           </p>
         </div>
-        <div className="px-5 col-md-6 p-4 d-flex">
+        {/* <div className="px-5 col-md-6 p-4 d-flex">
           <img
             className="img-fluid custom-imgs "
             src="images/p6.webp"
             alt="Image not display"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
