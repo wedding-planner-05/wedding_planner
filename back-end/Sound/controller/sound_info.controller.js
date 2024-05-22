@@ -142,21 +142,21 @@ export const resetPassword = async (request, response, next) => {
 
 export const createProfile = (request,response,next)=>{
     let errors = validationResult(request) ;
-    
+    console.log(request.body);
     if(!errors.isEmpty())
         return response.status(500).json({error :errors.array()})
 
     console.log("In create profile");
     let filename = request.file.filename ; //images.png
-    let vendor_id = request.body.vendor_id ;
+    let name = request.body.name ;
     let type =request.body.type ;
-    let image = "images/"+filename ;
-    let charges = request.body.charges ;
-    let contact = request.body.contact ;
+    let imageUrl = "images/"+filename ;
+    let serviceCharge = request.body.serviceCharge ;
+    let address = request.body.address ;
+    let contactNo = request.body.contact ;
     let description = request.body.description ;
-    let status = request.body.status ;
 
-    SoundDetails.create({vendor_id,type,image,charges,contact,description,status})
+    SoundDetails.create({name,type,imageUrl,serviceCharge,address,contactNo,description})
     .then(res=>{
         if(res._options.isNewRecord)    
                 return response.status(200).json({data : res}) ;

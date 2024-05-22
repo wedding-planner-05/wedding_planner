@@ -43,11 +43,11 @@ router.post(
   
 router.post("/resetPassword",resetPassword);
 
-router.post("/createProfile",upload.single("image"),body("vendor_id").notEmpty(),body("vendor_id").notEmpty()
+router.post("/createProfile",upload.single("image")
 ,body("type").notEmpty(),
-body("charges").isNumeric(),
-body("description").isAlpha(),
-body("status").isAlpha(),createProfile) ;
+body("serviceCharge").notEmpty(),
+body("description").notEmpty(),
+createProfile) ;
 
 router.get("/viewProfile",viewProfile) ;
 
