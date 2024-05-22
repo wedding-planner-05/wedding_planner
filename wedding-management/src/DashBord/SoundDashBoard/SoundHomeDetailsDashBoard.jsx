@@ -72,26 +72,6 @@ function SoundHomeDetailsDashBoard() {
           </div>
           <div className="col content  boxborder">
             <div>
-              {/* <h1 className="ml-5">Vendor Profile</h1> */}
-              {/* <div className="d-flex align-item-center profile justify-content-start row-md-1">
-                <div className="ml-4 col-md-1">
-                  <img src="/images/user.jpeg" alt="" className="imgex" />
-                </div>
-                <div className="ml-4 displayblock col-md-4">
-                  <p>
-                    <TbHandClick />
-                    One More Click
-                  </p>
-                  <p>
-                    <AiOutlineCamera />
-                    photoGrapher
-                  </p>
-                  <p>
-                    <CiLocationOn />
-                    Madhya Pradesh
-                  </p>
-                </div>
-              </div> */}
               <h1>WelCome DJ'S</h1>
               <hr />
               <div>

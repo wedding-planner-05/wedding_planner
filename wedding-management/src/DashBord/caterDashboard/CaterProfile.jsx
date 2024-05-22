@@ -19,15 +19,16 @@ function CaterProfile() {
     const [email, setEmail] = useState("");
     const [contactNo, setContactNo] = useState("");
     const [location, setLocation] = useState("");
-    const [profile, setProfile] = useState(null);
+    const [profile, setProfile] = useState({});
 
     const userID = sessionStorage.getItem("userID");
     const userEmail = sessionStorage.getItem("email");
 
     useEffect(() => {
         if (userID) {
-            axios.get(`http://localhost:3001/cater/viewprofile/${userID}`).then(result => {
+            axios.get(`http://localhost:3000/cater/cater/viewprofile/${userID}`).then(result => {
                 setProfile(result.data.data);
+                console.log(result.data.data);
                 if (result.data.data) {
                     const { title, price, contactNo } = result.data.data;
                     setName(title);
@@ -104,9 +105,9 @@ function CaterProfile() {
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">
                                     <form className="row d-flex align-items-center justify-content-center flex-column" onSubmit={handleSubmit}>
-                                        <div className="mb-3 row text-center">
+                                        {/* <div className="mb-3 row text-center">
                                             <img src="" alt="Profile" className='imagesprofile text-center content-center' />
-                                        </div>
+                                        </div> */}
                                         <div className="row mt-5">
                                             <div className="mb-3 col">
                                                 <label htmlFor="name" className="form-label">Name</label>
@@ -115,7 +116,7 @@ function CaterProfile() {
                                                     type="text"
                                                     className="form-control p-4 emails logosforinput"
                                                     id="name"
-                                                    value={name}
+                                                    value={profile.name}
                                                 />
                                             </div>
                                             <div className="mb-3 col">
@@ -125,7 +126,7 @@ function CaterProfile() {
                                                     type="text"
                                                     className="form-control p-4 emails"
                                                     id="serviceCharge"
-                                                    value={serviceCharge}
+                                                    value={profile.servicecharge}
                                                 />
                                             </div>
                                         </div>
@@ -149,7 +150,17 @@ function CaterProfile() {
                                                     type="text"
                                                     className="form-control p-4 emails"
                                                     id="contactNo"
-                                                    value={contactNo}
+                                                    value={profile.contactno}
+                                                />
+                                            </div>
+                                            <div className="mb-3 col">
+                                                <label htmlFor="contactNo" className="form-label">Location</label>
+                                                <input
+                                                    onChange={(e) => setContactNo(e.target.value)}
+                                                    type="text"
+                                                    className="form-control p-4 emails"
+                                                    id="contactNo"
+                                                    value={profile.location}
                                                 />
                                             </div>
                                         </div>
