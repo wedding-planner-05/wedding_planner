@@ -38,6 +38,7 @@ function SignInVendor() {
                         sessionStorage.setItem("isLoggedIn", "true");
                         sessionStorage.setItem("caterType", `${choise}`);
                         sessionStorage.setItem("userID", result.data.data.id);
+                        sessionStorage.setItem("email", email);
                         console.log('result',result.data.data.id);
 
                         switch (choise) {
