@@ -61,6 +61,7 @@ const SoundVendorDetails = () => {
         }
       }
     }
+    const message = "Hello, I'm interested in your services.And I want to Book a Garden"; 
       
     return <>
         {/* <Navbar/> */}

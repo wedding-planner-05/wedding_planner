@@ -1,17 +1,17 @@
-import { FaEnvelope, FaPhoneAlt, FaStar } from 'react-icons/fa';
-import { FaIndianRupeeSign, FaLocationDot } from 'react-icons/fa6';
-import { useLocation } from 'react-router-dom';
-import AboutUs from '../../Components/AboutUs/AboutUs';
+import { FaEnvelope, FaPhoneAlt, FaStar, FaWhatsapp } from "react-icons/fa";
+import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
+import { useLocation } from "react-router-dom";
+import AboutUs from "../../Components/AboutUs/AboutUs";
 // import "./SoundVendorDetails.css"
 import { FaUserAlt } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import { Rating } from '@mui/material'
-import { Typography } from '@mui/material'
-import { useAuth0 } from '@auth0/auth0-react';
-import Footer from '../../Components/Footer/Footer';
-import Swal from 'sweetalert2';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import { Rating } from "@mui/material";
+import { Typography } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
+import Footer from "../../Components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const GardenDetailPage = () => {
 
@@ -62,7 +62,7 @@ const GardenDetailPage = () => {
         }
       }
         
-      return <>
+      return ( <>
           {/* <Navbar/> */}
         <div className="container">
         <div className='hello2'>
@@ -106,37 +106,43 @@ const GardenDetailPage = () => {
                     <IoIosCall />
                     <h6>{data.name}</h6>
                     </div>
-                    </div>
-                  }
-                  <button style={{width:'135px',height:'40px'}} onClick={()=>showName()} className="btn btn-danger rounded-5 px-3">
-                    <FaEnvelope /> Email
-                  </button>
-                  { showEmail &&  <div className='contact-div p-1'>
-                  <div className='d-flex gap-3 p-1'>
-                  <FaUserAlt /><h6 > {data.type}</h6>
-                  </div>
-                  <div className='d-flex gap-3 p-1 '>
-                  <IoIosCall />
-                  <h6>{data.price}</h6>
-                  </div>
                   </div>
                 }
-                  </div>
+                <button
+                  style={{ width: "135px", height: "40px" }}
+                  className="btn btn-danger rounded-5 px-3"
+                >
+                  <Link
+                    to={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
+                      body
+                    )}`}
+                    target="_blank"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <FaEnvelope /> Email
+                  </Link>
+                </button>
               </div>
-            </div>     
-              <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-              <div>{data.description}</div>
-              <Box>
-          <Typography component='legend'></Typography>
-          <Rating name='simple-controlled' value={value} onChange={(event , newValue)=>setValue(newValue)} />
-      </Box>
-      
             </div>
+            
           </div>
+          <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
+            <div>{data.description}</div>
+            <Box>
+              <Typography component="legend"></Typography>
+              <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => setValue(newValue)}
+              />
+            </Box>
           </div>
-            <AboutUs/>
-            <Footer/>
-          </>
-}
+        </div>
+      </div>
+      <AboutUs />
+      <Footer />
+    </>
+  )
+};
 
-export default GardenDetailPage
+export default GardenDetailPage;
