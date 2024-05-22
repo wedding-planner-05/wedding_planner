@@ -12,6 +12,7 @@ import { Rating } from '@mui/material'
 import { Typography } from '@mui/material'
 import { useAuth0 } from '@auth0/auth0-react';
 import Footer from '../../Components/Footer/Footer';
+import Swal from 'sweetalert2' ;
 
 const SoundVendorDetails = () => {
 
@@ -28,9 +29,20 @@ const SoundVendorDetails = () => {
     const showName = (value)=>{
       console.log(value);
       if(!isAuthenticated){
-        const result =  window.confirm('please singn In first')
-        if(result)
-          loginWithRedirect()
+       Swal.fire({
+          title: "Please LogIn First",
+          // text: "You won't be able to revert this!",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "  Ok  "
+        }).then((result) => {
+          if (result.isConfirmed) {
+            loginWithRedirect()
+          }
+        });
+
       }
       else if(value == 'contact' ){
         if(showContact==true)

@@ -8,21 +8,16 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
         type : DataTypes.INTEGER ,
         primaryKey:true,
         allowNull : false,
-        autoIncrement:true
-        
-        
-    },
-    soundId: {
-        type : DataTypes.INTEGER,
-        allowNull:true ,
+        autoIncrement:true,
         references : {
             model : "sound_vendors",
             key : "id"
-        }
+        }   
     },
     name : {
         type:DataTypes.STRING,
         allowNull: false
+
     },
     type : {
         type : DataTypes.STRING,
@@ -41,24 +36,17 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
         type : DataTypes.STRING,
         allowNull : false
     },
-    rating : {
-        type : DataTypes.STRING,
-        allowNull:true
-    },
     description : {
         type : DataTypes.TEXT,
         allowNull :true 
     },
-    contactno : {
+    contactNo : {
         type : DataTypes.STRING,
         allowNull: true
     }
 
-    // status : {
-    //     type : DataTypes.BOOLEAN ,
-    //     allowNull :false 
-    // }
 })
+
 
 sequelize.sync().then(()=>{
     console.log("table is created");

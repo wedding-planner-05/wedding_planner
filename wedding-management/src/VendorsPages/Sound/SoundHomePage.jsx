@@ -2,15 +2,18 @@ import axios from 'axios';
 import React, {useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom';
-import "./SoundHomePage.css"
+import TextField from "@mui/material/TextField";
+import "./SoundHomePage.css";
 import Navbar from '../../Components/Navbar/Navbar';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { FaIndianRupeeSign } from 'react-icons/fa6';
 
 
 const SoundHomePage = () => {
     const [products,setProducts] = useState([]) ;
     const [dataSource,setDataSource] = useState(Array.from({length:20}))
     const [hasMoreData,setHasMoreData] = useState(true)
+    const [inputText, setInputText] = useState("");
     
     const [minValue,setMinValue] = useState(0) ;
     const [maxValue,setMaxValue] = useState(1000000) ;
@@ -45,15 +48,22 @@ const SoundHomePage = () => {
     const SoundVendorDetails = (data)=>{
       navigate("/SoundVendorDetails",{state:data})
     }
+    
     const handlerViewall = (min, max) => {
       setMinValue(min);
       setMaxValue(max);
       setProductAvailable(true); // Reset product availability flag
     }
 
-      const filterHandeler = (ele)=>{
-          return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
-      }
+    let inputHandler = (e) => {
+      var lowerCase = e.target.value.toLowerCase();
+      console.log(lowerCase);
+      setInputText(lowerCase);
+    };
+
+    const filterHandeler = (ele)=>{
+        return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
+    }
 
   
   return <> 
@@ -73,11 +83,27 @@ const SoundHomePage = () => {
     </div> 
     </div>
 
-    {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
+    
+   
+    <div className='cards'>
+    <div className="main">
+      <h3>Search Vendors</h3>
+      <div className="search">
+        <TextField
+          id="outlined-basic"
+          onChange={inputHandler}
+          variant="standard"
+          fullWidth
+          label="search"
+        />
+      </div>
+      {/* <List input={inputText} /> */}
+    </div>
+    {products.filter(filterHandeler).length  === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
             // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
-          <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
-          {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
+          <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
+          {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
               <div
                 key={index}
@@ -118,11 +144,9 @@ const SoundHomePage = () => {
           }
     </div>
                 // </InfiniteScroll>
-  }      
-
-
-   
-    </div>
+  }    
+  </div>  
+</div>
       
   
   </>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RxDashboard } from "react-icons/rx";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -6,24 +6,62 @@ import { RiContactsLine } from "react-icons/ri";
 import { CgList } from "react-icons/cg";
 import { AiOutlineSetting } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
-// import Avatar from 'react-avatar';
 import { TbHandClick } from "react-icons/tb";
 import { AiOutlineCamera } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
+import axios from "axios";
 
 function SoundHomeDetailsDashBoard() {
+
   const [file, setFile] = useState(null);
+  
+  const [id,setVendorId] = useState('') ;
+  const [name,setName] = useState('')
+  const [type ,setType] =  useState('') 
+  const [image,setImage] =  useState(null)
+  const [serviceCharge,setServiceCharge] =  useState('')
+  const [address,setAddress] =  useState('')
+  const [ description,setDescription] =  useState('')
+  const [ contactNo,setContact] =  useState('')
+  console.log('vendor Id : ',id)
+
+  console.log('image url ',image);
+  console.log(id , name , type  , serviceCharge , address , description , contactNo);
+  useEffect(()=>{
+      setType(sessionStorage.getItem('caterType')) ;
+      setVendorId(sessionStorage.getItem('userID')) ;
+  },[])
+  
+ 
+  const handleSubmit = (e)=>{
+    alert('hello')
+    e.preventDefault()
+    axios.post("http://localhost:3000/sound/sound/createProfile",{id,name,type,image,serviceCharge,address,description,contactNo})
+    .then(result=>{
+        console.log('succerss');
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+
+    }
+
+
+
   function handleFileChange(event) {
     const selectedFile = event.target.files[0];
-    setFile(selectedFile);
+    console.log( 'image is : ',selectedFile);
+    console.log(URL.createObjectURL(selectedFile));
+    setImage(URL.createObjectURL(selectedFile));
+
   }
 
   return (
     <>
-      <Navbar />
+
       <div className="container-fluid">
         <div className="row ">
           <div className="col-md-3 col-lg-2  asidebar">
@@ -72,26 +110,6 @@ function SoundHomeDetailsDashBoard() {
           </div>
           <div className="col content  boxborder">
             <div>
-              {/* <h1 className="ml-5">Vendor Profile</h1> */}
-              {/* <div className="d-flex align-item-center profile justify-content-start row-md-1">
-                <div className="ml-4 col-md-1">
-                  <img src="/images/user.jpeg" alt="" className="imgex" />
-                </div>
-                <div className="ml-4 displayblock col-md-4">
-                  <p>
-                    <TbHandClick />
-                    One More Click
-                  </p>
-                  <p>
-                    <AiOutlineCamera />
-                    photoGrapher
-                  </p>
-                  <p>
-                    <CiLocationOn />
-                    Madhya Pradesh
-                  </p>
-                </div>
-              </div> */}
               <h1>WelCome DJ'S</h1>
               <hr />
               <div>
@@ -102,7 +120,7 @@ function SoundHomeDetailsDashBoard() {
                         className="row"
                         style={{ border: "5px solir green" }}
                       >
-                        <div className="row mt-5">
+                        <div className="row ">
                           <div className="mb-3 col">
                             <label
                               htmlFor="exampleInputPassword1"
@@ -112,6 +130,7 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <input
                               type="text"
+                              onChange={(e)=>setName(e.target.value)}
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
@@ -125,6 +144,39 @@ function SoundHomeDetailsDashBoard() {
                               Service Charge
                             </label>
                             <input
+                              onChange={(e)=>setServiceCharge(e.target.value)}
+                              type="text"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="row">
+                         
+
+                          <div className="mb-3 col-6">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Contact No.
+                              </label>
+                            <input
+                              onChange={(e)=>setContact(e.target.value)}
+                              type="text"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div className="mb-3 col-6">
+                            <label value={sessionStorage.getItem('caterType')}
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >Type
+                            </label>
+                            <input
+                              value={type}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -134,7 +186,7 @@ function SoundHomeDetailsDashBoard() {
                         <hr />
 
                         <div className="row">
-                          <div className="mb-3 ">
+                          <div className="mb-3 col">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -142,21 +194,8 @@ function SoundHomeDetailsDashBoard() {
                               Email Address
                             </label>
                             <input
+                              value={sessionStorage.getItem('userEmail')}
                               type="email"
-                              className="form-control p-4 emails"
-                              id="exampleInputPassword1"
-                            />
-                          </div>
-                          <hr />
-                          <div className="mb-3 col">
-                            <label
-                              htmlFor="exampleInputPassword1"
-                              className="form-label"
-                            >
-                              Phone Number
-                            </label>
-                            <input
-                              type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
@@ -164,7 +203,7 @@ function SoundHomeDetailsDashBoard() {
                         </div>
                         <hr />
                         <div className="row">
-                          <div className="mb-3 col-md-6">
+                          <div cla  ssName="mb-3 col-6">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -173,13 +212,11 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <br />
                             <select
+                            onChange={(e)=>setAddress(e.target.value)}
                               name="select"
-                              id=""
                               style={{
-                                border: "none",
-                                width: "100%",
+                                borderColor:'grey',
                                 height: "2.9rem",
-                                boxShadow: "0 0 0.5rem black",
                                 borderRadius: ".5rem",
                               }}
                             >
@@ -253,15 +290,15 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <input
                               type="file"
-                              className="form-control p-4 emails"
-                              id="exampleInputPassword1"
                               onChange={handleFileChange}
+                              className="form-control p emails"
+                              id="exampleInputPassword1"
+                              // onChange={handleFileChange}
                             />
                           </div>
                         </div>
                         <hr />
 
-                        <hr />
 
                         <div className="row">
                           <div className="d-flex justify-content-center">
@@ -277,6 +314,7 @@ function SoundHomeDetailsDashBoard() {
                               <button
                                 type="button"
                                 className="btn btn-warning m-3"
+                                onClick={(e)=>handleSubmit(e)}
                               >
                                 Save
                               </button>
