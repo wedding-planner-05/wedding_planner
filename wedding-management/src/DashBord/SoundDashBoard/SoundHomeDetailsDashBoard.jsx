@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 function SoundHomeDetailsDashBoard() {
 
@@ -30,6 +31,7 @@ function SoundHomeDetailsDashBoard() {
 
   console.log('image url ',image);
   console.log(id , name , type  , serviceCharge , address , description , contactNo);
+
   useEffect(()=>{
       setType(sessionStorage.getItem('caterType')) ;
       setVendorId(sessionStorage.getItem('userID')) ;
@@ -37,35 +39,39 @@ function SoundHomeDetailsDashBoard() {
   
  
   const handleSubmit = (e)=>{
-    alert('hello')
     e.preventDefault()
-    axios.post("http://localhost:3000/sound/sound/createProfile",{id,name,type,image,serviceCharge,address,description,contactNo})
+    const formData = new FormData()
+    formData.append('id',id)
+    formData.append('name',name)
+    formData.append('type',type)
+    formData.append('image',image)
+    formData.append('serviceCharge',serviceCharge)
+    formData.append('address',address)
+    formData.append('description',description)
+    formData.append('contactNo',contactNo)
+    axios.post("http://localhost:3000/sound/sound/createProfile",formData,{
+      headers: {
+        "Content-Type": "multipart/form-data"
+    }
+    })
     .then(result=>{
-        console.log('succerss');
+      toast.success("Data entered successfully")
+      console.log("Data entered successfully", result);
     })
     .catch(err=>{
       console.log(err);
     })
 
     }
-
-
-
   function handleFileChange(event) {
-    const selectedFile = event.target.files[0];
-    console.log( 'image is : ',selectedFile);
-    console.log(URL.createObjectURL(selectedFile));
-    setImage(URL.createObjectURL(selectedFile));
-
+    const imagePath = event.target.files[0];
+    console.log( 'image is : ',imagePath);
+    setImage(imagePath);
   }
 
   return (
     <>
-      <Navbar/>
-
-      <div>
-        <img src={image} alt="" />
-      </div>
+    <ToastContainer />
       <div className="container-fluid">
         <div className="row ">
           <div className="col-md-3 col-lg-2  asidebar">
@@ -205,7 +211,7 @@ function SoundHomeDetailsDashBoard() {
                         </div>
                         <hr />
                         <div className="row">
-                          <div cla  ssName="mb-3 col-6">
+                          <div cla  ssName="mb-3">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -213,7 +219,7 @@ function SoundHomeDetailsDashBoard() {
                               Location
                             </label>
                             <br />
-                            <select
+                            <select className="col-6  p-1"
                             onChange={(e)=>setAddress(e.target.value)}
                               name="select"
                               style={{

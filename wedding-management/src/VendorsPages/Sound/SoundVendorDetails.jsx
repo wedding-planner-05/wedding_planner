@@ -73,7 +73,7 @@ const SoundVendorDetails = () => {
               <div>
                 <img
                   className="zoom-img img-fluid"
-                  src={data.imageUrl}
+                  src={`http://localhost:3006/`+ data.imageUrl}
                   alt="image not available"
                 />
               </div>
