@@ -90,9 +90,6 @@ function SignInVendor() {
                             case "sound":
                                 navigate("/SoundHomeDetailsDashBoard")
                                 break;
-                            // case "Photographer":
-                            //     navigate("/SoundHomeDetailsDashBoard")
-                            //     break;
                         }
                     }
                     else {

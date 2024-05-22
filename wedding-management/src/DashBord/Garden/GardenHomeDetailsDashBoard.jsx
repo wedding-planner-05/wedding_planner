@@ -26,11 +26,19 @@ function GardenHomeDetailsDashBoard() {
       <Navbar />
       <div className="container-fluid">
         <div className="row ">
-          {/* <div className="col-md-3 col-lg-2  asidebar">
+          <div className="col-md-3 col-lg-2  asidebar">
             <div>
               <ul className="list-unstyled">
                 <li>
-                  <Link to="/Dashboard1" className="textnone">
+                  <Link to="/GardenProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/GardenHomeDetailsDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RxDashboard />
                     </strong>
@@ -38,7 +46,7 @@ function GardenHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Dashboard" className="textnone">
+                  <Link to="/GardenResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
@@ -46,7 +54,7 @@ function GardenHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Dashboard2" className="textnone">
+                  <Link to="/GardenContactDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiContactsLine />
                     </strong>
@@ -55,28 +63,10 @@ function GardenHomeDetailsDashBoard() {
                 </li>
                 <li>
                   <strong style={{ color: "black" }}>
-                    <CgList />
-                  </strong>
-                  <span style={{ color: "black" }}>Catergory-List</span>
-                </li>
-                <li>
-                  <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
                   <span style={{ color: "black" }}>Setting</span>
                 </li>
-              </ul>
-            </div>
-          </div> */}
-          <div className="col-md-3 col-lg-2  asidebar">
-
-            <div>
-              <ul className="list-unstyled">
-                <li><Link to="/GardenHomeDetailsDashBoard" className='textnone'><strong style={{ color: "black" }}><RxDashboard /></strong><span style={{ color: "black" }}>Dashboard</span></Link></li>
-                <li><Link to="/GardenResetPassDashBoard" className='textnone'><strong style={{ color: "black" }}><RiLockPasswordLine /></strong><span style={{ color: "black" }}>Password</span></Link></li>
-                <li><Link to="/GardenContactDashBoard" className='textnone'><strong style={{ color: "black" }}><RiContactsLine /></strong><span style={{ color: "black" }}>Contact-Us</span></Link></li>
-                <li><strong style={{ color: "black" }}><CgList /></strong><span style={{ color: "black" }}>Catergory-List</span></li>
-                <li><strong style={{ color: "black" }}><AiOutlineSetting /></strong><span style={{ color: "black" }}>Setting</span></li>
               </ul>
             </div>
           </div>

@@ -26,7 +26,7 @@ function CaterProfile() {
 
     useEffect(() => {
         if (userID) {
-            axios.get(`http://localhost:3003/garden/viewprofile/${userID}`).then(result => {
+            axios.get(`http://localhost:3001/cater/viewprofile/${userID}`).then(result => {
                 setProfile(result.data.data);
                 if (result.data.data) {
                     const { title, price, contactNo } = result.data.data;
@@ -57,10 +57,12 @@ function CaterProfile() {
                         <div>
                             <ul className="list-unstyled">
                                 <li>
-                                    <strong style={{ color: "black" }}>
-                                        <CgList />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Profile</span>
+                                    <Link to="/CaterProfile">
+                                        <strong style={{ color: "black" }}>
+                                            <CgList />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Profile</span>
+                                    </Link>
                                 </li>
                                 <li>
                                     <Link to="/CaterHomeDetailsDashBoard" className="textnone">
@@ -97,7 +99,7 @@ function CaterProfile() {
                     </div>
                     <div className="col content boxborder">
                         <div>
-                            <h1>Welcome Cater's</h1>
+                            <h1>Welcome CaterProfile</h1>
                             <hr />
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">

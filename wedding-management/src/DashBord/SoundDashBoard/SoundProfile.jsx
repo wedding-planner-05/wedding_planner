@@ -57,13 +57,15 @@ function SoundProfile() {
                         <div>
                             <ul className="list-unstyled">
                                 <li>
-                                    <strong style={{ color: "black" }}>
-                                        <CgList />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Profile</span>
+                                    <Link to="/SoundProfile">
+                                        <strong style={{ color: "black" }}>
+                                            <CgList />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Profile</span>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link to="/CaterHomeDetailsDashBoard" className="textnone">
+                                    <Link to="/SoundHomeDetailsDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RxDashboard />
                                         </strong>
@@ -71,7 +73,7 @@ function SoundProfile() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/CaterResetPassDashBoard" className="textnone">
+                                    <Link to="/SoundResetPassDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiLockPasswordLine />
                                         </strong>
@@ -79,7 +81,7 @@ function SoundProfile() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/CaterContactDash" className="textnone">
+                                    <Link to="/SoundContactDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiContactsLine />
                                         </strong>
@@ -97,7 +99,7 @@ function SoundProfile() {
                     </div>
                     <div className="col content boxborder">
                         <div>
-                            <h1>Welcome Cater's</h1>
+                            <h1>Welcome CaterProfile</h1>
                             <hr />
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">

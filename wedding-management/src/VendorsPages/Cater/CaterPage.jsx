@@ -114,8 +114,9 @@ const CaterPage = () => {
       }
     },[])
     
+    
     const SoundVendorDetails = (data)=>{
-      navigate("/SoundVendorDetails",{state:data})
+      navigate("/CaterContactpage",{state:data})
     }
     const handlerViewall = (min, max) => {
       setMinValue(min);

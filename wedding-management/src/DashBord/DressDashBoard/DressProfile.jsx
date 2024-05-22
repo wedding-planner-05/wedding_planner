@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 
-function DressProfile() {
+function CaterProfile() {
     const [file, setFile] = useState(null);
     const [name, setName] = useState("");
     const [serviceCharge, setServiceCharge] = useState("");
@@ -57,10 +57,12 @@ function DressProfile() {
                         <div>
                             <ul className="list-unstyled">
                                 <li>
-                                    <strong style={{ color: "black" }}>
-                                        <CgList />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Profile</span>
+                                    <Link to="/CaterProfile">
+                                        <strong style={{ color: "black" }}>
+                                            <CgList />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Profile</span>
+                                    </Link>
                                 </li>
                                 <li>
                                     <Link to="/CaterHomeDetailsDashBoard" className="textnone">
@@ -97,7 +99,7 @@ function DressProfile() {
                     </div>
                     <div className="col content boxborder">
                         <div>
-                            <h1>Welcome Cater's</h1>
+                            <h1>Welcome CaterProfile</h1>
                             <hr />
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">
@@ -168,4 +170,4 @@ function DressProfile() {
     );
 }
 
-export default DressProfile;
+export default CaterProfile;

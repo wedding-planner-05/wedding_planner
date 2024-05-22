@@ -57,13 +57,15 @@ function GardenProfile() {
                         <div>
                             <ul className="list-unstyled">
                                 <li>
-                                    <strong style={{ color: "black" }}>
-                                        <CgList />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Profile</span>
+                                    <Link to="/GardenProfile">
+                                        <strong style={{ color: "black" }}>
+                                            <CgList />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Profile</span>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link to="/CaterHomeDetailsDashBoard" className="textnone">
+                                    <Link to="/GardenHomeDetailsDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RxDashboard />
                                         </strong>
@@ -71,7 +73,7 @@ function GardenProfile() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/CaterResetPassDashBoard" className="textnone">
+                                    <Link to="/GardenResetPassDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiLockPasswordLine />
                                         </strong>
@@ -79,7 +81,7 @@ function GardenProfile() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/CaterContactDash" className="textnone">
+                                    <Link to="/GardenContactDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiContactsLine />
                                         </strong>
@@ -97,7 +99,7 @@ function GardenProfile() {
                     </div>
                     <div className="col content boxborder">
                         <div>
-                            <h1>Welcome Cater's</h1>
+                            <h1>Welcome GardenProfile</h1>
                             <hr />
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">

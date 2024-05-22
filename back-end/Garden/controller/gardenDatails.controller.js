@@ -40,27 +40,7 @@ export const signup = async (request, response, next) => {
     }
 }
 
-// export const updateProfile = async (request, response, next) => {
-//     try {
-//         // const id = request.params.id;
-//         const { email, newpassword } = request.body;
 
-//         const gardenLogin = await GardenLogin.findOne({ where: { email }, raw: true });
-
-//         if (!gardenLogin) {
-//             return response.status(404).json({ message: "GardenLogin not found" });
-//         }
-
-//         const updateObj=await GardenLogin.update({ newpassword }
-//             , { where: { email } }
-//         )
-//         return response.status(200).json({ message: "Profile Updated Successfully",data:updateObj});
-
-//     } catch (err) {
-//         console.error(err);
-//         return response.status(500).json({ error: "Internal Server Error", err });
-//     }
-// };
 
 export const resetPassword = async (request, response, next) => {
     try {
@@ -137,7 +117,7 @@ export const viewProfile = async (request, response, next) => {
         if (isNaN(id)) {
             return response.status(400).json({ error: "Invalid ID format" });
         }
-        
+        console.log(id);
         const gardenobj = await GardenDetails.findOne({ where: { gardenId: id }, raw: true });
         if (gardenobj) {
             return response.status(200).json({ message: "View Profile success...", data: gardenobj });

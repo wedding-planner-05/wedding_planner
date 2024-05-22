@@ -30,6 +30,14 @@ function DressHomeDetailsDashBoard() {
             <div>
               <ul className="list-unstyled">
                 <li>
+                  <Link to="/DressProfile" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RxDashboard />
+                    </strong>
+                    <span style={{ color: "black" }}>profile</span>
+                  </Link>
+                </li>
+                <li>
                   <Link to="/DressHomeDetailsDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RxDashboard />
@@ -52,12 +60,6 @@ function DressHomeDetailsDashBoard() {
                     </strong>
                     <span style={{ color: "black" }}>Contact-Us</span>
                   </Link>
-                </li>
-                <li>
-                  <strong style={{ color: "black" }}>
-                    <CgList />
-                  </strong>
-                  <span style={{ color: "black" }}>Catergory-List</span>
                 </li>
                 <li>
                   <strong style={{ color: "black" }}>
