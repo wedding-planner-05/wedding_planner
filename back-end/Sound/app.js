@@ -8,7 +8,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const  __filename = fileURLToPath(import.meta.url) ;
-
 const  __dirname = path.dirname(__filename) ;
 
 // console.log("__filename : ",__filename);
@@ -23,7 +22,6 @@ app.use(bodyParser.json()) ;
 app.use(express.static(path.join(__dirname,"public"))) ;
 app.use(cors())
 
-// app.use('/sound',SoundRouter);
 app.use('/sound',SoundInfoRouter);
 
 const port = 3006 ;    

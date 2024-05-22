@@ -43,10 +43,11 @@ router.post(
   
 router.post("/resetPassword",resetPassword);
 
-router.post("/createProfile",upload.single("image")
-,body("type").notEmpty(),
+router.post("/createProfile",
+// upload.single("image")
+// ,body("type").notEmpty(),
 body("serviceCharge").notEmpty(),
-body("description").notEmpty(),
+// body("description").notEmpty(),
 createProfile) ;
 
 router.get("/viewProfile",viewProfile) ;
