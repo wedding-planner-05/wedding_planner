@@ -24,6 +24,8 @@ function CaterHomeDetailsDashBoard() {
   const [contactno, setContactno] = useState("");
   const [location, setLocation] = useState("");
 
+  let CaterId = sessionStorage.getItem("userId")
+
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
@@ -40,18 +42,18 @@ function CaterHomeDetailsDashBoard() {
     formData.append("location", location);
 
     axios.post("http://localhost:3001/cater/addformdetails", formData, {
-        headers: {
-            "Content-Type": "multipart/form-data"
-        }
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
     }).then(result => {
-        toast.success("Data entered successfully")
-        console.log("Data entered successfully", result);
+      toast.success("Data entered successfully")
+      console.log("Data entered successfully", result);
     }).catch(err => {
-        console.log(name, servicecharge, email, contactno, location, file, "this is data");
-        toast.error("Something went wrong");
-        console.log("Error:", err);
+      console.log(name, servicecharge, email, contactno, location, file, "this is data");
+      toast.error("Something went wrong");
+      console.log("Error:", err);
     });
-}
+  }
 
   return (
     <>
@@ -61,6 +63,14 @@ function CaterHomeDetailsDashBoard() {
           <div className="col-md-3 col-lg-2  asidebar">
             <div>
               <ul className="list-unstyled">
+                <li>
+                  <Link to="/CaterProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/CaterHomeDetailsDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
@@ -84,12 +94,6 @@ function CaterHomeDetailsDashBoard() {
                     </strong>
                     <span style={{ color: "black" }}>Contact-Us</span>
                   </Link>
-                </li>
-                <li>
-                  <strong style={{ color: "black" }}>
-                    <CgList />
-                  </strong>
-                  <span style={{ color: "black" }}>Category-List</span>
                 </li>
                 <li>
                   <strong style={{ color: "black" }}>

@@ -72,11 +72,20 @@ function SoundHomeDetailsDashBoard() {
   return (
     <>
     <ToastContainer />
+
       <div className="container-fluid">
         <div className="row ">
           <div className="col-md-3 col-lg-2  asidebar">
             <div>
               <ul className="list-unstyled">
+                <li>
+                  <Link to="/CaterProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/SoundHomeDetailsDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
@@ -100,12 +109,6 @@ function SoundHomeDetailsDashBoard() {
                     </strong>
                     <span style={{ color: "black" }}>Contact-Us</span>
                   </Link>
-                </li>
-                <li>
-                  <strong style={{ color: "black" }}>
-                    <CgList />
-                  </strong>
-                  <span style={{ color: "black" }}>Catergory-List</span>
                 </li>
                 <li>
                   <strong style={{ color: "black" }}>
