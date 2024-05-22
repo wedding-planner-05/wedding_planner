@@ -114,8 +114,9 @@ const CaterPage = () => {
       }
     },[])
     
+    
     const SoundVendorDetails = (data)=>{
-      navigate("/SoundVendorDetails",{state:data})
+      navigate("/CaterContactpage",{state:data})
     }
     const handlerViewall = (min, max) => {
       setMinValue(min);
@@ -130,6 +131,7 @@ const CaterPage = () => {
           return ele.servicecharge >= minValue && ele.servicecharge <= maxValue 
       }
 
+      const message = "Hello, I'm interested in your services.And I want to Book a Garden"; 
   
   return <> 
   {/* <Navbar/> */}

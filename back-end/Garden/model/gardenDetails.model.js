@@ -41,6 +41,10 @@ const GardenDetails = sequelize.define("gardenDetails", {
         type: DataTypes.TEXT,
         allowNull: true
     },
+    // rating:{
+    //     type:DataTypes.STRING,
+    //     allowNull:true
+    // },
     description: {
         type: DataTypes.TEXT,
         allowNull: true

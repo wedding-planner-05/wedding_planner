@@ -25,44 +25,46 @@ function SoundContactDashBoard() {
                 <div className="row ">
                 <div className="col-md-3 col-lg-2  asidebar">
             <div>
-              <ul className="list-unstyled">
-                <li>
-                  <Link to="/SoundHomeDetailsDashBoard" className="textnone">
-                    <strong style={{ color: "black" }}>
-                      <RxDashboard />
-                    </strong>
-                    <span style={{ color: "black" }}>Dashboard</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/SoundResetPassDashBoard" className="textnone">
-                    <strong style={{ color: "black" }}>
-                      <RiLockPasswordLine />
-                    </strong>
-                    <span style={{ color: "black" }}>Password</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/SoundContactDashBoard" className="textnone">
-                    <strong style={{ color: "black" }}>
-                      <RiContactsLine />
-                    </strong>
-                    <span style={{ color: "black" }}>Contact-Us</span>
-                  </Link>
-                </li>
-                <li>
-                  <strong style={{ color: "black" }}>
-                    <CgList />
-                  </strong>
-                  <span style={{ color: "black" }}>Catergory-List</span>
-                </li>
-                <li>
-                  <strong style={{ color: "black" }}>
-                    <AiOutlineSetting />
-                  </strong>
-                  <span style={{ color: "black" }}>Setting</span>
-                </li>
-              </ul>
+            <ul className="list-unstyled">
+                                <li>
+                                    <Link to="/CaterProfile">
+                                        <strong style={{ color: "black" }}>
+                                            <CgList />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Profile</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/SoundHomeDetailsDashBoard" className="textnone">
+                                        <strong style={{ color: "black" }}>
+                                            <RxDashboard />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Dashboard</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/SoundResetPassDashBoard" className="textnone">
+                                        <strong style={{ color: "black" }}>
+                                            <RiLockPasswordLine />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Password</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/SoundContactDashBoard" className="textnone">
+                                        <strong style={{ color: "black" }}>
+                                            <RiContactsLine />
+                                        </strong>
+                                        <span style={{ color: "black" }}>Contact-Us</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <strong style={{ color: "black" }}>
+                                        <AiOutlineSetting />
+                                    </strong>
+                                    <span style={{ color: "black" }}>Setting</span>
+                                </li>
+                            </ul>
             </div>
           </div>
                     <div className="col content text-center boxborder">

@@ -166,6 +166,8 @@ const PhotographerHomePage = () => {
     return product.price >= minValue && product.price <= maxValue;
   }
 
+  const message = "Hello, I'm interested in your services.And I want to Book a Garden"; 
+
   return (
     <>
       <div className='vendors-box d-flex justify-content-between'>

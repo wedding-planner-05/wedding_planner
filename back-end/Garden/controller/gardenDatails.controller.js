@@ -39,27 +39,7 @@ export const signup = async (request, response, next) => {
     }
 }
 
-// export const updateProfile = async (request, response, next) => {
-//     try {
-//         // const id = request.params.id;
-//         const { email, newpassword } = request.body;
 
-//         const gardenLogin = await GardenLogin.findOne({ where: { email }, raw: true });
-
-//         if (!gardenLogin) {
-//             return response.status(404).json({ message: "GardenLogin not found" });
-//         }
-
-//         const updateObj=await GardenLogin.update({ newpassword }
-//             , { where: { email } }
-//         )
-//         return response.status(200).json({ message: "Profile Updated Successfully",data:updateObj});
-
-//     } catch (err) {
-//         console.error(err);
-//         return response.status(500).json({ error: "Internal Server Error", err });
-//     }
-// };
 
 export const resetPassword = async (request, response, next) => {
     try {
@@ -104,27 +84,14 @@ export const addInBulk = async (req, res, next) => {
     // Convert the sheet to JSON/
     const data = xlsx.utils.sheet_to_json(sheet);
     console.log(data);
-    var i = 0;
-    for (let item of data) {
-        let title = item.title;
-        let imageUrl = item.imageUrl;
-        let price = item.price;
-        let address = item.address;
-        let rating = item.rating;
-        let description = item.description;
-        console.log(title + " " + imageUrl + " " + price + " " + address + " " + description + ' ' + rating)
-    }
+
     try {
         for (let item of data) {
-            let title = item.title;
-            let imageUrl = item.imageUrl;
-            let price = item.price;
-            let address = item.address;
-            let rating = item.rating;
-            let description = item.description;
+        
+            let {title,location,capacity,contactNo,price,imageUrl,description,rating}=item;
 
             await GardenDetails.create({
-                title, imageUrl, price, address, rating, description
+                title,location,capacity,contactNo,price,imageUrl,description,rating
             })
         }
         return res.status(200).json({ message: "Garden's Details added successfully.." })
@@ -149,7 +116,7 @@ export const viewProfile = async (request, response, next) => {
         if (isNaN(id)) {
             return response.status(400).json({ error: "Invalid ID format" });
         }
-        
+        console.log(id);
         const gardenobj = await GardenDetails.findOne({ where: { gardenId: id }, raw: true });
         if (gardenobj) {
             return response.status(200).json({ message: "View Profile success...", data: gardenobj });
@@ -239,5 +206,3 @@ export const viewAllGarden = async (request, response, next) => {
         return response.status(500).json({ error: "Internal Server Error" });
     }
 };
-
-
