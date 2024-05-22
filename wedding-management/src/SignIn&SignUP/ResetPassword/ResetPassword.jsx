@@ -1,9 +1,7 @@
-// import image from './d4d7c1b4-98c5-4859-836b-294d65cbd56c.be0ab837448c28bf10ffa8eb4955cdf8.webp'
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-// import Header from "./Header";
 import { ToastContainer, toast } from "react-toastify";
 import { Zoom } from "react-toastify";
 

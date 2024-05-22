@@ -26,3 +26,13 @@ router.get("/viewprofile/:id", viewProfile);
 router.get("/viewAllVendors", viewAllGarden);
 
 export default router;
+
+
+/*
+sql
+Copy code
+
+INSERT INTO gardendetails (gardenId, title, location, capacity, contactNo, price, imageUrl, description, createdAt, updatedAt)
+VALUES
+(21, 'Rose Garden', '123 Flower St, Springfield', 50, '123-456-7890', 200, 'https://example.com/rose_garden.jpg', 'A beautiful rose garden perfect for small events.', '2024-05-20 10:00:00', '2024-05-20 10:00:00')
+*/

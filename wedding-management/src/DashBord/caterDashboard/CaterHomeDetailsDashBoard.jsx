@@ -32,7 +32,7 @@ function CaterHomeDetailsDashBoard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("file", file); // Append the file to FormData
+    formData.append("file", file);
     formData.append("name", name);
     formData.append("servicecharge", servicecharge);
     formData.append("email", email);
@@ -41,7 +41,7 @@ function CaterHomeDetailsDashBoard() {
 
     axios.post("http://localhost:3001/cater/addformdetails", formData, {
         headers: {
-            "Content-Type": "multipart/form-data" // Set content type to multipart/form-data
+            "Content-Type": "multipart/form-data"
         }
     }).then(result => {
         toast.success("Data entered successfully")

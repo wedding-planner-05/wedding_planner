@@ -11,7 +11,7 @@ export const signin = async (request, response, next) => {
         const gardenobj = await GardenLogin.findOne({ where: { email }, raw: true });
 
         if (gardenobj && GardenLogin.checkPassword(password, gardenobj.password))
-            return response.status(201).json({ message: "Sign In Success", data : gardenobj });
+            return response.status(201).json({ message: "Sign In Success", data: gardenobj });
 
         return response.status(401).json({ error: "Unauthorized user" });
     } catch (err) {
@@ -29,7 +29,7 @@ export const signup = async (request, response, next) => {
                 return response.status(201).json({ message: "SignUp Sucess...", data: result });
             }).catch(err => {
                 if (err.parent.errno * 1 == 1062)
-                    return response.status(401).json({ message: "Email is already registered...", Erro: (err.parent.errno*1) });
+                    return response.status(401).json({ message: "Email is already registered...", Erro: (err.parent.errno * 1) });
                 return response.status(401).json({ message: "please enter correct details...", Error: err });
             })
     } catch (err) {
@@ -145,16 +145,23 @@ export const viewAllInBulk = (req, res, next) => {
 
 export const viewProfile = async (request, response, next) => {
     try {
-        const id = request.params.id;
-        const gardenobj = await GardenDetails.findOne({ where: { id } });
-        if (gardenobj)
-            return response.status(200).json({ message: "View Profile success...", gardenobj });
-        return response.status(401).json({ error: "Unauthorized user" });
+        const id = parseInt(request.params.id, 10);
+        if (isNaN(id)) {
+            return response.status(400).json({ error: "Invalid ID format" });
+        }
+        
+        const gardenobj = await GardenDetails.findOne({ where: { gardenId: id }, raw: true });
+        if (gardenobj) {
+            return response.status(200).json({ message: "View Profile success...", data: gardenobj });
+        } else {
+            return response.status(404).json({ error: "Garden not found" });
+        }
     } catch (err) {
         console.error(err);
         return response.status(500).json({ error: "Internal Server Error" });
     }
-}
+};
+
 
 export const remove = async (request, response, next) => {
     try {

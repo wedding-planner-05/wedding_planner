@@ -36,6 +36,10 @@ import DressDetailPage from "./VendorsPages/Dress/DressDetailPage.jsx";
 import Loader from "./Components/LoaderComponent/Loader.jsx";
 import axios from "axios";
 import GardenDetailPage from "./VendorsPages/Garden/GardenDetailPage.jsx";
+import CaterProfile from "./DashBord/caterDashboard/CaterProfile.jsx";
+import DressProfile from "./DashBord/DressDashBoard/DressProfile.jsx";
+import SoundProfile from "./DashBord/SoundDashBoard/SoundProfile.jsx";
+import GardenProfile from "./DashBord/Garden/GardenProfile.jsx";
 
 
 
@@ -89,23 +93,27 @@ const App = () => {
       <Route path="/CaterHomeDetailsDashBoard" element={<CaterHomeDetailsDashBoard/>}/>
       <Route path="/CaterResetPassDashBoard" element={<CaterResetPassDashBoard/>}/>
       <Route path="/CaterContactDash" element={<CaterContactDash/>}/>
+      <Route path="/CaterProfile" element={<CaterProfile/>}/>
 
 {/* ----------------------------------------------DRESS DASHBOARD--------------------------------------------- */}
 
       <Route path="/DressHomeDetailsDashBoard" element={<DressHomeDetailsDashBoard/>}/>
       <Route path="/DressResetPassDashBoard" element={<DressResetPassDashBoard/>}/>
       <Route path="/DressContactDashBoard" element={<DressContactDashBoard/>}/>
+      <Route path="/DressProfile" element={<DressProfile/>}/>
 
 {/* ----------------------------------------------SOUND DASHBOARD--------------------------------------------- */}
 
       <Route path="/SoundHomeDetailsDashBoard" element={<SoundHomeDetailsDashBoard/>}/>
       <Route path="/SoundResetPassDashBoard" element={<SoundResetPassDashBoard/>}/>
       <Route path="/SoundContactDashBoard" element={<SoundContactDashBoard/>}/>
+      <Route path="/SoundProfile" element={<SoundProfile/>}/>
 
 {/* ----------------------------------------------GARDEN DASHBOARD--------------------------------------------- */}
       <Route path="/GardenHomeDetailsDashBoard" element={<GardenHomeDetailsDashBoard/>}/>
       <Route path="/GardenResetPassDashBoard" element={<GardenResetPassDashBoard/>}/>
       <Route path="/GardenContactDashBoard" element={<GardenContactDashBoard/>}/>
+      <Route path="/GardenProfile" element={<GardenProfile/>}/>
 
       
      
