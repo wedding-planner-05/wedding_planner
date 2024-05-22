@@ -143,8 +143,8 @@ function SignupVendor() {
                             <div></div>
                         </form>
                         <div style={{ width: '80%' }}  className='d-flex align-item-center justify-content-between flex-wrap mt-2'>
-                        <h6 className='p-2'>Are you a vendor</h6>
-                            <button onClick={() => VendorSignIn()} style={{ borderRadius: '20px', backgroundColor: 'crimson', color: 'white' }} className='btn'> vendor signUp </button>
+                        <h6 className='p-2'>Already Register</h6>
+                            <button onClick={() => VendorSignIn()} style={{ borderRadius: '20px', backgroundColor: 'crimson', color: 'white' }} className='btn'> Sign In </button>
 
                             {/* <div onClick={() => {  }} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNIN</button></div> */}
                         </div>
