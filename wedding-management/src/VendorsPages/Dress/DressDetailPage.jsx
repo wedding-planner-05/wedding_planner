@@ -12,6 +12,7 @@ import { Typography } from '@mui/material'
 import { useAuth0 } from '@auth0/auth0-react';
 import './DressDeatilPage.css'
 import Footer from '../../Components/Footer/Footer';
+import Swal from 'sweetalert2';
 
 const DressDetailPage = () => {
     const {isAuthenticated, loginWithRedirect} = useAuth0()
@@ -19,21 +20,44 @@ const DressDetailPage = () => {
       const data = location.state
       console.log(data);
   
-      const [show,setShow ] = React.useState(false) ;
+      const [showContact,setShowContact ] = React.useState(false) ;
+      const [showEmail,setShowEmail ] = React.useState(false) ;
       const [value,setValue]  = React.useState(2)
       console.log(value);
-  
-      const showName = ()=>{
+      
+      console.log(value);
+      const showName = (value)=>{
+        console.log(value);
         if(!isAuthenticated){
-          const result =  window.confirm('please singn In first')
-          if(result)
-            loginWithRedirect()
+         Swal.fire({
+            title: "Please LogIn First",
+            // text: "You won't be able to revert this!",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "  Ok  "
+          }).then((result) => {
+            if (result.isConfirmed) {
+              loginWithRedirect()
+            }
+          });
+  
         }
-        else{
-          if(show==true)
-            setShow(false)
+        else if(value == 'contact' ){
+          if(showContact==true)
+            setShowContact(false)
           else{
-            setShow(isAuthenticated)
+            setShowContact(isAuthenticated)
+            setShowEmail(false)
+          }
+        }
+        else if(value == 'email'){
+          if(showEmail==true)
+            setShowEmail(false)
+          else{
+            setShowEmail(isAuthenticated)
+            setShowContact(false)
           }
         }
       }
@@ -75,7 +99,7 @@ const DressDetailPage = () => {
         </div>
         <div className="d-flex justify-content-evenly position-relative">
         <button style={{width:'135px',height:'40px'}} onClick={()=>{showName()}} className=" btn btn-success rounded-5 px-3"><FaPhoneAlt /> Contact</button>
-          { show &&  <div className='contact-div p-1'>
+          { showContact &&  <div className='contact-div p-1'>
             <div className='d-flex gap-3 p-1'>
             <FaUserAlt /><h6 > {data.name}</h6>
             </div>
@@ -85,9 +109,17 @@ const DressDetailPage = () => {
             </div>
             </div>
           }
-          <button style={{width:'135px',height:'40px'}} className="btn btn-danger rounded-5 px-3">
-            <FaEnvelope /> Email
-          </button>
+          <button style={{width:'135px',height:'40px'}} onClick={()=>{showName("email")}} className="btn btn-danger rounded-5 px-3"> <FaEnvelope /> Email</button>
+                {showEmail &&  <div className='contact-div p-1'>
+                  <div className='d-flex gap-3 p-1'>
+                  <FaUserAlt /><h6 > {data.type}</h6>
+                  </div>
+                  <div className='d-flex gap-3 p-1 '>
+                  <IoIosCall />
+                  <h6>{data.serviceCharge}</h6>
+                  </div>
+                  </div>
+                }
           </div>
       </div>
     </div>     
