@@ -29,6 +29,15 @@ router.post(
     signin
 );
 
+<<<<<<< HEAD
+=======
+router.post("/createProfile",
+// upload.single("image")
+// ,body("type").notEmpty(),
+body("serviceCharge").notEmpty(),
+// body("description").notEmpty(),
+createProfile) ;
+>>>>>>> 470257cbeb840140de0779b45e93505ef6e3574a
 
 router.post("/resetPassword", resetPassword);
 

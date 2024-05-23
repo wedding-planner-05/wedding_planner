@@ -84,7 +84,6 @@ function SoundContactDashBoard() {
                                 <div className='col '>
                                     <div className="container-fluid ">
                                         <form className="row d-flex align-item-center justify-content-center flex-column">
-
                                             <div className="col-md-12">
                                                 <div className="row mt-5">
                                                     <div className="mb-3 col-md-6">

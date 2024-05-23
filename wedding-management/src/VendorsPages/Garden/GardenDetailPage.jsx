@@ -5,16 +5,18 @@ import AboutUs from "../../Components/AboutUs/AboutUs";
 // import "./SoundVendorDetails.css"
 import { FaUserAlt } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import { Rating } from "@mui/material";
-import { Typography } from "@mui/material";
-import { useAuth0 } from "@auth0/auth0-react";
-import Footer from "../../Components/Footer/Footer";
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import { Rating } from '@mui/material'
+import { Typography } from '@mui/material'
+import { useAuth0 } from '@auth0/auth0-react';
+import Footer from '../../Components/Footer/Footer';
+import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
 
 const GardenDetailPage = () => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, loginWithRedirect ,user} = useAuth0();
+//   console.log(user);
   const location = useLocation();
   const data = location.state;
   console.log(data);
@@ -40,7 +42,7 @@ const GardenDetailPage = () => {
 
   const email = "wedding.planner.techwizards@gmail.com";
   const subject = "Request for Garden Booking";
-  const body = `My name is [Your Name], and I am writing to inquire about the availability of your garden for an event we are planning.
+  const body = `My name is , and I am writing to inquire about the availability of your garden for an event we are planning.
 
 We are interested in booking the garden for a [type of event, e.g., wedding, birthday party, corporate event] on [event date]. Below are the details of the event:
 
