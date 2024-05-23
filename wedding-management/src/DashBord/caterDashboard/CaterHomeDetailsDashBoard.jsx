@@ -24,8 +24,9 @@ function CaterHomeDetailsDashBoard() {
   const [contactno, setContactno] = useState("");
   const [location, setLocation] = useState("");
 
-  let CaterId = sessionStorage.getItem("userId")
+  let loginUserId = sessionStorage.getItem("userID")
 
+  console.log("this is vendore id",loginUserId);
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
@@ -34,6 +35,7 @@ function CaterHomeDetailsDashBoard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
+    formData.append("loginUserId",loginUserId)
     formData.append("file", file);
     formData.append("name", name);
     formData.append("servicecharge", servicecharge);
@@ -41,7 +43,7 @@ function CaterHomeDetailsDashBoard() {
     formData.append("contactno", contactno);
     formData.append("location", location);
 
-    axios.post("http://localhost:3001/cater/addformdetails", formData, {
+    axios.post("http://localhost:3000/cater/cater/addformdetails", formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
