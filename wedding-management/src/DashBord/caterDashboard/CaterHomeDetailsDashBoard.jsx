@@ -59,7 +59,6 @@ function CaterHomeDetailsDashBoard() {
 
   return (
     <>
-      <Navbar />
       <ToastContainer />
       <div className="container-fluid">
         <div className="row ">

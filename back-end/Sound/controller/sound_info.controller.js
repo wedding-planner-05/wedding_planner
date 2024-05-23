@@ -149,11 +149,11 @@ export const createProfile = (request,response,next)=>{
         return response.status(500).json({error :errors.array()})
 
     console.log("In create profile");
-    // let filename = request.file.filename ; //images.png
+    let filename = request.file.filename ; //images.png
     let id = request.body.id
     let name = request.body.name ;
     // let type =request.body.type ;
-    let imageUrl = request.body.image;
+    let imageUrl = 'images/'+filename;
     let serviceCharge = request.body.serviceCharge ;
     let address = request.body.address ;  
     let contactNo = request.body.contactNo ;

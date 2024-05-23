@@ -13,21 +13,11 @@ import { Link } from "react-router-dom";
 import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 function SoundHomeDetailsDashBoard() {
 
   const [file, setFile] = useState(null);
-<<<<<<< HEAD
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [servicecharge, setServicecharge] = useState("");
-  const [address, setAddress] = useState("");
-  const [rating, setRating] = useState("");
-  const [description, setDescription] = useState("");
-  const [contactno, setContactno] = useState("");
-
-  let loginUserId = sessionStorage.getItem("userID")
-=======
   
   const [id,setVendorId] = useState('') ;
   const [name,setName] = useState('')
@@ -41,34 +31,16 @@ function SoundHomeDetailsDashBoard() {
 
   console.log('image url ',image);
   console.log(id , name , type  , serviceCharge , address , description , contactNo);
+
   useEffect(()=>{
       setType(sessionStorage.getItem('caterType')) ;
       setVendorId(sessionStorage.getItem('userID')) ;
   },[])
-  
- 
-  const handleSubmit = (e)=>{
-    alert('hello')
-    e.preventDefault()
-    axios.post("http://localhost:3000/sound/sound/createProfile",{id,name,type,image,serviceCharge,address,description,contactNo})
-    .then(result=>{
-        console.log('succerss');
-    })
-    .catch(err=>{
-      console.log(err);
-    })
-
-    }
-
-
->>>>>>> 470257cbeb840140de0779b45e93505ef6e3574a
 
   function handleFileChange(event) {
-    const selectedFile = event.target.files[0];
-    console.log( 'image is : ',selectedFile);
-    console.log(URL.createObjectURL(selectedFile));
-    setImage(URL.createObjectURL(selectedFile));
-
+    const imagePath = event.target.files[0];
+    console.log( 'image is : ',imagePath);
+    setImage(imagePath);
   }
 
   const handleSubmit = (event) => {
@@ -104,6 +76,7 @@ function SoundHomeDetailsDashBoard() {
 
   return (
     <>
+    <ToastContainer />
 
       <div className="container-fluid">
         <div className="row ">
@@ -246,7 +219,7 @@ function SoundHomeDetailsDashBoard() {
                         </div>
                         <hr />
                         <div className="row">
-                          <div cla  ssName="mb-3 col-6">
+                          <div cla  ssName="mb-3">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -254,7 +227,7 @@ function SoundHomeDetailsDashBoard() {
                               Location
                             </label>
                             <br />
-                            <select
+                            <select className="col-6  p-1"
                             onChange={(e)=>setAddress(e.target.value)}
                               name="select"
                               style={{

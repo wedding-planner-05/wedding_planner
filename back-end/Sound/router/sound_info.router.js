@@ -28,16 +28,13 @@ router.post(
     body("password").notEmpty().isLength({ min: 5 }),
     signin
 );
-
-<<<<<<< HEAD
-=======
 router.post("/createProfile",
-// upload.single("image")
+upload.single("image"), 
 // ,body("type").notEmpty(),
 body("serviceCharge").notEmpty(),
 // body("description").notEmpty(),
 createProfile) ;
->>>>>>> 470257cbeb840140de0779b45e93505ef6e3574a
+
 
 router.post("/resetPassword", resetPassword);
 
@@ -49,14 +46,15 @@ router.post("/createProfile", upload.single("image"), body("vendor_id").notEmpty
 
 router.get("/viewProfile", viewProfile);
 
-router.post("/update", body("vendor_id").notEmpty(), body("vendor_id").notEmpty()
-    , body("type").notEmpty(),
+
+    router.post("/update", body("vendor_id").notEmpty(), body("vendor_id").notEmpty()
+    ,body("type").notEmpty(),
     body("charges").isNumeric(),
     body("description").isAlpha(),
     body("status").isAlpha(), updateDetails);
 
-router.post("/addInBulk", async (req, res) => {
-
+router.post("/addInBulk",async (req, res) => {
+    
     const workbook = xlsx.readFile('products.xlsx');
     const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
     const sheet = workbook.Sheets[sheet_name];
@@ -111,3 +109,15 @@ export default router;
 
 
 
+
+//   router.post(
+//     "/update",
+//     // body("name").notEmpty(),
+//     // body("name").isAlpha(),
+//     // body("contact").isNumeric(),
+//     // body("contact").notEmpty(),
+//     // body("email").isEmail(),
+//     // body("password").isLength({ min: 5 }),
+//     // body("address").notEmpty(),
+//     upDate
+//   );
