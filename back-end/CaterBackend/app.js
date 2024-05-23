@@ -165,7 +165,7 @@ app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
 app.get("/cater/cater/viewAllVendors", async (req, res) => {
     try {
         // CaterFormDetails
-        const data = await CaterDetails.findAll();
+        const data = await CaterFormDetails.findAll();
         console.log(data);
         res.status(200).json({ data });
     } catch (error) {

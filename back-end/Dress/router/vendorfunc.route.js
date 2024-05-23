@@ -7,8 +7,12 @@ let upload = multer({desc : "public/images"});
 const router = express.Router();
 
 
+<<<<<<< HEAD
 router.post("/adddress",upload.single("imageurl"),addDress); 
 
+=======
+router.post("/createProfile",upload.single("imageurl"),addDress); 
+>>>>>>> 10a444711c1cab0024827a40e257f7929261d534
 router.post("/addDressInBulk",addDressInBulk);
 router.post("/addInBulkVendor",addInBulkVendnor);
 

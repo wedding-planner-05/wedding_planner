@@ -86,9 +86,9 @@ const SoundHomePage = () => {
     
    
     <div className='cards'>
-    <div className="main">
-      <h3>Search Vendors</h3>
-      <div className="search">
+    <div style={{width:"70%"}} className="main">
+      {/* <p>Search Vendors</p> */}
+      <div className="search mt-5">
         <TextField
           id="outlined-basic"
           onChange={inputHandler}
@@ -102,7 +102,7 @@ const SoundHomePage = () => {
     {products.filter(filterHandeler).length  === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
             // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
-          <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
+          <div style={{marginTop:'-20px'}} className="d-flex flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
               <div style={{cursor:'pointer'}}
@@ -112,7 +112,7 @@ const SoundHomePage = () => {
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={product.imageUrl}
+                    src={`http://localhost:3006/`+ product.imageUrl}
                     alt={product.name}
                   />
                 </div>
