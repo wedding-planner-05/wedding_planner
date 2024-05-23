@@ -2,6 +2,7 @@ import SoundDetails from "../model/sound_info.js";
 import { validationResult } from "express-validator";
 import sound_vendor from "../model/sound.js";
 import soundVendorDetails from "../model/sound_info.js";
+import xlsx from 'xlsx';
 
 export const addInBulkVendor = async (req, res, next) => {
 
@@ -18,7 +19,7 @@ export const addInBulkVendor = async (req, res, next) => {
         for (let item of data) {
             let email=item.email;
             let password=item.password+'';
-            await GardenLogin.create({
+            await sound_vendor.create({
                 email,password
             })
         }
