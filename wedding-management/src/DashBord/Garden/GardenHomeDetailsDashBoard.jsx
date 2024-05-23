@@ -25,7 +25,7 @@ function GardenHomeDetailsDashBoard() {
   const [ description,setDescription] =  useState('')
   const [ contactNo,setContact] =  useState('')
 
-  console.log(id , name , type,image , serviceCharge , location , description , contactNo);
+  console.log(id , name , type, serviceCharge , location , description , contactNo);
   useEffect(()=>{
     setType(sessionStorage.getItem('caterType')) ;
     setVendorId(sessionStorage.getItem('userID')) ;
@@ -36,7 +36,7 @@ const handleSubmit = (e)=>{
   alert('hello')
   e.preventDefault()
   const formData = new FormData()
-  formData.append('id',id)
+  formData.append('gardenId',id)
   formData.append('name',name)
   formData.append('type',type)
   formData.append('image',image)
@@ -205,6 +205,20 @@ function handleFileChange(event) {
                             <input
                               value={sessionStorage.getItem('email')}
                               type="email"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div className="mb-3 col">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Description
+                            </label>
+                            <input
+                              onChange={(e)=>setDescription(e.target.value)}
+                              type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />

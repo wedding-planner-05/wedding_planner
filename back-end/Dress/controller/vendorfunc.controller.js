@@ -85,15 +85,16 @@ export const resetPassword = async (request, response, next) => {
 
 export const addDress = (request,response,next)=>{
 
-    // console.log("Hello body",request.body);
+    console.log("Hello body",request.body);
 
     let filename = request.file.originalname;
-    console.log(request.file);
+    // console.log(request.file);
     let id = request.body.id
+    let name = request.body.name ;
     let type = request.body.type;
     let title = request.body.title;
     let address = request.body.address
-    let serviceCharge= request.body.price;
+    let serviceCharge= request.body.servicecharge;
     let imageUrl = "images/"+filename;
     let rating = request.body.rating;
     let description = request.body.description;
@@ -101,7 +102,7 @@ export const addDress = (request,response,next)=>{
     // console.log("Hello file",imageurl);
     
     let vendor_id = request.body.vendor_id;
-    VendorFunc.create({id,type,title,address,serviceCharge,imageUrl,rating,description,contactno}).then(result=>{
+    VendorFunc.create({id,name,type,title,address,serviceCharge,imageUrl,rating,description,contactno}).then(result=>{
         return response.status(200).json({data:result.dataValues,message:"dress added  successfull"});
         
     }).catch(err=>{

@@ -83,7 +83,7 @@ function SoundHomeDetailsDashBoard() {
             <div>
               <ul className="list-unstyled">
                 <li>
-                  <Link to="/CaterProfile">
+                  <Link to="/SoundProfile">
                     <strong style={{ color: "black" }}>
                       <CgList />
                     </strong>

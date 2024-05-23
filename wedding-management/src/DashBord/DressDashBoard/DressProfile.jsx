@@ -26,7 +26,8 @@ function CaterProfile() {
 
     useEffect(() => {
         if (userID) {
-            axios.get(`http://localhost:3003/garden/viewprofile/${userID}`).then(result => {
+            axios.get(`http://localhost:3000/dress/dress/viewprofile/${userID}`).then(result => {
+                console.log(result.data.data);
                 setProfile(result.data.data);
                 if (result.data.data) {
                     const { title, price, contactNo } = result.data.data;
@@ -53,50 +54,50 @@ function CaterProfile() {
             <ToastContainer />
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-3 col-lg-2 asidebar">
-                        <div>
-                            <ul className="list-unstyled">
-                                <li>
-                                    <Link to="/CaterProfile">
-                                        <strong style={{ color: "black" }}>
-                                            <CgList />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Profile</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/CaterHomeDetailsDashBoard" className="textnone">
-                                        <strong style={{ color: "black" }}>
-                                            <RxDashboard />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Dashboard</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/CaterResetPassDashBoard" className="textnone">
-                                        <strong style={{ color: "black" }}>
-                                            <RiLockPasswordLine />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Password</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/CaterContactDash" className="textnone">
-                                        <strong style={{ color: "black" }}>
-                                            <RiContactsLine />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Contact-Us</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <strong style={{ color: "black" }}>
-                                        <AiOutlineSetting />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Setting</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div className="col-md-3 col-lg-2  asidebar">
+            <div>
+              <ul className="list-unstyled">
+                <li>
+                  <Link to="/DressProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/DressHomeDetailsDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RxDashboard />
+                    </strong>
+                    <span style={{ color: "black" }}>Dashboard</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/DressResetPassDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RiLockPasswordLine />
+                    </strong>
+                    <span style={{ color: "black" }}>Password</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/DressContactDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RiContactsLine />
+                    </strong>
+                    <span style={{ color: "black" }}>Contact-Us</span>
+                  </Link>
+                </li>
+                <li>
+                  <strong style={{ color: "black" }}>
+                    <AiOutlineSetting />
+                  </strong>
+                  <span style={{ color: "black" }}>Setting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
                     <div className="col content boxborder">
                         <div>
                             <h1>Welcome CaterProfile</h1>

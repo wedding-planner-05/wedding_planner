@@ -2,12 +2,12 @@ import express from "express";
 import {addDress,addDressInBulk,viewAlldresses,viewByColour,viewByPrice,signUp,signIn,resetPassword,addInBulkVendnor} from "../controller/vendorfunc.controller.js";
 import multer from "multer";
 
-let upload = multer({desc : "public/images"});
+let upload = multer({dest : "public/images"});
 
 const router = express.Router();
 
 
-router.post("/createProfile",upload.single("imageurl"),addDress); 
+router.post("/createProfile",upload.single("image"),addDress); 
 
 router.post("/addDressInBulk",addDressInBulk);
 router.post("/addInBulkVendor",addInBulkVendnor);

@@ -202,7 +202,7 @@ export const createProfile = async (request, response, next) => {
     console.log("7777777777777777777777777777777777777777777777777777777");
     console.log(request.body);
     try {
-        const { id, name, location, contactNo, price, description } = request.body;
+        const { gardenId, name, location, contactNo, price, description } = request.body;
         const filename = request.file.filename;
         const imageUrl = 'images/' + filename;
         const title = name
@@ -215,12 +215,14 @@ export const createProfile = async (request, response, next) => {
             // } else {
             //     return response.status(400).json({ message: "Garden Details already exists." });
             // }
-            const createdGarden = await GardenDetails.create({id, title, location, contactNo, price, imageUrl, description});
+            const createdGarden = await GardenDetails.create({gardenId, title, location, contactNo, price, imageUrl, description});
             console.log('hello',createdGarden);
             if(createdGarden)
+                console.log(createdGarden);
                 return response.status(200).json({ message: "Garden Details Added Success...", data: createdGarden });
             } 
             catch (err) {
+                console.log(err);
                 return response.status(500).json({ error: "Internal Server Error...", err });
             }
 };

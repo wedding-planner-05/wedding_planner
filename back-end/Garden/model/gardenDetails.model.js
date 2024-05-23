@@ -12,13 +12,10 @@ const GardenDetails = sequelize.define("gardenDetails", {
     gardenId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true,
-        autoIncrement: true,
         references: {
             model: 'gardenLogins',
             key: 'id'
         }
-
     },
     title: {
         type: DataTypes.STRING,
@@ -33,10 +30,10 @@ const GardenDetails = sequelize.define("gardenDetails", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    capacity: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
+    // capacity: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false
+    // },
     contactNo: {
         type: DataTypes.STRING,
         allowNull: false
