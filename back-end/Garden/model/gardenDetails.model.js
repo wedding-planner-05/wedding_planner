@@ -11,7 +11,7 @@ const GardenDetails = sequelize.define("gardenDetails", {
     },
     gardenId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'gardenLogins',
             key: 'id'
@@ -19,31 +19,31 @@ const GardenDetails = sequelize.define("gardenDetails", {
     },
     title: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     location: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     capacity: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
     },
     contactNo: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     price: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
     },
     imageUrl: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: false
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: false
     }
 });
 

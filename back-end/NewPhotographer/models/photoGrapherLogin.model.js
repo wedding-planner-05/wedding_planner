@@ -22,7 +22,11 @@ const PhotoGrapherLogin = sequelize.define("photoGrapherLogins", {
             this.setDataValue("password", encryptedPassword);
         }
     },
-
+    type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'garden',
+    }
 
 });
 PhotoGrapherLogin.checkPassword = (originalPassword, encryptedPassword) => {

@@ -8,15 +8,12 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
         type : DataTypes.INTEGER ,
         primaryKey:true,
         allowNull : false,
-<<<<<<< HEAD
         autoIncrement:true  
     },
     soundId: {
         type : DataTypes.INTEGER,
         allowNull:true ,
-=======
         autoIncrement:true,
->>>>>>> 470257cbeb840140de0779b45e93505ef6e3574a
         references : {
             model : "sound_vendors",
             key : "id"
@@ -52,10 +49,6 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
         type : DataTypes.STRING,
         allowNull: true
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 470257cbeb840140de0779b45e93505ef6e3574a
 })
 
 
