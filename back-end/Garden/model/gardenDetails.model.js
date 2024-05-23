@@ -7,7 +7,23 @@ const GardenDetails = sequelize.define("gardenDetails", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 143ffeb4a5cb5c1f11591c65fc4e3adc8422ad20
+        autoIncrement: true
+    },
+    gardenId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+<<<<<<< HEAD
+=======
         autoIncrement: true,
+>>>>>>> 10a444711c1cab0024827a40e257f7929261d534
+=======
+        autoIncrement: true,
+>>>>>>> 143ffeb4a5cb5c1f11591c65fc4e3adc8422ad20
         references: {
             model: 'gardenLogins',
             key: 'id'
@@ -17,19 +33,29 @@ const GardenDetails = sequelize.define("gardenDetails", {
     title: {
         type: DataTypes.STRING,
         allowNull: false
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 143ffeb4a5cb5c1f11591c65fc4e3adc8422ad20
     },
     type : {
         type : DataTypes.STRING,
         allowNull : false ,
         defaultValue: 'garden'
+<<<<<<< HEAD
+>>>>>>> 10a444711c1cab0024827a40e257f7929261d534
+=======
+
+>>>>>>> 143ffeb4a5cb5c1f11591c65fc4e3adc8422ad20
     },
     location: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     capacity: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
     },
     contactNo: {
         type: DataTypes.STRING,
@@ -45,7 +71,7 @@ const GardenDetails = sequelize.define("gardenDetails", {
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: false
     }
 });
 

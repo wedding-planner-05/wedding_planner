@@ -1,5 +1,5 @@
 import express from "express";
-import { resetPassword,add, addInBulk, remove, signin, signup, updatePhotographer, updateProfile, viewAllByCategory, viewAllPhotographer, viewProfile } from "../controller/photoGrapherDetails.controller.js";
+import { addInBulkVendor,resetPassword,add, addInBulk, remove, signin, signup, updatePhotographer, updateProfile, viewAllByCategory, viewAllPhotographer, viewProfile } from "../controller/photoGrapherDetails.controller.js";
 import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 
@@ -15,6 +15,8 @@ router.post("/signup", signup);
 router.post("/resetPassword", resetPassword);
 
 router.post("/addInBulk",upload.single('imageUrl') ,addInBulk);
+
+router.post("/addInBulkVendor",addInBulkVendor);
 router.get("/viewAll", viewAllByCategory);
 
 router.post("/add", upload.single("filename"), checkValidation, add);

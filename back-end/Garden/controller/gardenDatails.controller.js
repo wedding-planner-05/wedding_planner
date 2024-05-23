@@ -4,6 +4,32 @@ import xlsx from 'xlsx'
 import GardenLogin from '../model/gardenLogin.model.js';
 import bcrypt from 'bcryptjs';
 
+export const addInBulkVendor = async (req, res, next) => {
+
+    const workbook = xlsx.readFile('VendorSignInData.xlsx');
+    const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
+    const sheet = workbook.Sheets[sheet_name];
+
+    // Convert the sheet to JSON/
+    console.log("Resuest Body",req.body);
+    const data = xlsx.utils.sheet_to_json(sheet);
+    console.log("Data : ",data);
+
+    try {
+        for (let item of data) {
+            let email=item.email;
+            let password=item.password+'';
+            await GardenLogin.create({
+                email,password
+            })
+        }
+        return res.status(200).json({ message: "Add In Bulk SignUp added successfully.." })
+    } catch (err) {
+        console.log(err);
+        return res.status(501).json({ message: "Internal server error" })
+    }
+}
+
 export const signin = async (request, response, next) => {
     try {
         const { email, password } = request.body;
@@ -39,7 +65,6 @@ export const signup = async (request, response, next) => {
         return response.status(500).json({ error: "Internal Server Error...", err });
     }
 }
-
 
 
 export const resetPassword = async (request, response, next) => {
@@ -81,18 +106,18 @@ export const addInBulk = async (req, res, next) => {
     const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
     const sheet = workbook.Sheets[sheet_name];
 
-    console.log(req.body);
     // Convert the sheet to JSON/
+    console.log(req.body);
     const data = xlsx.utils.sheet_to_json(sheet);
     console.log(data);
 
     try {
         for (let item of data) {
         
-            let {title,location,capacity,contactNo,price,imageUrl,description,rating}=item;
+            let {gardenId,title,location,capacity,contactNo,price,imageUrl,description,rating}=item;
 
             await GardenDetails.create({
-                title,location,capacity,contactNo,price,imageUrl,description,rating
+                gardenId,title,location,capacity,contactNo,price,imageUrl,description,rating
             })
         }
         return res.status(200).json({ message: "Garden's Details added successfully.." })
@@ -101,6 +126,7 @@ export const addInBulk = async (req, res, next) => {
         return res.status(501).json({ message: "Internal server error" })
     }
 }
+
 export const viewAllInBulk = (req, res, next) => {
     GardenDetails.findAll().then(result => {
         return res.status(200).json({ message: "Garden Data ", data: result })
