@@ -17,8 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function SoundHomeDetailsDashBoard() {
 
-  const [file, setFile] = useState(null);
-  
+
   const [id,setVendorId] = useState('') ;
   const [name,setName] = useState('')
   const [type ,setType] =  useState('') 
@@ -46,15 +45,15 @@ function SoundHomeDetailsDashBoard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("loginUserId", loginUserId)
-    formData.append("image", file);
+    formData.append("id", id)
+    formData.append("image", image);
     formData.append("name", name);
-    formData.append("servicecharge", servicecharge);
+    formData.append("serviceCharge", serviceCharge);
     formData.append("type", type);
-    formData.append("contactno", contactno);
+    formData.append("contactno", contactNo);
     formData.append("address", address);
     formData.append("description", description);
-    formData.append("rating", rating);
+    // formData.append("rating", rating);
 
     axios.post("http://localhost:3000/sound/sound/createProfile", formData, {
       headers: {
@@ -63,11 +62,11 @@ function SoundHomeDetailsDashBoard() {
     }).then(result => {
       toast.success("Data entered successfully")
       console.log("Data entered successfully", result);
-      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+      console.log(id, image, name, serviceCharge, type, contactNo, address, description,"this is data");
 
     }).catch(err => {
 
-      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+      console.log(loginUserId, file, name, serviceCharge, type, contactno, address, description, rating, "this is data");
       toast.error("Something went wrong");
       console.log("Error:", err);
 
@@ -210,7 +209,7 @@ function SoundHomeDetailsDashBoard() {
                               Email Address
                             </label>
                             <input
-                              value={sessionStorage.getItem('userEmail')}
+                              value={sessionStorage.getItem('email')}
                               type="email"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"

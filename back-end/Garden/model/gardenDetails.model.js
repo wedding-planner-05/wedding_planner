@@ -7,19 +7,28 @@ const GardenDetails = sequelize.define("gardenDetails", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+
         autoIncrement: true
     },
     gardenId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncrement: true,
         references: {
             model: 'gardenLogins',
             key: 'id'
         }
+
     },
     title: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    type : {
+        type : DataTypes.STRING,
+        allowNull : false ,
+        defaultValue: 'garden'
+
     },
     location: {
         type: DataTypes.STRING,
