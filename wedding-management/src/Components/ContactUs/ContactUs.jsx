@@ -62,7 +62,6 @@ const ContactUs = () => {
 
           {/* Contact Form Right Section */}
           <div className="col-lg-12 col-md-6"> 
-            {/* Form Fields */}
             <div className="row m-3">
               <div className="col-sm-6">
                 <div className="form-group text-size-s">
@@ -86,7 +85,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Email and Phone Number Fields */}
             <div className="row m-3">
               <div className="col-sm-6">
                 <div className="form-group text-size-s">
@@ -110,7 +108,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Select Subjects Section */}
             <div className="m-4">
               <h6 className="text-dark">Select Subjects</h6>
               <div className="form-check form-check-inline">
@@ -143,7 +140,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Message Section */}
             <div>
               <h6 className="text-size-s m-4">Message</h6>
               <div className="form-check form-check-inline">
@@ -156,7 +152,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Send Button */}
             <div className="text-end p-4 pe-0">
               <button className="btn text-white" style={{ backgroundColor: "crimson" }}>
                 Send Message

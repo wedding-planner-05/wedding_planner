@@ -129,7 +129,7 @@ const SoundVendorDetails = () => {
                         <strong>
                           <Link
                             to={`https://wa.me/91${
-                              data && data.contactNo
+                              data && data.contactno
                             }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
