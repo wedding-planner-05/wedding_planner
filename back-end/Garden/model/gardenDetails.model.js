@@ -12,6 +12,11 @@ const GardenDetails = sequelize.define("gardenDetails", {
     gardenId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+<<<<<<< HEAD
+=======
+        autoIncrement: true,
+        autoIncrement: true,
+>>>>>>> aa805a5acb8c95a41d7544baab714a6fb5a4ca59
         references: {
             model: 'gardenLogins',
             key: 'id'
