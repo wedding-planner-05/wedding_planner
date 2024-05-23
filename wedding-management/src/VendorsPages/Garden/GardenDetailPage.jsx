@@ -24,7 +24,7 @@ const GardenDetailPage = () => {
   const [value, setValue] = React.useState(2);
 
   console.log(value);
-
+console.log("IMAGE: ",data.imageUrl);
   // const [show, setShow] = React.useState(false);
 
   const showName = (value) => {
@@ -78,7 +78,8 @@ const GardenDetailPage = () => {
               <div>
                 <img
                   className="zoom-img img-fluid"
-                  src={`http://localhost:3003/`+ data.imageUrl}
+                  // src={ data.imageUrl}
+                  src={data.imageUrl? data.imageUrl:(`http://localhost:3003/`+ data.imageUrl)}
                   alt="image not available"
                 />
               </div>
