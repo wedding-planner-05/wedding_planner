@@ -1,7 +1,7 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./SignupVendor.css";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -160,7 +160,7 @@ function SignupVendor() {
         <div className="col-md-4 formwrap">
           <form
             className="d-flex flex-column formdiv text-center  col-md-12"
-            onSubmit={handleSubmit}
+            onSubmit={()=>{handleSubmit(event)}}
           >
             <h3 className="text-center fontstyles">VENDOR SIGNUP</h3>
             <label htmlFor="">
@@ -201,7 +201,7 @@ function SignupVendor() {
                   validatePassword();
                 }}
               />
-              <small className="text-danger" id="passworderror2" ></small>
+              <small className="text-danger" id="passworderror2"></small>
             </label>
 
             {/* <div>
@@ -214,7 +214,17 @@ function SignupVendor() {
             </div> */}
 
             <button
-              onClick={()=>handleSubmit()}
+              onClick={() => {
+                var passworderror2 = document.getElementById("passworderror2");
+                if (passworderror2.innerHTML == "") (()=>{handleSubmit()});
+                else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Field Required..",
+                      });
+                }
+              }}
               type="submit"
               className="btn btn-block mt-4 pt-3 pb-3"
               style={{
