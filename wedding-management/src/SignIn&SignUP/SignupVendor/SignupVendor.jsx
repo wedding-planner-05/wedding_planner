@@ -10,6 +10,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 // import GoogleAuth from './GoogleAuth';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import Swal from 'sweetalert2';
 
 
 function SignupVendor() {
@@ -53,32 +54,53 @@ function SignupVendor() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        if (email == "" || password == "") {
-            toast.error("plese fill the details")
+    
+        if (email === "" || password === "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Please fill in the details'
+            });
         } else {
             axios.post(`http://localhost:3000/${choise}/${choise}/signup`, { email, password })
                 .then(result => {
-                    if (result.status == "201" || result.status == "200") {
-                        toast.success("Sign In Success")
-                        console.log(result);
-                        console.log("success");
-
-                        navigate('/vendorSignIn')
-                    }
-                    else {
-                        toast.error("bad request")
+                    if (result.status === 201 || result.status === 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Sign In Success'
+                        }).then(() => {
+                            console.log(result);
+                            console.log("success");
+                            navigate('/vendorSignIn');
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Bad request'
+                        });
                     }
                 })
                 .catch(err => {
                     console.log(err);
-                 if(err.response.data.Erro == 1062)
-                    return toast.error("user already exists");
-                 toast.error("something went wrong");
-        
+                    if (err.response.data.Erro === 1062) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'User already exists'
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Something went wrong'
+                        });
+                    }
                 });
         }
     };
+    
     const VendorSignIn = () => {
         navigate('/vendorSignIn')
     }

@@ -79,7 +79,7 @@
 // import "./SoundHomePage.css"
 // import Navbar from '../../Components/Navbar/Navbar';
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from "axios";
 import "./CaterPage.css"
 import { FaRupeeSign } from "react-icons/fa";
@@ -174,6 +174,7 @@ const CaterPage = () => {
 
     {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
+
           <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
@@ -212,17 +213,12 @@ const CaterPage = () => {
                 </div>
               </div>
             </section>
-          ))
-          }
+          ))}
     </div>
   }      
 
 </div>
-
-   
     </div>
-      
-  
   </>
 }
 
