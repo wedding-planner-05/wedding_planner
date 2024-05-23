@@ -22,14 +22,14 @@ function SoundHomeDetailsDashBoard() {
   const [name,setName] = useState('')
   const [type ,setType] =  useState('') 
   const [image,setImage] =  useState(null)
-  const [serviceCharge,setServiceCharge] =  useState('')
+  const [servicecharge,setServiceCharge] =  useState('')
   const [address,setAddress] =  useState('')
   const [ description,setDescription] =  useState('')
-  const [ contactNo,setContact] =  useState('')
+  const [ contactno,setContact] =  useState('')
   console.log('vendor Id : ',id)
 
   console.log('image url ',image);
-  console.log(id , name , type  , serviceCharge , address , description , contactNo);
+  console.log(id , name , type  , servicecharge , address , description , contactno);
 
   useEffect(()=>{
       setType(sessionStorage.getItem('caterType')) ;
@@ -45,15 +45,15 @@ function SoundHomeDetailsDashBoard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("loginUserId", loginUserId)
-    formData.append("image", file);
+    formData.append("id", id)
     formData.append("name", name);
+    formData.append("address", address);
+    formData.append("image", image);
     formData.append("servicecharge", servicecharge);
     formData.append("type", type);
     formData.append("contactno", contactno);
-    formData.append("address", address);
     formData.append("description", description);
-    formData.append("rating", rating);
+    // formData.append("rating", rating);
 
     axios.post("http://localhost:3000/dress/dress/createProfile", formData, {
       headers: {
@@ -62,11 +62,11 @@ function SoundHomeDetailsDashBoard() {
     }).then(result => {
       toast.success("Data entered successfully")
       console.log("Data entered successfully", result);
-      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+      console.log(id, image, name, servicecharge, type, contactno, address, description, "this is data");
 
     }).catch(err => {
 
-      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+      console.log(id, image, name, servicecharge, type, contactno, address, description, "this is data");
       toast.error("Something went wrong");
       console.log("Error:", err);
 
@@ -83,7 +83,7 @@ function SoundHomeDetailsDashBoard() {
             <div>
               <ul className="list-unstyled">
                 <li>
-                  <Link to="/CaterProfile">
+                  <Link to="/DressProfile">
                     <strong style={{ color: "black" }}>
                       <CgList />
                     </strong>
@@ -91,7 +91,7 @@ function SoundHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/SoundHomeDetailsDashBoard" className="textnone">
+                  <Link to="/DressHomeDetailsDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RxDashboard />
                     </strong>
@@ -99,7 +99,7 @@ function SoundHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/SoundResetPassDashBoard" className="textnone">
+                  <Link to="/DressResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
@@ -107,7 +107,7 @@ function SoundHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/SoundContactDashBoard" className="textnone">
+                  <Link to="/DressContactDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiContactsLine />
                     </strong>
@@ -160,7 +160,7 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <input
                               onChange={(e)=>setServiceCharge(e.target.value)}
-                              type="text"
+                              type="number"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
@@ -209,8 +209,22 @@ function SoundHomeDetailsDashBoard() {
                               Email Address
                             </label>
                             <input
-                              value={sessionStorage.getItem('userEmail')}
+                              value={sessionStorage.getItem('email')}
                               type="email"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div className="mb-3 col">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Description
+                            </label>
+                            <input
+                              onChange={(e)=>setDescription(e.target.value)}
+                              type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />

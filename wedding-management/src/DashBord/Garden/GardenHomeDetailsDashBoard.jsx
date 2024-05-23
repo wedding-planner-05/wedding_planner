@@ -26,50 +26,26 @@ function GardenHomeDetailsDashBoard() {
   const [ description,setDescription] =  useState('')
   const [ contactNo,setContact] =  useState('')
 
-  console.log(id , name , type,image , serviceCharge , location , description , contactNo);
+  console.log(id , name , type, serviceCharge , location , description , contactNo);
   useEffect(()=>{
     setType(sessionStorage.getItem('caterType')) ;
     setVendorId(sessionStorage.getItem('userID')) ;
 },[])
 
 
-// const handleSubmit = (e)=>{
 
-//   e.preventDefault()
-//   const formData = new FormData()
-//   formData.append('id',id)
-//   formData.append('name',name)
-//   formData.append('type',type)
-//   formData.append('image',image)
-//   formData.append('price',serviceCharge)
-//   formData.append('location',location)
-//   formData.append('description',description)
-//   formData.append('contactNo',contactNo)
-//   console.log('hello---3');
-//   axios.post("http://localhost:3000/garden/garden/createProfile",formData,{
-//     headers: {
-//       "Content-Type": "multipart/form-data"
-//   }
-//   }).then(result=>{
-//     console.log(result.data.data);
-//   }).catch(err=>{
-//     console.log(err);
-//   })
-// console.log('hellokjskj');
-//   }
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-  const formData = new FormData();
-  formData.append('id', id);
-  formData.append('name', name);
-  formData.append('type', type);
-  formData.append('image', image);
-  formData.append('price', serviceCharge);
-  formData.append('location', location);
-  formData.append('description', description);
-  formData.append('contactNo', contactNo);
+const handleSubmit = (e)=>{
+  alert('hello')
+  e.preventDefault()
+  const formData = new FormData()
+  formData.append('gardenId',id)
+  formData.append('name',name)
+  formData.append('type',type)
+  formData.append('image',image)
+  formData.append('price',serviceCharge)
+  formData.append('location',location)
+  formData.append('description',description)
+  formData.append('contactNo',contactNo)
 
   console.log('hello---3');
 
@@ -244,6 +220,20 @@ function handleFileChange(event) {
                             <input
                               value={sessionStorage.getItem('email')}
                               type="email"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div className="mb-3 col">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Description
+                            </label>
+                            <input
+                              onChange={(e)=>setDescription(e.target.value)}
+                              type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />

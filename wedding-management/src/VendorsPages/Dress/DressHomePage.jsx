@@ -35,7 +35,6 @@ useEffect(()=>{
       console.log(err)
     })
 },[])
-
 const handlerViewall = (min, max) => {
   setMinValue(min);
   setMaxValue(max);
@@ -95,9 +94,10 @@ let inputHandler = (e) => {
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={product.imageUrl}
+                    src={`http://localhost:3002/`+ product.imageUrl}
                     alt={product.name}
                   />
+                  
                 </div>
                 <div className="p-1 font-size">
                   <div className="row">

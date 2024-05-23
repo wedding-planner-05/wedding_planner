@@ -27,11 +27,11 @@ function DressContactDashBoard() {
             <div>
               <ul className="list-unstyled">
                 <li>
-                  <Link to="/DressProfile" className="textnone">
+                  <Link to="/DressProfile">
                     <strong style={{ color: "black" }}>
-                      <RxDashboard />
+                      <CgList />
                     </strong>
-                    <span style={{ color: "black" }}>profile</span>
+                    <span style={{ color: "black" }}>Profile</span>
                   </Link>
                 </li>
                 <li>

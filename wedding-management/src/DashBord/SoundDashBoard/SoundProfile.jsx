@@ -27,6 +27,8 @@ function SoundProfile() {
     useEffect(() => {
         if (userID) {
             axios.get(`http://localhost:3000/sound/sound/viewprofiles/${userID}`).then(result => {
+
+            console.log(result.data);
                 setProfile(result.data.data);
                 if (result.data.data) {
                     const { title, price, contactNo } = result.data.data;

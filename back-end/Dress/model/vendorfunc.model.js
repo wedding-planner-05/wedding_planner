@@ -57,7 +57,7 @@ const VendorFunc = sequelize.define("dress_details",{
 
 })
 sequelize.sync().then(()=>{
-
+    
 console.log("dress details table created ");
 }).catch(()=>{
     console.log("dress details table not created")
