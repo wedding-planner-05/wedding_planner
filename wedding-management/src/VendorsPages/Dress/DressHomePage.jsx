@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-// import "./Dress.css";
+import { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-
 
 const DressHomePage = () => {
   
@@ -69,7 +66,7 @@ const handlerViewall = (min, max) => {
           <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
             <section onClick={()=>DressVendorDetails(product)} key={index} className="main-page m-3">
-              <div
+              <div style={{cursor:'pointer'}}
                 key={index}
                 className="p-2 row details-block "
               >
@@ -107,10 +104,7 @@ const handlerViewall = (min, max) => {
           ))
           }
     </div>
-  }      
-
-
-   
+  }        
     </div>
   </>
 };

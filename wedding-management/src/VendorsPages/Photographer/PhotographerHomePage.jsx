@@ -191,7 +191,7 @@ const PhotographerHomePage = () => {
           <div className="container-fluid cards d-flex flex-wrap justify-content-evenly align-items-center pt-5">
             {products.filter(filterHandler).map((product, index) => (
               <section onClick={() => PhotoVendorDetails(product)} key={index} className="main-page m-3">
-                <div key={index} className="p-2 row details-block ">
+                <div style={{cursor:'pointer'}} key={index} className="p-2 row details-block ">
                   <div className="p-0">
                     <img className="custom-img" style={{ width: "100%", height: "200px" }} src={product.imageUrl} alt={product.title} />
                   </div>

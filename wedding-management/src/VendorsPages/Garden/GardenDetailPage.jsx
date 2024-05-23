@@ -2,37 +2,58 @@ import { FaEnvelope, FaPhoneAlt, FaStar, FaWhatsapp } from "react-icons/fa";
 import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import AboutUs from "../../Components/AboutUs/AboutUs";
-// import "./SoundVendorDetails.css"
-import { FaUserAlt } from "react-icons/fa";
-import { IoIosCall } from "react-icons/io";
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import { Rating } from '@mui/material'
-import { Typography } from '@mui/material'
-import { useAuth0 } from '@auth0/auth0-react';
-import Footer from '../../Components/Footer/Footer';
-import Swal from 'sweetalert2';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import { Rating } from "@mui/material";
+import { Typography } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
+import Footer from "../../Components/Footer/Footer";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const GardenDetailPage = () => {
-  const { isAuthenticated, loginWithRedirect ,user} = useAuth0();
-//   console.log(user);
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
   const data = location.state;
   console.log(data);
 
-  const [show, setShow] = React.useState(false);
+  const [showContact, setShowContact] = React.useState(false);
+
+  const [showEmail, setShowEmail] = React.useState(false);
+
   const [value, setValue] = React.useState(2);
+
   console.log(value);
 
-  const showName = () => {
+  // const [show, setShow] = React.useState(false);
+
+  const showName = (value) => {
+    console.log(value);
     if (!isAuthenticated) {
-      const result = window.confirm("please singn In first");
-      if (result) loginWithRedirect();
-    } else {
-      if (show == true) setShow(false);
+      Swal.fire({
+        title: "Please LogIn First",
+        // text: "You won't be able to revert this!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "  Ok  ",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          loginWithRedirect();
+        }
+      });
+    } else if (value == "contact") {
+      if (showContact == true) setShowContact(false);
       else {
-        setShow(isAuthenticated);
+        setShowContact(isAuthenticated);
+        setShowEmail(false);
+      }
+    } else if (value == "email") {
+      if (showEmail == true) setShowEmail(false);
+      else {
+        setShowEmail(isAuthenticated);
+        setShowContact(false);
       }
     }
   };
@@ -42,39 +63,11 @@ const GardenDetailPage = () => {
 
   const email = "wedding.planner.techwizards@gmail.com";
   const subject = "Request for Garden Booking";
-  const body = `My name is , and I am writing to inquire about the availability of your garden for an event we are planning.
+  const body = `My name is , and I am writing to inquire about the availability of your Sound/DJ for an event we are planning.`;
+  const url = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
+    body
+  )}`;
 
-We are interested in booking the garden for a [type of event, e.g., wedding, birthday party, corporate event] on [event date]. Below are the details of the event:
-
-- Date: [Event Date]
-- Time: [Start Time] to [End Time]
-- Number of Guests: [Estimated Number of Guests]
-- Event Requirements:
-  - Seating arrangements for [number of guests]
-  - Decoration permissions and guidelines
-  - Catering facilities and restrictions (if any)
-  - Availability of electricity and lighting
-  - Parking facilities
-- Any additional charges or policies we should be aware of
-
-We are particularly drawn to your venue because of [reason, e.g., its beautiful landscaping, convenient location, positive reviews]. We believe it would be the perfect setting for our event.
-
-Could you please provide information on the availability of the garden on the specified date and a detailed quote for the booking? Additionally, we would appreciate it if you could share any terms and conditions related to the booking process.
-
-If possible, we would like to schedule a visit to the garden to discuss the details in person and to see the venue firsthand. Please let us know a convenient time for you.
-
-Thank you for your time and assistance. We look forward to your response.
-
-Best regards,
-
-[Your Full Name]
-`;
-
-  console.log(body);
-
-  // const encodedMessage = encodeURIComponent(message);
-
-  console.log("body ", body);
   return (
     <>
       {/* <Navbar/> */}
@@ -90,22 +83,21 @@ Best regards,
                 />
               </div>
 
-              <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
+              <div className="position-absolute block-details-1 p-3 mb-4 top-100 translate-middle">
                 <h5>{data.title}</h5>
-                <small className="mb-5">
+                {/* <small className="mb-5">
                   <FaStar color="green" />
                   {data.rating}
-                </small>
-                <br />
+                </small> */}
+                {/* <br /> */}
                 <small>
-                  <FaLocationDot color="green" />
-                  {data.location}
-                </small>{" "}
+                  <FaLocationDot color="green" /> {data.location}
+                </small>
                 <br />
               </div>
             </div>
 
-            <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
+        <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
               <div className="custom-label mb-3 p-2 " htmlFor="">
                 Starting packages
               </div>
@@ -116,20 +108,24 @@ Best regards,
               <div className="d-flex justify-content-evenly position-relative">
                 <button
                   onClick={() => {
-                    showName();
+                    showName("contact");
                   }}
-                  className=" btn btn-success rounded-5 px-3"
+                  className="btn btn-success rounded-5 px-3"
                 >
                   <FaPhoneAlt /> Contact
                 </button>
-                {
+                {showContact && (
                   <div className="contact-div p-1">
                     <ul className="d-flex flex gap-2 p-1">
                       <li>
                         <FaPhoneAlt color="blue" />{" "}
-                        <strong >
-                        <Link style={{textDecoration:"none"}} to={"tel:+91 93023 18373"} >{data.contactNo}</Link>
-
+                        <strong>
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to={"tel:+91 93023 18373"}
+                          >
+                            {data.contactNo}
+                          </Link>
                         </strong>
                       </li>
                       <li>
@@ -153,24 +149,34 @@ Best regards,
                       {/* <IoIosCall /> */}
                     </div>
                   </div>
-                }
+                )}
+
                 <button
-                  style={{ width: "135px", height: "40px" }}
-                  className="btn btn-danger rounded-5 px-3"
+                  // style={{ width: "135px", height: "40px" }}
+                  className="btn btn-danger rounded-5 px-4 "
+                  onClick={() => {
+                    showName("email");
+                  }}
                 >
-                  <Link
-                    to={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
-                      body
-                    )}`}
-                    target="_blank"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    <FaEnvelope /> Email
-                  </Link>
+                  {isAuthenticated ? (
+                    <>
+                      <Link
+                        to={url}
+                        target="_blank"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <FaEnvelope /> Email
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <FaEnvelope /> Email
+                    </>
+                  )}
                 </button>
               </div>
             </div>
-            
+
           </div>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>

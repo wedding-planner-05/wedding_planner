@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
 const GardenHomePage = () => {
@@ -11,11 +11,7 @@ const GardenHomePage = () => {
   const [maxValue,setMaxValue] = useState(1000000) ;
   const [isProductAvailable, setProductAvailable] = useState(true);
 
-
   const navigate = useNavigate()
-
-  const location = useLocation() ;
-  const data = location.state ; 
 
   useEffect(()=>{
       axios.get("http://localhost:3000/garden/garden/viewAllVendors").then((response)=>{
@@ -62,7 +58,7 @@ return  <>
         <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
         {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
           <section onClick={()=>GardenVendorDetails(product)} key={index} className="main-page m-3">
-            <div
+            <div style={{cursor:'pointer'}}
               key={index}
               className="p-2 row details-block "
             >
