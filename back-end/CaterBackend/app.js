@@ -119,16 +119,16 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
 
 
 app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
-    const { name, servicecharge, email, contactno, location } = req.body;
+    const { id, loginUserid, name, servicecharge, email, contactno, location } = req.body;
     const filename = req.file?.filename;
     if (!filename) {
         return res.status(400).json({ error: "File upload failed" });
     }
     const imageUrl = `images/${filename}`;
-    // CaterDetails
-    CaterFormDetails.create({ name, servicecharge, email, contactno, location, imageUrl })
+
+    CaterFormDetails.create({ id, loginUserid, name, servicecharge, email, contactno, location, imageUrl })
         .then(result => {
-            res.status(201).json({ message: "Data saved successfully" });
+            res.status(201).json({ message: "Data saved successfully", data: result });
         })
         .catch(err => {
             console.error("Error while saving data:", err);
@@ -148,6 +148,25 @@ app.get("/cater/cater/viewAllVendors", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+app.get("/cater/viewprofile/:id", async (request, response, next) => {
+    try {
+        const id = parseInt(request.params.id, 10);
+        if (isNaN(id)) {
+            return response.status(400).json({ error: "Invalid ID format" });
+        }
+        console.log(id);
+        const caterobj = await CaterFormDetails.findOne({ where: { loginUserId: id }, raw: true });
+        if (caterobj) {
+            return response.status(200).json({ message: "View Profile success...", data: caterobj });
+        } else {
+            return response.status(404).json({ error: "Garden not found" });
+        }
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error" });
+    }
+})
 // app.get("/cater/cater/viewAllVendorss", async (req, res) => {
 //     try {
 //         const data = await CaterFormDetails.findAll();
@@ -160,9 +179,56 @@ app.get("/cater/cater/viewAllVendors", async (req, res) => {
 // });
 
 
-app.post("/cater/addinBulk", async (req, res, next) => {
+// app.post("/cater/addinBulk", async (req, res, next) => {
 
-    const workbook = xlsx.readFile('dataregardCater1.xlsx');
+//     const workbook = xlsx.readFile('dataregardCater2.xlsx');
+//     const sheet_name = workbook.SheetNames[0];
+//     const sheet = workbook.Sheets[sheet_name];
+
+//     console.log(req.body);
+
+//     const data = xlsx.utils.sheet_to_json(sheet);
+//     console.log(data);
+//     var i = 0;
+//     for (let item of data) {
+//         let id = item.name
+//         let loginUserId = item.name
+//         let name = item.name;
+//         let servicecharge = item.servicecharge;
+//         let email = item.email
+//         let contactno = item.contactno;
+//         let location = item.location
+//         let imageUrl = item.imageUrl;
+
+//         console.log("-------------------------------------------------------------------------------------");
+//         console.log(id + " " + loginUserId + " " + name + " " + servicecharge + " " + email + " " + " " + contactno + " " + location + " " + imageUrl);
+//         console.log("-------------------------------------------------------------------------------------");
+//     }
+//     try {
+//         for (let item of data) {
+//             let id = item.name
+//             let loginUserId = item.name
+//             let name = item.name;
+//             let servicecharge = item.servicecharge;
+//             let email = item.email
+//             let contactno = item.contactno;
+//             let location = item.location
+//             let imageUrl = item.imageUrl;
+
+//             console.log(id + " " + loginUserId + " " + name + " " + servicecharge + " " + email + " " + " " + contactno + " " + location + " " + imageUrl);
+//             console.log("this is your image url so check it", imageUrl);
+//             await CaterFormDetails.create({
+//                 id, loginUserId, name, servicecharge, email, contactno, location, imageUrl
+//             })
+//         }
+//         return res.status(200).json({ message: "product added successfully.." })
+//     } catch (err) {
+//         console.log(err);
+//         return res.status(501).json({ message: "Internal server error" })
+//     }
+// })
+app.post("/cater/addinBulk", async (req, res, next) => {
+    const workbook = xlsx.readFile('dataregardCater2.xlsx');
     const sheet_name = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheet_name];
 
@@ -170,41 +236,60 @@ app.post("/cater/addinBulk", async (req, res, next) => {
 
     const data = xlsx.utils.sheet_to_json(sheet);
     console.log(data);
-    var i = 0;
-    for (let item of data) {
 
-        let name = item.name;
-        let servicecharge = item.servicecharge;
-        let description = item.description;
-        let contactno = item.contactno;
-        let categoryId = item.categoryId;
-        let imageUrl = item.imageUrl;
-
-        console.log("-------------------------------------------------------------------------------------");
-        console.log(name + " " + servicecharge + " " + description + " " + " " + contactno + " " + categoryId + " " + imageUrl);
-        console.log("-------------------------------------------------------------------------------------");
-    }
     try {
         for (let item of data) {
+            let id = item.id
+            let loginUserId = item.loginUserId;  // Assuming loginUserId is correctly provided in the Excel
             let name = item.name;
             let servicecharge = item.servicecharge;
-            let description = item.description;
+            let email = item.email;
             let contactno = item.contactno;
-            let categoryId = item.categoryId;
+            let location = item.location;
             let imageUrl = item.imageUrl;
 
-            console.log(name + " " + servicecharge + " " + description + " " + " " + contactno + " " + categoryId + " " + imageUrl);
+            console.log(loginUserId + " " + name + " " + servicecharge + " " + email + " " + contactno + " " + location + " " + imageUrl);
             console.log("this is your image url so check it", imageUrl);
-            await CaterDetails.create({
-                name, servicecharge, description, contactno, categoryId, imageUrl
-            })
+
+            await CaterFormDetails.create({
+                id,
+                loginUserId,
+                name,
+                servicecharge,
+                email,
+                contactno,
+                location,
+                imageUrl
+            });
         }
-        return res.status(200).json({ message: "product added successfully.." })
+        return res.status(200).json({ message: "Caterer details added successfully.." });
     } catch (err) {
         console.log(err);
-        return res.status(501).json({ message: "Internal server error" })
+        return res.status(501).json({ message: "Internal server error" });
+    }
+});
+
+
+app.get("/viewProfile/:id", async (request, response, next) => {
+    try {
+        const id = parseInt(request.params.id, 10);
+        if (isNaN(id)) {
+            return response.status(400).json({ error: "Invalid ID format" });
+        }
+        console.log(id);
+        const CaterDetailss = await CaterDetails.findOne({ where: { gardenId: id }, raw: true });
+        if (gardenobj) {
+            return response.status(200).json({ message: "View Profile success...", data: CaterDetailss });
+        } else {
+            return response.status(404).json({ error: "Garden not found" });
+        }
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error" });
     }
 })
+
+
 const PORT = 3001;
 
 app.listen(PORT, () => {
