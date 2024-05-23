@@ -16,9 +16,50 @@ import Navbar from "../../Components/Navbar/Navbar";
 
 function SoundHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [servicecharge, setServicecharge] = useState("");
+  const [address, setAddress] = useState("");
+  const [rating, setRating] = useState("");
+  const [description, setDescription] = useState("");
+  const [contactno, setContactno] = useState("");
+
+  let loginUserId = sessionStorage.getItem("userID")
+
   function handleFileChange(event) {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("loginUserId", loginUserId)
+    formData.append("image", file);
+    formData.append("name", name);
+    formData.append("servicecharge", servicecharge);
+    formData.append("type", type);
+    formData.append("contactno", contactno);
+    formData.append("address", address);
+    formData.append("description", description);
+    formData.append("rating", rating);
+
+    axios.post("http://localhost:3000/sound/sound/createProfile", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(result => {
+      toast.success("Data entered successfully")
+      console.log("Data entered successfully", result);
+      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+
+    }).catch(err => {
+
+      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+      toast.error("Something went wrong");
+      console.log("Error:", err);
+
+    });
   }
 
   return (

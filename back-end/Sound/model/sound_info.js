@@ -8,9 +8,7 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
         type : DataTypes.INTEGER ,
         primaryKey:true,
         allowNull : false,
-        autoIncrement:true
-        
-        
+        autoIncrement:true  
     },
     soundId: {
         type : DataTypes.INTEGER,
@@ -53,11 +51,6 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
         type : DataTypes.STRING,
         allowNull: true
     }
-
-    // status : {
-    //     type : DataTypes.BOOLEAN ,
-    //     allowNull :false 
-    // }
 })
 
 sequelize.sync().then(()=>{

@@ -156,7 +156,7 @@ app.get("/cater/viewprofile/:id", async (request, response, next) => {
             return response.status(400).json({ error: "Invalid ID format" });
         }
         console.log(id);
-        const caterobj = await CaterFormDetails.findOne({ where: { loginUserid: id }, raw: true });
+        const caterobj = await CaterFormDetails.findOne({ where: { loginUserId: id }, raw: true });
         if (caterobj) {
             return response.status(200).json({ message: "View Profile success...", data: caterobj });
         } else {

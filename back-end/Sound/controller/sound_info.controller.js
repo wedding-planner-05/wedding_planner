@@ -1,6 +1,7 @@
 import SoundDetails from "../model/sound_info.js";
 import { validationResult } from "express-validator";
 import sound_vendor from "../model/sound.js";
+import soundVendorDetails from "../model/sound_info.js";
 
 export const resetPassword = async (request, response, next) => {
   try {
@@ -250,3 +251,23 @@ export const viewAllVendors =async (request,response,next)=>{
         console.log(error);
     }
 }
+
+
+export const viewProfiles = async (request, response, next) => {
+    try {
+        const id = parseInt(request.params.id, 10);
+        if (isNaN(id)) {
+            return response.status(400).json({ error: "Invalid ID format" });
+        }
+        console.log(id);
+        const SoundObj = await soundVendorDetails.findOne({ where: { soundId: id }, raw: true });
+        if (gardenobj) {
+            return response.status(200).json({ message: "View Profile success...", data: SoundObj });
+        } else {
+            return response.status(404).json({ error: "Garden not found" });
+        }
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error" });
+    }
+};

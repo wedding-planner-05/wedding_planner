@@ -1,5 +1,5 @@
 import express from 'express' ;
-import bodyParser from 'body-parser'; //it convert raw data into usable formate,it is used to encode data from server 
+import bodyParser from 'body-parser'; 
 import SoundRouter from './router/sound.router.js';
 import SoundInfoRouter from './router/sound_info.router.js';
 import cors from 'cors'

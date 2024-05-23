@@ -44,7 +44,6 @@ function CaterProfile() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add form submission logic here
         console.log("Form submitted:", { name, serviceCharge, email, contactNo, location, file });
         toast.success("Profile updated successfully!");
     };
@@ -166,9 +165,9 @@ function CaterProfile() {
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-center">
-                                            <button type="reset" className="btn btn-info m-3">Reset</button>
-                                            <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
-                                            <button type="button" className="btn btn-warning m-3">Save</button>
+                                            <button type="reset" className="btn btn-info m-3">Update</button>
+                                            <button type='submit' className="btn btn-block mt-4 pt-3 pb-3 col-md-4" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
+                                            {/* <button type="button" className="btn btn-warning m-3">Save</button> */}
                                         </div>
                                     </form>
                                 </div>
