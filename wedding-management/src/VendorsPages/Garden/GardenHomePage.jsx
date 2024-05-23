@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './GardenDetail.css'
-import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
 const GardenHomePage = () => {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
 
 const DressHomePage = () => {
   
@@ -13,6 +14,7 @@ const DressHomePage = () => {
 //   }
   
 const [products, setProducts] = useState([]);
+const [inputText, setInputText] = useState("");
 
 const navigate = useNavigate()
 const [minValue,setMinValue] = useState(0) ;
@@ -39,6 +41,11 @@ const handlerViewall = (min, max) => {
   setMaxValue(max);
   setProductAvailable(true); // Reset product availability flag
 }
+let inputHandler = (e) => {
+  var lowerCase = e.target.value.toLowerCase();
+  console.log(lowerCase);
+  setInputText(lowerCase);
+};
 
   const filterHandeler = (ele)=>{
       // return priceFilter.price? priceFilter.operation=='<=' ? ele.serviceCharge <= priceFilter.price : ele.serviceCharge >= priceFilter.price  : true
@@ -61,10 +68,25 @@ const handlerViewall = (min, max) => {
     </div> 
     </div>
 
+    <div className="cards">
+    <div style={{width:"70%"}} className="main">
+      {/* <p>Search Vendors</p> */}
+      <div className="search mt-5">
+        <TextField
+          id="outlined-basic"
+          onChange={inputHandler}
+          variant="standard"
+          fullWidth
+          label="search"
+        />
+      </div>
+      {/* <List input={inputText} /> */}
+    </div>
+
     {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
-          <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
-          {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
+          <div className="d-flex flex-wrap justify-content-evenly align-items-center">
+          {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>DressVendorDetails(product)} key={index} className="main-page m-3">
               <div style={{cursor:'pointer'}}
                 key={index}
@@ -106,6 +128,8 @@ const handlerViewall = (min, max) => {
     </div>
   }        
     </div>
+    </div>
+
   </>
 };
 

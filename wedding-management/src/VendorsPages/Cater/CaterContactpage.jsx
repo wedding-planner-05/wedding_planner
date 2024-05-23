@@ -60,7 +60,7 @@ function CaterContactpage() {
                 <div>
                   <img
                     className="zoom-img img-fluid"
-                    src={state.imageUrl}
+                    src={`http://localhost:3001/`+data.imageUrl}
                     alt="image not available"
                   />
                 </div>

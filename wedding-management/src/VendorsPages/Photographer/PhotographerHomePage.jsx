@@ -195,7 +195,7 @@ const PhotographerHomePage = () => {
         </div>
 
       <div className="cards">
-      <div style={{width:"70%"}} className="main">
+      <div style={{width:"70%"}} className="main mt-5">
       {/* <p>Search Vendors</p> */}
       <div className="search mt-5">
         <TextField
@@ -211,7 +211,7 @@ const PhotographerHomePage = () => {
 
         {products.filter(filterHandler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
-          <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center pt-5">
+          <div style={{marginTop:'-50px'}} className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center pt-5">
             {products.filter((ele)=>filterHandler(ele) && ele.title.toLowerCase().includes(inputText.toLowerCase()) ) .map((product, index) => (
               <section onClick={() => PhotoVendorDetails(product)} key={index} className="main-page m-3">
                 <div style={{cursor:'pointer'}} key={index} className="p-2 row details-block ">
