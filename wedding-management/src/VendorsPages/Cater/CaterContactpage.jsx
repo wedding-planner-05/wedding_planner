@@ -10,44 +10,60 @@ import Swal from 'sweetalert2';
 import { useAuth0 } from '@auth0/auth0-react';
 function CaterContactpage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const location = useLocation();
+  const data = location.state;
+  console.log(data);
 
-    const { state } = useLocation();
-    console.log(state, "this is state data");
+  const [showContact, setShowContact] = React.useState(false);
 
-    const location = useLocation();
-    const data = location.state;
-    console.log(data);
+  const [showEmail, setShowEmail] = React.useState(false);
 
+  const [value, setValue] = React.useState(2);
 
-    const [show, setShow] = React.useState(false);
-    const showName = () => {
-      if (!isAuthenticated) {
-        Swal.fire({
-          title: 'Please Sign In First',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Sign In',
-          cancelButtonText: 'Cancel'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            loginWithRedirect();
-          }
-        });
-      } else {
-        if (show === true) {
-          setShow(false);
-        } else {
-          setShow(isAuthenticated);
+  console.log(value);
+
+  // const [show, setShow] = React.useState(false);
+
+  const showName = (value) => {
+    console.log(value);
+    if (!isAuthenticated) {
+      Swal.fire({
+        title: "Please LogIn First",
+        // text: "You won't be able to revert this!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "  Ok  ",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          loginWithRedirect();
         }
+      });
+    } else if (value == "contact") {
+      if (showContact == true) setShowContact(false);
+      else {
+        setShowContact(isAuthenticated);
+        setShowEmail(false);
       }
-    };
-    const message ="Hello, I'm interested in your services.And I want to Book a Garden";
-    const email = "wedding.planner.techwizards@gmail.com";
-    const subject = "Request for Garden Booking";
-    const body = `My name is , and I am writing to inquire about the availability of your CCater for an event we are planning.`;
-    const url =  `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
-      body
-    )}`;
+    } else if (value == "email") {
+      if (showEmail == true) setShowEmail(false);
+      else {
+        setShowEmail(isAuthenticated);
+        setShowContact(false);
+      }
+    }
+  };
+
+  const message =
+    "Hello, I'm interested in your services.And I want to Book a Garden";
+
+  const email = "wedding.planner.techwizards@gmail.com";
+  const subject = "Request for Garden Booking";
+  const body = `My name is , and I am writing to inquire about the availability of your Sound/DJ for an event we are planning.`;
+  const url = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
+    body
+  )}`;
 
     return (
         <div>
@@ -60,22 +76,23 @@ function CaterContactpage() {
                 <div>
                   <img
                     className="zoom-img img-fluid"
+                    
                     src={`http://localhost:3001/`+data.imageUrl}
                     alt="image not available"
                   />
                 </div>
                 <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
-                  <h5>{state.name}</h5>
+                  <h5>{data.name}</h5>
                   <small className="mb-5">
-                    <FaStar color="green" />{state.rating}
+                    <FaStar color="green" />{data.rating}
                   </small>
                   <br />
                   <small>
-                    <FaLocationDot color="green" />{state.address}
+                    <FaLocationDot color="green" />{data.location}
                   </small>{" "}
                   <br />
-                </div>
-              </div>
+                </div> 
+              </div>  
       
               <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
               <div className="custom-label mb-3 p-2 " htmlFor="">
@@ -88,13 +105,13 @@ function CaterContactpage() {
               <div className="d-flex justify-content-evenly position-relative">
                 <button
                   onClick={() => {
-                    showName();
+                    showName("contact");
                   }}
                   className="btn btn-success rounded-5 px-3"
                 >
                   <FaPhoneAlt /> Contact
                 </button>
-                {show && (
+                {showContact && (
                   <div className="contact-div p-1">
                     <ul className="d-flex flex gap-2 p-1">
                       <li>
@@ -130,25 +147,37 @@ function CaterContactpage() {
                     </div>
                   </div>
                 )}
+
                 <button
                   // style={{ width: "135px", height: "40px" }}
                   className="btn btn-danger rounded-5 px-4 "
+                  onClick={() => {
+                    showName("email");
+                  }}
                 >
-                  <Link
-                    to={url}
-                    target="_blank"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    
-                  <FaEnvelope /> Email
-                  </Link>
+                  {isAuthenticated ? (
+                    <>
+                      <Link
+                        to={url}
+                        target="_blank"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <FaEnvelope /> Email
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <FaEnvelope /> Email
+                    </>
+                  )}
                 </button>
               </div>
             </div>
 
+
             </div>          
             <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-              <div>{state.description}</div>
+              <div>{data.description}</div>
       
             </div>
             <AboutUs/>

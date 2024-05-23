@@ -42,7 +42,32 @@ app.post("/cater/signup", async (request, response, next) => {
         })
 }
 )
+app.post("/cater/AddInBulkVendor", async (req, res, next) => {
+    // console.log(request.body);
+    const workbook = xlsx.readFile('VendorSignInData.xlsx');
+    const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
+    const sheet = workbook.Sheets[sheet_name];
 
+    // Convert the sheet to JSON/
+    console.log("Resuest Body",req.body);
+    const data = xlsx.utils.sheet_to_json(sheet);
+    console.log("Data : ",data);
+
+    try {
+        for (let item of data) {
+            let email=item.email;
+            let password=item.password+"";
+            await User.create({
+                email,password
+            })
+        }
+        return res.status(200).json({ message: "Add In Bulk SignUp added successfully.." })
+    } catch (err) {
+        console.log(err);
+        return res.status(501).json({ message: "Internal server error" })
+    }
+}
+)
 
 app.post("/cater/resetPassword", async (request, response, next) => {
     // console.log('Request body:', request.body);

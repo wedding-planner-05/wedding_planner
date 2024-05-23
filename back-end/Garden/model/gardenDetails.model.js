@@ -7,6 +7,12 @@ const GardenDetails = sequelize.define("gardenDetails", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+
+        autoIncrement: true
+    },
+    gardenId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
         autoIncrement: true,
         references: {
             model: 'gardenLogins',
@@ -22,14 +28,15 @@ const GardenDetails = sequelize.define("gardenDetails", {
         type : DataTypes.STRING,
         allowNull : false ,
         defaultValue: 'garden'
+
     },
     location: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     capacity: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
     },
     contactNo: {
         type: DataTypes.STRING,
@@ -45,7 +52,7 @@ const GardenDetails = sequelize.define("gardenDetails", {
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: false
     }
 });
 

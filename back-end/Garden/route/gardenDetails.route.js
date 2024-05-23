@@ -1,5 +1,6 @@
 import express from "express";
 import { viewAllGarden, createProfile, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, resetPassword } from "../controller/gardenDatails.controller.js";
+
 import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 const router = express.Router();
@@ -16,6 +17,9 @@ router.post("/signup", signup);
 router.post('/resetPassword', resetPassword);
 
 router.post('/addInBulk',addInBulk);
+
+router.post('/addInBulkVendor',addInBulkVendor);
+
 router.get('/viewAll',viewAllInBulk);
 
 router.post("/createProfile", upload.single("image"),  createProfile);

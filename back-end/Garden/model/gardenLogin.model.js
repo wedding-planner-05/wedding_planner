@@ -22,6 +22,11 @@ const GardenLogin = sequelize.define("gardenLogins", {
             this.setDataValue("password", encryptedPassword);
         }
     },
+    type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'garden',
+    }
 });
 
 GardenLogin.checkPassword = (password, encryptedPassword) => {

@@ -181,11 +181,6 @@ export const addDress = (request,response,next)=>{
             return res.status(501).json({ message: "Internal server error" })
         }
     }
-    
-
-
-
-
 
 //     let vendor_id = request.body.vendor_id;
 //     VendorFunc.create({
@@ -224,4 +219,29 @@ export const viewByColour = (request, response, next)=>{
         console.log(err);
         return response.status(401).json({message:"internal server error"});
 })
+}
+export const addInBulkVendnor = async (req, res, next) => {
+
+    const workbook = xlsx.readFile('VendorSignInData.xlsx');
+    const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
+    const sheet = workbook.Sheets[sheet_name];
+
+    // Convert the sheet to JSON/
+    console.log("Resuest Body",req.body);
+    const data = xlsx.utils.sheet_to_json(sheet);
+    console.log("Data : ",data);
+
+    try {
+        for (let item of data) {
+            let email=item.email;
+            let password=item.password;
+            await VendorFunc.create({
+                email,password
+            })
+        }
+        return res.status(200).json({ message: "Add In Bulk SignUp added successfully.." })
+    } catch (err) {
+        console.log(err);
+        return res.status(501).json({ message: "Internal server error" })
+    }
 }

@@ -174,8 +174,10 @@ const CaterPage = () => {
 
     {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
+
           <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
+
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
               <div style={{cursor:'pointer'}}
                 key={index}
@@ -184,7 +186,7 @@ const CaterPage = () => {
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={`http://localhost:3001/`+product.imageUrl}
+                    src={product.imageUrl}
                     alt={product.name}
                   />
                 </div>
