@@ -17,8 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function SoundHomeDetailsDashBoard() {
 
-  const [file, setFile] = useState(null);
-  
+    
   const [id,setVendorId] = useState('') ;
   const [name,setName] = useState('')
   const [type ,setType] =  useState('') 

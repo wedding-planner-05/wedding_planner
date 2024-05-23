@@ -89,20 +89,19 @@ export const addDress = (request,response,next)=>{
 
     let filename = request.file.originalname;
     console.log(request.file);
+    let id = request.body.id
     let type = request.body.type;
     let title = request.body.title;
-    let gender = request.body.gender;
-    let size = request.body.size;
-    let colour=request.body.colour;
-    let price= request.body.price;
-    let imageurl = "images/"+filename;
-    
+    let address = request.body.address
+    let serviceCharge= request.body.price;
+    let imageUrl = "images/"+filename;
+    let rating = request.body.rating;
+    let description = request.body.description;
+    let contactno = request.body.contactno;
     // console.log("Hello file",imageurl);
     
     let vendor_id = request.body.vendor_id;
-    VendorFunc.create({
-        type,title,gender,size,colour,price,imageurl,vendor_id
-    }).then(result=>{
+    VendorFunc.create({id,type,title,address,serviceCharge,imageUrl,rating,description,contactno}).then(result=>{
         return response.status(200).json({data:result.dataValues,message:"dress added  successfull"});
         
     }).catch(err=>{

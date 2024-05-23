@@ -85,6 +85,7 @@ import "./CaterPage.css"
 import { FaRupeeSign } from "react-icons/fa";
 // import CaterContactpage from './CaterContactpage';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { TextField } from '@mui/material';
 
 const CaterPage = () => {
     const [products,setProducts] = useState([]) ;
@@ -93,7 +94,7 @@ const CaterPage = () => {
     const [minValue,setMinValue] = useState(0) ;
     const [maxValue,setMaxValue] = useState(1000000) ;
     const [isProductAvailable, setProductAvailable] = useState(true);
-
+    const [inputText, setInputText] = useState("");
 
     const navigate = useNavigate()
 
@@ -125,6 +126,12 @@ const CaterPage = () => {
       console.log(min , max);
     }
 
+    let inputHandler = (e) => {
+      var lowerCase = e.target.value.toLowerCase();
+      console.log(lowerCase);
+      setInputText(lowerCase);
+    };
+
       const filterHandeler = (ele)=>{
         console.log('elemet is ',ele);
               console.log(ele.servicecharge >= minValue && ele.servicecharge <= maxValue);
@@ -150,10 +157,25 @@ const CaterPage = () => {
     </div> 
     </div>
 
+      <div className='cards'>
+      <div style={{width:"70%"}} className="main">
+      {/* <p>Search Vendors</p> */}
+      <div className="search mt-5">
+        <TextField
+          id="outlined-basic"
+          onChange={inputHandler}
+          variant="standard"
+          fullWidth
+          label="search"
+        />
+      </div>
+      {/* <List input={inputText} /> */}
+    </div>
+
     {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
-          <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
-          {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
+          <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
+          {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
               <div style={{cursor:'pointer'}}
                 key={index}
@@ -195,6 +217,7 @@ const CaterPage = () => {
     </div>
   }      
 
+</div>
 
    
     </div>

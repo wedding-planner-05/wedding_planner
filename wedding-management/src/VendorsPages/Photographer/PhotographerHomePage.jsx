@@ -130,6 +130,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { RiH3 } from "react-icons/ri";
+import { TextField } from "@mui/material";
 
 const PhotographerHomePage = () => {
 
@@ -138,6 +139,8 @@ const PhotographerHomePage = () => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(1000000);
   const [isProductAvailable, setProductAvailable] = useState(true);
+  const [inputText, setInputText] = useState("");
+
 
   const PhotoVendorDetails = (product) => {
     navigate('/PhotoVendorDetails', { state: product });
@@ -166,6 +169,12 @@ const PhotographerHomePage = () => {
     return product.price >= minValue && product.price <= maxValue;
   }
 
+
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    console.log(lowerCase);
+    setInputText(lowerCase);
+  };
   const message = "Hello, I'm interested in your services.And I want to Book a Garden"; 
 
   return (
@@ -185,11 +194,25 @@ const PhotographerHomePage = () => {
           </div>
         </div>
 
+      <div className="cards">
+      <div style={{width:"70%"}} className="main">
+      {/* <p>Search Vendors</p> */}
+      <div className="search mt-5">
+        <TextField
+          id="outlined-basic"
+          onChange={inputHandler}
+          variant="standard"
+          fullWidth
+          label="search"
+        />
+      </div>
+      </div>
+
 
         {products.filter(filterHandler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
-          <div className="container-fluid cards d-flex flex-wrap justify-content-evenly align-items-center pt-5">
-            {products.filter(filterHandler).map((product, index) => (
+          <div className="container-fluid d-flex flex-wrap justify-content-evenly align-items-center pt-5">
+            {products.filter((ele)=>filterHandler(ele) && ele.title.toLowerCase().includes(inputText.toLowerCase()) ) .map((product, index) => (
               <section onClick={() => PhotoVendorDetails(product)} key={index} className="main-page m-3">
                 <div style={{cursor:'pointer'}} key={index} className="p-2 row details-block ">
                   <div className="p-0">
@@ -220,6 +243,7 @@ const PhotographerHomePage = () => {
             ))}
           </div>
         }
+      </div>
       </div>
     </>
   );
