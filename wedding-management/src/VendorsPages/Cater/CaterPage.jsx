@@ -138,7 +138,7 @@ const CaterPage = () => {
           return ele.servicecharge >= minValue && ele.servicecharge <= maxValue 
       }
 
-      const message = "Hello, I'm interested in your services.And I want to Book a Garden"; 
+
   
   return <> 
   {/* <Navbar/> */}
@@ -177,14 +177,14 @@ const CaterPage = () => {
           <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
-              <div
+              <div style={{cursor:'pointer'}}
                 key={index}
                 className="p-2 row details-block "
               >
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={product.imageUrl}
+                    src={`http://localhost:3001/`+product.imageUrl}
                     alt={product.name}
                   />
                 </div>

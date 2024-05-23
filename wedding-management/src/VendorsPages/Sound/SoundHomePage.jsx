@@ -10,16 +10,16 @@ import { FaIndianRupeeSign } from 'react-icons/fa6';
 
 
 const SoundHomePage = () => {
-    const [products,setProducts] = useState([]) ;
-    const [dataSource,setDataSource] = useState(Array.from({length:20}))
-    const [hasMoreData,setHasMoreData] = useState(true)
-    const [inputText, setInputText] = useState("");
-    
-    const [minValue,setMinValue] = useState(0) ;
-    const [maxValue,setMaxValue] = useState(1000000) ;
-    const [isProductAvailable, setProductAvailable] = useState(true);
-
-
+  
+  const [products,setProducts] = useState([]) ;
+  const [dataSource,setDataSource] = useState(Array.from({length:20}))
+  const [hasMoreData,setHasMoreData] = useState(true)
+  const [inputText, setInputText] = useState("");
+  
+  const [minValue,setMinValue] = useState(0) ;
+  const [maxValue,setMaxValue] = useState(1000000) ;
+  const [isProductAvailable, setProductAvailable] = useState(true);
+  
     const navigate = useNavigate()
 
     const location = useLocation() ;
@@ -105,14 +105,14 @@ const SoundHomePage = () => {
           <div style={{marginTop:'-20px'}} className="d-flex flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
-              <div
+              <div style={{cursor:'pointer'}}
                 key={index}
                 className="p-2 row details-block "
                 >
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={`http://localhost:3006/`+ product.imageUrl}
+                    src={product.imageUrl}
                     alt={product.name}
                   />
                 </div>

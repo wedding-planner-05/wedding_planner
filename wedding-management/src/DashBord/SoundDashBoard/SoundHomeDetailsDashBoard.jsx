@@ -35,37 +35,42 @@ function SoundHomeDetailsDashBoard() {
       setType(sessionStorage.getItem('caterType')) ;
       setVendorId(sessionStorage.getItem('userID')) ;
   },[])
-  
- 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('id',id)
-    formData.append('name',name)
-    formData.append('type',type)
-    formData.append('image',image)
-    formData.append('serviceCharge',serviceCharge)
-    formData.append('address',address)
-    formData.append('description',description)
-    formData.append('contactNo',contactNo)
-    axios.post("http://localhost:3000/sound/sound/createProfile",formData,{
-      headers: {
-        "Content-Type": "multipart/form-data"
-    }
-    })
-    .then(result=>{
-      toast.success("Data entered successfully")
-      console.log("Data entered successfully", result);
-    })
-    .catch(err=>{
-      console.log(err);
-    })
 
-    }
   function handleFileChange(event) {
     const imagePath = event.target.files[0];
     console.log( 'image is : ',imagePath);
     setImage(imagePath);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("loginUserId", loginUserId)
+    formData.append("image", file);
+    formData.append("name", name);
+    formData.append("servicecharge", servicecharge);
+    formData.append("type", type);
+    formData.append("contactno", contactno);
+    formData.append("address", address);
+    formData.append("description", description);
+    formData.append("rating", rating);
+
+    axios.post("http://localhost:3000/sound/sound/createProfile", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(result => {
+      toast.success("Data entered successfully")
+      console.log("Data entered successfully", result);
+      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+
+    }).catch(err => {
+
+      console.log(loginUserId, file, name, servicecharge, type, contactno, address, description, rating, "this is data");
+      toast.error("Something went wrong");
+      console.log("Error:", err);
+
+    });
   }
 
   return (
