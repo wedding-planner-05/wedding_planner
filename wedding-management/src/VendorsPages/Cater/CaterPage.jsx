@@ -174,21 +174,8 @@ const CaterPage = () => {
 
     {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
           <h3>No products available in the selected price range</h3> : 
-<<<<<<< HEAD
-<<<<<<< HEAD
-          
-          <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
-          {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
-=======
           <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
->>>>>>> 10a444711c1cab0024827a40e257f7929261d534
-=======
-
-          <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
-          {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
-
->>>>>>> 143ffeb4a5cb5c1f11591c65fc4e3adc8422ad20
             <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
               <div style={{cursor:'pointer'}}
                 key={index}
