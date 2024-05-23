@@ -1,14 +1,11 @@
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import "./VendorSignIn.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
-import ForgotPassword from '../ForgorPassword/ForgotPassword';
 import Swal from 'sweetalert2';
 
 
