@@ -2,38 +2,61 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-// import Header from "./Header";
 import OTPInput from "react-otp-input";
-// import image from './d4d7c1b4-98c5-4859-836b-294d65cbd56c.be0ab837448c28bf10ffa8eb4955cdf8.webp'
 import { ToastContainer, toast } from "react-toastify";
 import { Zoom } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ForgetPassword() {
   const navigate = useNavigate();
-  const [email, setemail] = useState("");
-  const [otpvisible, setotpvisible] = useState(false);
-  const [otp, setotp] = useState("");
+  const [email, setEmail] = useState("");
+  const [otpVisible, setOtpVisible] = useState(false);
+  const [otp, setOtp] = useState("");
   const [vendorType, setVendorType] = useState("");
-
   const [isValid, setIsValid] = useState(true);
-
-  // const type=this.props;
+  const [emailError, setEmailError] = useState('');
+  const [typeError, setTypeError] = useState('');
 
   const validateEmail = () => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setIsValid(re.test(email));
   };
 
+  const validateFields = () => {
+    let valid = true;
+    if (!vendorType) {
+      setTypeError('Vendor type is required');
+      valid = false;
+    } else {
+      setTypeError('');
+    }
+
+    if (!email) {
+      setEmailError('Email is required');
+      valid = false;
+    } else if (!isValid) {
+      setEmailError('Please enter a valid email address');
+      valid = false;
+    } else {
+      setEmailError('');
+    }
+
+    if (valid) {
+      setOtpVisible(true);
+      checkaccount();
+    } else {
+      setOtpVisible(false);
+    }
+  };
+
   const checkaccount = async () => {
-    // let user = await axios.post("http://localhost:3000/user/findbyemail", { email })
     let user = true;
     if (user) {
       axios
         .post("http://localhost:3000/otp/otp/request", { email })
         .then((res) => {
-          console.log("response : ",res);
-          // alert("OTP send successfully");
-          toast.success("OTP send successfully", {
+          console.log("response",res);
+          toast.success("OTP sent successfully", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -44,7 +67,7 @@ export default function ForgetPassword() {
             theme: "light",
             transition: Zoom,
           });
-          setotpvisible(true);
+          setOtpVisible(true);
         })
         .catch((err) => {
           toast.error("Something went wrong", {
@@ -67,7 +90,8 @@ export default function ForgetPassword() {
     axios
       .post("http://localhost:3000/otp/otp/verify", { email, otp })
       .then((res) => {
-        console.log("REsponse: ",res);
+        console.log("response",res);
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -75,10 +99,9 @@ export default function ForgetPassword() {
           showConfirmButton: false,
           timer: 2000,
         });
-        navigate("/resetPassword", { state: { email,vendorType } });
+        navigate("/resetPassword", { state: { email, vendorType } });
       })
       .catch((err) => {
-        // alert("OTP is incorrect")
         toast.error("OTP is incorrect", {
           position: "top-center",
           autoClose: 5000,
@@ -94,13 +117,14 @@ export default function ForgetPassword() {
       });
   };
 
-  console.log("Vendor Type:", vendorType);
-  console.log("EMail :", email);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateFields();
+  };
+
   return (
     <>
       <ToastContainer />
-      {/* <Header /> */}
-
       <div
         className="container-fluid m-0 p-0"
         style={{
@@ -150,25 +174,8 @@ export default function ForgetPassword() {
                     Account
                   </p>
                 </div>
-                <div className="input-group row">
-                  {/* <div className="m-2">
-                    <select
-                      type="text"            
-                      // onKeyUp={() => validateEmail()}
-                      onChange={(event) => setVendorType(event.target.value)}
-                      className="form-control form-control-lg bg-light fs-6 col"
-                      placeholder="Email address"
-                    >
-                      <option value="">Select Vendor Type - </option>
-                      <option value="garden">Cater</option>
-                      <option value="dress">Dress</option>
-                      <option value="garden">Garden</option>
-                      <option value="mehendi">Mehendi</option>
-                      <option value="photographer">Photographer</option>
-                      <option value="sound">Sound</option>
-                    </select>
-                  </div> */}
 
+                <div className="input-group row">
                   <select
                     onChange={(event) => setVendorType(event.target.value)}
                     className="form-control form-control-lg bg-light fs-6 col m-2"
@@ -182,64 +189,64 @@ export default function ForgetPassword() {
                     <option value="photographer">Photographer</option>
                     <option value="sound">Sound</option>
                   </select>
-
+                  {typeError && <small className="text-danger">{typeError}</small>}
+                  
                   <div className="m-2">
                     <input
                       type="text"
-                      onKeyUp={() => validateEmail()}
-                      onChange={(event) => setemail(event.target.value)}
+                      onKeyUp={validateEmail}
+                      onChange={(event) => setEmail(event.target.value)}
                       className="form-control form-control-lg bg-light fs-6 col p-2"
                       placeholder="Email address"
                     />
                   </div>
+                  {emailError && <small className="text-danger">{emailError}</small>}
                 </div>
-                <small className="text-danger" id="emailerror">
-                  {isValid ? "" : " Please enter a valid email address"}
-                </small>
 
                 <div
                   className={
-                    otpvisible
+                    otpVisible
                       ? "input-group d-flex justify-content-center mt-4"
                       : "d-none"
                   }
                 >
                   <OTPInput
                     value={otp}
-                    onChange={setotp}
+                    onChange={setOtp}
                     numInputs={6}
                     otpType="number"
                     autoFocus
                     className="otp-container"
                     inputStyle={{
-                      backgroundColor: "#F6F8FC",
+                      backgroundColor: "",
                       color: "",
                       outline: "none",
                       marginRight: "10px",
-                      border: "1px solid #F6F8FC",
+                      border: "3px solid #272727",
                       borderRadius: "10px",
                       width: "30px",
                       height: "40px",
                     }}
                     renderInput={(props) => <input {...props} />}
-                    />
+                  />
                 </div>
+
                 <div className="input-group mb-3 d-flex justify-content-center mt-5">
                   <button
-                    onClick={() => checkaccount()}
+                    onClick={handleSubmit}
                     className={
-                      otpvisible ? "d-none" : "btn btn-lg btn-primary w-50 fs-6"
+                      otpVisible ? "d-none" : "btn btn-lg btn-primary w-50 fs-6"
                     }
                   >
-                    Send Otp
+                    Send OTP
                   </button>
                   <button
-                    onClick={() => verifyOTP()}
+                    onClick={verifyOTP}
                     className={
-                      otpvisible ? "btn btn-lg btn-primary w-50 fs-6" : "d-none"
+                      otpVisible ? "btn btn-lg btn-primary w-50 fs-6" : "d-none"
                     }
                   >
-                    Verify Otp
+                    Verify OTP
                   </button>
                 </div>
               </div>
@@ -247,10 +254,7 @@ export default function ForgetPassword() {
           </div>
         </div>
       </div>
-
-      {/* <div>   </div> */}
-
-      {/* < ResetPassword vendorType={vendorType} /> */}
     </>
   );
 }
+

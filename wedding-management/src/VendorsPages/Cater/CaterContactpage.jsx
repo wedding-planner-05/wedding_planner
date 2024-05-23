@@ -75,7 +75,7 @@ function CaterContactpage() {
               <div className="col-md-6 col-lg-4 position-relative mb-5">
                 <div>
                   <img
-                    className="zoom-img img-fluid"
+                    className="zoom-img img-fluid" 
                     src={`http://localhost:3001/`+data.imageUrl}
                     alt="image not available"
                   />

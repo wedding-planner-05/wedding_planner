@@ -72,40 +72,6 @@ export default function ResetPassword() {
     }
   };
 
-  // const validatePassword = () => {
-  //     var status = false;
-  //     var passworderror = document.getElementById("passworderror");
-
-  //     // Check if the length is between 8 and 20 characters
-  //       if (newpassword.length >= 8 ) {
-  //         passworderror.innerHTML = "Password must be 8 characters long.";
-  //     }
-
-  //     // Check if it contains at least one uppercase letter
-  //     else if (!/[A-Z]/.test(newpassword)) {
-  //         passworderror.innerHTML = "Password must contain at least one uppercase letter.";
-  //     }
-
-  //     // Check if it contains at least one lowercase letter
-  //     else if (!/[a-z]/.test(newpassword)) {
-  //         passworderror.innerHTML = "Password must contain at least one lowercase letter.";
-  //     }
-
-  //     // Check if it contains at least one digit
-  //     else if (!/\d/.test(newpassword)) {
-  //         passworderror.innerHTML = "Password must contain at least one digit.";
-  //     }
-
-  //     // Check if it contains at least one special character
-  //     else if (!/[^a-zA-Z0-9]/.test(newpassword)) {
-  //         passworderror.innerHTML = "Password must contain at least one special character.";
-  //     }
-  //     else {
-  //         // If all conditions pass, return null indicating valid password
-  //         status = true;
-  //     }
-  //     return status;
-  // };
 
   const validatePassword = () => {
     var status = false;
@@ -197,20 +163,22 @@ export default function ResetPassword() {
                     Account
                   </p>
                 </div>
+
                 <div className="input-group">
                   <input
-                    type="text"
+                    type="password"
                     onKeyUp={() => validatePassword()}
                     onChange={(event) => setnewpassword(event.target.value)}
                     className="form-control form-control-lg bg-light fs-6"
                     placeholder="Enter New Password"
                   />
                 </div>
+
                 <small className="text-danger" id="passworderror"></small>
 
                 <div className="input-group mt-4">
                   <input
-                    type="text"
+                    type="pass"
                     onChange={(event) => setconfirmpassword(event.target.value)}
                     className="form-control form-control-lg bg-light fs-6"
                     placeholder="Confirm Password"
@@ -226,6 +194,7 @@ export default function ResetPassword() {
                     Reset Password
                   </button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -235,21 +204,3 @@ export default function ResetPassword() {
   );
 }
 
-// import { useLocation } from "react-router-dom";
-
-// export default function ResetPassword() {
-//   const location = useLocation();
-//   const { email, vendorType } = location.state || {};
-
-//   console.log("Vendor Type:", vendorType);
-//   console.log("Email:", email);
-
-//   return (
-//     <div>
-//       <h1>Reset Password</h1>
-//       <p>Email: {email}</p>
-//       <p>Vendor Type: {vendorType}</p>
-//       {/* Add your reset password form and logic here */}
-//     </div>
-//   );
-// }

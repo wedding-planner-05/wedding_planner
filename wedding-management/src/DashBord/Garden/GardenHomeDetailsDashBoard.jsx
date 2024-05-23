@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function GardenHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
@@ -32,6 +33,7 @@ function GardenHomeDetailsDashBoard() {
 },[])
 
 
+
 const handleSubmit = (e)=>{
   alert('hello')
   e.preventDefault()
@@ -44,18 +46,31 @@ const handleSubmit = (e)=>{
   formData.append('location',location)
   formData.append('description',description)
   formData.append('contactNo',contactNo)
+
   console.log('hello---3');
-  axios.post("http://localhost:3000/garden/garden/createProfile",formData,{
-    headers: {
-      "Content-Type": "multipart/form-data"
-  }
-  }).then(result=>{
-    console.log(result.data.data);
-  }).catch(err=>{
-    console.log(err);
-  })
-console.log('hellokjskj');
-  }
+
+  axios.post("http://localhost:3000/garden/garden/createProfile", formData, {
+      headers: {
+          "Content-Type": "multipart/form-data"
+      }
+  }).then(result => {
+      console.log(result.data.data);
+      Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Profile created successfully!'
+      });
+  }).catch(err => {
+      console.log(err);
+      Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while creating the profile.'
+      });
+  });
+
+  console.log('hellokjskj');
+}
 
 function handleFileChange(event) {
   const imagePath = event.target.files[0];

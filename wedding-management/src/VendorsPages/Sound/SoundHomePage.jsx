@@ -7,6 +7,7 @@ import "./SoundHomePage.css";
 import Navbar from '../../Components/Navbar/Navbar';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
+import Swal from 'sweetalert2';
 
 
 const SoundHomePage = () => {
@@ -100,7 +101,7 @@ const SoundHomePage = () => {
       {/* <List input={inputText} /> */}
     </div>
     {products.filter(filterHandeler).length  === 0 && isProductAvailable ? 
-          <h3>No products available in the selected price range</h3> : 
+         <h3>No products available in the selected price range</h3> : 
             // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
           <div style={{marginTop:'-20px'}} className="d-flex flex-wrap justify-content-evenly align-items-center">
           {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
