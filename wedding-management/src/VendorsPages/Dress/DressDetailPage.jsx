@@ -71,6 +71,7 @@ const DressDetailPage = () => {
   const url = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
     body
   )}`;
+  
   return <>
   {/* <Navbar/> */}
 <div className="container">
