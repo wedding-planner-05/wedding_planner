@@ -1,0 +1,8 @@
+.main {
+    display: flex;
+    height: 20vh;
+    margin-left: 6%;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 20px;
+}

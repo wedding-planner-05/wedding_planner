@@ -1,7 +1,9 @@
+import { TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
+import './GardenDetail.css'
 // import { useNavigate } from 'react-router-dom';
 
 const GardenHomePage = () => {
@@ -10,6 +12,7 @@ const GardenHomePage = () => {
   const [minValue,setMinValue] = useState(0) ;
   const [maxValue,setMaxValue] = useState(1000000) ;
   const [isProductAvailable, setProductAvailable] = useState(true);
+  const [inputText, setInputText] = useState("");
 
 
   const navigate = useNavigate()
@@ -40,6 +43,12 @@ const handlerViewall = (min, max) => {
       return ele.price >= minValue && ele.price <= maxValue 
   }
 
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    console.log(lowerCase);
+    setInputText(lowerCase);
+  };
+
 
 return  <> 
 <div className='vendors-box mt-5  d-flex justify-content-between'>
@@ -57,10 +66,24 @@ return  <>
   </div> 
   </div>
 
+  <div className ='cards'>
+    <div style={{width:"70%"}} className="main">
+        {/* <p>Search Vendors</p> */}
+        <div className="search mt-5">
+          <TextField
+            id="outlined-basic"
+            onChange={inputHandler}
+            variant="standard"
+            fullWidth
+            label="search"
+          />
+        </div>
+      {/* <List input={inputText} /> */}
+    </div>
   {products.filter(filterHandeler).length === 0 && isProductAvailable ? 
         <h3>No products available in the selected price range</h3> : 
-        <div className="d-flex cards flex-wrap justify-content-evenly align-items-center">
-        {products.filter((ele)=>filterHandeler(ele)).map((product, index) => (
+        <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
+        {products.filter((ele)=>filterHandeler(ele) && ele.title.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
           <section onClick={()=>GardenVendorDetails(product)} key={index} className="main-page m-3">
             <div
               key={index}
@@ -69,7 +92,7 @@ return  <>
               <div className="p-0">
                 <img style={{width: "100%",height: "200px"}}
                   className=" custom-img"
-                  src={product.imageUrl}
+                  src={`http://localhost:3003/`+ product.imageUrl}
                   alt={product.title}
                 />
               </div>
@@ -101,9 +124,8 @@ return  <>
         }
   </div>
 }      
+    </div>
   </div>
-    
-
 </>
 }
 export default GardenHomePage

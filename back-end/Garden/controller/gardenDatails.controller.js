@@ -172,28 +172,31 @@ export const updateGarden = async (request, response, next) => {
     }
 }
 
-export const add = async (request, response, next) => {
-    console.log("ADD CALLED....");
+export const createProfile = async (request, response, next) => {
+    console.log("7777777777777777777777777777777777777777777777777777777");
+    console.log(request.body);
     try {
-        const { gardenId, name, location, capacity, contactNo, rentalFee, description } = request.body;
+        const { id, name, location, contactNo, price, description } = request.body;
         const filename = request.file.filename;
         const imageUrl = 'images/' + filename;
+        const title = name
 
-        const isNameExists = await GardenDetails.findOne({ where: { name: name }, raw: true });
-        const isContactExists = await GardenDetails.findOne({ where: { contactNo: contactNo }, raw: true });
+        // console.log(id,imageUrl , name , location , contactNo);
+        // const isNameExists = await GardenDetails.findOne({ where: { name: name }, raw: true });
+        // const isContactExists = await GardenDetails.findOne({ where: { contactNo: contactNo }, raw: true });
 
-        if (!isNameExists && !isContactExists) {
-            const createdGarden = await GardenDetails.create({
-                gardenId, name, location, capacity, contactNo, rentalFee, imageUrl, description
-            });
-            return response.status(200).json({ message: "Garden Details Added Success...", data: createdGarden });
-        } else {
-            return response.status(400).json({ message: "Garden Details already exists." });
-        }
-    } catch (err) {
-        console.log(err);
-        return response.status(500).json({ error: "Internal Server Error...", err });
-    }
+        // if (!isNameExists && !isContactExists) {
+            // } else {
+            //     return response.status(400).json({ message: "Garden Details already exists." });
+            // }
+            const createdGarden = await GardenDetails.create({id, title, location, contactNo, price, imageUrl, description});
+            console.log('hello',createdGarden);
+            if(createdGarden)
+                return response.status(200).json({ message: "Garden Details Added Success...", data: createdGarden });
+            } 
+            catch (err) {
+                return response.status(500).json({ error: "Internal Server Error...", err });
+            }
 };
 
 export const viewAllGarden = async (request, response, next) => {

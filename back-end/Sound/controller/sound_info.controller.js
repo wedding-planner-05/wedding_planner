@@ -151,7 +151,6 @@ export const createProfile = (request,response,next)=>{
     let filename = request.file.filename ; //images.png
     let id = request.body.id
     let name = request.body.name ;
-    // let type =request.body.type ;
     let imageUrl = 'images/'+filename;
     let serviceCharge = request.body.serviceCharge ;
     let address = request.body.address ;  
