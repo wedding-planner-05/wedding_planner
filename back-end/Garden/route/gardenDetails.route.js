@@ -1,14 +1,7 @@
 import express from "express";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { viewAllGarden, add, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, resetPassword, addInBulkVendor } from "../controller/gardenDatails.controller.js";
-=======
-import { viewAllGarden, createProfile, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, resetPassword } from "../controller/gardenDatails.controller.js";
->>>>>>> 10a444711c1cab0024827a40e257f7929261d534
-=======
+
 import { viewAllGarden, createProfile, remove, updateGarden, viewProfile, addInBulk, viewAllInBulk ,signin,signup, resetPassword } from "../controller/gardenDatails.controller.js";
 
->>>>>>> 143ffeb4a5cb5c1f11591c65fc4e3adc8422ad20
 import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 const router = express.Router();
