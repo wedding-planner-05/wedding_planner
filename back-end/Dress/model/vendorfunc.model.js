@@ -22,7 +22,8 @@ const VendorFunc = sequelize.define("dress_details",{
     },
     type :{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+        defaultValue:"dress"
     },
     address:{
         type:DataTypes.STRING,
