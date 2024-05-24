@@ -216,7 +216,12 @@ const PhotographerHomePage = () => {
               <section onClick={() => PhotoVendorDetails(product)} key={index} className="main-page m-3">
                 <div style={{cursor:'pointer'}} key={index} className="p-2 row details-block ">
                   <div className="p-0">
-                    <img className="custom-img" style={{ width: "100%", height: "200px" }} src={product.imageUrl} alt={product.title} />
+                    <img className="custom-img" style={{ width: "100%", height: "200px" }} 
+                    // src={product.imageUrl}
+                    src={
+                      product.imageUrl.startsWith("images") ?  `http://localhost:3005/` + product.imageUrl : product.imageUrl
+                     } 
+                    alt={product.title} />
                   </div>
                   <div className="p-1 font-size">
                     <div className="row">

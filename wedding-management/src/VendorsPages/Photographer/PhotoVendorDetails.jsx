@@ -81,7 +81,10 @@ const PhotoVendorDetails = () => {
           <div>
             <img
               className="zoom-img img-fluid"
-              src={data.imageUrl}
+              // src={data.imageUrl}
+              src={
+                data.imageUrl.startsWith("images") ?  `http://localhost:3005/` + data.imageUrl : data.imageUrl
+               } 
               alt="image not available"
             />
           </div>

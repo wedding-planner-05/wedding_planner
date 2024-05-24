@@ -82,7 +82,10 @@ const DressDetailPage = () => {
         <div className='border' >
           <img
             className="dress-detail-image img-fluid"    
-            src={`http://localhost:3002/`+ data.imageUrl}
+            // src={`http://localhost:3002/`+ data.imageUrl}
+            src={
+              data.imageUrl.startsWith("images") ?  `http://localhost:3002/` + data.imageUrl : data.imageUrl
+             } 
             alt="image not available"
           />
         </div>
