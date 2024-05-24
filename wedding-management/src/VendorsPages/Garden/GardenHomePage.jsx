@@ -16,6 +16,7 @@ const GardenHomePage = () => {
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/garden/garden/viewAllVendors")
@@ -26,8 +27,9 @@ const GardenHomePage = () => {
       .catch((err) => {
         console.log(err);
       });
+  
   }, []);
-
+  console.log("Image Url: ",products);
   const GardenVendorDetails = (data) => {
     navigate("/GardenVendorDetails", { state: data });
   };
@@ -170,15 +172,20 @@ const GardenHomePage = () => {
                         <img
                           style={{ width: "100%", height: "200px" }}
                           className=" custom-img"
+                          // src={
+                          //   product.imageUrl
+                          //     ? product.imageUrl
+                          //     : `http://localhost:3000/` +
+                          //       product.imageUrl +
+                          //       ".png"
+                          // }
                           src={
-                            product.imageUrl
-                              ? product.imageUrl
-                              : `http://localhost:3003/` +
-                                product.imageUrl +
-                                ".png"
-                          }
+                           product.imageUrl.startsWith("images") ?  `(http://localhost:3000/` + product.imageUrl :product.imageUrl
+                   
+                          } 
+                          
                           // src={`http://localhost:3003/`+ product.imageUrl}
-                          alt={product.title}
+                          alt={`https://image.wedmegood.com/resized/450X/uploads/project/61882/1567934592_IMG_0762.jpg`}
                         />
                       </div>
                       <div className="p-1 font-size">

@@ -43,14 +43,14 @@ function GardenContactDashBoard() {
                                         <span style={{ color: "black" }}>Dashboard</span>
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link to="/GardenResetPassDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiLockPasswordLine />
                                         </strong>
                                         <span style={{ color: "black" }}>Password</span>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li>
                                     <Link to="/GardenContactDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
