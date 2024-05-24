@@ -143,15 +143,32 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
 });
 
 
+// app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
+//     const {loginUserid, name, servicecharge, email, contactno, location } = req.body;
+//     const filename = req.file?.filename;
+//     if (!filename) {
+//         return res.status(400).json({ error: "File upload failed" });
+//     }
+//     const imageUrl = `images/${filename}`;
+
+//     CaterFormDetails.create({loginUserid, name, servicecharge, email, contactno, location, imageUrl })
+//         .then(result => {
+//             res.status(201).json({ message: "Data saved successfully", data: result });
+//         })
+//         .catch(err => {
+//             console.error("Error while saving data:", err);
+//             res.status(500).json({ error: "Internal server error", err: err });
+//         });
+// });
 app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
-    const { id, loginUserid, name, servicecharge, email, contactno, location } = req.body;
+    const { loginUserId, name, servicecharge, email, contactno, location } = req.body;
     const filename = req.file?.filename;
     if (!filename) {
         return res.status(400).json({ error: "File upload failed" });
     }
     const imageUrl = `images/${filename}`;
 
-    CaterFormDetails.create({ id, loginUserid, name, servicecharge, email, contactno, location, imageUrl })
+    CaterFormDetails.create({ loginUserId, name, servicecharge, email, contactno, location, imageUrl })
         .then(result => {
             res.status(201).json({ message: "Data saved successfully", data: result });
         })

@@ -1,7 +1,7 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./SignupVendor.css";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -58,8 +58,7 @@ function SignupVendor() {
         text: "Please fill in the details",
       });
     } else {
-      axios
-        .post(`http://localhost:3000/${choise}/${choise}/signup`, {
+      axios.post(`http://localhost:3000/${choise}/${choise}/signup`, {
           email,
           password,
         })
@@ -214,7 +213,6 @@ function SignupVendor() {
             </div> */}
 
             <button
-              onClick={()=>handleSubmit()}
               type="submit"
               className="btn btn-block mt-4 pt-3 pb-3"
               style={{

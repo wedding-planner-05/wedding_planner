@@ -10,7 +10,7 @@ const CaterFormDetails = sequelize.define('CaterFormDetails', {
     },
     loginUserId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
             model: 'Users', // This should match the table name of the User model
             key: 'id'
