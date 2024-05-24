@@ -38,11 +38,11 @@ const soundVendorDetails = sequelize.define("sound_vendor_details",{
     },
     description : {
         type : DataTypes.TEXT,
-        allowNull :true 
+        allowNull :false 
     },
     contactNo : {
         type : DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 })
 

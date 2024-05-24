@@ -82,7 +82,7 @@
 import { useEffect, useState } from 'react'
 import axios from "axios";
 import "./CaterPage.css"
-import { FaRupeeSign } from "react-icons/fa";
+import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 // import CaterContactpage from './CaterContactpage';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
@@ -197,14 +197,14 @@ const CaterPage = () => {
                       </div>
                       {/* <p className="custom-text-size">Photo + Video</p> */}
                     </div>
-                    {/* <div className="col text-end">
+                    <div className="col text-end">
                       <p className="h6">
                         <FaStar color="crimson" /> {product.rating || "N/A"}
                       </p>
                       <p className="font custom-text-size">
-                        <FaMapMarkerAlt color="green" /> {product.address.slice(0,13) + ".."}
+                        <FaMapMarkerAlt color="green" /> {product.location.slice(0,13) + ".."}
                       </p>
-                    </div> */}
+                    </div>
                   </div>
                   <h6 className="mb-0">
                     <FaRupeeSign /> {product.servicecharge || "Price not available"}{" "}

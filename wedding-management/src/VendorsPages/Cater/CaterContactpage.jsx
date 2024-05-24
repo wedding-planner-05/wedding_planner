@@ -73,7 +73,7 @@ function CaterContactpage() {
             <div className="row justify-content-center mt-5 mb-5 pb-5">
       
               <div className="col-md-6 col-lg-4 position-relative mb-5">
-                <div>
+                <div style={{height:'300px',overflow:'hidden'}}>
                   <img
                     className="zoom-img img-fluid" 
                     src={`http://localhost:3001/`+data.imageUrl}
@@ -120,7 +120,7 @@ function CaterContactpage() {
                             style={{ textDecoration: "none" }}
                             to={"tel:+91 93023 18373"}
                           >
-                            {data.contactNo}
+                            {data.contactno}
                           </Link>
                         </strong>
                       </li>
@@ -128,14 +128,14 @@ function CaterContactpage() {
                         <strong>
                           <Link
                             to={`https://wa.me/91${
-                              data && data.contactNo
+                              data && data.contactno
                             }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
                           >
                             {" "}
                             <FaWhatsapp color="green" />{" "}
-                            {data && data.contactNo}{" "}
+                            {data && data.contactno}{" "}
                           </Link>
                         </strong>
                       </li>
