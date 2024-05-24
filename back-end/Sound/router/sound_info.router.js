@@ -46,8 +46,7 @@ router.post("/createProfile", upload.single("image"), body("vendor_id").notEmpty
     body("description").isAlpha(),
     body("status").isAlpha(), createProfile);
 
-router.get("/viewProfile", viewProfile);
-
+router.get("/viewProfiles/:id", viewProfile);
 
     router.post("/update", body("vendor_id").notEmpty(), body("vendor_id").notEmpty()
     ,body("type").notEmpty(),
@@ -73,10 +72,10 @@ router.post("/addInBulk",async (req, res) => {
         let address = item.address;
         let rating = item.rating;
         let description = item.description;
-        let contactno = item.contactno;
+        let contactNo = item.contactNo;
 
 
-        console.log(name + " " + imageUrl + " " + serviceCharge + " " + address + " " + description + " " + rating + " " + contactno);
+        console.log(name + " " + imageUrl + " " + serviceCharge + " " + address + " " + description + " " + rating + " " + contactNo);
     }
     try {
         for (let item of data) {
@@ -86,12 +85,12 @@ router.post("/addInBulk",async (req, res) => {
             let address = item.address;
             let rating = item.rating;
             let description = item.description;
-            let contactno = item.contactno;
+            let contactNo = item.contactNo;
 
-            console.log(name + " " + imageUrl + " " + serviceCharge + " " + address + " " + description + " " + rating + " " + contactno);
+            console.log(name + " " + imageUrl + " " + serviceCharge + " " + address + " " + description + " " + rating + " " + contactNo);
 
             await soundVendorDetails.create({
-                name, imageUrl, serviceCharge, address, rating, description, contactno,
+                name, imageUrl, serviceCharge, address, rating, description, contactNo,
             })
         }
         return res.status(200).json({ message: "product added successfully.." })
