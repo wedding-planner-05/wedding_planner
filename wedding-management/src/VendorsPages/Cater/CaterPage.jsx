@@ -135,7 +135,7 @@ const CaterPage = () => {
       const filterHandeler = (ele)=>{
         console.log('elemet is ',ele);
               console.log(ele.servicecharge >= minValue && ele.servicecharge <= maxValue);
-          return ele.servicecharge >= minValue && ele.servicecharge <= maxValue 
+          return ele.servicecharge >= minValue && ele.servicech <= maxValue 
       }
 
 
