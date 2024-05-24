@@ -226,7 +226,7 @@ function SignupVendor() {
                 }
               }}
               type="submit"
-              className="btn btn-block mt-4 pt-3 pb-3"
+              className="btn btn-block mt-3"
               style={{
                 fontSize: "1.2rem",
                 fontWeight: "bolder",

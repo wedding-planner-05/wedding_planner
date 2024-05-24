@@ -72,14 +72,14 @@ function GardenProfile() {
                                         <span style={{ color: "black" }}>Dashboard</span>
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link to="/GardenResetPassDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiLockPasswordLine />
                                         </strong>
                                         <span style={{ color: "black" }}>Password</span>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li>
                                     <Link to="/GardenContactDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
@@ -104,9 +104,9 @@ function GardenProfile() {
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">
                                     <form className="row d-flex align-items-center justify-content-center flex-column" onSubmit={handleSubmit}>
-                                        <div className="mb-3 row text-center">
+                                        {/* <div className="mb-3 row text-center">
                                             <img src="" alt="Profile" className='imagesprofile text-center content-center' />
-                                        </div>
+                                        </div> */}
                                         <div className="row mt-5">
                                             <div className="mb-3 col">
                                                 <label htmlFor="name" className="form-label">Name</label>
@@ -155,9 +155,9 @@ function GardenProfile() {
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-center">
-                                            <button type="reset" className="btn btn-info m-3">Reset</button>
-                                            <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
-                                            <button type="button" className="btn btn-warning m-3">Save</button>
+                                            {/* <button type="reset" className="btn btn-info m-3">Reset</button> */}
+                                            <button type='submit' className="btn btn-block mt-4" style={{ width:'70%',fontSize: "1.2rem", fontWeight: "", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
+                                            {/* <button type="button" className="btn btn-warning m-3">Save</button> */}
                                         </div>
                                     </form>
                                 </div>

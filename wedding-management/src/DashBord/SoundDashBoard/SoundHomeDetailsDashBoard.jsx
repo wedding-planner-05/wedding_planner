@@ -98,14 +98,14 @@ function SoundHomeDetailsDashBoard() {
                     <span style={{ color: "black" }}>Dashboard</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/SoundResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/SoundContactDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
