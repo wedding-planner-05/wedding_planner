@@ -79,7 +79,7 @@ console.log("IMAGE: ",data.imageUrl);
                 <img
                   className="zoom-img img-fluid"
                   // src={ data.imageUrl}
-                  src={data.imageUrl? data.imageUrl:(`http://localhost:3003/`+ data.imageUrl)}
+                  src={data.imageUrl.startsWith('images')?(`http://localhost:3003/`+ data.imageUrl): data.imageUrl}
                   alt="image not available"
                 />
               </div>

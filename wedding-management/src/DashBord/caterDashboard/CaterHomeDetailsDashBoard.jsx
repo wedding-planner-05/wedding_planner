@@ -9,6 +9,7 @@ import "./DashBord.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function CaterHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
@@ -53,7 +54,7 @@ function CaterHomeDetailsDashBoard() {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Something went wrong',
+        text: 'please enter all details',
       });
       console.log("Error:", err);
     });

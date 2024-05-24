@@ -87,8 +87,8 @@ export const addDress = (request,response,next)=>{
 
     console.log("Hello body",request.body);
 
-    let filename = request.file.originalname;
-    // console.log(request.file);
+    let filename = request.file.filename;
+    // console.log(filename);
     let id = request.body.id
     let name = request.body.name ;
     let type = request.body.type;
@@ -244,5 +244,24 @@ export const addInBulkVendnor = async (req, res, next) => {
     } catch (err) {
         console.log(err);
         return res.status(501).json({ message: "Internal server error" })
+    }
+}
+
+export const viewprofile =  async (request, response, next) => {
+    try {
+        const id = parseInt(request.params.id, 10);
+        if (isNaN(id)) {
+            return response.status(400).json({ error: "Invalid ID format" });
+        }
+        console.log(id);
+        const dressobj = await VendorFunc.findOne({ where: { id: id }, raw: true });
+        if (dressobj) {
+            return response.status(200).json({ message: "View Profile success...", data: dressobj });
+        } else {
+            return response.status(404).json({ error: "Garden not found" });
+        }
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error" });
     }
 }

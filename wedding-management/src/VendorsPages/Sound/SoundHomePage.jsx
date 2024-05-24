@@ -116,7 +116,7 @@ const SoundHomePage = () => {
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={product.imageUrl?product.imageUrl:(`http://localhost:3006/`+ product.imageUrl)}
+                    src={product.imageUrl.startsWith('images') ? `http://localhost:3006/`+ product.imageUrl : product.imageUrl} 
                     alt={product.name}
 
                   />

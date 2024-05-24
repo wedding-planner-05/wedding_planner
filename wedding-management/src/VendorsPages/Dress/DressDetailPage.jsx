@@ -105,7 +105,8 @@ const DressDetailPage = () => {
               </div>
               <div className="custom-label mb-3 p-2" htmlFor="">
                 <FaIndianRupeeSign />
-                {data.price}
+                {data.serviceCharge
+}
               </div>
               <div className="d-flex justify-content-evenly position-relative">
                 <button
