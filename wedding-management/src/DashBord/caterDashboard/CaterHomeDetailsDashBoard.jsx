@@ -95,7 +95,7 @@ function CaterHomeDetailsDashBoard() {
                 <span style={{ color: "black" }}>Setting</span>
               </li>
             </ul>
-          </div>
+   </div>
           <div className="col content boxborder">
             <div>
               <h1>Welcome Cater's</h1>

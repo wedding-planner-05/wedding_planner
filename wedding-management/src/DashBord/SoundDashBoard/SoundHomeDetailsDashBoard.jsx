@@ -50,7 +50,7 @@ function SoundHomeDetailsDashBoard() {
     formData.append("name", name);
     formData.append("serviceCharge", serviceCharge);
     formData.append("type", type);
-    formData.append("contactno", contactNo);
+    formData.append("contactNo", contactNo);
     formData.append("address", address);
     formData.append("description", description);
     // formData.append("rating", rating);
@@ -98,14 +98,14 @@ function SoundHomeDetailsDashBoard() {
                     <span style={{ color: "black" }}>Dashboard</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/SoundResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/SoundContactDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
@@ -201,7 +201,7 @@ function SoundHomeDetailsDashBoard() {
                         <hr />
 
                         <div className="row">
-                          <div className="mb-3 col">
+                          <div className="mb-3 col-6">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -210,6 +210,20 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <input
                               value={sessionStorage.getItem('email')}
+                              type="email"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div className="mb-3 col-6">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Description
+                             </label>
+                            <input
+                              onChange={(e)=>setDescription(e.target.value)}
                               type="email"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"

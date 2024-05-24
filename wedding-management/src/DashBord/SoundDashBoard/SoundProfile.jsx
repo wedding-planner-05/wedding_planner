@@ -76,14 +76,14 @@ function SoundProfile() {
                                         <span style={{ color: "black" }}>Dashboard</span>
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link to="/SoundResetPassDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiLockPasswordLine />
                                         </strong>
                                         <span style={{ color: "black" }}>Password</span>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li>
                                     <Link to="/SoundContactDashBoard" className="textnone">
                                         <strong style={{ color: "black" }}>
@@ -159,9 +159,9 @@ function SoundProfile() {
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-center">
-                                            <button type="reset" className="btn btn-info m-3">Reset</button>
-                                            <button type='submit' className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
-                                            <button type="button" className="btn btn-warning m-3">Save</button>
+                                            {/* <button type="reset" className="btn btn-info m-3">Reset</button> */}
+                                            <button type='submit' className="btn btn-block mt-4 " style={{ width:'70%',fontSize: "1.2rem", fontWeight: "", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
+                                            {/* <button type="button" className="btn btn-warning m-3">Save</button> */}
                                         </div>
                                     </form>
                                 </div>

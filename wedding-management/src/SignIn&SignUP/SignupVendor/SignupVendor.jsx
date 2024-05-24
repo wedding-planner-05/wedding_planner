@@ -159,7 +159,7 @@ function SignupVendor() {
         <div className="col-md-4 formwrap">
           <form
             className="d-flex flex-column formdiv text-center  col-md-12"
-            onSubmit={handleSubmit}
+            onSubmit={()=>{handleSubmit(event)}}
           >
             <h3 className="text-center fontstyles">VENDOR SIGNUP</h3>
             <label htmlFor="">
@@ -200,7 +200,7 @@ function SignupVendor() {
                   validatePassword();
                 }}
               />
-              <small className="text-danger" id="passworderror2" ></small>
+              <small className="text-danger" id="passworderror2"></small>
             </label>
 
             {/* <div>
@@ -213,8 +213,20 @@ function SignupVendor() {
             </div> */}
 
             <button
+
+              onClick={() => {
+                var passworderror2 = document.getElementById("passworderror2");
+                if (passworderror2.innerHTML == "") (()=>{handleSubmit()});
+                else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Field Required..",
+                      });
+                }
+              }}
               type="submit"
-              className="btn btn-block mt-4 pt-3 pb-3"
+              className="btn btn-block mt-3"
               style={{
                 fontSize: "1.2rem",
                 fontWeight: "bolder",

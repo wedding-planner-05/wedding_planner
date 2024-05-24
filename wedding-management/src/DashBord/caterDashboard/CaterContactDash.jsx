@@ -42,14 +42,14 @@ function CaterContactDash() {
                     <span style={{ color: "black" }}>Dashboard</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/CaterResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/CaterContactDash" className="textnone">
                     <strong style={{ color: "black" }}>

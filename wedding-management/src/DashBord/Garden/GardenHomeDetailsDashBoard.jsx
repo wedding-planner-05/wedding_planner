@@ -12,6 +12,7 @@ import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { CgProfile } from "react-icons/cg";
 
 function GardenHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
@@ -107,14 +108,14 @@ function GardenHomeDetailsDashBoard() {
                     <span style={{ color: "black" }}>Dashboard</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/GardenResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/GardenContactDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
@@ -134,7 +135,8 @@ function GardenHomeDetailsDashBoard() {
           </div>
           <div className="col content  boxborder">
             <div>
-              <h1>WelCome Garden'S</h1>
+              <h1 className="mb-5">WelCome Garden'S</h1>
+              <h3 className="mt-3"><CgProfile className="mr-4"/>Create your Profile here</h3>
               <hr />
               <div>
                 <div className="col-md-12">
