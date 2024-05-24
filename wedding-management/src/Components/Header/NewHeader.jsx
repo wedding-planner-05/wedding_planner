@@ -40,7 +40,7 @@ const NewHeader = () => {
                     console.log(response.data.data);
                     const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
                     setVendorData(filterData)
-                    navigate('/caterpage' , {state : filterData}) ;
+                    navigate('/GardenHomePage' , {state : filterData}) ;
                   }
                     break ;
                   case 'mehendi' :{

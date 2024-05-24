@@ -24,14 +24,13 @@ const MehendiHomePage = () => {
 
   return <>
       
-    <div className="container-fluid d-flex flex-wrap justify-content-evenly pt-5 align-items-center">
+    {/* <div className="container-fluid d-flex flex-wrap justify-content-evenly pt-5 align-items-center">
       {products.map((product, index) => (
         <section key={index} className="main-page m-3">
           <div
             key={index}
             className="p-2 row details-block "
           >
-            {/* Photographer Image */}
             <div className="p-0">
               <img style={{height:'200px'}}
                 className="custom-img"
@@ -39,14 +38,13 @@ const MehendiHomePage = () => {
                 alt={product.name}
               />
             </div>
-            {/* Photographer Details */}
+
             <div className="p-1 font-size">
               <div className="row">
                 <div className="col">
                   <div className="h6" style={{ width: "170%" }}>
                     <strong>{product.name}</strong>
                   </div>
-                  {/* <p className="custom-text-size">Photo + Video</p> */}
                 </div>
                 <div className="col text-end">
                   <p className="h6">
@@ -54,7 +52,6 @@ const MehendiHomePage = () => {
                   </p>
                   <p className="font custom-text-size">
 
-                    {/* <FaMapMarkerAlt color="green" /> {product.address} */}
 
                     <FaMapMarkerAlt color="green" /> {product.address.slice(0,14)}
 
@@ -69,7 +66,9 @@ const MehendiHomePage = () => {
           </div>
         </section>
       ))}
-    </div>
+    </div> */}
+
+    
   </>
 };
 

@@ -124,9 +124,9 @@ const DressDetailPage = () => {
                         <strong>
                           <Link
                             style={{ textDecoration: "none" }}
-                            to={"tel:+91 93023 18373"}
+                            to={`tel:+91 93023 18373`}
                           >
-                            {data.contactNo}
+                            {data.contactno}
                           </Link>
                         </strong>
                       </li>
@@ -134,14 +134,14 @@ const DressDetailPage = () => {
                         <strong>
                           <Link
                             to={`https://wa.me/91${
-                              data && data.contactNo
+                              data && data.contactno
                             }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
                           >
                             {" "}
                             <FaWhatsapp color="green" />{" "}
-                            {data && data.contactNo}{" "}
+                            {data && data.contactno}{" "}
                           </Link>
                         </strong>
                       </li>
