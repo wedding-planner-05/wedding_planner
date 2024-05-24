@@ -28,14 +28,18 @@ function SoundProfile() {
     console.log(profile,"this is data");
     useEffect(() => {
         if (userID) {
-            axios.get(`http://localhost:3000/sound/sound/viewprofiles/${userID}`).then(result => {
+            axios.get(`http://localhost:3000/sound/sound/viewProfiles/${userID}`).then(result => {
 
                 console.log(result.data, "ye data profile main save karr");
                 setProfile(result.data.data);
                 if (result.data.data) {
-                    const { title, price, contactNo } = result.data.data;
-                    setName(title);
-                    setServiceCharge(price);
+                    const { title,contactNo,serviceCharge,
+                        name
+                        
+                    } = result.data.data;
+                    setName(name);
+                    setServiceCharge(serviceCharge
+                    );
                     setContactNo(contactNo);
                     setEmail(userEmail);
                 }
