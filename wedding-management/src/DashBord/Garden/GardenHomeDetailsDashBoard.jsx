@@ -17,67 +17,67 @@ import { CgProfile } from "react-icons/cg";
 function GardenHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
   // const  {id, name, location, capacity, contactNo, rentalFee, description } = 
-  
-  const [id,setVendorId] = useState('') ;
-  const [name,setName] = useState('')
-  const [type ,setType] =  useState('') 
-  const [image,setImage] =  useState(null)
-  const [serviceCharge,setServiceCharge] =  useState('')
-  const [location,setLocation] =  useState('')
-  const [ description,setDescription] =  useState('')
-  const [ contactNo,setContact] =  useState('')
 
-  console.log(id , name , type, serviceCharge , location , description , contactNo);
-  useEffect(()=>{
-    setType(sessionStorage.getItem('caterType')) ;
-    setVendorId(sessionStorage.getItem('userID')) ;
-},[])
+  const [id, setVendorId] = useState('');
+  const [name, setName] = useState('')
+  const [type, setType] = useState('')
+  const [image, setImage] = useState(null)
+  const [serviceCharge, setServiceCharge] = useState('')
+  const [location, setLocation] = useState('')
+  const [description, setDescription] = useState('')
+  const [contactNo, setContact] = useState('')
+
+  console.log(id, name, type, serviceCharge, location, description, contactNo);
+  useEffect(() => {
+    setType(sessionStorage.getItem('caterType'));
+    setVendorId(sessionStorage.getItem('userID'));
+  }, [])
 
 
 
-const handleSubmit = (e)=>{
-  alert('hello')
-  e.preventDefault()
-  const formData = new FormData()
-  formData.append('gardenId',id)
-  formData.append('name',name)
-  formData.append('type',type)
-  formData.append('image',image)
-  formData.append('price',serviceCharge)
-  formData.append('location',location)
-  formData.append('description',description)
-  formData.append('contactNo',contactNo)
+  const handleSubmit = (e) => {
+    alert('hello')
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('gardenId', id)
+    formData.append('name', name)
+    formData.append('type', type)
+    formData.append('image', image)
+    formData.append('price', serviceCharge)
+    formData.append('location', location)
+    formData.append('description', description)
+    formData.append('contactNo', contactNo)
 
-  console.log('hello---3');
+    console.log('hello---3');
 
-  axios.post("http://localhost:3000/garden/garden/createProfile", formData, {
+    axios.post("http://localhost:3000/garden/garden/createProfile", formData, {
       headers: {
-          "Content-Type": "multipart/form-data"
+        "Content-Type": "multipart/form-data"
       }
-  }).then(result => {
+    }).then(result => {
       console.log(result.data.data);
       Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: 'Profile created successfully!'
+        icon: 'success',
+        title: 'Success',
+        text: 'Profile created successfully!'
       });
-  }).catch(err => {
+    }).catch(err => {
       console.log(err);
       Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Something went wrong while creating the profile.'
+        icon: 'error',
+        title: 'Error',
+        text: 'Something went wrong while creating the profile.'
       });
-  });
+    });
 
-  console.log('hellokjskj');
-}
+    console.log('hellokjskj');
+  }
 
-function handleFileChange(event) {
-  const imagePath = event.target.files[0];
-  console.log( 'image is : ',imagePath);
-  setImage(imagePath);
-}
+  function handleFileChange(event) {
+    const imagePath = event.target.files[0];
+    console.log('image is : ', imagePath);
+    setImage(imagePath);
+  }
 
   // function handleFileChange(event) {
   //   const selectedFile = event.target.files[0];
@@ -156,7 +156,7 @@ function handleFileChange(event) {
                             </label>
                             <input
                               type="text"
-                              onChange={(e)=>setName(e.target.value)}
+                              onChange={(e) => setName(e.target.value)}
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
@@ -170,7 +170,7 @@ function handleFileChange(event) {
                               Service Charge
                             </label>
                             <input
-                              onChange={(e)=>setServiceCharge(e.target.value)}
+                              onChange={(e) => setServiceCharge(e.target.value)}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -179,7 +179,7 @@ function handleFileChange(event) {
                         </div>
                         <hr />
                         <div className="row">
-                         
+
 
                           <div className="mb-3 col-6">
                             <label
@@ -187,9 +187,9 @@ function handleFileChange(event) {
                               className="form-label"
                             >
                               Contact No.
-                              </label>
+                            </label>
                             <input
-                              onChange={(e)=>setContact(e.target.value)}
+                              onChange={(e) => setContact(e.target.value)}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -234,7 +234,7 @@ function handleFileChange(event) {
                               Description
                             </label>
                             <input
-                              onChange={(e)=>setDescription(e.target.value)}
+                              onChange={(e) => setDescription(e.target.value)}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -243,7 +243,7 @@ function handleFileChange(event) {
                         </div>
                         <hr />
                         <div className="row">
-                          <div cla  ssName="mb-3">
+                          <div cla ssName="mb-3">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -252,10 +252,10 @@ function handleFileChange(event) {
                             </label>
                             <br />
                             <select className="col-6  p-1"
-                            onChange={(e)=>setLocation(e.target.value)}
+                              onChange={(e) => setLocation(e.target.value)}
                               name="select"
                               style={{
-                                borderColor:'grey',
+                                borderColor: 'grey',
                                 height: "2.9rem",
                                 borderRadius: ".5rem",
                               }}
@@ -333,7 +333,7 @@ function handleFileChange(event) {
                               onChange={handleFileChange}
                               className="form-control p emails"
                               id="exampleInputPassword1"
-                              // onChange={handleFileChange}
+                            // onChange={handleFileChange}
                             />
                           </div>
                         </div>
@@ -354,7 +354,7 @@ function handleFileChange(event) {
                               <button
                                 type="button"
                                 className="btn btn-warning m-3"
-                                onClick={(e)=>handleSubmit(e)}
+                                onClick={(e) => handleSubmit(e)}
                               >
                                 Save
                               </button>

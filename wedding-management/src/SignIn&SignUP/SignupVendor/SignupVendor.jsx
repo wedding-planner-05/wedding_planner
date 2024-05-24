@@ -58,8 +58,7 @@ function SignupVendor() {
         text: "Please fill in the details",
       });
     } else {
-      axios
-        .post(`http://localhost:3000/${choise}/${choise}/signup`, {
+      axios.post(`http://localhost:3000/${choise}/${choise}/signup`, {
           email,
           password,
         })
@@ -214,6 +213,7 @@ function SignupVendor() {
             </div> */}
 
             <button
+
               onClick={() => {
                 var passworderror2 = document.getElementById("passworderror2");
                 if (passworderror2.innerHTML == "") (()=>{handleSubmit()});

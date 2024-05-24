@@ -16,8 +16,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 function SoundHomeDetailsDashBoard() {
-
-
+  
   const [id,setVendorId] = useState('') ;
   const [name,setName] = useState('')
   const [type ,setType] =  useState('') 
