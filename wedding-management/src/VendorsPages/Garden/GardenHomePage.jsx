@@ -58,7 +58,7 @@ const GardenHomePage = () => {
             {/* <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button> */}
             <button
               onClick={() => handlerViewall(0, 1000000)}
-              className="btn"
+              className="btn p-0"
               style={{
                 height: "40px",
                 width: "150px",
@@ -68,7 +68,7 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
             >
-              view all
+              <small>view all</small>
             </button>
             <button
               style={{
@@ -80,9 +80,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(0, 300000)}
-              className="btn"
+              className="btn p-0"
             >
-              Below 300000
+              <small>Below 300000</small>
             </button>
             <button
               style={{
@@ -94,9 +94,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(300000, 500000)}
-              className="btn"
+              className="btn p-0"
             >
-              30000-500000
+              <small>30000-500000</small>
             </button>
             <button
               style={{
@@ -108,9 +108,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(500000, 700000)}
-              className="btn"
+              className="btn p-0"
             >
-              500000-700000
+             <small> 500000-700000</small>
             </button>
             {/* <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(15000,20000)} className='btn'>15000-20000</button> */}
             {/* <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(20000,25000)} className='btn'>20000-25000</button> */}
@@ -125,9 +125,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(700000, 2000000)}
-              className="btn"
+              className="btn p-0"
             >
-              Above 700000
+              <small>Above 700000</small>
             </button>
           </div>
         </div>
@@ -172,6 +172,7 @@ const GardenHomePage = () => {
                         <img
                           style={{ width: "100%", height: "200px" }}
                           className=" custom-img"
+
                           // src={
                           //   product.imageUrl
                           //     ? product.imageUrl

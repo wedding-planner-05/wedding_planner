@@ -11,11 +11,10 @@ router.post("/createProfile",upload.single("image"),addDress);
 
 router.post("/addDressInBulk",addDressInBulk);
 router.post("/addInBulkVendor",addInBulkVendnor);
-
 router.get("/viewAllVendors",viewAlldresses); 
 router.post("/signup",signUp); 
 router.post("/signin",signIn);
-
+router.get("/viewprofile/:id",viewprofile)
 router.post("/resetPassword",resetPassword);
 
 router.post("/viewbyColour",viewByColour);

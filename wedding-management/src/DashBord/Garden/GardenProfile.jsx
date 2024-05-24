@@ -11,6 +11,7 @@ import "./DashBord.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import swal from 'sweetalert';
 
 function GardenProfile() {
     const [file, setFile] = useState(null);
@@ -92,7 +93,7 @@ function GardenProfile() {
                                     <strong style={{ color: "black" }}>
                                         <AiOutlineSetting />
                                     </strong>
-                                    <span style={{ color: "black" }}>Setting</span>
+                                    <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
                                 </li>
                             </ul>
                         </div>

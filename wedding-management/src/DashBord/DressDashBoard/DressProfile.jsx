@@ -11,6 +11,7 @@ import "./DashBord.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function DressProfile() {
   const [file, setFile] = useState(null);
@@ -21,6 +22,7 @@ function DressProfile() {
   const [location, setLocation] = useState("");
   const [profile, setProfile] = useState(null);
   const[description,setDescription] = useState();
+
 
   const userID = sessionStorage.getItem("userID");
   const userEmail = sessionStorage.getItem("email");
@@ -45,20 +47,14 @@ function DressProfile() {
         .catch((error) => {
           console.error(error);
         });
+
     }
   }, [userID, userEmail]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add form submission logic here
-    console.log("Form submitted:", {
-      name,
-      serviceCharge,
-      email,
-      contactNo,
-      location,
-      file,
-    });
+
     toast.success("Profile updated successfully!");
   };
 
@@ -106,7 +102,7 @@ function DressProfile() {
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span style={{ color: "black" }}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
                 </li>
               </ul>
             </div>
@@ -133,6 +129,7 @@ function DressProfile() {
                         <label htmlFor="name" className="form-label">
                           Name
                         </label>
+
                         <input
                           onChange={(e) => setName(e.target.value)}
                           type="text"
@@ -173,6 +170,7 @@ function DressProfile() {
                         <label htmlFor="contactNo" className="form-label">
                           Phone Number
                         </label>
+
                         <input
                           onChange={(e) => setContactNo(e.target.value)}
                           type="text"
@@ -225,3 +223,4 @@ function DressProfile() {
 }
 
 export default DressProfile;
+

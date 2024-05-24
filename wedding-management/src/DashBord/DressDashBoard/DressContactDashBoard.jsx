@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Navbar from '../../Components/Navbar/Navbar';
+import swal from 'sweetalert';
 
 function DressContactDashBoard() {
 
@@ -62,7 +63,7 @@ function DressContactDashBoard() {
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span style={{ color: "black" }}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
                 </li>
               </ul>
             </div>

@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import "./DashBord.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import swal from "sweetalert";
 
 function SoundHomeDetailsDashBoard() {
   const [id, setVendorId] = useState('');
@@ -117,7 +118,7 @@ function SoundHomeDetailsDashBoard() {
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span style={{ color: "black" }}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
                 </li>
               </ul>
             </div>
