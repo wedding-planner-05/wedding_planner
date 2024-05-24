@@ -87,8 +87,8 @@ export const addDress = (request, response, next) => {
 
     console.log("Hello body", request.body);
 
-    let filename = request.file.originalname;
-    // console.log(request.file);
+    let filename = request.file.filename;
+    // console.log(filename);
     let id = request.body.id
     let name = request.body.name;
     let type = request.body.type;
@@ -247,16 +247,17 @@ export const addInBulkVendnor = async (req, res, next) => {
     }
 }
 
-export const viewprofile = async (request, response, next) => {
+export const viewprofile =  async (request, response, next) => {
     try {
         const id = parseInt(request.params.id, 10);
         if (isNaN(id)) {
             return response.status(400).json({ error: "Invalid ID format" });
         }
         console.log(id);
-        const caterobj = await CaterFormDetails.findOne({ where: { id: id }, raw: true });
-        if (caterobj) {
-            return response.status(200).json({ message: "View Profile success...", data: caterobj });
+        const dressobj = await VendorFunc.findOne({ where: { id: id }, raw: true });
+        if (dressobj) {
+            return response.status(200).json({ message: "View Profile success...", data: dressobj });
+
         } else {
             return response.status(404).json({ error: "Garden not found" });
         }

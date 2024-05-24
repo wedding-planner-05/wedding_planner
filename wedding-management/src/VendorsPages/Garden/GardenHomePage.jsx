@@ -173,11 +173,16 @@ const GardenHomePage = () => {
                           style={{ width: "100%", height: "200px" }}
                           className=" custom-img"
 
-                          src={
-                           product.imageUrl.startsWith("images") ?  `http://localhost:3003/` + product.imageUrl : product.imageUrl
-                          } 
-                          
-                          alt={'Image Not Found'}
+                          // src={
+                          //   product.imageUrl
+                          //     ? product.imageUrl
+                          //     : `http://localhost:3000/` +
+                          //       product.imageUrl +
+                          //       ".png"
+                          // }
+                          src={product.imageUrl.startsWith('images')?(`http://localhost:3003/`+ product.imageUrl): product.imageUrl}
+                          // src={`http://localhost:3003/`+ product.imageUrl}
+                          alt={`https://image.wedmegood.com/resized/450X/uploads/project/61882/1567934592_IMG_0762.jpg`}
                         />
                       </div>
                       <div className="p-1 font-size">

@@ -2,7 +2,7 @@ import express from "express";
 import {addDress,addDressInBulk,viewAlldresses,viewByColour,viewByPrice,signUp,signIn,resetPassword,addInBulkVendnor,viewprofile} from "../controller/vendorfunc.controller.js";
 import multer from "multer";
 
-let upload = multer({dest : "public/images"});
+let upload = multer({dest : "public/images/"});
 
 const router = express.Router();
 
@@ -19,6 +19,7 @@ router.post("/resetPassword",resetPassword);
 
 router.post("/viewbyColour",viewByColour);
 
+router.get("/viewprofile/:id",viewprofile)
 
 export default router;
 
