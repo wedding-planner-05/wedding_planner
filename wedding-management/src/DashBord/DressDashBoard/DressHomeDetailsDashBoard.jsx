@@ -14,6 +14,7 @@ import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import swal from "sweetalert";
 
 function SoundHomeDetailsDashBoard() {
 
@@ -118,7 +119,7 @@ function SoundHomeDetailsDashBoard() {
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span style={{ color: "black" }}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
                 </li>
               </ul>
             </div>
