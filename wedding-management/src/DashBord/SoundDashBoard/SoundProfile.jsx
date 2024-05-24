@@ -22,19 +22,25 @@ function SoundProfile() {
     const [location, setLocation] = useState("");
     const [profile, setProfile] = useState(null);
 
+
+
     const userID = sessionStorage.getItem("userID");
     const userEmail = sessionStorage.getItem("email");
-
+    console.log(profile,"this is data");
     useEffect(() => {
         if (userID) {
-            axios.get(`http://localhost:3000/sound/sound/viewprofiles/${userID}`).then(result => {
+            axios.get(`http://localhost:3000/sound/sound/viewProfiles/${userID}`).then(result => {
 
-            console.log(result.data);
+                console.log(result.data, "ye data profile main save karr");
                 setProfile(result.data.data);
                 if (result.data.data) {
-                    const { title, price, contactNo } = result.data.data;
-                    setName(title);
-                    setServiceCharge(price);
+                    const { title,contactNo,serviceCharge,
+                        name
+                        
+                    } = result.data.data;
+                    setName(name);
+                    setServiceCharge(serviceCharge
+                    );
                     setContactNo(contactNo);
                     setEmail(userEmail);
                 }
@@ -102,14 +108,14 @@ function SoundProfile() {
                     </div>
                     <div className="col content boxborder">
                         <div>
-                            <h1>Welcome CaterProfile</h1>
+                            <h1>Welcome Sound-Profile</h1>
                             <hr />
                             <div className="col-md-12">
                                 <div className="container-fluid boxfrom">
                                     <form className="row d-flex align-items-center justify-content-center flex-column" onSubmit={handleSubmit}>
-                                        <div className="mb-3 row text-center">
+                                        {/* <div className="mb-3 row text-center">
                                             <img src="" alt="Profile" className='imagesprofile text-center content-center' />
-                                        </div>
+                                        </div> */}
                                         <div className="row mt-5">
                                             <div className="mb-3 col">
                                                 <label htmlFor="name" className="form-label">Name</label>

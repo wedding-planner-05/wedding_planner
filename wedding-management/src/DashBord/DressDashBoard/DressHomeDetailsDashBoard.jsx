@@ -17,8 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 import swal from "sweetalert";
 
 function SoundHomeDetailsDashBoard() {
-
-
+  
   const [id,setVendorId] = useState('') ;
   const [name,setName] = useState('')
   const [type ,setType] =  useState('') 

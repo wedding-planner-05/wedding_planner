@@ -62,7 +62,9 @@ const ContactUs = () => {
           </div>
 
           {/* Contact Form Right Section */}
+
           {/* <div className="col-lg-12 col-md-6"> 
+
             <div className="row m-3">
               <div className="col-sm-6">
                 <div className="form-group text-size-s">

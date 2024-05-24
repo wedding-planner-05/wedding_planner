@@ -25,7 +25,10 @@ const SoundHomePage = () => {
 
     const location = useLocation() ;
     const data = location.state ; 
-  const url = ''
+    const url = ''
+
+
+
     useEffect(()=>{
       if(data){
           setProducts(data);
@@ -113,10 +116,13 @@ const SoundHomePage = () => {
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={`http://localhost:3006/`+ product.imageUrl}
+                    src={product.imageUrl?product.imageUrl:(`http://localhost:3006/`+ product.imageUrl)}
                     alt={product.name}
+
                   />
                 </div>
+
+                {  ()=>{console.log("IMAGE URL: ",product.imageUrl)}}
                 <div className="p-1 font-size">
                   <div className="row">
                     <div className="col">
