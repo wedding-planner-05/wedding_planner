@@ -18,11 +18,11 @@ const CaterFormDetails = sequelize.define('CaterFormDetails', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     servicecharge: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        allowNull: false,
         defaultValue: 1000  // Default value should be a number, not a string
     },    
     email: {
@@ -31,16 +31,16 @@ const CaterFormDetails = sequelize.define('CaterFormDetails', {
     },
     contactno: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     location: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         defaultValue:"indore"
     },
     imageUrl: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 });
 

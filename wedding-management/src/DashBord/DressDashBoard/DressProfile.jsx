@@ -101,7 +101,7 @@ function DressProfile() {
           </div>
           <div className="col content boxborder">
             <div>
-              <h1>Welcome CaterProfile</h1>
+              <h1>Welcome DressProfile</h1>
               <hr />
               <div className="col-md-12">
                 <div className="container-fluid boxfrom">
