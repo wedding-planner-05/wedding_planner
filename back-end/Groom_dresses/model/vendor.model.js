@@ -3,22 +3,16 @@ import { DataTypes } from "sequelize";
 import sequelize from "../db/dbconfig.js";
 import bcyrpt from "bcryptjs";
 const Vendor = sequelize.define("dress_vendor",{
-    id:{
-        type : DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-        
-    },
-    name:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
+    // id:{
+    //     type : DataTypes.INTEGER,
+    //     primaryKey:true,
+    //     autoIncrement:true
+    // },
     email:{ 
         type:DataTypes.STRING,
         unique:true,
         allowNull:false
     },
-
     password:{
         type:DataTypes.STRING,
         allowNull:false,
@@ -28,17 +22,7 @@ const Vendor = sequelize.define("dress_vendor",{
             this.setDataValue("password",encryptedPassword);
          }
 
-    },
-
-    address: {
-        type:DataTypes.TEXT,
-        
-    },
-    contact:{
-        type:DataTypes.STRING,
-        allowNull:false
-
-}
+    }
 })
 
 Vendor.checkPassword = (originalPassword,encryptedPassword)=>{

@@ -168,7 +168,7 @@ export default function ForgetPassword() {
                   <h2 className="px-2">Welcome</h2>
                   <p className="ms-2 mt-3 ">
                     Recover Your{" "}
-                    <span className="text-primary fw-bold">
+                    <span className="text-danger fw-bold">
                       Wedding Planner
                     </span>{" "}
                     Account
@@ -235,7 +235,7 @@ export default function ForgetPassword() {
                   <button
                     onClick={handleSubmit}
                     className={
-                      otpVisible ? "d-none" : "btn btn-lg btn-primary w-50 fs-6"
+                      otpVisible ? "d-none" : "btn btn-lg btn-danger w-50 fs-6"
                     }
                   >
                     Send OTP
