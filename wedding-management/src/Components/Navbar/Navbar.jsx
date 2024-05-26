@@ -70,7 +70,7 @@ function Navbar() {
           className="collapse navbar-collapse col-md-5 col-lg-6"
           id="navbarNavDropdown"
         >
-          <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5">
+          <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5 pt-4">
             <li className="nav-item active">
               <HashLink className="nav-link" smooth to="#/">
                 Home <span className="sr-only">(current)</span>
@@ -95,7 +95,7 @@ function Navbar() {
         </div>
 
         {/* User profile and authentication buttons */}
-        <div className="navbar-nav align-items-center col-md-4 align-content-between justify-content-end gap-3 border">
+        <div className="navbar-nav align-items-center col-md-4 align-content-between justify-content-end gap-3">
           {isAuthenticated && (
             <div>
               <img
@@ -148,11 +148,11 @@ function Navbar() {
               style={{ width: "250px" }}
             >
               <div className="nav-item active">
-                <a className="nav-link" href="#">
+                <a style={{textDecoration:'none'}} className="nav-link" href="#">
                   <Link to="/vendorSignIn">
-                    <span style={{ textDecoration: "none", color: "black" }}>
+                    <button style={{textDecoration:'none',backgroundColor:"#F8F9FA",border:"none",color: "black" }}>
                       Vendor LogIn ?
-                    </span>
+                    </button>
                   </Link>
                 </a>
               </div>
