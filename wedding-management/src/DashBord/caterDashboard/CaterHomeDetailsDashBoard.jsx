@@ -92,14 +92,14 @@ function CaterHomeDetailsDashBoard() {
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
                 </li> */}
-                <li>
+                {/* <li>
                   <Link to="/CaterContactDash" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiContactsLine />
                     </strong>
                     <span style={{ color: "black" }}>Contact-Us</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
@@ -156,7 +156,7 @@ function CaterHomeDetailsDashBoard() {
                     </div>
                     <hr />
                     <div className="d-flex justify-content-center">
-                      <button type="submit" className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Upload</button>
+                      <button type="submit" className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
                     </div>
                   </form>
                 </div>

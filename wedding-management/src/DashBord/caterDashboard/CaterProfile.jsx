@@ -81,14 +81,14 @@ function CaterProfile() {
                                         <span style={{ color: "black" }}>Password</span>
                                     </Link>
                                 </li> */}
-                                <li>
+                                {/* <li>
                                     <Link to="/CaterContactDash" className="textnone">
                                         <strong style={{ color: "black" }}>
                                             <RiContactsLine />
                                         </strong>
                                         <span style={{ color: "black" }}>Contact-Us</span>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li>
                                     <strong style={{ color: "black" }}>
                                         <AiOutlineSetting />
@@ -136,10 +136,11 @@ function CaterProfile() {
                                                 <label htmlFor="email" className="form-label">Email Address</label>
                                                 <input
                                                     onChange={(e) => setEmail(e.target.value)}
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control p-4 emails"
                                                     id="email"
                                                     value={email}
+
                                                 />
                                             </div>
                                             <hr />
@@ -166,8 +167,8 @@ function CaterProfile() {
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-center">
-                                            <button type="reset" className="btn btn-info m-3">Update</button>
-                                            <button type='submit' className="btn btn-block mt-4 pt-3 pb-3 col-md-4" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
+                                            {/* <button type="reset" className="btn btn-info m-3">Update</button> */}
+                                            {/* <button type='submit' className="btn btn-block mt-4 pt-3 pb-3 col-md-4" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button> */}
                                             {/* <button type="button" className="btn btn-warning m-3">Save</button> */}
                                         </div>
                                     </form>

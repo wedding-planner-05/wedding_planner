@@ -1,9 +1,20 @@
+// import React from 'react'
+
+// const MehendiVendorDetails = () => {
+//   return <>
+        
+//   </>
+// }
+
+// export default MehendiVendorDetails
+
+
 // import React, { useContext, useState } from 'react'
 import { FaEnvelope, FaPhoneAlt, FaStar, FaWhatsapp } from "react-icons/fa";
 import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import AboutUs from "../../Components/AboutUs/AboutUs";
-import "./SoundVendorDetails.css";
+// import "./SoundVendorDetails.css";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { Rating } from "@mui/material";
@@ -12,9 +23,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Footer from "../../Components/Footer/Footer";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-const SoundVendorDetails = () => {
+const MehendiVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
   const data = location.state;
@@ -29,14 +39,6 @@ const SoundVendorDetails = () => {
   console.log(value);
 
   // const [show, setShow] = React.useState(false);
-
-  // React.useEffect(()=>{
-  //   axios.get(`http://localhost:3000:sound/sound/${data.id}`).then(res=>{
-  //     console.log('hello');
-  //   }).catch(err=>{
-  //     console.log(err);
-  //   })
-  // },[])
 
   const showName = (value) => {
     console.log(value);
@@ -89,11 +91,10 @@ const SoundVendorDetails = () => {
               <div>
                 <img
                   className="zoom-img img-fluid"
-                  // src={`http://localhost:3006/`+ data.imageUrl}
-                  src={data.imageUrl.startsWith('images') ? `http://localhost:3006/`+ data.imageUrl : data.imageUrl} 
-
-                  alt="image not available"
-                />
+                //   src={`http://localhost:3006/`+ data.imageUrl}
+                src={data.imageUrl.startsWith('images') ? `http://localhost:3004/`+ data.imageUrl : data.imageUrl} 
+                alt="image not available"
+/>
               </div>
               <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
                 <h5>{data.name}</h5>
@@ -205,4 +206,4 @@ const SoundVendorDetails = () => {
   );
 };
 
-export default SoundVendorDetails;
+export default MehendiVendorDetails;

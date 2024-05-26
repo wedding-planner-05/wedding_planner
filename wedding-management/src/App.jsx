@@ -40,6 +40,7 @@ import CaterProfile from "./DashBord/caterDashboard/CaterProfile.jsx";
 import DressProfile from "./DashBord/DressDashBoard/DressProfile.jsx";
 import SoundProfile from "./DashBord/SoundDashBoard/SoundProfile.jsx";
 import GardenProfile from "./DashBord/Garden/GardenProfile.jsx";
+import MehendiVendorDetails from "./VendorsPages/Mehendi/MehendiVendorDetails.jsx";
 
 
 
@@ -80,6 +81,7 @@ const App = () => {
       <Route path="/PhotographerHomePage" element={<PhotographerHomePage />} />
       <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails />} />
       <Route path="/MehendiHomePage" element={<MehendiHomePage />} />
+      <Route path="/MehendiVendorDetails" element={<MehendiVendorDetails/>}/>
       <Route path="/SoundHomePage" element={<SoundHomePage />} />
       <Route path="/SoundVendorDetails" element={<SoundVendorDetails />} />
       <Route path='/GardenHomePage' element={<GardenHomePage />} />
