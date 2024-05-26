@@ -40,87 +40,89 @@ import CaterProfile from "./DashBord/caterDashboard/CaterProfile.jsx";
 import DressProfile from "./DashBord/DressDashBoard/DressProfile.jsx";
 import SoundProfile from "./DashBord/SoundDashBoard/SoundProfile.jsx";
 import GardenProfile from "./DashBord/Garden/GardenProfile.jsx";
+import Vendors from "./Components/Vendor/Vendors.jsx";
 
 
 
 const App = () => {
-      const [loading ,setLoading] = useState(false)
+      const [loading, setLoading] = useState(false)
 
-      useEffect(()=>{
-            axios.interceptors.request.use((config)=>{
+      useEffect(() => {
+            axios.interceptors.request.use((config) => {
                   setLoading(true)
                   return config
-            },(error)=>{
+            }, (error) => {
                   return Promise.reject(error)
             })
-            axios.interceptors.response.use((config)=>{
+            axios.interceptors.response.use((config) => {
                   setLoading(false)
                   return config
-            },(error)=>{
+            }, (error) => {
                   return Promise.reject(error)
             })
-      },[])
+      }, [])
 
 
-  return <>
-  <Navbar/>
-      {/* <Loader show={loading}/> */}
-    <Routes>
-      <Route path="/userSignIn" element={<UserSignIn />} />
-      <Route path="/vendorSignIn" element={<VendorSignIn />} />
-      <Route path="/vendorSignUp" element={<SignupVendor />} />
+      return <>
+            <Navbar />
+            {/* <Loader show={loading}/> */}
+            <Routes>
+                  <Route path="/userSignIn" element={<UserSignIn />} />
+                  <Route path="/vendorSignIn" element={<VendorSignIn />} />
+                  <Route path="/vendorSignUp" element={<SignupVendor />} />
 
-      <Route path="/forgotPassword" element={<ForgetPassword/>}/>
-      <Route path="/resetPassword" element={<ResetPassword/>}/>
+                  <Route path="/forgotPassword" element={<ForgetPassword />} />
+                  <Route path="/resetPassword" element={<ResetPassword />} />
 
-      <Route path="/" element={<Home />} />
-      <Route path="/otpVerify" element={<UserOtp />} />
-      <Route path="/DressHomePage" element={<DressHomePage />} />
-      <Route path='/DressDetailPage' element={<DressDetailPage/>}/>
-      <Route path="/PhotographerHomePage" element={<PhotographerHomePage />} />
-      <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails />} />
-      <Route path="/MehendiHomePage" element={<MehendiHomePage />} />
-      <Route path="/SoundHomePage" element={<SoundHomePage />} />
-      <Route path="/SoundVendorDetails" element={<SoundVendorDetails />} />
-      <Route path='/GardenHomePage' element={<GardenHomePage />} />
-      <Route path='/GardenVendorDetails' element={<GardenDetailPage/>}/>
-      <Route path="/caterpage" element={<CaterPage />} />
-      <Route path="/CaterContactpage" element={<CaterContactpage />} />
-      <Route path="/vendorSignIn" elementm = {<VendorSignIn/>}/>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/services" element={<Vendors />} />
+                  <Route path="/otpVerify" element={<UserOtp />} />
+                  <Route path="/DressHomePage" element={<DressHomePage />} />
+                  <Route path='/DressDetailPage' element={<DressDetailPage />} />
+                  <Route path="/PhotographerHomePage" element={<PhotographerHomePage />} />
+                  <Route path="/PhotoVendorDetails" element={<PhotoVendorDetails />} />
+                  <Route path="/MehendiHomePage" element={<MehendiHomePage />} />
+                  <Route path="/SoundHomePage" element={<SoundHomePage />} />
+                  <Route path="/SoundVendorDetails" element={<SoundVendorDetails />} />
+                  <Route path='/GardenHomePage' element={<GardenHomePage />} />
+                  <Route path='/GardenVendorDetails' element={<GardenDetailPage />} />
+                  <Route path="/caterpage" element={<CaterPage />} />
+                  <Route path="/CaterContactpage" element={<CaterContactpage />} />
+                  <Route path="/vendorSignIn" elementm={<VendorSignIn />} />
 
-{/* ----------------------------------------------CATER DASHBOARD--------------------------------------------- */}
+                  {/* ----------------------------------------------CATER DASHBOARD--------------------------------------------- */}
 
-      <Route path="/CaterHomeDetailsDashBoard" element={<CaterHomeDetailsDashBoard/>}/>
-      <Route path="/CaterResetPassDashBoard" element={<CaterResetPassDashBoard/>}/>
-      <Route path="/CaterContactDash" element={<CaterContactDash/>}/>
-      <Route path="/CaterProfile" element={<CaterProfile/>}/>
+                  <Route path="/CaterHomeDetailsDashBoard" element={<CaterHomeDetailsDashBoard />} />
+                  <Route path="/CaterResetPassDashBoard" element={<CaterResetPassDashBoard />} />
+                  <Route path="/CaterContactDash" element={<CaterContactDash />} />
+                  <Route path="/CaterProfile" element={<CaterProfile />} />
 
-{/* ----------------------------------------------DRESS DASHBOARD--------------------------------------------- */}
+                  {/* ----------------------------------------------DRESS DASHBOARD--------------------------------------------- */}
 
-      <Route path="/DressHomeDetailsDashBoard" element={<DressHomeDetailsDashBoard/>}/>
-      <Route path="/DressResetPassDashBoard" element={<DressResetPassDashBoard/>}/>
-      <Route path="/DressContactDashBoard" element={<DressContactDashBoard/>}/>
-      <Route path="/DressProfile" element={<DressProfile/>}/>
+                  <Route path="/DressHomeDetailsDashBoard" element={<DressHomeDetailsDashBoard />} />
+                  <Route path="/DressResetPassDashBoard" element={<DressResetPassDashBoard />} />
+                  <Route path="/DressContactDashBoard" element={<DressContactDashBoard />} />
+                  <Route path="/DressProfile" element={<DressProfile />} />
 
-{/* ----------------------------------------------SOUND DASHBOARD--------------------------------------------- */}
+                  {/* ----------------------------------------------SOUND DASHBOARD--------------------------------------------- */}
 
-      <Route path="/SoundHomeDetailsDashBoard" element={<SoundHomeDetailsDashBoard/>}/>
-      <Route path="/SoundResetPassDashBoard" element={<SoundResetPassDashBoard/>}/>
-      <Route path="/SoundContactDashBoard" element={<SoundContactDashBoard/>}/>
-      <Route path="/SoundProfile" element={<SoundProfile/>}/>
+                  <Route path="/SoundHomeDetailsDashBoard" element={<SoundHomeDetailsDashBoard />} />
+                  <Route path="/SoundResetPassDashBoard" element={<SoundResetPassDashBoard />} />
+                  <Route path="/SoundContactDashBoard" element={<SoundContactDashBoard />} />
+                  <Route path="/SoundProfile" element={<SoundProfile />} />
 
-{/* ----------------------------------------------GARDEN DASHBOARD--------------------------------------------- */}
-      <Route path="/GardenHomeDetailsDashBoard" element={<GardenHomeDetailsDashBoard/>}/>
-      <Route path="/GardenResetPassDashBoard" element={<GardenResetPassDashBoard/>}/>
-      <Route path="/GardenContactDashBoard" element={<GardenContactDashBoard/>}/>
-      <Route path="/GardenProfile" element={<GardenProfile/>}/>
-
-      
-     
-    </Routes>
+                  {/* ----------------------------------------------GARDEN DASHBOARD--------------------------------------------- */}
+                  <Route path="/GardenHomeDetailsDashBoard" element={<GardenHomeDetailsDashBoard />} />
+                  <Route path="/GardenResetPassDashBoard" element={<GardenResetPassDashBoard />} />
+                  <Route path="/GardenContactDashBoard" element={<GardenContactDashBoard />} />
+                  <Route path="/GardenProfile" element={<GardenProfile />} />
 
 
-  </>
+
+            </Routes>
+
+
+      </>
 
 }
 export default App;

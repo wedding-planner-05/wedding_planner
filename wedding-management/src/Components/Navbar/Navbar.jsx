@@ -72,7 +72,7 @@ function Navbar() {
         >
           <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5">
             <li className="nav-item active">
-              <HashLink className="nav-link" smooth to="#/">
+              <HashLink className="nav-link" smooth to="#home">
                 Home <span className="sr-only">(current)</span>
               </HashLink>
             </li>
