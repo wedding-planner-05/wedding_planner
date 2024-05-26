@@ -9,6 +9,7 @@ import "./DashBord.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function CaterHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
@@ -53,7 +54,7 @@ function CaterHomeDetailsDashBoard() {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Something went wrong',
+        text: 'please enter all details',
       });
       console.log("Error:", err);
     });
@@ -64,39 +65,52 @@ function CaterHomeDetailsDashBoard() {
       <ToastContainer />
       <div className="container-fluid">
         <div className="row ">
-          <div className="col-md-3 col-lg-2 asidebar">
-            <ul className="list-unstyled">
-              <li>
-                <Link to="/CaterProfile">
-                  <strong style={{ color: "black" }}><CgList /></strong>
-                  <span style={{ color: "black" }}>Profile</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/CaterHomeDetailsDashBoard" className="textnone">
-                  <strong style={{ color: "black" }}><RxDashboard /></strong>
-                  <span style={{ color: "black" }}>Dashboard</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/CaterResetPassDashBoard" className="textnone">
-                  <strong style={{ color: "black" }}><RiLockPasswordLine /></strong>
-                  <span style={{ color: "black" }}>Password</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/CaterContactDash" className="textnone">
-                  <strong style={{ color: "black" }}><RiContactsLine /></strong>
-                  <span style={{ color: "black" }}>Contact-Us</span>
-                </Link>
-              </li>
-              <li>
-                <strong style={{ color: "black" }}><AiOutlineSetting /></strong>
-                <span style={{ color: "black" }}>Setting</span>
-              </li>
-            </ul>
-   </div>
-          <div className="col content boxborder">
+          <div className="col-md-3 col-lg-2  asidebar">
+            <div>
+              <ul className="list-unstyled">
+                <li>
+                  <Link to="/CaterProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/CaterHomeDetailsDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RxDashboard />
+                    </strong>
+                    <span style={{ color: "black" }}>Dashboard</span>
+                  </Link>
+                </li>
+                {/* <li>
+                  <Link to="/CaterResetPassDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RiLockPasswordLine />
+                    </strong>
+                    <span style={{ color: "black" }}>Password</span>
+                  </Link>
+                </li> */}
+                <li>
+                  <Link to="/CaterContactDash" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RiContactsLine />
+                    </strong>
+                    <span style={{ color: "black" }}>Contact-Us</span>
+                  </Link>
+                </li>
+                <li>
+                  <strong style={{ color: "black" }}>
+                    <AiOutlineSetting />
+                  </strong>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col content  boxborder">
             <div>
               <h1>Welcome Cater's</h1>
               <hr />

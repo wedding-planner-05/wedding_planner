@@ -67,6 +67,7 @@ const PhotoVendorDetails = () => {
   const email = "wedding.planner.techwizards@gmail.com";
   const subject = "Request for Garden Booking";
   const body = `My name is , and I am writing to inquire about the availability of your Sound/DJ for an event we are planning.`;
+ 
   const url = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}&body=${encodeURIComponent(
     body
   )}`;
@@ -81,7 +82,10 @@ const PhotoVendorDetails = () => {
           <div>
             <img
               className="zoom-img img-fluid"
-              src={data.imageUrl}
+              // src={data.imageUrl}
+              src={
+                data.imageUrl.startsWith("images") ?  `http://localhost:3005/` + data.imageUrl : data.imageUrl
+               } 
               alt="image not available"
             />
           </div>

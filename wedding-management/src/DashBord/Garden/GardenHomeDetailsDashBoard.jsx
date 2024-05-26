@@ -13,6 +13,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { CgProfile } from "react-icons/cg";
+import swal from "sweetalert";
 
 function GardenHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
@@ -125,17 +126,20 @@ function GardenHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
+                  <Link>
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span style={{ color: "black" }}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
+                
+                  </Link>  
                 </li>
               </ul>
             </div>
           </div>
           <div className="col content  boxborder">
             <div>
-              <h1 className="mb-5">WelCome Garden'S</h1>
+              <h1 className="mb-5">WelCome Garden's</h1>
               <h3 className="mt-3"><CgProfile className="mr-4"/>Create your Profile here</h3>
               <hr />
               <div>
