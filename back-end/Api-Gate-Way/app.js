@@ -43,7 +43,7 @@ const server = fastgateway({
     // {
     //   prefix: "user",
     //   // target: "http://localhost:3000",
-    // },
+    // },d
   ]
 });
 server.use(bodyParser.json());

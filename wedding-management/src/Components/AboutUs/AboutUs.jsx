@@ -1,5 +1,12 @@
 import React from "react";
 import "./AboutUs.css";
+import { FaHeartPulse } from "react-icons/fa6";
+import {
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaPhoneAlt,
+} from "react-icons/fa";
 
 const AboutUs = () => {
   return (
@@ -8,6 +15,11 @@ const AboutUs = () => {
         <h4 className="" style={{ color: "crimson" }}>
           About us
         </h4>
+        <span className="custom-icons" style={{ color: "crimson" }}>
+          ___________
+          <FaHeartPulse />
+          ___________
+        </span>
       </div>
       <div
         className="row d-flex justify-content-around  py-2 m-1"

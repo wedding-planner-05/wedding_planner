@@ -94,7 +94,8 @@ let inputHandler = (e) => {
                 <div className="p-0">
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
-                    src={`http://localhost:3002/`+ product.imageUrl}
+                    // src={`http://localhost:3002/`+ product.imageUrl}
+                    src={product.imageUrl.startsWith("images") ?  `http://localhost:3002/` + product.imageUrl : product.imageUrl}
                     alt={product.name}
                   />
                   

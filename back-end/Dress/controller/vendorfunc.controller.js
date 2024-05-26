@@ -235,8 +235,8 @@ export const addInBulkVendnor = async (req, res, next) => {
     try {
         for (let item of data) {
             let email=item.email;
-            let password=item.password;
-            await VendorFunc.create({
+            let password=item.password+"";
+            await Vendor.create({
                 email,password
             })
         }

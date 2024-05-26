@@ -9,12 +9,12 @@ import sequelize from "../db/dbconfig.js";
 const VendorFunc = sequelize.define("dress_details",{
    id:{
     type:DataTypes.INTEGER,
-    primaryKey:true,
+    // primaryKey:true,
     autoIncrement:true,
-    references:{
-        model:"dress_vendors",
-        key:'id'
-    }
+    // references:{
+    //     model:"dress_vendors",
+    //     key:'id'
+    // }
     },  
     name:{
     type:DataTypes.STRING,
