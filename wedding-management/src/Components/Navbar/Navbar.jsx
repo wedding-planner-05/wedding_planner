@@ -8,6 +8,7 @@ function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
   const navigate = useLocation();
+  console.log(user);
   const naviagation = useNavigate()
   const VendorLogOut = () => {
     sessionStorage.clear();
@@ -15,6 +16,9 @@ function Navbar() {
     naviagation("/");
   };
 
+
+
+  
   const viewProfile = (type)=>{
      switch(type){
      case "cater":

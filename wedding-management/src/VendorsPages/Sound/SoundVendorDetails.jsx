@@ -173,7 +173,6 @@ const SoundVendorDetails = () => {
                 </button>
               </div>
             </div>
-            
           </div>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
@@ -185,6 +184,9 @@ const SoundVendorDetails = () => {
                 onChange={(event, newValue) => setValue(newValue)}
               />
             </Box>
+          </div>
+          <div>
+            {/* <input type="textarea" /> */}
           </div>
         </div>
       </div>
