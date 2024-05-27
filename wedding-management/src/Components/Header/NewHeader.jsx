@@ -40,6 +40,7 @@ const NewHeader = () => {
                   case 'garden'  : {
                     console.log(response.data.data);
                     const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
+                    console.log(filterData);
                     setVendorData(filterData)
                     navigate('/GardenHomePage' , {state : filterData}) ;
                   }

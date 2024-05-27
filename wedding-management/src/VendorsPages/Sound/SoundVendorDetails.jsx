@@ -18,15 +18,20 @@ const SoundVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
   const data = location.state;
-  console.log(data);
+  console.log(data.id);
+  const [userId,setUserId] = React.useState(sessionStorage.getItem('userID'))
+  const [name,setUserName] = React.useState(sessionStorage.getItem('userName'))
+  const [rating, setRating] = React.useState(2);
+  const[comment,setComment] = React.useState();
+  const [id,setId] = React.useState(data.id)
+
 
   const [showContact, setShowContact] = React.useState(false);
 
   const [showEmail, setShowEmail] = React.useState(false);
 
-  const [value, setValue] = React.useState(2);
 
-  console.log(value);
+  // console.log(value);
 
   // const [show, setShow] = React.useState(false);
 
@@ -37,6 +42,14 @@ const SoundVendorDetails = () => {
   //     console.log(err);
   //   })
   // },[])
+  let submitReview = () => {
+    alert('hello')
+     axios.post("http://localhost:3000/sound/sound/review",{id,userId,rating,name,comment}).then(result=>{
+        console.log(result);
+     }).catch(error=>{
+          console.log(error);
+     })
+  };
 
   const showName = (value) => {
     console.log(value);
@@ -90,8 +103,11 @@ const SoundVendorDetails = () => {
                 <img
                   className="zoom-img img-fluid"
                   // src={`http://localhost:3006/`+ data.imageUrl}
-                  src={data.imageUrl.startsWith('images') ? `http://localhost:3006/`+ data.imageUrl : data.imageUrl} 
-
+                  src={
+                    data.imageUrl.startsWith("images")
+                      ? `http://localhost:3006/` + data.imageUrl
+                      : data.imageUrl
+                  }
                   alt="image not available"
                 />
               </div>
@@ -184,18 +200,33 @@ const SoundVendorDetails = () => {
                 </button>
               </div>
             </div>
-            
           </div>
-          <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-            <div>{data.description}</div>
+          <div>
+            <div>
+              <label htmlFor="">Review's</label>
+            </div>
+            <input
+            onChange={(e)=>{setComment(e.target.value)}}
+              type="textarea"
+              style={{
+                height: "50px",
+                width: "50vw",
+              }}
+            />
             <Box>
               <Typography component="legend"></Typography>
               <Rating
                 name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => setValue(newValue)}
+                value={rating}
+                onChange={(event, newValue) => setRating(newValue)}
               />
             </Box>
+            <div>
+              <button className="bg-primary" onClick={()=>{submitReview()}}>submitReview</button>
+            </div>
+          </div>
+          <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
+            <div>{data.description}</div>
           </div>
         </div>
       </div>

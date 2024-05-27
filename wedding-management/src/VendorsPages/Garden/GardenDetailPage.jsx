@@ -191,6 +191,17 @@ console.log("IMAGE: ",data.imageUrl);
               />
             </Box>
           </div>
+          <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
+            <div>reviews</div>
+            <Box>
+              <Typography component="legend"></Typography>
+              <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => setValue(newValue)}
+              />
+            </Box>
+          </div>
         </div>
       </div>
       <AboutUs />

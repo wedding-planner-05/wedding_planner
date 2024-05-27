@@ -4,16 +4,32 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaRegUser } from "react-icons/fa";
+import axios from "axios";
 function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
+  const[username,setUserName] = useState();
   const navigate = useLocation();
   const naviagation = useNavigate()
+  console.log('user is',user);
   const VendorLogOut = () => {
     sessionStorage.clear();
     setIsLogIn(null);
     naviagation("/");
   };
+
+  if(user){
+    axios.post('http://localhost:3000/userRouter',{email:user.email,name:user.nickname}).then(result=>{
+        console.log('user data',result);
+        console.log(result.data.data.name);
+        setUserName(result.data.data.name);
+        sessionStorage.setItem("userName",username)
+        sessionStorage.setItem("userID",result.data.data.id)
+
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
 
   const viewProfile = (type)=>{
      switch(type){
