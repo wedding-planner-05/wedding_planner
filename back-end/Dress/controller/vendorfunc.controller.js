@@ -5,6 +5,7 @@ import xlsx from 'xlsx';
 import Vendor from "../model/vendor.model.js";
 import bcrypt from "bcryptjs";
 
+console.log('in controller');
 // export const signUp = (request,response,next)=>{
 //     Vendor.create({
 //             email:request.body.email,
@@ -196,6 +197,7 @@ export const addDressInBulk = async (req, res, next) => {
 
 
 export const viewAlldresses = (request, response, next) => {
+    console.log('hello');
     VendorFunc.findAll().then((result) => {
         console.log("called..")
         return response.status(200).json({ data: result, message: "view all dresses" });

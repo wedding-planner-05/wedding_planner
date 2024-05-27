@@ -8,7 +8,7 @@ const NewHeader = () => {
   const [address,setLocation] = useState("") ;
   console.log('Address is ',address);
   const [vendorData,setVendorData]  = useState([]);
-
+  console.log(vendor);
   const navigate = useNavigate() ;
   const getStarted= ()=>{
         if(vendor=="" && location == ""){
@@ -32,6 +32,7 @@ const NewHeader = () => {
                     break ;
                   case 'dress' :  {
                     const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    console.log("data is ",filterData);
                     setVendorData(filterData)
                     navigate('/DressHomePage' , {state : filterData})
                   }
@@ -39,6 +40,7 @@ const NewHeader = () => {
                   case 'garden'  : {
                     console.log(response.data.data);
                     const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
+                    console.log(filterData);
                     setVendorData(filterData)
                     navigate('/GardenHomePage' , {state : filterData}) ;
                   }
@@ -56,7 +58,7 @@ const NewHeader = () => {
                   }
                   break ;
                   case 'cater' : {
-                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
                     setVendorData(filterData)
                     navigate('/GardenHomePage' , {state : filterData}) ;
                   }

@@ -22,7 +22,7 @@ function DressProfile() {
   const [location, setLocation] = useState("");
   const [profile, setProfile] = useState(null);
   const[description,setDescription] = useState();
-
+  console.log(profile);
 
   const userID = sessionStorage.getItem("userID");
   const userEmail = sessionStorage.getItem("email");

@@ -89,7 +89,7 @@ import { TextField } from '@mui/material';
 
 const CaterPage = () => {
     const [products,setProducts] = useState([]) ;
-    
+    console.log(products);
     
     const [minValue,setMinValue] = useState(0) ;
     const [maxValue,setMaxValue] = useState(1000000) ;
@@ -100,12 +100,13 @@ const CaterPage = () => {
 
     const location = useLocation() ;
     const data = location.state ; 
-
+    console.log(data);
+    
     useEffect(()=>{
-    if(data){
-      setProducts(data);
+      if(data){
+        setProducts(data);
     }else{ 
-        axios.get("http://localhost:3001/cater/cater/viewAllVendors").then((response)=>{
+      axios.get("http://localhost:3000/cater/cater/viewAllVendors").then((response)=>{
           console.log(response);
           setProducts(response.data.data)
           console.log("data from datavaase",response.data.data);
@@ -133,9 +134,9 @@ const CaterPage = () => {
     };
 
       const filterHandeler = (ele)=>{
-        console.log('elemet is ',ele);
-              console.log(ele.servicecharge >= minValue && ele.servicecharge <= maxValue);
-          return ele.servicecharge >= minValue && ele.servicech <= maxValue 
+        // console.log('elemet is ',ele);
+              // console.log(ele.servicecharge >= minValue && ele.servicecharge <= maxValue);
+          return ele.servicecharge >= minValue && ele.servicecharge <= maxValue 
       }
 
 
