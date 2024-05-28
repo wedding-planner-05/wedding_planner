@@ -78,7 +78,7 @@ const DressDetailPage = () => {
 <div className='hello2'>
     <div className="row  justify-content-center mt-5 pt-5 pb-5">
 
-      <div className=" col-md-6 col-lg-4 position-relative mb-5">
+      <div className=" col-md-6 col-lg-4 position-relative mb-5 ">
         <div className='border' >
           <img
             className="dress-detail-image img-fluid"    
