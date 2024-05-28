@@ -30,7 +30,7 @@ export const review = sequelize.define("review", {
 },{
     indexes:[{
         unique:true,
-        fields:['id','userId']
+        fields:['id','vendorId']
     }]
   });
 
