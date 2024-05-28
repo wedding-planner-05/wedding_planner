@@ -67,6 +67,7 @@ router.post("/addInBulk",async (req, res) => {
     var i = 0;
     for (let item of data) {
         let name = item.name;
+        let vendorId = item.vendorId;
         let imageUrl = item.imageUrl;
         let serviceCharge = item.serviceCharge;
         let address = item.address;
@@ -80,6 +81,7 @@ router.post("/addInBulk",async (req, res) => {
     try {
         for (let item of data) {
             let name = item.name;
+            let vendorId = item.vendorId;
             let imageUrl = item.imageUrl;
             let serviceCharge = item.serviceCharge;
             let address = item.address;
@@ -90,7 +92,7 @@ router.post("/addInBulk",async (req, res) => {
             console.log(name + " " + imageUrl + " " + serviceCharge + " " + address + " " + description + " " + rating + " " + contactNo);
 
             await soundVendorDetails.create({
-                name, imageUrl, serviceCharge, address, rating, description, contactNo,
+                name,   vendorId,imageUrl, serviceCharge, address, rating, description, contactNo,
             })
         }
         return res.status(200).json({ message: "product added successfully.." })
@@ -107,7 +109,7 @@ router.get("/viewAllVendors", viewAllVendors)
 router.get("/viewprofiles/:id", viewProfiles)
 
 router.post("/review",reviews)
-router.get('/reviewdata/:id',reviewData)
+router.get('/reviewdata/:vendorId',reviewData)
 
 
 export default router;

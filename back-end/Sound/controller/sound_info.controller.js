@@ -197,6 +197,7 @@ export const createProfile = (request, response, next) => {
   console.log("In create profile");
   let filename = request.file.filename; //images.png
   let id = request.body.id;
+  let soundId = request.body.soundId;
   let name = request.body.name;
   let imageUrl = "images/" + filename;
   let serviceCharge = request.body.serviceCharge;
@@ -206,6 +207,7 @@ export const createProfile = (request, response, next) => {
 
   SoundDetails.create({
     id,
+    soundId,
     name,
     imageUrl,
     serviceCharge,
@@ -348,22 +350,10 @@ export const viewProfiles = async (request, response, next) => {
   }
 };
 
-// export const reviews = async (request, response, next) => {
-//   const { id, userId, rating,comment } = request.body;
-
-//   review.create({ id, userId, rating,comment })
-//     .then((result) => {
-//       return response.status(200).json({ data: result });
-//     })
-//     .catch((error) => {
-//       return response.status(501).json({ data: error });
-//     });
-// };
-
 export const reviews = async (request, response, next) => {
-  const { id, userId, rating,name, comment } = request.body;
+  const { vendorId, userId, rating,name, comment } = request.body;
 
-  review.create({ id, userId, rating,name, comment })
+  review.create({ vendorId, userId, rating,name, comment })
     .then((result) => {
       return response.status(200).json({ data: result });
     })
@@ -374,8 +364,8 @@ export const reviews = async (request, response, next) => {
 
 
 export const reviewData = (request,response,next)=>{
-  const { id } = request.params;
-  review.findAll({ where: { id } })
+  const { vendorId } = request.params;
+  review.findAll({ where: { vendorId } })
     .then((result) => {
       return response.send({ data: result });
     })

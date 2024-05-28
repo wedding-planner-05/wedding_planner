@@ -65,10 +65,15 @@ const soundVendorDetails = sequelize.define("sound_vendor_details", {
     primaryKey: true,
     allowNull: false,
     autoIncrement: true,
+ 
+  },
+  vendorId:{
+    allowNull:false,
+    type: DataTypes.INTEGER,
     references: {
-      model: "sound_vendors",
-      key: "id"
-    }
+        model: "sound_vendors",
+        key: "id"
+      }
   },
   name: {
     type: DataTypes.STRING,
