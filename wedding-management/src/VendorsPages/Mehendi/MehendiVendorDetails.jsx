@@ -1,7 +1,20 @@
+// import React from 'react'
+
+// const MehendiVendorDetails = () => {
+//   return <>
+        
+//   </>
+// }
+
+// export default MehendiVendorDetails
+
+
+// import React, { useContext, useState } from 'react'
 import { FaEnvelope, FaPhoneAlt, FaStar, FaWhatsapp } from "react-icons/fa";
 import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import AboutUs from "../../Components/AboutUs/AboutUs";
+// import "./SoundVendorDetails.css";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { Rating } from "@mui/material";
@@ -11,7 +24,7 @@ import Footer from "../../Components/Footer/Footer";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-const GardenDetailPage = () => {
+const MehendiVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
   const data = location.state;
@@ -24,7 +37,7 @@ const GardenDetailPage = () => {
   const [value, setValue] = React.useState(2);
 
   console.log(value);
-console.log("IMAGE: ",data.imageUrl);
+
   // const [show, setShow] = React.useState(false);
 
   const showName = (value) => {
@@ -78,34 +91,28 @@ console.log("IMAGE: ",data.imageUrl);
               <div>
                 <img
                   className="zoom-img img-fluid"
-                  // src={ data.imageUrl}
-                  src={data.imageUrl.startsWith('images')?(`http://localhost:3003/`+ data.imageUrl): data.imageUrl}
-                  // src={data.imageUrl? data.imageUrl:(`http://localhost:3003/`+ data.imageUrl)}
-                  alt="image not available"
-                />
+                //   src={`http://localhost:3006/`+ data.imageUrl}
+                src={data.imageUrl.startsWith('images') ? `http://localhost:3004/`+ data.imageUrl : data.imageUrl} 
+                alt="image not available"
+/>
               </div>
-
-              <div className="position-absolute block-details-1 p-3 mb-4 top-100 translate-middle">
-                <h5>{data.title}</h5>
-                {/* <small className="mb-5">
-                  <FaStar color="green" />
-                  {data.rating}
-                </small> */}
-                {/* <br /> */}
+              <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
+                <h5>{data.name}</h5>
                 <small>
-                  <FaLocationDot color="green" /> {data.location}
-                </small>
+                  <FaLocationDot color="green" />
+                  {data.address}
+                </small>{" "}
                 <br />
               </div>
             </div>
 
-        <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
+            <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
               <div className="custom-label mb-3 p-2 " htmlFor="">
                 Starting packages
               </div>
               <div className="custom-label mb-3 p-2" htmlFor="">
                 <FaIndianRupeeSign />
-                {data.price}
+                {data.serviceCharge}
               </div>
               <div className="d-flex justify-content-evenly position-relative">
                 <button
@@ -134,7 +141,7 @@ console.log("IMAGE: ",data.imageUrl);
                         <strong>
                           <Link
                             to={`https://wa.me/91${
-                              data && data.contactNo
+                              data && data.contactno
                             }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
@@ -178,21 +185,10 @@ console.log("IMAGE: ",data.imageUrl);
                 </button>
               </div>
             </div>
-
+            
           </div>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
-            <Box>
-              <Typography component="legend"></Typography>
-              <Rating
-                name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => setValue(newValue)}
-              />
-            </Box>
-          </div>
-          <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-            <div>reviews</div>
             <Box>
               <Typography component="legend"></Typography>
               <Rating
@@ -210,4 +206,4 @@ console.log("IMAGE: ",data.imageUrl);
   );
 };
 
-export default GardenDetailPage;
+export default MehendiVendorDetails;

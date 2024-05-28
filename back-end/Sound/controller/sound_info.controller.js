@@ -3,6 +3,8 @@ import { validationResult } from "express-validator";
 import sound_vendor from "../model/sound.js";
 import soundVendorDetails from "../model/sound_info.js";
 import xlsx from "xlsx";
+import { request, response } from "express";
+import { review } from "../model/review.js";
 
 export const addInBulkVendor = async (req, res, next) => {
   const workbook = xlsx.readFile("VendorSignInData.xlsx");
@@ -82,12 +84,10 @@ export const signup = async (request, response, next) => {
     })
     .catch((err) => {
       if (err.parent.errno * 1 == 1062)
-        return response
-          .status(401)
-          .json({
-            message: "Email is already registered...",
-            Erro: err.parent.errno * 1,
-          });
+        return response.status(401).json({
+          message: "Email is already registered...",
+          Erro: err.parent.errno * 1,
+        });
       return response
         .status(401)
         .json({ message: "please enter correct details...", Error: err });
@@ -347,3 +347,39 @@ export const viewProfiles = async (request, response, next) => {
     return response.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// export const reviews = async (request, response, next) => {
+//   const { id, userId, rating,comment } = request.body;
+
+//   review.create({ id, userId, rating,comment })
+//     .then((result) => {
+//       return response.status(200).json({ data: result });
+//     })
+//     .catch((error) => {
+//       return response.status(501).json({ data: error });
+//     });
+// };
+
+export const reviews = async (request, response, next) => {
+  const { id, userId, rating,name, comment } = request.body;
+
+  review.create({ id, userId, rating,name, comment })
+    .then((result) => {
+      return response.status(200).json({ data: result });
+    })
+    .catch((error) => {
+      return response.status(501).json({ data: error });
+    });
+};
+
+
+export const reviewData = (request,response,next)=>{
+  const { id } = request.params;
+  review.findAll({ where: { id } })
+    .then((result) => {
+      return response.send({ data: result });
+    })
+    .catch((error) => {
+      return response.send({ error: error });
+    });
+}

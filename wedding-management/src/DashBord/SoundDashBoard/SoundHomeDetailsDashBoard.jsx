@@ -19,27 +19,27 @@ import swal from "sweetalert";
 function SoundHomeDetailsDashBoard() {
 
 
-  const [id,setVendorId] = useState('') ;
-  const [name,setName] = useState('')
-  const [type ,setType] =  useState('') 
-  const [image,setImage] =  useState(null)
-  const [serviceCharge,setServiceCharge] =  useState('')
-  const [address,setAddress] =  useState('')
-  const [ description,setDescription] =  useState('')
-  const [ contactNo,setContact] =  useState('')
-  console.log('vendor Id : ',id)
+  const [id, setVendorId] = useState('');
+  const [name, setName] = useState('')
+  const [type, setType] = useState('')
+  const [image, setImage] = useState(null)
+  const [serviceCharge, setServiceCharge] = useState('')
+  const [address, setAddress] = useState('')
+  const [description, setDescription] = useState('')
+  const [contactNo, setContact] = useState('')
+  console.log('vendor Id : ', id)
 
-  console.log('image url ',image);
-  console.log(id , name , type  , serviceCharge , address , description , contactNo);
+  console.log('image url ', image);
+  console.log(id, name, type, serviceCharge, address, description, contactNo);
 
-  useEffect(()=>{
-      setType(sessionStorage.getItem('caterType')) ;
-      setVendorId(sessionStorage.getItem('userID')) ;
-  },[])
+  useEffect(() => {
+    setType(sessionStorage.getItem('caterType'));
+    setVendorId(sessionStorage.getItem('userID'));
+  }, [])
 
   function handleFileChange(event) {
     const imagePath = event.target.files[0];
-    console.log( 'image is : ',imagePath);
+    console.log('image is : ', imagePath);
     setImage(imagePath);
   }
 
@@ -63,7 +63,7 @@ function SoundHomeDetailsDashBoard() {
     }).then(result => {
       toast.success("Data entered successfully")
       console.log("Data entered successfully", result);
-      console.log(id, image, name, serviceCharge, type, contactNo, address, description,"this is data");
+      console.log(id, image, name, serviceCharge, type, contactNo, address, description, "this is data");
 
     }).catch(err => {
 
@@ -76,7 +76,7 @@ function SoundHomeDetailsDashBoard() {
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
 
       <div className="container-fluid">
         <div className="row ">
@@ -119,14 +119,14 @@ function SoundHomeDetailsDashBoard() {
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={() => { swal("Coming Soon", "Working on that", "info") }}>Setting</span>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col content  boxborder">
             <div>
-              <h1>WelCome DJ'S</h1>
+              <h1>WelCome Sound/Dj</h1>
               <hr />
               <div>
                 <div className="col-md-12">
@@ -146,7 +146,7 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <input
                               type="text"
-                              onChange={(e)=>setName(e.target.value)}
+                              onChange={(e) => setName(e.target.value)}
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
@@ -160,7 +160,7 @@ function SoundHomeDetailsDashBoard() {
                               Service Charge
                             </label>
                             <input
-                              onChange={(e)=>setServiceCharge(e.target.value)}
+                              onChange={(e) => setServiceCharge(e.target.value)}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -169,7 +169,7 @@ function SoundHomeDetailsDashBoard() {
                         </div>
                         <hr />
                         <div className="row">
-                         
+
 
                           <div className="mb-3 col-6">
                             <label
@@ -177,9 +177,9 @@ function SoundHomeDetailsDashBoard() {
                               className="form-label"
                             >
                               Contact No.
-                              </label>
+                            </label>
                             <input
-                              onChange={(e)=>setContact(e.target.value)}
+                              onChange={(e) => setContact(e.target.value)}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -222,9 +222,9 @@ function SoundHomeDetailsDashBoard() {
                               className="form-label"
                             >
                               Description
-                             </label>
+                            </label>
                             <input
-                              onChange={(e)=>setDescription(e.target.value)}
+                              onChange={(e) => setDescription(e.target.value)}
                               type="email"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -233,7 +233,7 @@ function SoundHomeDetailsDashBoard() {
                         </div>
                         <hr />
                         <div className="row">
-                          <div cla  ssName="mb-3">
+                          <div cla ssName="mb-3">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -242,10 +242,10 @@ function SoundHomeDetailsDashBoard() {
                             </label>
                             <br />
                             <select className="col-6  p-1"
-                            onChange={(e)=>setAddress(e.target.value)}
+                              onChange={(e) => setAddress(e.target.value)}
                               name="select"
                               style={{
-                                borderColor:'grey',
+                                borderColor: 'grey',
                                 height: "2.9rem",
                                 borderRadius: ".5rem",
                               }}
@@ -323,7 +323,7 @@ function SoundHomeDetailsDashBoard() {
                               onChange={handleFileChange}
                               className="form-control p emails"
                               id="exampleInputPassword1"
-                              // onChange={handleFileChange}
+                            // onChange={handleFileChange}
                             />
                           </div>
                         </div>
@@ -344,7 +344,7 @@ function SoundHomeDetailsDashBoard() {
                               <button
                                 type="button"
                                 className="btn btn-warning m-3"
-                                onClick={(e)=>handleSubmit(e)}
+                                onClick={(e) => handleSubmit(e)}
                               >
                                 Save
                               </button>

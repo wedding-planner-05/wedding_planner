@@ -15,10 +15,14 @@ const GardenHomePage = () => {
   const [inputText, setInputText] = useState("");
 
   const navigate = useNavigate();
-
+  const location = useLocation() ;
+  const data = location.state ; 
 
   useEffect(() => {
-    axios
+    if(data){
+      setProducts(data)
+    }else{
+      axios
       .get("http://localhost:3000/garden/garden/viewAllVendors")
       .then((response) => {
         console.log(response.data.data);
@@ -27,6 +31,7 @@ const GardenHomePage = () => {
       .catch((err) => {
         console.log(err);
       });
+    }
   
   }, []);
   console.log("Image Url: ",products);
@@ -148,7 +153,7 @@ const GardenHomePage = () => {
           </div>
           {products.filter(filterHandeler).length === 0 &&
           isProductAvailable ? (
-            <h3>No products available in the selected price range</h3>
+            <h3 className="text-center"> No products available</h3>
           ) : (
             <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
               {products

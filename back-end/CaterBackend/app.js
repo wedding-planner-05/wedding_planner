@@ -179,7 +179,7 @@ app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
 });
 
 
-app.get("/cater/cater/viewAllVendors", async (req, res) => {
+app.get("/cater/viewAllVendors", async (req, res) => {
     try {
         // CaterFormDetails
         const data = await CaterFormDetails.findAll();

@@ -92,19 +92,19 @@ function CaterHomeDetailsDashBoard() {
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
                 </li> */}
-                <li>
+                {/* <li>
                   <Link to="/CaterContactDash" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiContactsLine />
                     </strong>
                     <span style={{ color: "black" }}>Contact-Us</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={() => { swal("Coming Soon", "Working on that", "info") }}>Setting</span>
 
                 </li>
               </ul>
@@ -145,7 +145,65 @@ function CaterHomeDetailsDashBoard() {
                         <label htmlFor="location" className="form-label">Location</label>
                         <select onChange={(e) => setLocation(e.target.value)} name="location" id="location" style={{ border: "none", width: "100%", height: "2.9rem", boxShadow: "0 0 0.5rem black", borderRadius: ".5rem" }}>
                           <option value="">Choose Location</option>
-                          <option value="Vijay Nagar, Indore">Vijay Nagar, Indore</option>
+                          <option value="">Choose Location</option>
+                          <option value="Vijay Nagar, Indore">
+                            Vijay Nagar, Indore
+                          </option>
+                          <option value="Bhawarkua, Indore">
+                            Bhawarkua, Indore
+                          </option>
+                          <option value="Rajwada, Indore">
+                            Rajwada, Indore
+                          </option>
+                          <option value="Palasia, Indore">
+                            Palasia, Indore
+                          </option>
+                          <option value="Tilak Nagar, Indore">
+                            Tilak Nagar, Indore
+                          </option>
+                          <option value="Sudama Nagar, Indore">
+                            Sudama Nagar, Indore
+                          </option>
+                          <option value="Pardesipura, Indore">
+                            Pardesipura, Indore
+                          </option>
+                          <option value="Bengali Square, Indore">
+                            Bengali Square, Indore
+                          </option>
+                          <option value="Rau, Indore">Rau, Indore</option>
+                          <option value="MR 10 Road, Indore">
+                            MR 10 Road, Indore
+                          </option>
+                          <option value="Mahalaxmi Nagar, Indore">
+                            Mahalaxmi Nagar, Indore
+                          </option>
+                          <option value="Navlakha, Indore">
+                            Navlakha, Indore
+                          </option>
+                          <option value="Annapurna, Indore">
+                            Annapurna, Indore
+                          </option>
+                          <option value="Lokmanya Nagar, Indore">
+                            Lokmanya Nagar, Indore
+                          </option>
+                          <option value="Snehnagar, Indore">
+                            Snehnagar, Indore
+                          </option>
+                          <option value="Scheme No. 54, Indore">
+                            Scheme No. 54, Indore
+                          </option>
+                          <option value="Scheme No. 74, Indore">
+                            Scheme No. 74, Indore
+                          </option>
+                          <option value="Sukhliya, Indore">
+                            Sukhliya, Indore
+                          </option>
+                          <option value="Nipania, Indore">
+                            Nipania, Indore
+                          </option>
+                          <option value="Airport Road, Indore">
+                            Airport Road, Indore
+                          </option>
                           {/* Add more options as needed */}
                         </select>
                       </div>
@@ -156,7 +214,7 @@ function CaterHomeDetailsDashBoard() {
                     </div>
                     <hr />
                     <div className="d-flex justify-content-center">
-                      <button type="submit" className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Upload</button>
+                      <button type="submit" className="btn btn-block mt-4 pt-3 pb-3" style={{ fontSize: "1.2rem", fontWeight: "bolder", background: "#D5133A", borderRadius: "2rem", color: "white" }}>Submit</button>
                     </div>
                   </form>
                 </div>
