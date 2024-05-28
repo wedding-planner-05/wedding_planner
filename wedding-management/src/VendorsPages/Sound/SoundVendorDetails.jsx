@@ -27,7 +27,7 @@ const SoundVendorDetails = () => {
   const [comment, setComment] = React.useState();
   const [reviewadd, setReviwAdd] = React.useState([]);
   const [vendorId, setId] = React.useState(data.vendorId);
-  const [updateReview, setUpdateReview] = React.useState(false);
+  let [updateReview, setUpdateReview] = React.useState(0);
 
   const [showContact, setShowContact] = React.useState(false);
 
@@ -38,19 +38,22 @@ const SoundVendorDetails = () => {
   // const [show, setShow] = React.useState(false);
 
   React.useEffect(() => {
-    axios
-      .get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
-      .then((result) => {
-        console.log("review gaya", result.data);
-        // setReviwAdd(result.data);
+  axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
+        .then((result) => {
+        console.log('result of review',result);
+        console.log("heelo main aa gaya", result.data.data);
+        setReviwAdd(result.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  },[]);
+
+
+
 
   let submitReview = () => {
-    setUpdateReview(true);
+
     alert("hello");
     axios
       .post("http://localhost:3000/sound/sound/review", {
@@ -61,25 +64,14 @@ const SoundVendorDetails = () => {
         comment,
       })
       .then((result) => {
-        console.log(result);
+        setReviwAdd([result.data.data,...reviewadd])
+
+        console.log('user response ',result.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  React.useEffect(() => {
-    axios
-      .get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
-      .then((result) => {
-        console.log('result of review',result);
-        console.log("heelo main aa gaya", result.data.data);
-        setReviwAdd(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   const showName = (value) => {
     console.log(value);

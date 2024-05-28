@@ -12,7 +12,7 @@ function Navbar() {
   const navigate = useLocation();
   // console.log(user);
   const naviagation = useNavigate()
-  // console.log('user is',user);
+  console.log('user is',user);  
   const VendorLogOut = () => {
     sessionStorage.clear();
     setIsLogIn(null);
