@@ -228,6 +228,9 @@ const SoundVendorDetails = () => {
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
           </div>
+          <div>
+            {/* <input type="textarea" /> */}
+          </div>
         </div>
       </div>
       <AboutUs />

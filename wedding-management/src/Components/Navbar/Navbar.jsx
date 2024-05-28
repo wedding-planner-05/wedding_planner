@@ -10,6 +10,7 @@ function Navbar() {
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
   const[username,setUserName] = useState();
   const navigate = useLocation();
+  console.log(user);
   const naviagation = useNavigate()
   console.log('user is',user);
   const VendorLogOut = () => {
@@ -18,6 +19,7 @@ function Navbar() {
     naviagation("/");
   };
 
+  
   if(user){
     axios.post('http://localhost:3000/userRouter',{email:user.email,name:user.nickname}).then(result=>{
         console.log('user data',result);
@@ -88,7 +90,7 @@ function Navbar() {
         >
           <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5 pt-4">
             <li className="nav-item active">
-              <HashLink className="nav-link" smooth to="#/">
+              <HashLink className="nav-link" smooth to="#home">
                 Home <span className="sr-only">(current)</span>
               </HashLink>
             </li>
