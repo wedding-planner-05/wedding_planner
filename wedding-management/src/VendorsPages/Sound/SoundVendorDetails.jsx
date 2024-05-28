@@ -22,9 +22,10 @@ const SoundVendorDetails = () => {
   const [userId,setUserId] = React.useState(sessionStorage.getItem('userID'))
   const [name,setUserName] = React.useState(sessionStorage.getItem('userName'))
   const [rating, setRating] = React.useState(2);
-  const[comment,setComment] = React.useState();
+  const [comment,setComment] = React.useState();
+  const [reviewadd,setReviwAdd]= React.useState([])
   const [id,setId] = React.useState(data.id)
-
+  const [updateReview,setUpdateReview] = React.useState(false) ;
 
   const [showContact, setShowContact] = React.useState(false);
 
@@ -35,14 +36,17 @@ const SoundVendorDetails = () => {
 
   // const [show, setShow] = React.useState(false);
 
-  // React.useEffect(()=>{
-  //   axios.get(`http://localhost:3000:sound/sound/${data.id}`).then(res=>{
-  //     console.log('hello');
-  //   }).catch(err=>{
-  //     console.log(err);
-  //   })
-  // },[])
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${id}`).then(result => {
+      console.log("heelo main aa gaya", result.data.data);
+      setReviwAdd(result.data.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [updateReview])
+
   let submitReview = () => {
+    setUpdateReview(true)
     alert('hello')
      axios.post("http://localhost:3000/sound/sound/review",{id,userId,rating,name,comment}).then(result=>{
         console.log(result);
@@ -228,9 +232,27 @@ const SoundVendorDetails = () => {
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
           </div>
-          <div>
-            {/* <input type="textarea" /> */}
+          <div className="review-table">
+            {reviewadd.map((item, index) => (
+              <div key={index} className="review-item">
+                <ul>
+                  <li className="review-comment">
+                    <span className="comment-label"> Comment:</span>
+                    <span className="comment-text"> {item.comment}</span>
+                  </li>
+                  <li className="review-rating">
+                    <span className="rating-label">Rating:</span>
+                    <span className="rating-value"> <strong>{item.rating}/5</strong></span>
+                  </li>
+                  <li className="review-name">
+                    <span className="name-label">Reviewed by:</span>
+                    <span className="name-value">{item.name}</span>
+                  </li>
+                </ul>
+              </div>
+            ))}
           </div>
+
         </div>
       </div>
       <AboutUs />
