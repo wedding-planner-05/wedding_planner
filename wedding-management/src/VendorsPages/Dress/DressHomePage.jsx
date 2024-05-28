@@ -12,7 +12,8 @@ const DressHomePage = () => {
 //     navigate('/PhotoVendorDetails', {state:product});
 
 //   }
-  
+
+
 const [products, setProducts] = useState([]);
 const [inputText, setInputText] = useState("");
 
@@ -59,10 +60,15 @@ let inputHandler = (e) => {
   }
 
   return <>
+
+
+
+
+
   <div className='vendors-box mt-5  d-flex justify-content-between'>
     <div className='filter-box'>
     <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
-      {/* <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button> */}
+      
       <button onClick={()=>handlerViewall(0,1000000)} className='btn p-0' style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}}> <small>view all</small> </button>
       <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(0,5000)} className='btn p-0'><small>0-5000</small> </button>
       <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(5000,10000)} className='btn p-0'><small>5000-10000</small> </button>
