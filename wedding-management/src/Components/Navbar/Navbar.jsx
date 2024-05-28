@@ -10,9 +10,9 @@ function Navbar() {
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
   const[username,setUserName] = useState();
   const navigate = useLocation();
-  console.log(user);
+  // console.log(user);
   const naviagation = useNavigate()
-  console.log('user is',user);
+  // console.log('user is',user);
   const VendorLogOut = () => {
     sessionStorage.clear();
     setIsLogIn(null);
@@ -22,8 +22,8 @@ function Navbar() {
   
   if(user){
     axios.post('http://localhost:3000/userRouter',{email:user.email,name:user.nickname}).then(result=>{
-        console.log('user data',result);
-        console.log(result.data.data.name);
+        // console.log('user data',result);
+        // console.log(result.data.data.name);
         setUserName(result.data.data.name);
         sessionStorage.setItem("userName",username)
         sessionStorage.setItem("userID",result.data.data.id)

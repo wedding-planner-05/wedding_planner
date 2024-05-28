@@ -8,6 +8,9 @@ export const review = sequelize.define("review", {
     primaryKey: true,
     autoIncrement: true,
   },
+  vendorId:{
+    type: DataTypes.INTEGER,
+  },
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -32,7 +35,7 @@ export const review = sequelize.define("review", {
   });
 
 review.belongsTo(soundVendorDetails, { // Pass the actual model instead of a string
-  foreignKey: "id", // Make sure this key is the one used in review to reference soundVendorDetails
+  foreignKey: "vendorId", // Make sure this key is the one used in review to reference soundVendorDetails
   targetKey: "id",
 });
 
