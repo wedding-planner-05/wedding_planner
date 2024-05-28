@@ -4,7 +4,6 @@ import { FaHeartPulse } from "react-icons/fa6";
 import {
   FaEnvelope,
   FaMapMarkerAlt,
-  FaPhone,
   FaPhoneAlt,
 } from "react-icons/fa";
 
@@ -45,16 +44,16 @@ const ContactUs = () => {
               <div className="socialiconbox">
                 <ul style={{width:'90%'}} className="socialicon d-flex justify-content-between px-2 h6">
                   <li>
-                    <i className="bx bxl-instagram"></i>
+                    <i className="bx bxl-instagram" style={{cursor:'pointer'}}></i>
                   </li>
                   <li>
-                    <i className="bx bxl-facebook"></i>
+                    <i className="bx bxl-facebook" style={{cursor:'pointer'}}></i>
                   </li>
                   <li>
-                    <i className="bx bxl-github"></i>
+                    <i className="bx bxl-github" style={{cursor:'pointer'}}></i>
                   </li>
                   <li>
-                    <i className="bx bxl-youtube"></i>
+                    <i className="bx bxl-youtube" style={{cursor:'pointer'}}></i>
                   </li>
                 </ul>
               </div>
