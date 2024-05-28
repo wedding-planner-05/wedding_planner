@@ -240,7 +240,9 @@ const SoundVendorDetails = () => {
           </div>
           <div>
             {/* <input type="textarea" /> */}
-          </div>{reviewadd.map(item => {
+          </div>
+          {/* <div>
+          {reviewadd.map(item => {
             return <>
               <ul key={id}>
                 <li>{`Comment :- ${item.comment}:Rating ${item.rating}............................................${item.name
@@ -249,6 +251,27 @@ const SoundVendorDetails = () => {
               </ul>
             </>
           })}
+          </div> */}
+          <div className="review-table">
+            {reviewadd.map((item, index) => (
+              <div key={index} className="review-item">
+                <ul>
+                  <li className="review-comment">
+                    <span className="comment-label"> Comment:</span>
+                    <span className="comment-text"> {item.comment}</span>
+                  </li>
+                  <li className="review-rating">
+                    <span className="rating-label">Rating:</span>
+                    <span className="rating-value"> <strong>{item.rating}/5</strong></span>
+                  </li>
+                  <li className="review-name">
+                    <span className="name-label">Reviewed by:</span>
+                    <span className="name-value">{item.name}</span>
+                  </li>
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <AboutUs />
