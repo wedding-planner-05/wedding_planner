@@ -1,37 +1,3 @@
-// import sequelize from "../dbCongi/dbConnection.js";
-// import { DataTypes } from "sequelize";
-// export const review = sequelize.define("review", {
-//   id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//   },
-//   userId: {
-//     type: DataTypes.INTEGER,
-//   },
-//   comment: {
-//     type: DataTypes.STRING,
-//     allonull: false,
-//   },
-//   rating: {
-//     type: DataTypes.INTEGER,
-//     allownull: false,
-//   },
-// });
-
-// review.belongsTo("sound_vendor_detail", {
-//   foreignKey: "id",
-//   target: "id",
-// });
-
-// sequelize
-//   .sync()
-//   .then(() => {
-//     console.log("review table create successful");
-//   })
-//   .catch(() => {
-//     console.log("something went wrong in review table");
-//   });
-
 import sequelize from "../dbCongi/dbConnection.js";
 import { DataTypes } from "sequelize";
 import soundVendorDetails from "./sound_info.js";

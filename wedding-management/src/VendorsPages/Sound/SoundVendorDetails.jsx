@@ -19,11 +19,12 @@ const SoundVendorDetails = () => {
   const location = useLocation();
   const data = location.state;
   console.log(data.id);
-  const [userId,setUserId] = React.useState(sessionStorage.getItem('userID'))
-  const [name,setUserName] = React.useState(sessionStorage.getItem('userName'))
+  const [userId, setUserId] = React.useState(sessionStorage.getItem('userID'))
+  const [name, setUserName] = React.useState(sessionStorage.getItem('userName'))
   const [rating, setRating] = React.useState(2);
-  const[comment,setComment] = React.useState();
-  const [id,setId] = React.useState(data.id)
+  const [reviewadd, setReviwAdd] = React.useState([]);
+  const [comment, setComment] = React.useState();
+  const [id, setId] = React.useState(data.id)
 
 
   const [showContact, setShowContact] = React.useState(false);
@@ -44,12 +45,22 @@ const SoundVendorDetails = () => {
   // },[])
   let submitReview = () => {
     alert('hello')
-     axios.post("http://localhost:3000/sound/sound/review",{id,userId,rating,name,comment}).then(result=>{
-        console.log(result);
-     }).catch(error=>{
-          console.log(error);
-     })
+    axios.post("http://localhost:3000/sound/sound/review", { id, userId, rating, name, comment }).then(result => {
+      console.log(result);
+    }).catch(error => {
+      console.log(error);
+    })
   };
+
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${id}`).then(result => {
+      console.log("heelo main aa gaya", result.data.data);
+      setReviwAdd(result.data.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [])
 
   const showName = (value) => {
     console.log(value);
@@ -155,9 +166,8 @@ const SoundVendorDetails = () => {
                       <li>
                         <strong>
                           <Link
-                            to={`https://wa.me/91${
-                              data && data.contactno
-                            }?text=${encodeURIComponent(message || "Hi...")}`}
+                            to={`https://wa.me/91${data && data.contactno
+                              }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
                           >
@@ -206,7 +216,7 @@ const SoundVendorDetails = () => {
               <label htmlFor="">Review's</label>
             </div>
             <input
-            onChange={(e)=>{setComment(e.target.value)}}
+              onChange={(e) => { setComment(e.target.value) }}
               type="textarea"
               style={{
                 height: "50px",
@@ -222,15 +232,23 @@ const SoundVendorDetails = () => {
               />
             </Box>
             <div>
-              <button className="bg-primary" onClick={()=>{submitReview()}}>submitReview</button>
+              <button className="bg-primary" onClick={() => { submitReview() }}>submitReview</button>
             </div>
           </div>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-            <div>{data.description}</div>
+            <div></div>
           </div>
           <div>
             {/* <input type="textarea" /> */}
-          </div>
+          </div>{reviewadd.map(item => {
+            return <>
+              <ul key={id}>
+                <li>{`Comment :- ${item.comment}:Rating ${item.rating}............................................${item.name
+                  }`}</li>
+                <li>{ }</li>
+              </ul>
+            </>
+          })}
         </div>
       </div>
       <AboutUs />
