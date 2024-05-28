@@ -28,18 +28,20 @@ const Vendors = () => {
   return (
 
     <div className="vendor-div container mt-5 p-5" id="Services">
-        <h3 className="vendor-text">Vendors Categories</h3>
+        <h3 className="vendor-text">Our Services</h3>
+        
    
-   {/* <h3 className="vendor-heart" style={{color:"crimson"}}>_______________<FaHeartPulse/>_______________</h3><br /> */}
+   <h6 className="vendor-heart" style={{color:"crimson", position:"absolute", left:"200px"}}>_______________<FaHeartPulse/>_______________</h6><br />
 
 
 <br />
 
 
-      <h2 style={{ fontSize: "1.5vw" }} className="text-center">
-        Find trusted wedding services in all Indore area's & Book Verified
-        Vendors in simple steps.
-      </h2>
+      <h1 style={{ fontSize: "1.2vw", fontFamily:"cursive" }} className="text-center">
+        {/* Find trusted wedding services in all Indore area's & Book Verified
+        Vendors in simple steps. */}
+        Find trusted wedding services in all areas of Indore and book verified vendors in simple steps.
+      </h1>
 
       <div className="vendor-category mt-5" >
         <div

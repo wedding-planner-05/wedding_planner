@@ -4,21 +4,35 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaRegUser } from "react-icons/fa";
+import axios from "axios";
 function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
+  const[username,setUserName] = useState();
   const navigate = useLocation();
   console.log(user);
   const naviagation = useNavigate()
+  console.log('user is',user);
   const VendorLogOut = () => {
     sessionStorage.clear();
     setIsLogIn(null);
     naviagation("/");
   };
 
-
-
   
+  if(user){
+    axios.post('http://localhost:3000/userRouter',{email:user.email,name:user.nickname}).then(result=>{
+        console.log('user data',result);
+        console.log(result.data.data.name);
+        setUserName(result.data.data.name);
+        sessionStorage.setItem("userName",username)
+        sessionStorage.setItem("userID",result.data.data.id)
+
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
   const viewProfile = (type)=>{
      switch(type){
      case "cater":
@@ -74,7 +88,7 @@ function Navbar() {
           className="collapse navbar-collapse col-md-5 col-lg-6"
           id="navbarNavDropdown"
         >
-          <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5">
+          <ul className="navbar-nav align-align-items-center col-md-8 justify-content-center gap-5 pt-4">
             <li className="nav-item active">
               <HashLink className="nav-link" smooth to="#home">
                 Home <span className="sr-only">(current)</span>
@@ -99,7 +113,7 @@ function Navbar() {
         </div>
 
         {/* User profile and authentication buttons */}
-        <div className="navbar-nav align-items-center col-md-4 align-content-between justify-content-end gap-3 border">
+        <div className="navbar-nav align-items-center col-md-4 align-content-between justify-content-end gap-3">
           {isAuthenticated && (
             <div>
               <img
@@ -152,11 +166,11 @@ function Navbar() {
               style={{ width: "250px" }}
             >
               <div className="nav-item active">
-                <a className="nav-link" href="#">
+                <a style={{textDecoration:'none'}} className="nav-link" href="#">
                   <Link to="/vendorSignIn">
-                    <span style={{ textDecoration: "none", color: "black" }}>
+                    <button style={{textDecoration:'none',backgroundColor:"#F8F9FA",border:"none",color: "black" }}>
                       Vendor LogIn ?
-                    </span>
+                    </button>
                   </Link>
                 </a>
               </div>

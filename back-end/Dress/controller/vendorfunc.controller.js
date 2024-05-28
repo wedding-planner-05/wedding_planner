@@ -5,6 +5,7 @@ import xlsx from 'xlsx';
 import Vendor from "../model/vendor.model.js";
 import bcrypt from "bcryptjs";
 
+console.log('in controller');
 // export const signUp = (request,response,next)=>{
 //     Vendor.create({
 //             email:request.body.email,
@@ -87,8 +88,8 @@ export const addDress = (request, response, next) => {
 
     console.log("Hello body", request.body);
 
-    let filename = request.file.originalname;
-    // console.log(request.file);
+    let filename = request.file.filename;
+    // console.log(filename);
     let id = request.body.id
     let name = request.body.name;
     let type = request.body.type;
@@ -196,6 +197,7 @@ export const addDressInBulk = async (req, res, next) => {
 
 
 export const viewAlldresses = (request, response, next) => {
+    console.log('hello');
     VendorFunc.findAll().then((result) => {
         console.log("called..")
         return response.status(200).json({ data: result, message: "view all dresses" });
@@ -234,10 +236,10 @@ export const addInBulkVendnor = async (req, res, next) => {
 
     try {
         for (let item of data) {
-            let email = item.email;
-            let password = item.password;
-            await VendorFunc.create({
-                email, password
+            let email=item.email;
+            let password=item.password+"";
+            await Vendor.create({
+                email,password
             })
         }
         return res.status(200).json({ message: "Add In Bulk SignUp added successfully.." })
@@ -247,16 +249,17 @@ export const addInBulkVendnor = async (req, res, next) => {
     }
 }
 
-export const viewprofile = async (request, response, next) => {
+export const viewprofile =  async (request, response, next) => {
     try {
         const id = parseInt(request.params.id, 10);
         if (isNaN(id)) {
             return response.status(400).json({ error: "Invalid ID format" });
         }
         console.log(id);
-        const caterobj = await CaterFormDetails.findOne({ where: { id: id }, raw: true });
-        if (caterobj) {
-            return response.status(200).json({ message: "View Profile success...", data: caterobj });
+        const dressobj = await VendorFunc.findOne({ where: { id: id }, raw: true });
+        if (dressobj) {
+            return response.status(200).json({ message: "View Profile success...", data: dressobj });
+
         } else {
             return response.status(404).json({ error: "Garden not found" });
         }

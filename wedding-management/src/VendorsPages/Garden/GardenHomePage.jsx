@@ -15,10 +15,14 @@ const GardenHomePage = () => {
   const [inputText, setInputText] = useState("");
 
   const navigate = useNavigate();
-
+  const location = useLocation() ;
+  const data = location.state ; 
 
   useEffect(() => {
-    axios
+    if(data){
+      setProducts(data)
+    }else{
+      axios
       .get("http://localhost:3000/garden/garden/viewAllVendors")
       .then((response) => {
         console.log(response.data.data);
@@ -27,6 +31,7 @@ const GardenHomePage = () => {
       .catch((err) => {
         console.log(err);
       });
+    }
   
   }, []);
   console.log("Image Url: ",products);
@@ -58,7 +63,7 @@ const GardenHomePage = () => {
             {/* <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button> */}
             <button
               onClick={() => handlerViewall(0, 1000000)}
-              className="btn"
+              className="btn p-0"
               style={{
                 height: "40px",
                 width: "150px",
@@ -68,7 +73,7 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
             >
-              view all
+              <small>view all</small>
             </button>
             <button
               style={{
@@ -80,9 +85,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(0, 300000)}
-              className="btn"
+              className="btn p-0"
             >
-              Below 300000
+              <small>Below 300000</small>
             </button>
             <button
               style={{
@@ -94,9 +99,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(300000, 500000)}
-              className="btn"
+              className="btn p-0"
             >
-              30000-500000
+              <small>30000-500000</small>
             </button>
             <button
               style={{
@@ -108,9 +113,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(500000, 700000)}
-              className="btn"
+              className="btn p-0"
             >
-              500000-700000
+             <small> 500000-700000</small>
             </button>
             {/* <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(15000,20000)} className='btn'>15000-20000</button> */}
             {/* <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(20000,25000)} className='btn'>20000-25000</button> */}
@@ -125,9 +130,9 @@ const GardenHomePage = () => {
                 border: "3px solid crimson",
               }}
               onClick={() => handlerViewall(700000, 2000000)}
-              className="btn"
+              className="btn p-0"
             >
-              Above 700000
+              <small>Above 700000</small>
             </button>
           </div>
         </div>
@@ -148,7 +153,7 @@ const GardenHomePage = () => {
           </div>
           {products.filter(filterHandeler).length === 0 &&
           isProductAvailable ? (
-            <h3>No products available in the selected price range</h3>
+            <h3 className="text-center"> No products available</h3>
           ) : (
             <div className="d-flex  flex-wrap justify-content-evenly align-items-center">
               {products
@@ -173,11 +178,16 @@ const GardenHomePage = () => {
                           style={{ width: "100%", height: "200px" }}
                           className=" custom-img"
 
-                          src={
-                           product.imageUrl.startsWith("images") ?  `http://localhost:3003/` + product.imageUrl : product.imageUrl
-                          } 
-                          
-                          alt={'Image Not Found'}
+                          // src={
+                          //   product.imageUrl
+                          //     ? product.imageUrl
+                          //     : `http://localhost:3000/` +
+                          //       product.imageUrl +
+                          //       ".png"
+                          // }
+                          src={product.imageUrl.startsWith('images')?(`http://localhost:3003/`+ product.imageUrl): product.imageUrl}
+                          // src={`http://localhost:3003/`+ product.imageUrl}
+                          alt={`https://image.wedmegood.com/resized/450X/uploads/project/61882/1567934592_IMG_0762.jpg`}
                         />
                       </div>
                       <div className="p-1 font-size">

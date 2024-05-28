@@ -4,6 +4,7 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube } from "react-icons/fa6";
 import './Footer.css'
+import AboutUs from "../AboutUs/AboutUs";
 export const Footer = () => {
     return <>
         <footer className="footer" id="">
@@ -42,8 +43,8 @@ export const Footer = () => {
                     <div className="footer-col">
                         <h4 className="mt-3">Start Planning</h4>
                         <ul>
-                            <li><a href="#">Search by Vendor</a></li>
-                            <li><a href="#">Search by City</a></li>
+                            <li><a href="/home">Search by Vendor</a></li>
+                            <li><a href="/home">Search by City</a></li>
                             <li><a href="#">Download Our App</a></li>
                             <li><a href="#">Top Rates vendors</a></li>
                             <li><a href="#">Destination Wedding</a></li>
@@ -52,11 +53,11 @@ export const Footer = () => {
                     <div className="footer-col">
                         <h4 className="mt-3">Services</h4>
                         <ul>
-                            <li><a href="#">Garden</a></li>
-                            <li><a href="#">Cater</a></li>
-                            <li><a href="#">Dress</a></li>
-                            <li><a href="#">Sound & DJ</a></li>
-                            <li><a href="#">Mehandi</a></li>
+                            <li><a href="/GardenHomePage">Garden</a></li>
+                            <li><a href="/caterpage">Cater</a></li>
+                            <li><a href="/DressHomePage">Dress</a></li>
+                            <li><a href="/SoundHomePage">Sound & DJ</a></li>
+                            <li><a href="/MehendiHomePage">Mehandi</a></li>
                         </ul>
                     </div>
                 </div>

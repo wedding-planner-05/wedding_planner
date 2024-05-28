@@ -79,11 +79,8 @@ console.log("IMAGE: ",data.imageUrl);
                 <img
                   className="zoom-img img-fluid"
                   // src={ data.imageUrl}
+                  src={data.imageUrl.startsWith('images')?(`http://localhost:3003/`+ data.imageUrl): data.imageUrl}
                   // src={data.imageUrl? data.imageUrl:(`http://localhost:3003/`+ data.imageUrl)}
-                  src={
-                    data.imageUrl.startsWith("images") ?  `http://localhost:3005/` + data.imageUrl : data.imageUrl
-                   } 
-
                   alt="image not available"
                 />
               </div>
@@ -185,6 +182,17 @@ console.log("IMAGE: ",data.imageUrl);
           </div>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
+            <Box>
+              <Typography component="legend"></Typography>
+              <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => setValue(newValue)}
+              />
+            </Box>
+          </div>
+          <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
+            <div>reviews</div>
             <Box>
               <Typography component="legend"></Typography>
               <Rating

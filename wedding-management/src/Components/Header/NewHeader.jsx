@@ -8,7 +8,7 @@ const NewHeader = () => {
   const [address,setLocation] = useState("") ;
   console.log('Address is ',address);
   const [vendorData,setVendorData]  = useState([]);
-
+  console.log(vendor);
   const navigate = useNavigate() ;
   const getStarted= ()=>{
         if(vendor=="" && location == ""){
@@ -32,6 +32,7 @@ const NewHeader = () => {
                     break ;
                   case 'dress' :  {
                     const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    console.log("data is ",filterData);
                     setVendorData(filterData)
                     navigate('/DressHomePage' , {state : filterData})
                   }
@@ -39,6 +40,7 @@ const NewHeader = () => {
                   case 'garden'  : {
                     console.log(response.data.data);
                     const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
+                    console.log(filterData);
                     setVendorData(filterData)
                     navigate('/GardenHomePage' , {state : filterData}) ;
                   }
@@ -56,7 +58,7 @@ const NewHeader = () => {
                   }
                   break ;
                   case 'cater' : {
-                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
                     setVendorData(filterData)
                     navigate('/GardenHomePage' , {state : filterData}) ;
                   }
@@ -68,8 +70,9 @@ const NewHeader = () => {
   }
   return (<>
     <ToastContainer/>
-    <div className='header container mt-0 pt-0 h-auto' id='home'>
-      <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" />
+    <div className='header container mt-0 pt-0 h-auto' id='header'>
+      {/* <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" /> */}
+      <img src="/images/image11.png" className='p-0 m-0' alt="" />
          <div className="search-bar d-flex">
                           <div style={{width:"17vw"}} className='d-flex flex-column'>
                             <select onChange={(e)=>setLocation(e.target.value)} name="pets" id="pet-select">

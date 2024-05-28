@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaRupeeSign, FaStar } from "react-icons/fa";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
 
 const DressHomePage = () => {
@@ -26,15 +26,23 @@ const DressVendorDetails = (data)=>{
   navigate("/DressDetailPage",{state:data})
 }
 
+const location = useLocation() ;
+const data = location.state ; 
+
 useEffect(()=>{
-  axios.get("http://localhost:3000/dress/dress/viewAllVendors").then(res=>{
-    console.log(res.data.data);
-    setProducts(res.data.data)
-    console.log(res)
+  if(data){
+    setProducts(data)
+  }else{
+    axios.get("http://localhost:3000/dress/dress/viewAllVendors").then(res=>{
+      console.log(res.data.data);
+      setProducts(res.data.data)
+      console.log(res)
     }).catch(err=>{
       console.log(err)
     })
-},[])
+  }
+},[]);
+
 const handlerViewall = (min, max) => {
   setMinValue(min);
   setMaxValue(max);
@@ -47,7 +55,6 @@ let inputHandler = (e) => {
 };
 
   const filterHandeler = (ele)=>{
-      // return priceFilter.price? priceFilter.operation=='<=' ? ele.serviceCharge <= priceFilter.price : ele.serviceCharge >= priceFilter.price  : true
       return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
   }
 
@@ -56,14 +63,14 @@ let inputHandler = (e) => {
     <div className='filter-box'>
     <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
       {/* <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button> */}
-      <button onClick={()=>handlerViewall(0,1000000)} className='btn' style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}}>view all</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(0,5000)} className='btn'>0-5000</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(5000,10000)} className='btn'>5000-10000</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(10000,15000)} className='btn'>10000-15000</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(15000,20000)} className='btn'>15000-20000</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(20000,25000)} className='btn'>20000-25000</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(25000,30000)} className='btn'>25000-30000</button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(30000,100000)} className='btn'>30000</button>
+      <button onClick={()=>handlerViewall(0,1000000)} className='btn p-0' style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}}> <small>view all</small> </button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(0,5000)} className='btn p-0'><small>0-5000</small> </button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(5000,10000)} className='btn p-0'><small>5000-10000</small> </button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(10000,15000)} className='btn p-0'><small> 10000-15000 </small></button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(15000,20000)} className='btn p-0'><small> 15000-20000 </small></button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(20000,25000)} className='btn p-0'><small> 20000-25000 </small></button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(25000,30000)} className='btn p-0'><small> 25000-30000 </small></button>
+      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(30000,100000)} className='btn p-0'><small>30000</small></button>
     </div> 
     </div>
 
@@ -95,9 +102,7 @@ let inputHandler = (e) => {
                   <img style={{width: "100%",height: "200px"}}
                     className=" custom-img"
                     // src={`http://localhost:3002/`+ product.imageUrl}
-                    src={
-                      product.imageUrl.startsWith("images") ?  `http://localhost:3002/` + product.imageUrl : product.imageUrl
-                     } 
+                    src={product.imageUrl.startsWith("images") ?  `http://localhost:3002/` + product.imageUrl : product.imageUrl}
                     alt={product.name}
                   />
                   

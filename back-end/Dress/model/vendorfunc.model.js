@@ -22,7 +22,6 @@ const VendorFunc = sequelize.define("dress_details",{
     },
     type :{
         type:DataTypes.STRING,
-        allowNull:false,
         defaultValue:"dress"
     },
     address:{
@@ -53,7 +52,8 @@ const VendorFunc = sequelize.define("dress_details",{
 
     contactno:{
         type:DataTypes.TEXT,
-        allowNull:false
+        allowNull:false,
+        defaultValue:"9302558280"
     }
 
 })

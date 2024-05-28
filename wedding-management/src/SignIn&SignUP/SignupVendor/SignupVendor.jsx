@@ -12,11 +12,8 @@ import Swal from "sweetalert2";
 function SignupVendor() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogin, setisLogin] = useState(false);
   const [choise, setChoise] = useState("");
   const navigate = useNavigate();
-
-  console.log(choise, "this is choise");
   const [strength, setStrength] = useState("");
   const strengthLabel = ["weak", "normal", "strong"];
 
@@ -41,101 +38,96 @@ function SignupVendor() {
         strengthIndicator++;
       }
     }
-    console.log(strengthIndicator);
     setStrength(strengthLabel[strengthIndicator]);
   };
-  console.log("choise: ", choise);
-  console.log("email: ", email);
-  console.log("password: ", password);
+
+  const validatePassword = () => {
+    const passwordError = document.getElementById("passworderror2");
+    if (password.length < 8) {
+      passwordError.innerHTML = "Password must be at least 8 characters long.";
+      return false;
+    }
+    if (!/[A-Z]/.test(password)) {
+      passwordError.innerHTML = "Password must contain at least one uppercase letter.";
+      return false;
+    }
+    if (!/[a-z]/.test(password)) {
+      passwordError.innerHTML = "Password must contain at least one lowercase letter.";
+      return false;
+    }
+    if (!/\d/.test(password)) {
+      passwordError.innerHTML = "Password must contain at least one digit.";
+      return false;
+    }
+    if (!/[^a-zA-Z0-9]/.test(password)) {
+      passwordError.innerHTML = "Password must contain at least one special character.";
+      return false;
+    }
+    passwordError.innerHTML = ""; // Clear any previous error messages
+    return true;
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (email === "" || password === "") {
+    if (email === "" || password === "" || choise === "") {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Please fill in the details",
+        text: "Please fill in all the details",
       });
-    } else {
-      axios.post(`http://localhost:3000/${choise}/${choise}/signup`, {
-          email,
-          password,
-        })
-        .then((result) => {
-          if (result.status === 201 || result.status === 200) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Sign In Success",
-            }).then(() => {
-              console.log(result);
-              console.log("success");
-              navigate("/vendorSignIn");
-            });
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Error",
-              text: "Bad request",
-            });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.data.Erro === 1062) {
-            Swal.fire({
-              icon: "error",
-              title: "Error",
-              text: "User already exists",
-            });
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Error",
-              text: "Something went wrong",
-            });
-          }
-        });
+      return;
     }
+
+    if (!validatePassword()) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Password is not valid",
+      });
+      return;
+    }
+
+    axios.post(`http://localhost:3000/${choise}/${choise}/signup`, {
+      email,
+      password,
+    })
+      .then((result) => {
+        if (result.status === 201 || result.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Sign Up Successful",
+          }).then(() => {
+            navigate("/vendorSignIn");
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Bad request",
+          });
+        }
+      })
+      .catch((err) => {
+        if (err.response && err.response.data && err.response.data.Error === 1062) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "User already exists",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Something went wrong",
+          });
+        }
+      });
   };
 
   const VendorSignIn = () => {
     navigate("/vendorSignIn");
-  };
-  const validatePassword = () => {
-    var status = false;
-    var passworderror2 = document.getElementById("passworderror2");
-    // var newpassword = document.getElementById("newpassword").value; // Assuming you have an input field with id="newpassword"
-
-    // Check if the length is at least 8 characters
-    if (password.length < 8) {
-      passworderror2.innerHTML = "Password must be at least 8 characters long.";
-    }
-    // Check if it contains at least one uppercase letter
-    else if (!/[A-Z]/.test(password)) {
-      passworderror2.innerHTML =
-        "Password must contain at least one uppercase letter.";
-    }
-    // Check if it contains at least one lowercase letter
-    else if (!/[a-z]/.test(password)) {
-      passworderror2.innerHTML =
-        "Password must contain at least one lowercase letter.";
-    }
-    // Check if it contains at least one digit
-    else if (!/\d/.test(password)) {
-      passworderror2.innerHTML = "Password must contain at least one digit.";
-    }
-    // Check if it contains at least one special character
-    else if (!/[^a-zA-Z0-9]/.test(password)) {
-      passworderror2.innerHTML =
-        "Password must contain at least one special character.";
-    } else {
-      // If all conditions pass, return true indicating valid password
-      status = true;
-      passworderror2.innerHTML = ""; // Clear any previous error messages
-    }
-    return status;
   };
 
   return (
@@ -143,29 +135,23 @@ function SignupVendor() {
       <Navbar />
       <ToastContainer />
 
-      {/* <div className='col-md-12 d-flex align-item-center justify-content-center'> */}
-
       <div className="row boxwrapper container-fluid">
         <div className="col-md-3 imagediv">
-          {
-            <img
-              src="/images/Rectangle 12.png"
-              style={{ height: "90%" }}
-              className="col-md-10"
-              alt=""
-            />
-          }
+          <img
+            src="/images/Rectangle 12.png"
+            style={{ height: "90%" }}
+            className="col-md-10"
+            alt=""
+          />
         </div>
         <div className="col-md-4 formwrap">
           <form
-            className="d-flex flex-column formdiv text-center  col-md-12"
-            onSubmit={()=>{handleSubmit(event)}}
+            className="d-flex flex-column formdiv text-center col-md-12"
+            onSubmit={handleSubmit}
           >
             <h3 className="text-center fontstyles">VENDOR SIGNUP</h3>
             <label htmlFor="">
               <select
-                name=""
-                id=""
                 className="col-md-12 pt-2 pb-2 selection"
                 onChange={(e) => {
                   setChoise(e.target.value);
@@ -192,8 +178,8 @@ function SignupVendor() {
             <label htmlFor="">
               <input
                 type="password"
-                placeholder="Enter Your password"
-                className="p-2 mb-2 col-md-12  mt-2 "
+                placeholder="Enter Your Password"
+                className="p-2 mb-2 col-md-12 mt-2"
                 onChange={(e) => {
                   setPassword(e.target.value);
                   getStrength(e.target.value);
@@ -203,28 +189,7 @@ function SignupVendor() {
               <small className="text-danger" id="passworderror2"></small>
             </label>
 
-            {/* <div>
-              <div className={`bars ${strength}`}>
-                <div></div>
-              </div>
-              <div className="strength">
-                {strength && <>{strength}:password</>}
-              </div>
-            </div> */}
-
             <button
-
-              onClick={() => {
-                var passworderror2 = document.getElementById("passworderror2");
-                if (passworderror2.innerHTML == "") (()=>{handleSubmit()});
-                else{
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Field Required..",
-                      });
-                }
-              }}
               type="submit"
               className="btn btn-block mt-3"
               style={{
@@ -237,33 +202,6 @@ function SignupVendor() {
             >
               Submit
             </button>
-
-            {/* <div className="row mt-3 text-center d-flex justify-content-around">
-              <span className="col-md-4 text-center">
-                <small>
-                <Link style={{ textDecoration: "none", color: "black" }}>
-                  Forgot Password
-                </Link>
-                </small>
-              </span>
-                <span className="col-md-4 text-center">
-                    <Link style={{ textDecoration: "none", color: "black" }}>
-                    Help
-                    </Link>
-                </span>
-            </div> */}
-
-            {/* <div className='mt-4'>
-                                <GoogleAuth setIsLogin={setisLogin} />
-                            </div> */}
-            <div className="lines">
-              <span></span>
-              <span style={{ border: "none" }}>
-                <i className="bx bx-heart"></i>
-              </span>
-              <span></span>
-            </div>
-            <div></div>
           </form>
           <div
             style={{ width: "80%" }}
@@ -271,7 +209,7 @@ function SignupVendor() {
           >
             <h6 className="p-2">Already Register</h6>
             <button
-              onClick={() => VendorSignIn()}
+              onClick={VendorSignIn}
               style={{
                 borderRadius: "20px",
                 backgroundColor: "crimson",
@@ -279,15 +217,11 @@ function SignupVendor() {
               }}
               className="btn"
             >
-              {" "}
-              Sign In{" "}
+              Sign In
             </button>
-
-            {/* <div onClick={() => {  }} className='text-center col-md-12'><button className='buttonVendor text-center' style={{ height: "4rem", width: "15rem", color: "white", fontSize: "1.5rem", borderRadius: "2rem" }}>BUISNESS SIGNIN</button></div> */}
           </div>
         </div>
       </div>
-      {/* </div> */}
 
       <Footer />
     </>
