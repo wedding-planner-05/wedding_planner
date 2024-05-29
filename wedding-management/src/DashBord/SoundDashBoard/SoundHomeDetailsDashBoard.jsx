@@ -19,7 +19,7 @@ import swal from "sweetalert";
 function SoundHomeDetailsDashBoard() {
 
 
-  const [id, setVendorId] = useState('');
+  const [vendorId, setVendorId] = useState('');
   const [name, setName] = useState('')
   const [type, setType] = useState('')
   const [image, setImage] = useState(null)
@@ -27,10 +27,10 @@ function SoundHomeDetailsDashBoard() {
   const [address, setAddress] = useState('')
   const [description, setDescription] = useState('')
   const [contactNo, setContact] = useState('')
-  console.log('vendor Id : ', id)
+
 
   console.log('image url ', image);
-  console.log(id, name, type, serviceCharge, address, description, contactNo);
+  console.log(vendorId, name, type, serviceCharge, address, description, contactNo);
 
   useEffect(() => {
     setType(sessionStorage.getItem('caterType'));
@@ -46,7 +46,7 @@ function SoundHomeDetailsDashBoard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("id", id)
+    formData.append("vendorId", vendorId)
     formData.append("image", image);
     formData.append("name", name);
     formData.append("serviceCharge", serviceCharge);
@@ -63,11 +63,11 @@ function SoundHomeDetailsDashBoard() {
     }).then(result => {
       toast.success("Data entered successfully")
       console.log("Data entered successfully", result);
-      console.log(id, image, name, serviceCharge, type, contactNo, address, description, "this is data");
+      console.log(image, name, serviceCharge, type, contactNo, address, description, vendorId, "this is data");
 
     }).catch(err => {
 
-      console.log(loginUserId, file, name, serviceCharge, type, contactno, address, description, rating, "this is data");
+      console.log(vendorId, image, name, serviceCharge, type, contactNo, address, description, "this is data");
       toast.error("Something went wrong");
       console.log("Error:", err);
 
@@ -216,8 +216,25 @@ function SoundHomeDetailsDashBoard() {
                               id="exampleInputPassword1"
                             />
                           </div>
+<<<<<<< HEAD
                           <div className="mb-3 col-6">
                           <label
+=======
+                          <div className="mb-3 col-md-12">
+                            <label htmlFor="textarea" className="form-label">Description</label>
+                            <textarea
+                              className="form-control p-4 emails"
+                              id="textarea"
+                              rows="3" // Adjust the number of rows as needed
+                              onChange={(e) => { setDescription(e.target.value) }}
+                            />
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="row">
+                          <div cla ssName="mb-3">
+                            <label
+>>>>>>> 09f06b31d60eab892b65f82f1140745d22783b71
                               htmlFor="exampleInputPassword1"
                               className="form-label"
                             >

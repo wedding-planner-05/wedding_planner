@@ -20,7 +20,7 @@ const SoundVendorDetails = () => {
   const location = useLocation();
 
   const data = location.state;
-  console.log('vendor is ',data);
+  console.log('vendor is ', data);
   const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
   const [name, setUserName] = React.useState(sessionStorage.getItem("userName"));
   const [comment, setComment] = React.useState();
@@ -30,20 +30,22 @@ const SoundVendorDetails = () => {
 
   const [showEmail, setShowEmail] = React.useState(false);
 
+
   // console.log(value);
 
   // const [show, setShow] = React.useState(false);
 
+
   React.useEffect(() => {
-  axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
-        .then((result) => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
+      .then((result) => {
         console.log("heelo main aa gaya", result.data.data);
         setReviwAdd(result.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  },[]);
+  }, []);
 
 
   
@@ -62,8 +64,18 @@ const SoundVendorDetails = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
-  };
+      })
+  }
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${userId}`).then(result => {
+      console.log("heelo main aa gaya", result.data.data);
+      setReviwAdd(result.data.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [])
+
 
   const showName = (value) => {
     console.log(value);
@@ -169,9 +181,8 @@ const SoundVendorDetails = () => {
                       <li>
                         <strong>
                           <Link
-                            to={`https://wa.me/91${
-                              data && data.contactno
-                            }?text=${encodeURIComponent(message || "Hi...")}`}
+                            to={`https://wa.me/91${data && data.contactno
+                              }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
                           >
@@ -215,7 +226,7 @@ const SoundVendorDetails = () => {
               </div>
             </div>
           </div>
-              <RatingReview submitReview={submitReview} setComment={setComment} reviewadd={reviewadd}/>
+          <RatingReview submitReview={submitReview} setComment={setComment} reviewadd={reviewadd} />
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
           </div>

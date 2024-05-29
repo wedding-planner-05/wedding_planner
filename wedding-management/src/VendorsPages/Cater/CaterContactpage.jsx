@@ -65,127 +65,132 @@ function CaterContactpage() {
     body
   )}`;
 
-    return (
-        <div>
-            {/* <Navbar/> */}
-        <div className="container">
-  
-            <div className="row justify-content-center mt-5 mb-5 pb-5">
-      
-              <div className="col-md-6 col-lg-4 position-relative mb-5">
-                <div style={{height:'300px',overflow:'hidden'}}>
-                  <img
-                    className="zoom-img img-fluid" 
-                    // src={`http://localhost:3001/`+data.imageUrl}
-                    src={
-                      data.imageUrl.startsWith("images") ?  `http://localhost:3001/` + data.imageUrl : data.imageUrl
-                     } 
-                    alt="image not available"
-                  />
-                </div>
-                <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
-                  <h5>{data.name}</h5>
-                  <small className="mb-5">
-                    <FaStar color="green" />{data.rating}
-                  </small>
-                  <br />
-                  <small>
-                    <FaLocationDot color="green" />{data.location}
-                  </small>{" "}
-                  <br />
-                </div> 
-              </div>  
-      
-              <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
-              <div className="custom-label mb-3 p-2 " htmlFor="">
-                Starting packages
-              </div>
-              <div className="custom-label mb-3 p-2" htmlFor="">
-                <FaIndianRupeeSign />
-                {data.servicecharge}
-              </div>
-              <div className="d-flex justify-content-evenly position-relative">
-                <button
-                  onClick={() => {
-                    showName("contact");
-                  }}
-                  className="btn btn-success rounded-5 px-3"
-                >
-                  <FaPhoneAlt /> Contact
-                </button>
-                {showContact && (
-                  <div className="contact-div p-1">
-                    <ul className="d-flex flex gap-2 p-1">
-                      <li>
-                        <FaPhoneAlt color="blue" />{" "}
-                        <strong>
-                          <Link
-                            style={{ textDecoration: "none" }}
-                            to={"tel:+91 93023 18373"}
-                          >
-                            {data.contactno}
-                          </Link>
-                        </strong>
-                      </li>
-                      <li>
-                        <strong>
-                          <Link
-                            to={`https://wa.me/91${
-                              data && data.contactno
+  return (
+    <div>
+      {/* <Navbar/> */}
+      <div className="container">
+
+        <div className="row justify-content-center mt-5 mb-5 pb-5">
+
+          <div className="col-md-6 col-lg-4 position-relative mb-5">
+            <div style={{ height: '300px', overflow: 'hidden' }}>
+              <img
+                className="zoom-img img-fluid"
+                // src={`http://localhost:3001/`+data.imageUrl}
+                src={
+                  data.imageUrl.startsWith("images") ? `http://localhost:3001/` + data.imageUrl : data.imageUrl
+                }
+                alt="image not available"
+              />
+            </div>
+            <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
+              <h5>{data.name}</h5>
+              <small className="mb-5">
+                <FaStar color="green" />{data.rating}
+              </small>
+              <br />
+              <small>
+                <FaLocationDot color="green" />{data.location}
+              </small>{" "}
+              <br />
+            </div>
+          </div>
+
+          <div className="col-md-6 col-lg-5 d-flex flex-column custom-label-size mt-4">
+            <div className="custom-label mb-3 p-2 " htmlFor="">
+              Starting packages
+            </div>
+            <div className="custom-label mb-3 p-2" htmlFor="">
+              <FaIndianRupeeSign />
+              {data.servicecharge}
+            </div>
+            <div className="d-flex justify-content-evenly position-relative">
+              <button
+                onClick={() => {
+                  showName("contact");
+                }}
+                className="btn btn-success rounded-5 px-3"
+              >
+                <FaPhoneAlt /> Contact
+              </button>
+              {showContact && (
+                <div className="contact-div p-1">
+                  <ul className="d-flex flex gap-2 p-1">
+                    <li>
+                      <FaPhoneAlt color="blue" />{" "}
+                      <strong>
+                        <Link
+                          style={{ textDecoration: "none" }}
+                          to={"tel:+91 93023 18373"}
+                        >
+                          {data.contactno}
+                        </Link>
+                      </strong>
+                    </li>
+                    <li>
+                      <strong>
+                        <Link
+                          to={`https://wa.me/91${data && data.contactno
                             }?text=${encodeURIComponent(message || "Hi...")}`}
-                            target="_blank"
-                            style={{ textDecoration: "none", color: "black" }}
-                          >
-                            {" "}
-                            <FaWhatsapp color="green" />{" "}
-                            {data && data.contactno}{" "}
-                          </Link>
-                        </strong>
-                      </li>
-                    </ul>
+                          target="_blank"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          {" "}
+                          <FaWhatsapp color="green" />{" "}
+                          {data && data.contactno}{" "}
+                        </Link>
+                      </strong>
+                    </li>
+                  </ul>
 
-                    <div className="d-flex gap-3 p-1 ">
-                      {/* <IoIosCall /> */}
-                    </div>
+                  <div className="d-flex gap-3 p-1 ">
+                    {/* <IoIosCall /> */}
                   </div>
-                )}
+                </div>
+              )}
 
-                <button
-                  // style={{ width: "135px", height: "40px" }}
-                  className="btn btn-danger rounded-5 px-4 "
-                  onClick={() => {
-                    showName("email");
-                  }}
-                >
-                  {isAuthenticated ? (
-                    <>
-                      <Link
-                        to={url}
-                        target="_blank"
-                        style={{ textDecoration: "none", color: "white" }}
-                      >
-                        <FaEnvelope /> Email
-                      </Link>
-                    </>
-                  ) : (
-                    <>
+              <button
+                // style={{ width: "135px", height: "40px" }}
+                className="btn btn-danger rounded-5 px-4 "
+                onClick={() => {
+                  showName("email");
+                }}
+              >
+                {isAuthenticated ? (
+                  <>
+                    <Link
+                      to={url}
+                      target="_blank"
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
                       <FaEnvelope /> Email
-                    </>
-                  )}
-                </button>
-              </div>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <FaEnvelope /> Email
+                  </>
+                )}
+              </button>
             </div>
+          </div>
 
 
-            </div>          
-            <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-              <div>{data.description}</div>
-      
-            </div>
-            <AboutUs/>
-          </div>
-          </div>
-        );
+        </div>
+        <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
+          <ul>
+            {data.Description.split(',').map((item, index) => (
+              <ul style={{ listStyle: "disc" }}>
+                <li key={index}>{item.trim()}</li>
+              </ul>
+            ))}
+          </ul>
+        </div>
+
+        <AboutUs />
+      </div>
+    </div>
+  );
 }
 
 export default CaterContactpage;
