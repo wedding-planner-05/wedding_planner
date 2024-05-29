@@ -197,7 +197,7 @@ export const createProfile = (request, response, next) => {
   console.log("In create profile");
   let filename = request.file.filename; //images.png
   let id = request.body.id;
-  let soundId = request.body.soundId;
+  let vendorId = request.body.vendorId;
   let name = request.body.name;
   let imageUrl = "images/" + filename;
   let serviceCharge = request.body.serviceCharge;
@@ -207,7 +207,7 @@ export const createProfile = (request, response, next) => {
 
   SoundDetails.create({
     id,
-    soundId,
+    vendorId,
     name,
     imageUrl,
     serviceCharge,
