@@ -201,7 +201,7 @@ function SoundHomeDetailsDashBoard() {
                         </div>
                         <hr />
 
-                        <div className="row">
+                        <div className="row mb-3">
                           <div className="mb-3 col-6">
                             <label
                               htmlFor="exampleInputPassword1"
@@ -217,31 +217,14 @@ function SoundHomeDetailsDashBoard() {
                             />
                           </div>
                           <div className="mb-3 col-6">
-                            <label
-                              htmlFor="exampleInputPassword1"
-                              className="form-label"
-                            >
-                              Description
-                            </label>
-                            <input
-                              onChange={(e) => setDescription(e.target.value)}
-                              type="email"
-                              className="form-control p-4 emails"
-                              id="exampleInputPassword1"
-                            />
-                          </div>
-                        </div>
-                        <hr />
-                        <div className="row">
-                          <div cla ssName="mb-3">
-                            <label
+                          <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
                             >
                               Location
                             </label>
                             <br />
-                            <select className="col-6  p-1"
+                            <select className="col-6 p-1"
                               onChange={(e) => setAddress(e.target.value)}
                               name="select"
                               style={{
@@ -311,6 +294,10 @@ function SoundHomeDetailsDashBoard() {
                               </option>
                             </select>
                           </div>
+                        </div>
+                        <hr />
+                        <div className="row">
+                        
                           <div className="mb-3 col-md-6">
                             <label
                               htmlFor="exampleInputPassword1"
@@ -326,7 +313,36 @@ function SoundHomeDetailsDashBoard() {
                             // onChange={handleFileChange}
                             />
                           </div>
+                          <div className="mb-3 col-md-6">
+                            <label
+                              htmlFor="uploadVendorItemImages"
+                              className="form-label"
+                            >
+                              Upload Your Sound System Images 
+                            </label>
+                            <input
+                              type="file"
+                              onChange={handleFileChange}
+                              className="form-control p emails"
+                              id="uploadVendorItemImages"
+                            // onChange={handleFileChange}
+                            />
+                          </div>
                         </div>
+                        <div className="mb-3 col-12">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Description
+                            </label>
+                            <textarea
+                              onChange={(e) => setDescription(e.target.value)}
+                              type="email"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
                         <hr />
 
 

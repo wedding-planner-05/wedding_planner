@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import SoundRouter from './router/sound.router.js';
 import SoundInfoRouter from './router/sound_info.router.js';
 import cors from 'cors'
-
+import ImageRouter from './router/image.router.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname,"public"))) ;
 app.use(cors())
 
 app.use('/sound',SoundInfoRouter);
-
+app.use('/image',ImageRouter)
 const port = 3006 ;    
 
 app.listen(port,()=>{
