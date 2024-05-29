@@ -27,7 +27,15 @@ const SoundHomePage = () => {
     const data = location.state ; 
     const url = ''
 
+    React.useEffect(()=>{
 
+      axios.get('http://localhost:3000/sound/sound/rating').then((result)=>{
+        console.log(result.data);
+      }).catch((error)=>{
+        console.log(error)
+      })
+      
+    },[])
 
     useEffect(()=>{
       if(data){
