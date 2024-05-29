@@ -47,7 +47,7 @@ const GardenHomePage = () => {
   const GardenVendorDetails = (data) => {
     navigate("/GardenVendorDetails", { state: data });
   };
-  
+
 {/*------------ Filter START -------------- */}
 
   const handlerViewall = (min, max) => {
@@ -167,8 +167,8 @@ const GardenHomePage = () => {
                 </div>
               </AccordionDetails>
             </Accordion>
-
             {/*  -------------- fILTER  End ---------------------*/}
+
           </div>
         </div>
 
