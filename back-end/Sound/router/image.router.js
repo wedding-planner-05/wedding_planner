@@ -1,23 +1,3 @@
-// import image from "../model/image.js";
-// import express, { request } from "express";
-// import multer from 'multer'
-
-
-// let router = express.Router() ;
-// let upload = multer({ dest: "public/images/" });
-
-// router.post('/images', upload.array('imageArray',5), async (req, res) => {
-//     console.log(req.files);
-//     // try {
-        
-//     // } catch (error) {
-//     //     console.log(error);
-//     // } 
-    
-//     // image.creat()
-// }) 
-
-// export default router   
 
 import express from 'express';
 import multer from 'multer';
