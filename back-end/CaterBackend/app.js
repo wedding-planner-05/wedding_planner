@@ -160,23 +160,55 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
 //             res.status(500).json({ error: "Internal server error", err: err });
 //         });
 // });
+// app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
+//     const { loginUserId, name, servicecharge, email, contactno, location,Description } = req.body;
+//     const filename = req.file?.filename;
+//     if (!filename) {
+//         return res.status(400).json({ error: "File upload failed" });
+//     }
+//     const imageUrl = `images/${filename}`;
+
+//     CaterFormDetails.create({ loginUserId, name, servicecharge, email, contactno, location, imageUrl,Description })
+//         .then(result => {
+//             res.status(201).json({ message: "Data saved successfully", data: result });
+//         })
+//         .catch(err => {
+//             console.error("Error while saving data:", err);
+//             res.status(500).json({ error: "Internal server error", err: err });
+//         });
+// });
+
+
 app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
-    const { loginUserId, name, servicecharge, email, contactno, location } = req.body;
+    const { loginUserId, name, servicecharge, email, contactno, location, Description } = req.body;
     const filename = req.file?.filename;
     if (!filename) {
         return res.status(400).json({ error: "File upload failed" });
     }
     const imageUrl = `images/${filename}`;
 
-    CaterFormDetails.create({ loginUserId, name, servicecharge, email, contactno, location, imageUrl })
-        .then(result => {
-            res.status(201).json({ message: "Data saved successfully", data: result });
+    CaterFormDetails.findOne({ where: { loginUserId } })
+        .then(existingUser => {
+            if (existingUser) {
+                return res.status(409).json({ error: "User already exists" });
+            }
+            
+            // If user does not exist, create a new record
+            CaterFormDetails.create({ loginUserId, name, servicecharge, email, contactno, location, imageUrl, Description })
+                .then(result => {
+                    res.status(201).json({ message: "Data saved successfully", data: result });
+                })
+                .catch(err => {
+                    console.error("Error while saving data:", err);
+                    res.status(500).json({ error: "Internal server error", err: err });
+                });
         })
         .catch(err => {
-            console.error("Error while saving data:", err);
+            console.error("Error while checking user existence:", err);
             res.status(500).json({ error: "Internal server error", err: err });
         });
 });
+
 
 
 app.get("/cater/viewAllVendors", async (req, res) => {
@@ -289,8 +321,9 @@ app.post("/cater/addinBulk", async (req, res, next) => {
             let contactno = item.contactno;
             let location = item.location;
             let imageUrl = item.imageUrl;
-
-            console.log(loginUserId + " " + name + " " + servicecharge + " " + email + " " + contactno + " " + location + " " + imageUrl);
+            let Description = item.Description;
+            
+            console.log(loginUserId + " " + name + " " + servicecharge + " " + email + " " + contactno + " " + location + " " + imageUrl+" "+Description);
             console.log("this is your image url so check it", imageUrl);
 
             await CaterFormDetails.create({
@@ -299,9 +332,11 @@ app.post("/cater/addinBulk", async (req, res, next) => {
                 name,
                 servicecharge,
                 email,
+                Description,
                 contactno,
                 location,
-                imageUrl
+                imageUrl,
+                Description
             });
         }
         return res.status(200).json({ message: "Caterer details added successfully.." });
@@ -312,14 +347,14 @@ app.post("/cater/addinBulk", async (req, res, next) => {
 });
 
 
-app.get("/viewProfile/:id", async (request, response, next) => {
+app.get("/cater/viewProfile/:id", async (request, response, next) => {
     try {
         const id = parseInt(request.params.id, 10);
         if (isNaN(id)) {
             return response.status(400).json({ error: "Invalid ID format" });
         }
         console.log(id);
-        const CaterDetailss = await CaterDetails.findOne({ where: { gardenId: id }, raw: true });
+        const CaterDetailss = await CaterDetails.findOne({ where: { loginUserId: id }, raw: true });
         if (gardenobj) {
             return response.status(200).json({ message: "View Profile success...", data: CaterDetailss });
         } else {
