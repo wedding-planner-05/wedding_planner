@@ -19,6 +19,7 @@ function CaterHomeDetailsDashBoard() {
   const [email, setEmail] = useState("");
   const [contactno, setContactno] = useState("");
   const [location, setLocation] = useState("");
+  const [Description, setDescription] = useState("");
 
   useEffect(() => {
     const userId = sessionStorage.getItem('userID');
@@ -41,6 +42,7 @@ function CaterHomeDetailsDashBoard() {
     formData.append("email", email);
     formData.append("contactno", contactno);
     formData.append("location", location);
+    formData.append("Description", Description)
 
     axios.post("http://localhost:3000/cater/cater/addformdetails", formData, {
       headers: {
@@ -50,7 +52,7 @@ function CaterHomeDetailsDashBoard() {
       toast.success("data upload succesfully")
       console.log("Data entered successfully", result);
     }).catch(err => {
-      console.log(name, servicecharge, email, contactno, location, file, "this is data");
+      console.log(name, servicecharge, email, contactno, location, file, Description, "this is data");
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -211,6 +213,16 @@ function CaterHomeDetailsDashBoard() {
                         <label htmlFor="file" className="form-label">Upload Image</label>
                         <input type="file" className="form-control p-4 emails" id="file" onChange={handleFileChange} />
                       </div>
+                      <div className="mb-3 col-md-12">
+                        <label htmlFor="textarea" className="form-label">Description</label>
+                        <textarea
+                          className="form-control p-4 emails"
+                          id="textarea"
+                          rows="3" // Adjust the number of rows as needed
+                          onChange={(e)=>{setDescription(e.target.value)}}
+                        />
+                      </div>
+
                     </div>
                     <hr />
                     <div className="d-flex justify-content-center">

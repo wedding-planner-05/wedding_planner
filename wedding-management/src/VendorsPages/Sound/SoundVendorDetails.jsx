@@ -32,9 +32,11 @@ const SoundVendorDetails = () => {
 
   const [showEmail, setShowEmail] = React.useState(false);
 
+
   // console.log(value);
 
   // const [show, setShow] = React.useState(false);
+
 
   React.useEffect(() => {
   axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
@@ -64,12 +66,15 @@ const SoundVendorDetails = () => {
       .then((result) => {
         setReviwAdd([result.data.data,...reviewadd])
 
-        console.log('user response ',result.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${id}`).then(result => {
+      console.log("heelo main aa gaya", result.data.data);
+      setReviwAdd(result.data.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [])
 
   
   const showName = (value) => {
@@ -176,9 +181,8 @@ const SoundVendorDetails = () => {
                       <li>
                         <strong>
                           <Link
-                            to={`https://wa.me/91${
-                              data && data.contactno
-                            }?text=${encodeURIComponent(message || "Hi...")}`}
+                            to={`https://wa.me/91${data && data.contactno
+                              }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
                           >
