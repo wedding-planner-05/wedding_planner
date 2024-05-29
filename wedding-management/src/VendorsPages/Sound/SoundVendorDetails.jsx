@@ -22,9 +22,7 @@ const SoundVendorDetails = () => {
   const data = location.state;
   console.log('vendor is ', data);
   const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
-  const [name, setUserName] = React.useState(
-    sessionStorage.getItem("userName")
-  );
+  const [name, setUserName] = React.useState(sessionStorage.getItem("userName"));
   const [comment, setComment] = React.useState();
   const [reviewadd, setReviwAdd] = React.useState([]);
   const [vendorId, setId] = React.useState(data.vendorId);
@@ -50,10 +48,8 @@ const SoundVendorDetails = () => {
   }, []);
 
 
-
-
+  
   let submitReview = (rating) => {
-
     alert("hello");
     axios
       .post("http://localhost:3000/sound/sound/review", {
@@ -64,8 +60,9 @@ const SoundVendorDetails = () => {
         comment,
       })
       .then((result) => {
-        setReviwAdd([result.data.data, ...reviewadd])
-      }).catch(error => {
+        setReviwAdd([result.data.data,...reviewadd])
+      })
+      .catch((error) => {
         console.log(error);
       })
   }
@@ -140,8 +137,8 @@ const SoundVendorDetails = () => {
                   alt="image not available"
                 />
               </div>
-              <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
-                <h5>{data.name}</h5>
+              <div className="position-absolute  block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
+                <h5>{data.name}</h5> <h5>Rating : {data.rating}</h5>
                 <small>
                   <FaLocationDot color="green" />
                   {data.address}

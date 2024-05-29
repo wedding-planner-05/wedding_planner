@@ -5,6 +5,7 @@ import soundVendorDetails from "../model/sound_info.js";
 import xlsx from "xlsx";
 import { request, response } from "express";
 import { review } from "../model/review.js";
+import { col, fn } from "sequelize";
 
 export const addInBulkVendor = async (req, res, next) => {
   const workbook = xlsx.readFile("VendorSignInData.xlsx");
@@ -351,9 +352,10 @@ export const viewProfiles = async (request, response, next) => {
 };
 
 export const reviews = async (request, response, next) => {
-  const { vendorId, userId, rating,name, comment } = request.body;
+  const { vendorId, userId, rating, name, comment } = request.body;
 
-  review.create({ vendorId, userId, rating,name, comment })
+  review
+    .create({ vendorId, userId, rating, name, comment })
     .then((result) => {
       return response.status(200).json({ data: result });
     })
@@ -362,14 +364,34 @@ export const reviews = async (request, response, next) => {
     });
 };
 
-
-export const reviewData = (request,response,next)=>{
+export const reviewData = (request, response, next) => {
   const { vendorId } = request.params;
-  review.findAll({ where: { vendorId } })
+  review
+    .findAll({ where: { vendorId } })
     .then((result) => {
       return response.send({ data: result });
     })
     .catch((error) => {
       return response.send({ error: error });
     });
-}
+};
+
+export const ratingCount = async (req, res) => {
+  try {
+    const averageRatings = await review.findAll({
+      attributes: ["vendorId", [fn("AVG", col("rating")), "averageRating"]],
+      group: ["vendorId"],
+    });
+    
+    for (const rating of averageRatings) {
+      await soundVendorDetails.update(
+        { rating: rating.dataValues.averageRating },
+        { where: { vendorId: rating.vendorId } }
+      );
+    }
+    return res.json({result:averageRatings});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Error calculating average ratings" });
+  }
+};

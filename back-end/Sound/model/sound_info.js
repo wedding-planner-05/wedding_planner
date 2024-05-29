@@ -58,6 +58,8 @@
 
 import { DataTypes } from "sequelize";
 import sequelize from "../dbCongi/dbConnection.js";
+import { review } from "./review.js";
+import { ratingCount } from "../controller/sound_info.controller.js";
 
 const soundVendorDetails = sequelize.define("sound_vendor_details", {
   id: {
@@ -100,11 +102,19 @@ const soundVendorDetails = sequelize.define("sound_vendor_details", {
     type: DataTypes.TEXT,
     allowNull: false
   },
+  rating:{
+    type: DataTypes.FLOAT, 
+    allowNull: true,
+    defaultValue: 2.0 
+  },
   contactNo: {
     type: DataTypes.STRING,
     allowNull: false
   }
 });
+
+soundVendorDetails.hasMany(review, { foreignKey: 'vendorId' });
+review.belongsTo(soundVendorDetails, { foreignKey: 'vendorId' });
 
 sequelize.sync().then(() => {
   console.log("soundVendorDetails table created successfully");
