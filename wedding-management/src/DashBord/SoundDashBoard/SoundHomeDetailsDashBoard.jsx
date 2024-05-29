@@ -216,25 +216,8 @@ function SoundHomeDetailsDashBoard() {
                               id="exampleInputPassword1"
                             />
                           </div>
-<<<<<<< HEAD
                           <div className="mb-3 col-6">
                           <label
-=======
-                          <div className="mb-3 col-md-12">
-                            <label htmlFor="textarea" className="form-label">Description</label>
-                            <textarea
-                              className="form-control p-4 emails"
-                              id="textarea"
-                              rows="3" // Adjust the number of rows as needed
-                              onChange={(e) => { setDescription(e.target.value) }}
-                            />
-                          </div>
-                        </div>
-                        <hr />
-                        <div className="row">
-                          <div cla ssName="mb-3">
-                            <label
->>>>>>> 09f06b31d60eab892b65f82f1140745d22783b71
                               htmlFor="exampleInputPassword1"
                               className="form-label"
                             >
