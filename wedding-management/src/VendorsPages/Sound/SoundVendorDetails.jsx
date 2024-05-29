@@ -18,60 +18,49 @@ const SoundVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
   const data = location.state;
-  console.log('vendor is ',data.vendorId);
-  const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
-  const [name, setUserName] = React.useState(
-    sessionStorage.getItem("userName")
-  );
+  console.log(data.id);
+  const [userId, setUserId] = React.useState(sessionStorage.getItem('userID'))
+  const [name, setUserName] = React.useState(sessionStorage.getItem('userName'))
   const [rating, setRating] = React.useState(2);
-  const [comment, setComment] = React.useState();
   const [reviewadd, setReviwAdd] = React.useState([]);
-  const [vendorId, setId] = React.useState(data.vendorId);
-  let [updateReview, setUpdateReview] = React.useState(0);
+  const [comment, setComment] = React.useState();
+  const [id, setId] = React.useState(data.id)
+
 
   const [showContact, setShowContact] = React.useState(false);
 
   const [showEmail, setShowEmail] = React.useState(false);
 
+
   // console.log(value);
 
   // const [show, setShow] = React.useState(false);
 
-  React.useEffect(() => {
-  axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
-        .then((result) => {
-        console.log('result of review',result);
-        console.log("heelo main aa gaya", result.data.data);
-        setReviwAdd(result.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },[]);
-
-
-
-
+  // React.useEffect(()=>{
+  //   axios.get(`http://localhost:3000:sound/sound/${data.id}`).then(res=>{
+  //     console.log('hello');
+  //   }).catch(err=>{
+  //     console.log(err);
+  //   })
+  // },[])
   let submitReview = () => {
-
-    alert("hello");
-    axios
-      .post("http://localhost:3000/sound/sound/review", {
-        vendorId,
-        userId,
-        rating,
-        name,
-        comment,
-      })
-      .then((result) => {
-        setReviwAdd([result.data.data,...reviewadd])
-
-        console.log('user response ',result.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    alert('hello')
+    axios.post("http://localhost:3000/sound/sound/review", { id, userId, rating, name, comment }).then(result => {
+      console.log(result);
+    }).catch(error => {
+      console.log(error);
+    })
   };
+
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${id}`).then(result => {
+      console.log("heelo main aa gaya", result.data.data);
+      setReviwAdd(result.data.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [])
 
   
   const showName = (value) => {
@@ -178,9 +167,8 @@ const SoundVendorDetails = () => {
                       <li>
                         <strong>
                           <Link
-                            to={`https://wa.me/91${
-                              data && data.contactno
-                            }?text=${encodeURIComponent(message || "Hi...")}`}
+                            to={`https://wa.me/91${data && data.contactno
+                              }?text=${encodeURIComponent(message || "Hi...")}`}
                             target="_blank"
                             style={{ textDecoration: "none", color: "black" }}
                           >
@@ -229,9 +217,7 @@ const SoundVendorDetails = () => {
               <label htmlFor="">Review's</label>
             </div>
             <input
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
+              onChange={(e) => { setComment(e.target.value) }}
               type="textarea"
               style={{
                 height: "50px",
@@ -247,41 +233,14 @@ const SoundVendorDetails = () => {
               />
             </Box>
             <div>
-              <button
-                className="bg-primary"
-                onClick={() => {
-                  submitReview();
-                }}
-              >
-                submitReview
-              </button>
+              <button className="bg-primary" onClick={() => { submitReview() }}>submitReview</button>
             </div>
           </div>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div></div>
           </div>
-          <div className="review-table">
-            {reviewadd.map((item, index) => (
-              <div key={index} className="review-item">
-                <ul>
-                  <li className="review-comment">
-                    <span className="comment-label"> Comment:</span>
-                    <span className="comment-text"> {item.comment}</span>
-                  </li>
-                  <li className="review-rating">
-                    <span className="rating-label">Rating:</span>
-                    <span className="rating-value">
-                      {" "}
-                      <strong>{item.rating}/5</strong>
-                    </span>
-                  </li>
-                  <li className="review-name">
-                    <span className="name-label">Reviewed by:</span>
-                    <span className="name-value">{item.name}</span>
-                  </li>
-                </ul>
-              </div>
-            ))}
+          <div>
+            {/* <input type="textarea" /> */}
           </div>
           {/* <div>
           {reviewadd.map(item => {
@@ -294,6 +253,26 @@ const SoundVendorDetails = () => {
             </>
           })}
           </div> */}
+          <div className="review-table">
+            {reviewadd.map((item, index) => (
+              <div key={index} className="review-item">
+                <ul>
+                  <li className="review-comment">
+                    <span className="comment-label"> Comment:</span>
+                    <span className="comment-text"> {item.comment}</span>
+                  </li>
+                  <li className="review-rating">
+                    <span className="rating-label">Rating:</span>
+                    <span className="rating-value"> <strong>{item.rating}/5</strong></span>
+                  </li>
+                  <li className="review-name">
+                    <span className="name-label">Reviewed by:</span>
+                    <span className="name-value">{item.name}</span>
+                  </li>
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <AboutUs />
