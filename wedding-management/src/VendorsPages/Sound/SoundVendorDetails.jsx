@@ -20,7 +20,7 @@ const SoundVendorDetails = () => {
   const location = useLocation();
 
   const data = location.state;
-  console.log('vendor is ',data);
+  console.log('vendor is ', data);
   const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
   const [name, setUserName] = React.useState(
     sessionStorage.getItem("userName")
@@ -39,15 +39,15 @@ const SoundVendorDetails = () => {
 
 
   React.useEffect(() => {
-  axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
-        .then((result) => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
+      .then((result) => {
         console.log("heelo main aa gaya", result.data.data);
         setReviwAdd(result.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  },[]);
+  }, []);
 
 
 
@@ -64,8 +64,11 @@ const SoundVendorDetails = () => {
         comment,
       })
       .then((result) => {
-        setReviwAdd([result.data.data,...reviewadd])
-
+        setReviwAdd([result.data.data, ...reviewadd])
+      }).catch(error => {
+        console.log(error);
+      })
+  }
 
   React.useEffect(() => {
     axios.get(`http://localhost:3000/sound/sound/reviewdata/${id}`).then(result => {
@@ -76,7 +79,7 @@ const SoundVendorDetails = () => {
     })
   }, [])
 
-  
+
   const showName = (value) => {
     console.log(value);
     if (!isAuthenticated) {
@@ -226,7 +229,7 @@ const SoundVendorDetails = () => {
               </div>
             </div>
           </div>
-              <RatingReview submitReview={submitReview} setComment={setComment} reviewadd={reviewadd}/>
+          <RatingReview submitReview={submitReview} setComment={setComment} reviewadd={reviewadd} />
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
           </div>
