@@ -13,22 +13,21 @@ import Footer from "../../Components/Footer/Footer";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import RatingReview from "../../Components/Rating/RatingReview";
 
 const SoundVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
+
   const data = location.state;
-  console.log('vendor is ',data.vendorId);
+  console.log('vendor is ',data);
   const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
   const [name, setUserName] = React.useState(
     sessionStorage.getItem("userName")
   );
-  const [rating, setRating] = React.useState(2);
   const [comment, setComment] = React.useState();
   const [reviewadd, setReviwAdd] = React.useState([]);
   const [vendorId, setId] = React.useState(data.vendorId);
-  let [updateReview, setUpdateReview] = React.useState(0);
-
   const [showContact, setShowContact] = React.useState(false);
 
   const [showEmail, setShowEmail] = React.useState(false);
@@ -40,7 +39,6 @@ const SoundVendorDetails = () => {
   React.useEffect(() => {
   axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
         .then((result) => {
-        console.log('result of review',result);
         console.log("heelo main aa gaya", result.data.data);
         setReviwAdd(result.data.data);
       })
@@ -52,15 +50,15 @@ const SoundVendorDetails = () => {
 
 
 
-  let submitReview = () => {
+  let submitReview = (rating) => {
 
     alert("hello");
     axios
       .post("http://localhost:3000/sound/sound/review", {
         vendorId,
         userId,
-        rating,
         name,
+        rating,
         comment,
       })
       .then((result) => {
@@ -223,76 +221,10 @@ const SoundVendorDetails = () => {
               </div>
             </div>
           </div>
-          <div>
-            <div>
-              <label htmlFor="">Review's</label>
-            </div>
-            <input
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-              type="textarea"
-              style={{
-                height: "50px",
-                width: "50vw",
-              }}
-            />
-            <Box>
-              <Typography component="legend"></Typography>
-              <Rating
-                name="simple-controlled"
-                value={rating}
-                onChange={(event, newValue) => setRating(newValue)}
-              />
-            </Box>
-            <div>
-              <button
-                className="bg-primary"
-                onClick={() => {
-                  submitReview();
-                }}
-              >
-                submitReview
-              </button>
-            </div>
-          </div>
+              <RatingReview submitReview={submitReview} setComment={setComment} reviewadd={reviewadd}/>
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
-            <div></div>
+            <div>{data.description}</div>
           </div>
-          <div className="review-table">
-            {reviewadd.map((item, index) => (
-              <div key={index} className="review-item">
-                <ul>
-                  <li className="review-comment">
-                    <span className="comment-label"> Comment:</span>
-                    <span className="comment-text"> {item.comment}</span>
-                  </li>
-                  <li className="review-rating">
-                    <span className="rating-label">Rating:</span>
-                    <span className="rating-value">
-                      {" "}
-                      <strong>{item.rating}/5</strong>
-                    </span>
-                  </li>
-                  <li className="review-name">
-                    <span className="name-label">Reviewed by:</span>
-                    <span className="name-value">{item.name}</span>
-                  </li>
-                </ul>
-              </div>
-            ))}
-          </div>
-          {/* <div>
-          {reviewadd.map(item => {
-            return <>
-              <ul key={id}>
-                <li>{`Comment :- ${item.comment}:Rating ${item.rating}............................................${item.name
-                  }`}</li>
-                <li>{ }</li>
-              </ul>
-            </>
-          })}
-          </div> */}
         </div>
       </div>
       <AboutUs />
@@ -302,3 +234,36 @@ const SoundVendorDetails = () => {
 };
 
 export default SoundVendorDetails;
+{/* <div>
+<div>
+  <label htmlFor="">Review's</label>
+</div>
+<input
+  onChange={(e) => {
+    setComment(e.target.value);
+  }}
+  type="textarea"
+  style={{
+    height: "50px",
+    width: "50vw",
+  }}
+/>
+<Box>
+  <Typography component="legend"></Typography>
+  <Rating
+    name="simple-controlled"
+    value={rating}
+    onChange={(event, newValue) => setRating(newValue)}
+  />
+</Box>
+<div>
+  <button
+    className="bg-primary"
+    onClick={() => {
+      submitReview();
+    }}
+  >
+    submitReview
+  </button>
+</div>
+</div> */}
