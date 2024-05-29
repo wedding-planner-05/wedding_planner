@@ -149,18 +149,6 @@ export const addDressInBulk = async (req, res, next) => {
     const data = xlsx.utils.sheet_to_json(sheet);
     console.log(data);
     var i = 0;
-    // for (let item of data) {
-    //     let name = item.name;
-    //     let imageUrl = item.imageUrl;
-    //     let serviceCharge = item.serviceCharge;
-    //     let address = item.address;
-    //     let rating= item.rating;
-    //     let description= item.description;
-    //     let contactno = item.contactno;
-
-
-    //     console.log(name + " " + imageUrl + " " + serviceCharge + " " + address  + " " +  description+ " " + rating + " " + contactno);
-    // }
     try {
         for (let item of data) {
             let name = item.name;

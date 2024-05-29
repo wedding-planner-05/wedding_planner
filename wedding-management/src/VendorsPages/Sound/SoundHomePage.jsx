@@ -4,10 +4,10 @@ import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
 import "./SoundHomePage.css";
-import Navbar from '../../Components/Navbar/Navbar';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { FaIndianRupeeSign } from 'react-icons/fa6';
+
 import Swal from 'sweetalert2';
+import { Accordion } from 'react-bootstrap';
+import { AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 
 
 const SoundHomePage = () => {
@@ -25,7 +25,6 @@ const SoundHomePage = () => {
 
     const location = useLocation() ;
     const data = location.state ; 
-    const url = ''
 
     React.useEffect(()=>{
 
@@ -53,41 +52,146 @@ const SoundHomePage = () => {
         setTimeout(()=>{
           setDataSource(dataSource.concat(Array.from({length:20})))
         },1000)
-        const moreData = ()=>{}
-
-   
     
     const SoundVendorDetails = (data)=>{
       navigate("/SoundVendorDetails",{state:data})
     }
     
-    const handlerViewall = (min, max) => {
-      setMinValue(min);
-      setMaxValue(max);
-      setProductAvailable(true); // Reset product availability flag
-    }
+    // const handlerViewall = (min, max) => {
+    //   setMinValue(min);
+    //   setMaxValue(max);
+    //   setProductAvailable(true); // Reset product availability flag
+    // }
 
-    let inputHandler = (e) => {
-      var lowerCase = e.target.value.toLowerCase();
-      console.log(lowerCase);
-      setInputText(lowerCase);
-    };
+    // let inputHandler = (e) => {
+    //   var lowerCase = e.target.value.toLowerCase();
+    //   console.log(lowerCase);
+    //   setInputText(lowerCase);
+    // };
 
-    const filterHandeler = (ele)=>{
-        return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
-    }
+    // const filterHandeler = (ele)=>{
+    //     return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
+    // }
 
-  
+  {/*------------ Filter START -------------- */}
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(300000);
+
+  const handlerViewall = (min, max) => {
+    console.log("Min ", min);
+    console.log("Max ", max);
+    setMinValue(min);
+    setMaxValue(max);
+    setProductAvailable(true); // Reset product availability flag
+  };
+
+  const filterHandeler = (ele) => {
+    return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue;
+  };
+
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    console.log(lowerCase);
+    setInputText(lowerCase);
+  };
+
+  const handleMinChange = (event) => {
+    setMin(parseInt(event.target.value));
+  };
+
+  const handleMaxChange = (event) => {
+    setMax(parseInt(event.target.value));
+  };
+
+{/*------------ Filter End -------------- */}
+
   return <> 
   {/* <Navbar/> */}
   <div className='vendors-box mt-5  d-flex justify-content-between'>
     <div className='filter-box'>
     <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
-      {/* <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button> */}
-      <button onClick={()=>handlerViewall(0,1000000)} className='btn p-0' style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}}><small>view all</small></button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(0,50000)} className='btn p-0'><small>Below 50000</small></button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(50000,200000)} className='btn p-0'><small>50000-200000</small></button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(200000,2000000)} className='btn p-0'><small>Above 200000</small></button>
+               {/* -------------- Filter Start ------------------ */}
+               <Accordion
+              style={{
+                backgroundColor: "transparent",
+                boxShadow: "none",
+                border: "none",
+              }}
+              defaultExpanded
+            >
+              <AccordionSummary
+                // expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1-content"
+                id="panel1-header"
+              >
+                <Typography
+                  className="ms-5 text-primary"
+                  style={{ fontSize: "17px", fontWeight: "600" }}
+                >
+                  Price range
+                </Typography>
+              </AccordionSummary>
+
+              <AccordionDetails className="ms-2">
+                {/* <Box style={{backgroundColor:'white'}}>
+                        <Slider 
+                            getAriaLabel={() => 'Temperature range'}
+                            value={[min, max]}
+                            onChange={()=>handlerViewall(0,10000)}
+                            valueLabelDisplay="auto"
+                            getAriaValueText={valuetext}
+                            min={0}
+                            max={9999}
+                        />
+                    </Box> */}
+                <div className="container d-flex flex-column justify-content-center align-items-center">
+                  <div className="row d-flex">
+                    <div className="d-flex flex-column justify-content-center align-items-center">
+                      <label>Min</label>
+                      <input
+                        className="w-100"
+                        style={{
+                          height: "30px",
+                          paddingLeft: "10px",
+                          border: "2px solid #0D6EFD",
+                          outline: "none",
+                          borderRadius: "5px",
+                        }}
+                        type="number"
+                        value={min}
+                        onChange={handleMinChange}
+                      />
+                    </div>
+                    <div className=" d-flex flex-column align-items-center mt-3">
+                      <label>Max</label>
+                      <input
+                        className="w-100"
+                        style={{
+                          height: "30px",
+                          paddingLeft: "10px",
+                          border: "2px solid #0D6EFD",
+                          outline: "none",
+                          borderRadius: "5px",
+                        }}
+                        type="number"
+                        value={max}
+                        onChange={handleMaxChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-100 d-flex justify-content-center">
+                    <button
+                      className="w-50 mt-3 btn btn-primary"
+                      onClick={() => handlerViewall(min, max)}
+                    >
+                      Apply
+                    </button>
+                  </div>
+                </div>
+              </AccordionDetails>
+              
+            </Accordion>
+            {/*  -------------- fILTER  End ---------------------*/}
     </div> 
     </div>
 

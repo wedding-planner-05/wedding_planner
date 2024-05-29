@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post("/createProfile",upload.single("image"),addDress); 
 
-router.post("/addDressInBulk",addDressInBulk);
+router.post("/addInBulk",addDressInBulk);
 router.post("/addInBulkVendor",addInBulkVendnor);
 router.get("/viewAllVendors",viewAlldresses); 
 router.post("/signup",signUp); 
