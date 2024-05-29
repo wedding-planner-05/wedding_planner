@@ -73,6 +73,7 @@ const SoundVendorDetails = () => {
       });
   };
 
+  
   const showName = (value) => {
     console.log(value);
     if (!isAuthenticated) {
