@@ -8,7 +8,7 @@ import xlsx from 'xlsx';
 
 let router = express.Router();
 
-let upload = multer({ dest: "public/images/" });
+let upload = multer({ dest: "public/images/" });    
 
 router.post(
     "/signup",
