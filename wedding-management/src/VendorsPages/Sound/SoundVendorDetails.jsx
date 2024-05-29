@@ -71,7 +71,7 @@ const SoundVendorDetails = () => {
   }
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3000/sound/sound/reviewdata/${id}`).then(result => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${userId}`).then(result => {
       console.log("heelo main aa gaya", result.data.data);
       setReviwAdd(result.data.data);
     }).catch(error => {
