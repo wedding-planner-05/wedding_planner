@@ -10,9 +10,7 @@ function Navbar() {
   const [isLogIn, setIsLogIn] = useState(sessionStorage.getItem("isLoggedIn"));
   const[username,setUserName] = useState();
   const navigate = useLocation();
-  // console.log(user);
   const naviagation = useNavigate()
-  console.log('user is',user);  
   const VendorLogOut = () => {
     sessionStorage.clear();
     setIsLogIn(null);

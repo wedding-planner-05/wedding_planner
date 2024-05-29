@@ -41,6 +41,7 @@ import DressProfile from "./DashBord/DressDashBoard/DressProfile.jsx";
 import SoundProfile from "./DashBord/SoundDashBoard/SoundProfile.jsx";
 import GardenProfile from "./DashBord/Garden/GardenProfile.jsx";
 import Vendors from "./Components/Vendor/Vendors.jsx";
+import RatingReview from "./Components/Rating/RatingReview.jsx";
 
 
 
@@ -71,10 +72,9 @@ const App = () => {
                   <Route path="/userSignIn" element={<UserSignIn />} />
                   <Route path="/vendorSignIn" element={<VendorSignIn />} />
                   <Route path="/vendorSignUp" element={<SignupVendor />} />
-
                   <Route path="/forgotPassword" element={<ForgetPassword />} />
                   <Route path="/resetPassword" element={<ResetPassword />} />
-
+                  <Route path="/RatingReview" element={<RatingReview/>}/>      
                   <Route path="/" element={<Home />} />
                   <Route path="/services" element={<Vendors />} />
                   <Route path="/otpVerify" element={<UserOtp />} />
