@@ -52,7 +52,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor1.png" alt="Images not found " />
-          <div className="vendor-button text-white"
+          <div className="vendor-button text-dark"
             onClick={()=>DressHomePage()}>Wedding Wears
           </div>
         </div>
@@ -65,7 +65,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor2.png" alt="Images not found " />
-          <div className="vendor-button text-white" onClick={()=>MehendiHomePage()}> Mehendi</div>
+          <div className="vendor-button text-dark" onClick={()=>MehendiHomePage()}> Mehendi</div>
         </div>
 
         <div
@@ -76,7 +76,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor3.png" alt="Images not found " />
-          <div className="vendor-button text-white"onClick={()=>PhotographerHomePage()} >Photographer
+          <div className="vendor-button text-dark"onClick={()=>PhotographerHomePage()} >Photographer
           </div>
         </div>
 
@@ -88,7 +88,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor4.png" alt="Images not found " />
-          <div className="vendor-button text-white" onClick={()=>SoundHomePage()}>Music / Band</div>
+          <div className="vendor-button text-dark" onClick={()=>SoundHomePage()}>Music / Band</div>
         </div>
         <div
           className="vendor-img d-flex justify-content-center align-item-center"
@@ -98,7 +98,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor5.png" alt="Images not found " />
-          <div className="vendor-button text-white" onClick={()=>GardenHomePage()}>Gardens</div>
+          <div className="vendor-button text-dark" onClick={()=>GardenHomePage()}>Gardens</div>
         </div>
         <div
           className="vendor-img d-flex justify-content-center align-item-center"
@@ -108,7 +108,7 @@ const Vendors = () => {
           }}
         >
           <img src="/images/vendor6.png" alt="Images not found " />
-          <div className="vendor-button text-white" onClick={()=>CaterHomePage()} >Caters</div>
+          <div className="vendor-button text-dark" onClick={()=>CaterHomePage()} >Caters</div>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ const SoundHomePage = () => {
     React.useEffect(()=>{
 
       axios.get('http://localhost:3000/sound/sound/rating').then((result)=>{
-        console.log(result.data);
+        console.log('review rating',result.data);
       }).catch((error)=>{
         console.log(error)
       })
