@@ -89,6 +89,14 @@ const App = () => {
                   <Route path="/CaterContactpage" element={<CaterContactpage />} />
                   <Route path="/vendorSignIn" elementm={<VendorSignIn />} />
 
+
+
+
+
+
+
+
+
                   {/* ----------------------------------------------CATER DASHBOARD--------------------------------------------- */}
 
                   <Route path="/CaterHomeDetailsDashBoard" element={<CaterHomeDetailsDashBoard />} />
