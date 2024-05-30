@@ -63,9 +63,7 @@ function SignInVendor() {
                         console.log(result);
                     if (result.status == "200" || result.status == "201") {
                         // console.log(JSON.stringify(result.data.gardenobj));
-
                         message()
-                          
                         // toast.success("Login Success")
                         // sessionStorage.setItem("current-user", JSON.stringify(result.data.gardenobj));
                         sessionStorage.setItem("isLoggedIn", "true");

@@ -33,7 +33,7 @@ import SoundContactDashBoard from "./DashBord/SoundDashBoard/SoundContactDashBoa
 import ForgetPassword from "./SignIn&SignUP/ForgorPassword/ForgotPassword.jsx";
 import ResetPassword from "./SignIn&SignUP/ResetPassword/ResetPassword.jsx";
 import DressDetailPage from "./VendorsPages/Dress/DressDetailPage.jsx";
-import Loader from "./Components/LoaderComponent/Loader.jsx";
+// import Loader from "./Components/LoaderComponent/Loader.jsx";
 import axios from "axios";
 import GardenDetailPage from "./VendorsPages/Garden/GardenDetailPage.jsx";
 import CaterProfile from "./DashBord/caterDashboard/CaterProfile.jsx";
