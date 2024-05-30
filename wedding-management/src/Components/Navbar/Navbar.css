@@ -90,3 +90,13 @@
     background-color: crimson !important;
     border: 1px solid white;
 }
+
+.vendor-logout-button{
+    /* border: 3px solid; */
+    margin-right:90px;
+}
+
+/* .vendor-logout-button button{
+   
+}
+ */

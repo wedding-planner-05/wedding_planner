@@ -28,18 +28,20 @@ const Vendors = () => {
   return (
 
     <div className="vendor-div container mt-5 p-5" id="Services">
-        <h3 className="vendor-text">Vendors Categories</h3>
+        <h3 className="vendor-text">Our Services</h3>
+        
    
-   {/* <h3 className="vendor-heart" style={{color:"crimson"}}>_______________<FaHeartPulse/>_______________</h3><br /> */}
+   <h6 className="vendor-heart" style={{color:"crimson", position:"absolute", left:"200px"}}>_______________<FaHeartPulse/>_______________</h6><br />
 
 
 <br />
 
 
-      <h2 style={{ fontSize: "1.5vw" }} className="text-center">
-        Find trusted wedding services in all Indore area's & Book Verified
-        Vendors in simple steps.
-      </h2>
+      <h1 style={{ fontSize: "1.2vw", fontFamily:"cursive" }} className="text-center">
+        {/* Find trusted wedding services in all Indore area's & Book Verified
+        Vendors in simple steps. */}
+        Find trusted wedding services in all areas of Indore and book verified vendors in simple steps.
+      </h1>
 
       <div className="vendor-category mt-5" >
         <div
@@ -49,7 +51,7 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor1.png" alt="teri " />
+          <img src="/images/vendor1.png" alt="Images not found " />
           <div className="vendor-button text-white"
             onClick={()=>DressHomePage()}>Wedding Wears
           </div>
@@ -62,7 +64,7 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor2.png" alt="teri " />
+          <img src="/images/vendor2.png" alt="Images not found " />
           <div className="vendor-button text-white" onClick={()=>MehendiHomePage()}> Mehendi</div>
         </div>
 
@@ -73,7 +75,7 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor3.png" alt="teri " />
+          <img src="/images/vendor3.png" alt="Images not found " />
           <div className="vendor-button text-white"onClick={()=>PhotographerHomePage()} >Photographer
           </div>
         </div>
@@ -85,7 +87,7 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor4.png" alt="teri " />
+          <img src="/images/vendor4.png" alt="Images not found " />
           <div className="vendor-button text-white" onClick={()=>SoundHomePage()}>Music / Band</div>
         </div>
         <div
@@ -95,7 +97,7 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor5.png" alt="teri " />
+          <img src="/images/vendor5.png" alt="Images not found " />
           <div className="vendor-button text-white" onClick={()=>GardenHomePage()}>Gardens</div>
         </div>
         <div
@@ -105,7 +107,7 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor6.png" alt="teri " />
+          <img src="/images/vendor6.png" alt="Images not found " />
           <div className="vendor-button text-white" onClick={()=>CaterHomePage()} >Caters</div>
         </div>
       </div>

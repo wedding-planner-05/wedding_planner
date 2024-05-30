@@ -1,52 +1,124 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RxDashboard } from "react-icons/rx";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import { RiLockPasswordLine } from "react-icons/ri";
 import { RiContactsLine } from "react-icons/ri";
 import { CgList } from "react-icons/cg";
 import { AiOutlineSetting } from "react-icons/ai";
-import { CiLocationOn } from "react-icons/ci";
 // import Avatar from 'react-avatar';
-import { TbHandClick } from "react-icons/tb";
-import { AiOutlineCamera } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import "./DashBord.css";
 import Navbar from "../../Components/Navbar/Navbar";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { CgProfile } from "react-icons/cg";
+import swal from "sweetalert";
 
 function GardenHomeDetailsDashBoard() {
   const [file, setFile] = useState(null);
-  function handleFileChange(event) {
-    const selectedFile = event.target.files[0];
-    setFile(selectedFile);
+  // const  {id, name, location, capacity, contactNo, rentalFee, description } = 
+
+  const [id, setVendorId] = useState('');
+  const [name, setName] = useState('')
+  const [type, setType] = useState('')
+  const [image, setImage] = useState(null)
+  const [serviceCharge, setServiceCharge] = useState('')
+  const [location, setLocation] = useState('')
+  const [description, setDescription] = useState('')
+  const [contactNo, setContact] = useState('')
+
+  console.log(id, name, type, serviceCharge, location, description, contactNo);
+  useEffect(() => {
+    setType(sessionStorage.getItem('caterType'));
+    setVendorId(sessionStorage.getItem('userID'));
+  }, [])
+
+
+
+  const handleSubmit = (e) => {
+    alert('hello')
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('gardenId', id)
+    formData.append('name', name)
+    formData.append('type', type)
+    formData.append('image', image)
+    formData.append('price', serviceCharge)
+    formData.append('location', location)
+    formData.append('description', description)
+    formData.append('contactNo', contactNo)
+
+    console.log('hello---3');
+
+    axios.post("http://localhost:3000/garden/garden/createProfile", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(result => {
+      console.log(result.data.data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Profile created successfully!'
+      });
+    }).catch(err => {
+      console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Something went wrong while creating the profile.'
+      });
+    });
+
+    console.log('hellokjskj');
   }
+
+  function handleFileChange(event) {
+    const imagePath = event.target.files[0];
+    console.log('image is : ', imagePath);
+    setImage(imagePath);
+  }
+
+  // function handleFileChange(event) {
+  //   const selectedFile = event.target.files[0];
+  //   setFile(selectedFile);
+  // }
 
   return (
     <>
       <Navbar />
       <div className="container-fluid">
         <div className="row ">
-          {/* <div className="col-md-3 col-lg-2  asidebar">
+          <div className="col-md-3 col-lg-2  asidebar">
             <div>
               <ul className="list-unstyled">
                 <li>
-                  <Link to="/Dashboard1" className="textnone">
+                  <Link to="/GardenProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/GardenHomeDetailsDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RxDashboard />
                     </strong>
                     <span style={{ color: "black" }}>Dashboard</span>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/Dashboard" className="textnone">
+                {/* <li>
+                  <Link to="/GardenResetPassDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiLockPasswordLine />
                     </strong>
                     <span style={{ color: "black" }}>Password</span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
-                  <Link to="/Dashboard2" className="textnone">
+                  <Link to="/GardenContactDashBoard" className="textnone">
                     <strong style={{ color: "black" }}>
                       <RiContactsLine />
                     </strong>
@@ -54,55 +126,21 @@ function GardenHomeDetailsDashBoard() {
                   </Link>
                 </li>
                 <li>
-                  <strong style={{ color: "black" }}>
-                    <CgList />
-                  </strong>
-                  <span style={{ color: "black" }}>Catergory-List</span>
-                </li>
-                <li>
+                  <Link>
                   <strong style={{ color: "black" }}>
                     <AiOutlineSetting />
                   </strong>
-                  <span style={{ color: "black" }}>Setting</span>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
+                
+                  </Link>  
                 </li>
-              </ul>
-            </div>
-          </div> */}
-          <div className="col-md-3 col-lg-2  asidebar">
-
-            <div>
-              <ul className="list-unstyled">
-                <li><Link to="/GardenHomeDetailsDashBoard" className='textnone'><strong style={{ color: "black" }}><RxDashboard /></strong><span style={{ color: "black" }}>Dashboard</span></Link></li>
-                <li><Link to="/GardenResetPassDashBoard" className='textnone'><strong style={{ color: "black" }}><RiLockPasswordLine /></strong><span style={{ color: "black" }}>Password</span></Link></li>
-                <li><Link to="/GardenContactDashBoard" className='textnone'><strong style={{ color: "black" }}><RiContactsLine /></strong><span style={{ color: "black" }}>Contact-Us</span></Link></li>
-                <li><strong style={{ color: "black" }}><CgList /></strong><span style={{ color: "black" }}>Catergory-List</span></li>
-                <li><strong style={{ color: "black" }}><AiOutlineSetting /></strong><span style={{ color: "black" }}>Setting</span></li>
               </ul>
             </div>
           </div>
           <div className="col content  boxborder">
             <div>
-              {/* <h1 className="ml-5">Vendor Profile</h1> */}
-              {/* <div className="d-flex align-item-center profile justify-content-start row-md-1">
-                <div className="ml-4 col-md-1">
-                  <img src="/images/user.jpeg" alt="" className="imgex" />
-                </div>
-                <div className="ml-4 displayblock col-md-4">
-                  <p>
-                    <TbHandClick />
-                    One More Click
-                  </p>
-                  <p>
-                    <AiOutlineCamera />
-                    photoGrapher
-                  </p>
-                  <p>
-                    <CiLocationOn />
-                    Madhya Pradesh
-                  </p>
-                </div>
-              </div> */}
-              <h1>WelCome Garden'S</h1>
+              <h1 className="mb-5">WelCome Garden's</h1>
+              <h3 className="mt-3"><CgProfile className="mr-4"/>Create your Profile here</h3>
               <hr />
               <div>
                 <div className="col-md-12">
@@ -112,7 +150,7 @@ function GardenHomeDetailsDashBoard() {
                         className="row"
                         style={{ border: "5px solir green" }}
                       >
-                        <div className="row mt-5">
+                        <div className="row ">
                           <div className="mb-3 col">
                             <label
                               htmlFor="exampleInputPassword1"
@@ -122,6 +160,7 @@ function GardenHomeDetailsDashBoard() {
                             </label>
                             <input
                               type="text"
+                              onChange={(e) => setName(e.target.value)}
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
@@ -135,6 +174,39 @@ function GardenHomeDetailsDashBoard() {
                               Service Charge
                             </label>
                             <input
+                              onChange={(e) => setServiceCharge(e.target.value)}
+                              type="text"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="row">
+
+
+                          <div className="mb-3 col-6">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >
+                              Contact No.
+                            </label>
+                            <input
+                              onChange={(e) => setContact(e.target.value)}
+                              type="text"
+                              className="form-control p-4 emails"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div className="mb-3 col-6">
+                            <label value={sessionStorage.getItem('caterType')}
+                              htmlFor="exampleInputPassword1"
+                              className="form-label"
+                            >Type
+                            </label>
+                            <input
+                              value={type}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -144,7 +216,7 @@ function GardenHomeDetailsDashBoard() {
                         <hr />
 
                         <div className="row">
-                          <div className="mb-3 ">
+                          <div className="mb-3 col">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -152,20 +224,21 @@ function GardenHomeDetailsDashBoard() {
                               Email Address
                             </label>
                             <input
+                              value={sessionStorage.getItem('email')}
                               type="email"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
                             />
                           </div>
-                          <hr />
                           <div className="mb-3 col">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
                             >
-                              Phone Number
+                              Description
                             </label>
                             <input
+                              onChange={(e) => setDescription(e.target.value)}
                               type="text"
                               className="form-control p-4 emails"
                               id="exampleInputPassword1"
@@ -174,7 +247,7 @@ function GardenHomeDetailsDashBoard() {
                         </div>
                         <hr />
                         <div className="row">
-                          <div className="mb-3 col-md-6">
+                          <div cla ssName="mb-3">
                             <label
                               htmlFor="exampleInputPassword1"
                               className="form-label"
@@ -182,14 +255,12 @@ function GardenHomeDetailsDashBoard() {
                               Location
                             </label>
                             <br />
-                            <select
+                            <select className="col-6  p-1"
+                              onChange={(e) => setLocation(e.target.value)}
                               name="select"
-                              id=""
                               style={{
-                                border: "none",
-                                width: "100%",
+                                borderColor: 'grey',
                                 height: "2.9rem",
-                                boxShadow: "0 0 0.5rem black",
                                 borderRadius: ".5rem",
                               }}
                             >
@@ -263,15 +334,15 @@ function GardenHomeDetailsDashBoard() {
                             </label>
                             <input
                               type="file"
-                              className="form-control p-4 emails"
-                              id="exampleInputPassword1"
                               onChange={handleFileChange}
+                              className="form-control p emails"
+                              id="exampleInputPassword1"
+                            // onChange={handleFileChange}
                             />
                           </div>
                         </div>
                         <hr />
 
-                        <hr />
 
                         <div className="row">
                           <div className="d-flex justify-content-center">
@@ -287,6 +358,7 @@ function GardenHomeDetailsDashBoard() {
                               <button
                                 type="button"
                                 className="btn btn-warning m-3"
+                                onClick={(e) => handleSubmit(e)}
                               >
                                 Save
                               </button>

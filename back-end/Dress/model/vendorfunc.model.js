@@ -10,53 +10,55 @@ const VendorFunc = sequelize.define("dress_details",{
    id:{
     type:DataTypes.INTEGER,
     primaryKey:true,
-    autoIncrement:true
-},  
-name:{
-type:DataTypes.STRING,
-allowNull:true
-},
-
-address:{
-    type:DataTypes.STRING,
-    allowNull:true
-    
-    },
-serviceCharge:{
-    type:DataTypes.DECIMAL,
-    allowNull:true
-
-},
-
-imageUrl:{
-    type:DataTypes.TEXT,
-    allowNull:true
-},
-
-rating:{
-  type:DataTypes.DECIMAL,
-  allowNull:true
-},
-
-description:{
-    type:DataTypes.TEXT,
-    allowNull:true
-},
-
-contactno:{
-    type:DataTypes.TEXT,
-    allowNull:true
-},
-vendor_id:{
-    type:DataTypes.INTEGER,
+    autoIncrement:true,
     references:{
-        model:"dress_vendors",key:'id'
+        model:"dress_vendors",
+        key:'id'
     }
-}
+    },  
+    name:{
+    type:DataTypes.STRING,
+    allowNull:false
+    },
+    type :{
+        type:DataTypes.STRING,
+        defaultValue:"dress"
+    },
+    address:{
+        type:DataTypes.STRING,
+        allowNull:false
+
+        },
+    serviceCharge:{
+        type:DataTypes.DECIMAL,
+        allowNull:false
+
+    },
+
+    imageUrl:{
+        type:DataTypes.TEXT,
+        allowNull:false
+    },
+
+    rating:{
+      type:DataTypes.DECIMAL,
+      allowNull:true
+    },
+
+    description:{
+        type:DataTypes.TEXT,
+        allowNull:false
+    },
+
+    contactno:{
+        type:DataTypes.TEXT,
+        allowNull:false,
+        defaultValue:"9302558280"
+    }
 
 })
 sequelize.sync().then(()=>{
-
+    
 console.log("dress details table created ");
 }).catch(()=>{
     console.log("dress details table not created")

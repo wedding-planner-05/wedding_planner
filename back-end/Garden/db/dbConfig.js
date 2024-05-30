@@ -13,4 +13,5 @@ sequelize.authenticate()
         console.log(err);
     });
 
+    
 export default sequelize;

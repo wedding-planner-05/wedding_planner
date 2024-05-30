@@ -8,7 +8,7 @@ const NewHeader = () => {
   const [address,setLocation] = useState("") ;
   console.log('Address is ',address);
   const [vendorData,setVendorData]  = useState([]);
-
+  console.log(vendor);
   const navigate = useNavigate() ;
   const getStarted= ()=>{
         if(vendor=="" && location == ""){
@@ -22,30 +22,46 @@ const NewHeader = () => {
             axios.get(`http://localhost:3000/${vendor}/${vendor}/viewAllVendors`).then((response)=>{
                 console.log('hello');
                 console.log(response.data.data)
-                const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
-                console.log(filterData);
-                setVendorData(filterData)
+               
                 switch(vendor){
                   case 'sound' : {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/SoundHomePage' , {state : filterData})
                   }
                     break ;
                   case 'dress' :  {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    console.log("data is ",filterData);
+                    setVendorData(filterData)
                     navigate('/DressHomePage' , {state : filterData})
                   }
                     break ;
                   case 'garden'  : {
-                    navigate('/caterpage' , {state : filterData}) ;
+                    console.log(response.data.data);
+                    const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
+                    console.log(filterData);
+                    setVendorData(filterData)
+                    navigate('/GardenHomePage' , {state : filterData}) ;
                   }
                     break ;
                   case 'mehendi' :{
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/MehendiHomePage' , {state : filterData}) ;
                   }
                   break ;
                   case 'photographer' : {
+                    const filterData = response.data.data?.filter((item)=> item.address.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
                     navigate('/PhotographerHomePage' , {state : filterData}) ;
                   }
                   break ;
+                  case 'cater' : {
+                    const filterData = response.data.data?.filter((item)=> item.location.toLowerCase().includes(address.toLowerCase()));
+                    setVendorData(filterData)
+                    navigate('/GardenHomePage' , {state : filterData}) ;
+                  }
                 }
             }).catch(err=>{
                 console.log(err);  
@@ -55,7 +71,8 @@ const NewHeader = () => {
   return (<>
     <ToastContainer/>
     <div className='header container mt-0 pt-0 h-auto' id='header'>
-      <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" />
+      {/* <img src="/images/file_2024-05-02_15.20.08.png" className='p-0 m-0' alt="" /> */}
+      <img src="/images/image11.png" className='p-0 m-0' alt="" />
          <div className="search-bar d-flex">
                           <div style={{width:"17vw"}} className='d-flex flex-column'>
                             <select onChange={(e)=>setLocation(e.target.value)} name="pets" id="pet-select">

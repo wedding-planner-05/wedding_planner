@@ -1,14 +1,13 @@
 import express from 'express' ;
-import bodyParser from 'body-parser'; //it convert raw data into usable formate,it is used to encode data from server 
+import bodyParser from 'body-parser'; 
 import SoundRouter from './router/sound.router.js';
 import SoundInfoRouter from './router/sound_info.router.js';
 import cors from 'cors'
-
+import ImageRouter from './router/image.router.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const  __filename = fileURLToPath(import.meta.url) ;
-
 const  __dirname = path.dirname(__filename) ;
 
 // console.log("__filename : ",__filename);
@@ -23,9 +22,8 @@ app.use(bodyParser.json()) ;
 app.use(express.static(path.join(__dirname,"public"))) ;
 app.use(cors())
 
-// app.use('/sound',SoundRouter);
 app.use('/sound',SoundInfoRouter);
-
+app.use('/image',ImageRouter)
 const port = 3006 ;    
 
 app.listen(port,()=>{

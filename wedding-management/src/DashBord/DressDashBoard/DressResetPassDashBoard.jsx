@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Navbar from '../../Components/Navbar/Navbar';
+import swal from 'sweetalert';
 
 
 
@@ -24,48 +25,50 @@ function DressResetPassDashBoard() {
             <Navbar />
             <div className="container-fluid">
                 <div className="row ">
-                    <div className="col-md-3 col-lg-2  asidebar">
-                        <div>
-                            <ul className="list-unstyled">
-                                <li>
-                                    <Link to="/DressHomeDetailsDashBoard" className="textnone">
-                                        <strong style={{ color: "black" }}>
-                                            <RxDashboard />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Dashboard</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/DressResetPassDashBoard" className="textnone">
-                                        <strong style={{ color: "black" }}>
-                                            <RiLockPasswordLine />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Password</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/DressContactDashBoard" className="textnone">
-                                        <strong style={{ color: "black" }}>
-                                            <RiContactsLine />
-                                        </strong>
-                                        <span style={{ color: "black" }}>Contact-Us</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <strong style={{ color: "black" }}>
-                                        <CgList />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Catergory-List</span>
-                                </li>
-                                <li>
-                                    <strong style={{ color: "black" }}>
-                                        <AiOutlineSetting />
-                                    </strong>
-                                    <span style={{ color: "black" }}>Setting</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div className="col-md-3 col-lg-2  asidebar">
+            <div>
+              <ul className="list-unstyled">
+                <li>
+                  <Link to="/DressProfile">
+                    <strong style={{ color: "black" }}>
+                      <CgList />
+                    </strong>
+                    <span style={{ color: "black" }}>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/DressHomeDetailsDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RxDashboard />
+                    </strong>
+                    <span style={{ color: "black" }}>Dashboard</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/DressResetPassDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RiLockPasswordLine />
+                    </strong>
+                    <span style={{ color: "black" }}>Password</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/DressContactDashBoard" className="textnone">
+                    <strong style={{ color: "black" }}>
+                      <RiContactsLine />
+                    </strong>
+                    <span style={{ color: "black" }}>Contact-Us</span>
+                  </Link>
+                </li>
+                <li>
+                  <strong style={{ color: "black" }}>
+                    <AiOutlineSetting />
+                  </strong>
+                  <span className="btn" style={{ color: "black" }} onClick={()=>{ swal("Coming Soon", "Working on that", "info")}}>Setting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
                     <div className="col content  boxborder">
                         <div>
                             {/* <h1 className='ml-5'>Vendor Profile</h1>

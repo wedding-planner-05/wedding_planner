@@ -1,7 +1,7 @@
 import { response } from 'express';
 import User from '../model/user.model.js';
 export const signUp = (request,response,next)=>{
-    // console.log("ye wala "+request.body);
+    
     User.create({
         name: request.body.name,
         email: request.body.email,

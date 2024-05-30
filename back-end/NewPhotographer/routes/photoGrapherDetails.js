@@ -1,5 +1,5 @@
 import express from "express";
-import { add, addInBulk, remove, signin, signup, updatePhotographer, updateProfile, viewAllByCategory, viewAllPhotographer, viewProfile } from "../controller/photoGrapherDetails.controller.js";
+import { addInBulkVendor,resetPassword,add, addInBulk, remove, signin, signup, updatePhotographer, updateProfile, viewAllByCategory, viewAllPhotographer, viewProfile } from "../controller/photoGrapherDetails.controller.js";
 import multer from "multer";
 import { checkValidation } from "../Validation/checkValidation.js";
 
@@ -10,12 +10,17 @@ const upload = multer({ dest: "public/images/" });
 
 router.post("/signin", signin);
 router.post("/signup", signup);
-router.post('/update-profile/:id', updateProfile);
+// router.post('/update-profile/:id', updateProfile);
+
+router.post("/resetPassword", resetPassword);
 
 router.post("/addInBulk",upload.single('imageUrl') ,addInBulk);
+
+router.post("/addInBulkVendor",addInBulkVendor);
 router.get("/viewAll", viewAllByCategory);
 
 router.post("/add", upload.single("filename"), checkValidation, add);
+
 router.post('/update/:id', upload.single("filename"), checkValidation, updatePhotographer);
 router.delete('/remove/:id', remove);
 router.get("/viewprofile/:id", viewProfile);

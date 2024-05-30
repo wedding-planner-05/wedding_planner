@@ -7,18 +7,12 @@ const Vendor = sequelize.define("dress_vendor",{
         type : DataTypes.INTEGER,
         primaryKey:true,
         autoIncrement:true
-        
-    },
-    name:{
-        type:DataTypes.STRING,
-        allowNull:false
     },
     email:{ 
         type:DataTypes.STRING,
         unique:true,
         allowNull:false
     },
-
     password:{
         type:DataTypes.STRING,
         allowNull:false,
@@ -28,17 +22,7 @@ const Vendor = sequelize.define("dress_vendor",{
             this.setDataValue("password",encryptedPassword);
          }
 
-    },
-
-    address: {
-        type:DataTypes.TEXT,
-        
-    },
-    contact:{
-        type:DataTypes.STRING,
-        allowNull:false
-
-}
+    }
 })
 
 Vendor.checkPassword = (originalPassword,encryptedPassword)=>{

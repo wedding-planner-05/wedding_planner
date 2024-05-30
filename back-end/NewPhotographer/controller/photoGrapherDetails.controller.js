@@ -1,7 +1,69 @@
 import { Result, validationResult } from 'express-validator';
 import PhotoGrapherDetails from '../models/photoGrapherDetails.model.js';
 import xlsx from 'xlsx';
+import PhotoGrapherLogin from '../models/photoGrapherLogin.model.js';
 
+import bcrypt from 'bcryptjs';
+
+export const addInBulkVendor = async (req, res, next) => {
+
+    const workbook = xlsx.readFile('VendorSignInData.xlsx');
+    const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
+    const sheet = workbook.Sheets[sheet_name];
+
+    // Convert the sheet to JSON/
+    console.log("Resuest Body",req.body);
+    const data = xlsx.utils.sheet_to_json(sheet);
+    console.log("Data : ",data);
+
+    try {
+        for (let item of data) {
+            let email=item.email;
+            let password=item.password+"";
+            await PhotoGrapherLogin.create({
+                email,password
+            })
+        }
+        return res.status(200).json({ message: "Add In Bulk SignUp added successfully.." })
+    } catch (err) {
+        console.log(err);
+        return res.status(501).json({ message: "Internal server error" })
+    }
+}
+
+export const resetPassword = async (request, response, next) => {
+    console.log('Request body:', request.body);
+    try {
+        const { email, newpassword } = request.body;
+
+        if (!email || !newpassword) {
+            return response.status(400).json({ message: "Email and new password are required" });
+        }
+
+        const gardenLogin = await PhotoGrapherLogin.findOne({ where: { email } });
+
+        if (!gardenLogin) {
+            return response.status(404).json({ message: "PhotographerLogin not found" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+        const [affectedRows] = await PhotoGrapherLogin.update(
+            { password: hashedPassword },
+            { where: { email } }
+        )
+
+        if (affectedRows > 0) {
+            return response.status(200).json({ message: "Profile Updated Successfully" });
+        } else {
+            return response.status(500).json({ error: "Failed to update profile" });
+        }
+
+    } catch (err) {
+        console.error(err);
+        return response.status(500).json({ error: "Internal Server Error", err });
+    }
+};
 
 export const signin = async (request, response, next) => {
     try {
@@ -10,7 +72,7 @@ export const signin = async (request, response, next) => {
         const photographerObj = await PhotoGrapherLogin.findOne({ where: { email }, raw: true });
 
         if (photographerObj && PhotoGrapherLogin.checkPassword(password, photographerObj.password))
-            return response.status(200).json({ message: "Sign In Success", photographerObj });
+            return response.status(200).json({ message: "Sign In Success", data : photographerObj });
 
         return response.status(401).json({ error: "Unauthorized user" });
     } catch (err) {
@@ -22,7 +84,7 @@ export const signin = async (request, response, next) => {
 }
 export const signup = async (request, response, next) => {
     // console.log(request.body);
-    try {
+   
         const { email, password } = request.body;
 
         await PhotoGrapherLogin.create({ email, password })
@@ -30,14 +92,10 @@ export const signup = async (request, response, next) => {
                 return response.status(200).json({ message: "SignUp Sucess...", data: result });
             }).catch(err => {
                 if (err.parent.errno * 1 == 1062)
-                    return response.status(401).json({ message: "Email is already registered...", Error: err });
+                    return response.status(401).json({ message: "Email is already registered...", Erro: (err.parent.errno*1) });
                 return response.status(401).json({ message: "please enter correct details...", Error: err });
             })
-    } catch (err) {
-        // console.error("Hello Satish : " + err.parent.errno);
-        console.log(err);
-        return response.status(500).json({ error: "Internal Server Error...", err });
-    }
+    
 }
 
 export const updateProfile = async (request, response, next) => {

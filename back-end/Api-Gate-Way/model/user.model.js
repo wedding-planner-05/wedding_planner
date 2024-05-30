@@ -3,19 +3,20 @@ import sequelize from "../dbConfig/dbconfig.js";
 import bcrypt from "bcryptjs"
 
 export const User = sequelize.define("user",{
+    id:{
+        type:DataTypes.INTEGER,
+        unique:true,
+        autoIncrement:true,
+        primaryKey:true
+    },
+    name :{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
     email : {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false
-    },
-    password : {
-        type : DataTypes.STRING,
-        allowNull:false,
-        set(value){
-            const saltKey = bcrypt.genSaltSync(10);
-            const encryptedPassword = bcrypt.hashSync(value,saltKey);
-            this.setDataValue("password",encryptedPassword);
-        }
     }
 })
 
