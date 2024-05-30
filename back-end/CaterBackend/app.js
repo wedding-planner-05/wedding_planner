@@ -130,7 +130,9 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
     let categoryId = req.body.categoryId;
     let imageUrl = "images/" + filename;
 
+
     const Cater = CaterFormDetails.create({ name, servicecharge, description, email, contactno, categoryId, imageUrl });
+
 
     Cater.then(result => {
         res.status(201).json({ message: "Data saved successfully" });
@@ -139,7 +141,6 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     });
 });
-
 
 // app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
 //     const {loginUserid, name, servicecharge, email, contactno, location } = req.body;
@@ -177,7 +178,7 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
 // });
 
 
-app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
+app.post("/cater/addformdetails", upload.single("file"), (req, res) => { 
     const { loginUserId, name, servicecharge, email, contactno, location, Description } = req.body;
     const filename = req.file?.filename;
     if (!filename) {
@@ -207,6 +208,19 @@ app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
         });
 });
 
+
+
+
+app.get("/cater/getDetailsCater", async (req, res) => {
+    try {
+        const data = await CaterFormDetails.findAll();
+        console.log(data)
+        res.status(200).json({ data })
+    } catch (error) {
+        console.error("Error while retrieving data:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+})
 
 
 app.get("/cater/viewAllVendors", async (req, res) => {

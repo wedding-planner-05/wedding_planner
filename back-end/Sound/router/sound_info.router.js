@@ -1,14 +1,15 @@
-import {ratingCount,reviewData, reviews,addInBulkVendor,resetPassword, createProfile, signin, signup, updateDetails, viewAllVendors, viewProfile, viewProfiles } from '../controller/sound_info.controller.js';
+import {reviewData, reviews,addInBulkVendor,resetPassword, createProfile, signin, signup, updateDetails, viewAllVendors, viewProfile, viewProfiles } from '../controller/sound_info.controller.js';
 import express from 'express';
 import multer from 'multer'
 import { body } from 'express-validator';
 import soundVendorDetails from '../model/sound_info.js';
 import xlsx from 'xlsx';
+import Posts from '../model/ImageArray.js';
 // import { verifyVendor } from '../verify/verifyToken.js';
 
 let router = express.Router();
 
-let upload = multer({ dest: "public/images/" });
+let upload = multer({ dest: "public/images/" });    
 
 router.post(
     "/signup",
@@ -29,7 +30,7 @@ router.post(
     signin
 );
 router.post("/createProfile",
-upload.single("image"), 
+upload.single("image"),upload.any('imageArray'), 
 // ,body("type").notEmpty(),
 body("serviceCharge").notEmpty(),
 // body("description").notEmpty(),
@@ -103,7 +104,28 @@ router.post("/addInBulk",async (req, res) => {
 }
 )
 
+router.post("/catalogImages", upload.array("images", 10),async (req, res) => {
 
+    console.log(req.files);
+
+    let imageUrl="";
+    const paths = await req.files.map((file) => {
+        imageUrl = imageUrl+" "+ file.filename
+    });
+    
+    Posts.create({
+      vendorId:req.body.vendorId,
+        images: "/images/"+imageUrl     
+      }).then(
+      (result) => {
+        res.status(201).send({
+          msg: "upload successful",path:result
+        });
+      },
+      
+      );
+     }
+    );
 router.get("/viewAllVendors", viewAllVendors)
 
 router.get("/viewprofiles/:id", viewProfiles)
@@ -111,7 +133,6 @@ router.get("/viewprofiles/:id", viewProfiles)
 router.post("/review",reviews)
 router.get('/reviewdata/:vendorId',reviewData)
 
-router.get('/rating',ratingCount)
 
 export default router;
 

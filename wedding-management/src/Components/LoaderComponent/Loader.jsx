@@ -32,22 +32,22 @@
 
 // export default Loader ;
 
-import { Container } from '@mui/material'
-import React, { useState } from 'react'
-import ClipLoader from "react-spinners/ClipLoader";
-const Loader = ({show}) => {
-    let [color, setColor] = useState("crimson");
+// import { Container } from '@mui/material'
+// import React, { useState } from 'react'
+// import ClipLoader from "react-spinners/ClipLoader";
+// const Loader = ({show}) => {
+//     let [color, setColor] = useState("crimson");
 
-  return show && <>
-    <Container className='text-center p-5 mt-5'>
-    <ClipLoader
-        // color={color}
-        size={150}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-    </Container>
-  </>
-}
+//   return show && <>
+//     <Container className='text-center p-5 mt-5'>
+//     <ClipLoader
+//         // color={color}
+//         size={150}
+//         aria-label="Loading Spinner"
+//         data-testid="loader"
+//       />
+//     </Container>
+//   </>
+// }
 
-export default Loader
+// export default Loader

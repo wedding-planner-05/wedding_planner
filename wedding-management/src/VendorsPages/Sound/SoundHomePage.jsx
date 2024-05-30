@@ -22,11 +22,11 @@ const SoundHomePage = () => {
   const location = useLocation();
   const data = location.state;
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get("http://localhost:3000/sound/sound/rating")
       .then((result) => {
-        console.log("Rating :: ",result.data);
+        console.log("review rating", result.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -57,6 +57,21 @@ const SoundHomePage = () => {
     navigate("/SoundVendorDetails", { state: data });
   };
 
+  // const handlerViewall = (min, max) => {
+  //   setMinValue(min);
+  //   setMaxValue(max);
+  //   setProductAvailable(true); // Reset product availability flag
+  // }
+
+  // let inputHandler = (e) => {
+  //   var lowerCase = e.target.value.toLowerCase();
+  //   console.log(lowerCase);
+  //   setInputText(lowerCase);
+  // };
+
+  // const filterHandeler = (ele)=>{
+  //     return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue
+  // }
   {
     /*------------ Filter START -------------- */
   }
@@ -96,7 +111,6 @@ const SoundHomePage = () => {
   return (
     <>
       {/* <Navbar/> */}
-
       <div className="vendors-box  d-flex justify-content-evenly ">
 
         <Filters />
