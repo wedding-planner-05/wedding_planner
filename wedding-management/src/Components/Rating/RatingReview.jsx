@@ -35,7 +35,7 @@ const RatingReview = ({ submitReview, setComment, reviewadd }) => {
           Submit
         </button>
       </form>
-      <div className="h-auto" style={{ height: "auto" }}>
+      <div className="d-flex align-content-center justify-content-evenly accordion h-auto" style={{ height: "auto" }}>
         {reviewadd.map((product, index) => 
           <div key={index}>
             <div>{product.rating}</div>
@@ -43,6 +43,7 @@ const RatingReview = ({ submitReview, setComment, reviewadd }) => {
             <div>{product.comment}</div>
           </div>
         )}
+        <div onClick={()=>{}}>Delete</div>
       </div>
     </div>
   );

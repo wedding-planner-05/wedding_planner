@@ -161,7 +161,7 @@ function Navbar() {
           ) : (
             <div
               className="d-flex justify-content-between"
-              style={{ width: "250px" }}
+              style={{ width: "270px" }}
             >
               <div className="nav-item active">
                 <a style={{textDecoration:'none'}} className="nav-link" href="#">
@@ -177,11 +177,14 @@ function Navbar() {
                 <button
                   className="logIn-logOut"
                   style={{
+                    marginTop:"7px",
+                    fontSize:"18px",
                     backgroundColor: "crimson",
-                    height: "40px",
-                    width: "90px",
+                    height: "45px",
+                    width: "100px",
                     borderRadius: "10px",
                     border: "none",
+                    padding:'5px',
                     color: "white",
                   }}
                   onClick={() => loginWithRedirect()}
