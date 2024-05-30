@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import RatingReview from "../../Components/Rating/RatingReview";
+import SoundHomePage from "./SoundHomePage";
 
 const SoundVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -27,7 +28,6 @@ const SoundVendorDetails = () => {
   const [reviewadd, setReviwAdd] = React.useState([]);
   const [vendorId, setId] = React.useState(data.vendorId);
   const [showContact, setShowContact] = React.useState(false);
-
   const [showEmail, setShowEmail] = React.useState(false);
 
 
@@ -238,36 +238,3 @@ const SoundVendorDetails = () => {
 };
 
 export default SoundVendorDetails;
-{/* <div>
-<div>
-  <label htmlFor="">Review's</label>
-</div>
-<input
-  onChange={(e) => {
-    setComment(e.target.value);
-  }}
-  type="textarea"
-  style={{
-    height: "50px",
-    width: "50vw",
-  }}
-/>
-<Box>
-  <Typography component="legend"></Typography>
-  <Rating
-    name="simple-controlled"
-    value={rating}
-    onChange={(event, newValue) => setRating(newValue)}
-  />
-</Box>
-<div>
-  <button
-    className="bg-primary"
-    onClick={() => {
-      submitReview();
-    }}
-  >
-    submitReview
-  </button>
-</div>
-</div> */}
