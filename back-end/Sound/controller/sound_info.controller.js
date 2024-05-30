@@ -382,14 +382,15 @@ export const ratingCount = async (req, res) => {
       attributes: ["vendorId", [fn("AVG", col("rating")), "averageRating"]],
       group: ["vendorId"],
     });
-    
+    let currentRating= 0
     for (const rating of averageRatings) {
+      currentRating = rating.dataValues.averageRating
       await soundVendorDetails.update(
-        { rating: rating.dataValues.averageRating },
+        { rating: currentRating },
         { where: { vendorId: rating.vendorId } }
       );
     }
-    return res.json({result:averageRatings});
+    return res.json({result:averageRatings,  rating: currentRating});
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error calculating average ratings" });

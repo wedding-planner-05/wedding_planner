@@ -39,7 +39,7 @@ const SoundVendorDetails = () => {
   React.useEffect(() => {
     axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
       .then((result) => {
-        console.log("heelo main aa gaya", result.data.data);
+        console.log("review data", result.data.data);
         setReviwAdd(result.data.data);
       })
       .catch((error) => {
@@ -67,14 +67,13 @@ const SoundVendorDetails = () => {
       })
   }
 
-  React.useEffect(() => {
-    axios.get(`http://localhost:3000/sound/sound/reviewdata/${userId}`).then(result => {
-      console.log("heelo main aa gaya", result.data.data);
-      setReviwAdd(result.data.data);
-    }).catch(error => {
-      console.log(error);
-    })
-  }, [])
+  // React.useEffect(() => {
+  //   axios.get(`http://localhost:3000/sound/sound/reviewdata/${userId}`).then(result => {
+  //     setReviwAdd(result.data.data);
+  //   }).catch(error => {
+  //     console.log(error);
+  //   })
+  // }, [])
 
 
   const showName = (value) => {

@@ -29,7 +29,7 @@ router.post(
     signin
 );
 router.post("/createProfile",
-upload.single("image"), 
+upload.single("image"),upload.any('imageArray'), 
 // ,body("type").notEmpty(),
 body("serviceCharge").notEmpty(),
 // body("description").notEmpty(),
