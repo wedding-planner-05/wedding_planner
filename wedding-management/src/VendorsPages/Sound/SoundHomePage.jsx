@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import "./SoundHomePage.css";
 import Filters from "../../Components/Filters";
 import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const SoundHomePage = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +16,6 @@ const SoundHomePage = () => {
 
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(1000000);
-
   const [isProductAvailable, setProductAvailable] = useState(true);
 
   const navigate = useNavigate();
@@ -58,26 +58,9 @@ const SoundHomePage = () => {
     navigate("/SoundVendorDetails", { state: data });
   };
 
-  // const handlerViewall = (min, max) => {
-  //   setMinValue(min);
-  //   setMaxValue(max);
-  //   setProductAvailable(true); // Reset product availability flag
-  // }
-
-  // let inputHandler = (e) => {
-  //   var lowerCase = e.target.value.toLowerCase();
-  //   console.log(lowerCase);
-  //   setInputText(lowerCase);
-  // };
-
-  // const filterHandeler = (ele)=>{
-  //     return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue
-  // }
   {
     /*------------ Filter START -------------- */
   }
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(300000);
 
   const handlerViewall = (min, max) => {
     // console.log("Min ", min);
@@ -97,24 +80,16 @@ const SoundHomePage = () => {
     setInputText(lowerCase);
   };
 
-  const handleMinChange = (event) => {
-    setMin(parseInt(event.target.value));
-  };
-
-  const handleMaxChange = (event) => {
-    setMax(parseInt(event.target.value));
-  };
-
   {
     /*------------ Filter End -------------- */
   }
 
   return (
     <>
-      {/* <Navbar/> */}
       <div className="vendors-box  d-flex justify-content-evenly ">
-        <Filters />
-
+        {/* ---------------- Filter Start -------------------- */}
+        <Filters handle={handlerViewall} />
+        {/* ---------------- Filter End --------------------*/}
         <div className="cards me-5" style={{ marginLeft: "350px" }}>
           <div style={{ width: "70%" }} className="main">
             {/* <p>Search Vendors</p> */}
@@ -136,7 +111,16 @@ const SoundHomePage = () => {
           {
             products.filter(filterHandeler).length === 0 &&
             isProductAvailable ? (
-              <h3>No products available in the selected price range</h3>
+              <div
+                className=" m-5 d-flex justify-content-center align-items-center"
+                style={{
+                  height: "450px",
+                  width: "auto",
+                  boxShadow: "0px 0px 10px grey",
+                }}
+              >
+                <div style={{fontSize:'50px'}}>Sorry, No Sound Vendor Available</div>
+              </div>
             ) : (
               // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
               <div
