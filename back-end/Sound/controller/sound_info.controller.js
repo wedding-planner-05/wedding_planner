@@ -7,6 +7,7 @@ import { request, response } from "express";
 import { review } from "../model/review.js";
 import { col, fn } from "sequelize";
 
+
 export const addInBulkVendor = async (req, res, next) => {
   const workbook = xlsx.readFile("VendorSignInData.xlsx");
   const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
@@ -382,7 +383,7 @@ export const ratingCount = async (req, res) => {
       attributes: ["vendorId", [fn("AVG", col("rating")), "averageRating"]],
       group: ["vendorId"],
     });
-    let currentRating= 0
+    let currentRating = 0
     for (const rating of averageRatings) {
       currentRating = rating.dataValues.averageRating
       await soundVendorDetails.update(
@@ -390,9 +391,27 @@ export const ratingCount = async (req, res) => {
         { where: { vendorId: rating.vendorId } }
       );
     }
-    return res.json({result:averageRatings,  rating: currentRating});
+    return res.json({ result: averageRatings, rating: currentRating });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error calculating average ratings" });
   }
 };
+
+// export const AllImages = async (req, res) => {
+//   try {
+//     const { vendorId } = req.body;
+//     const filePaths = req.files.map(file => file.path);
+
+//     const newImage = await Image.create({
+//       image: filePaths[0], 
+//       imageArray: filePaths,
+//       vendorId: vendorId 
+//     });
+
+//     res.status(201).json({ message: 'Images uploaded successfully', newImage });
+//   } catch (error) {
+//     console.error('Error saving images:', error);
+//     res.status(500).json({ error: 'Error saving images information' });
+//   }
+// };

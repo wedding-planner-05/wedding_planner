@@ -52,3 +52,6 @@ sequelize.sync()
   .catch((error) => {
     console.error("something went wrong in review table", error);
   });
+
+
+  export default review
