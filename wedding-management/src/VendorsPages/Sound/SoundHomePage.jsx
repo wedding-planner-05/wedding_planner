@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import "./SoundHomePage.css";
 import Filters from "../../Components/Filters";
+import Swal from "sweetalert2";
 
 const SoundHomePage = () => {
   const [products, setProducts] = useState([]);
@@ -112,9 +113,7 @@ const SoundHomePage = () => {
     <>
       {/* <Navbar/> */}
       <div className="vendors-box  d-flex justify-content-evenly ">
-
         <Filters />
-
 
         <div className="cards me-5" style={{ marginLeft: "350px" }}>
           <div style={{ width: "70%" }} className="main">
@@ -157,7 +156,7 @@ const SoundHomePage = () => {
                       className="main-page m-3"
                     >
                       <div
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", height: "100%" }}
                         key={index}
                         className="p-2 row details-block "
                       >
@@ -177,7 +176,7 @@ const SoundHomePage = () => {
                         {() => {
                           console.log("IMAGE URL: ", product.imageUrl);
                         }}
-                        <div className="p-1 font-size">
+                        <div className="p-1 font-size mt-4">
                           <div className="row">
                             <div className="col">
                               <div className="h6" style={{ width: "170%" }}>
@@ -196,7 +195,7 @@ const SoundHomePage = () => {
                               </p>
                             </div>
                           </div>
-                          <h6 className="mb-0">
+                          <h6 className="mb-2">
                             <FaRupeeSign />{" "}
                             {product.serviceCharge || "Price not available"}{" "}
                             Onwards
