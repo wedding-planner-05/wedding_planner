@@ -1,4 +1,4 @@
-import {ratingCount,reviewData, reviews,addInBulkVendor,resetPassword, createProfile, signin, signup, updateDetails, viewAllVendors, viewProfile, viewProfiles } from '../controller/sound_info.controller.js';
+import {reviewData, reviews,addInBulkVendor,resetPassword, createProfile, signin, signup, updateDetails, viewAllVendors, viewProfile, viewProfiles } from '../controller/sound_info.controller.js';
 import express from 'express';
 import multer from 'multer'
 import { body } from 'express-validator';
@@ -111,7 +111,6 @@ router.get("/viewprofiles/:id", viewProfiles)
 router.post("/review",reviews)
 router.get('/reviewdata/:vendorId',reviewData)
 
-router.get('/rating',ratingCount)
 
 export default router;
 

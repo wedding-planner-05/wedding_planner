@@ -178,7 +178,7 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
 // });
 
 
-app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
+app.post("/cater/addformdetails", upload.single("file"), (req, res) => { 
     const { loginUserId, name, servicecharge, email, contactno, location, Description } = req.body;
     const filename = req.file?.filename;
     if (!filename) {
