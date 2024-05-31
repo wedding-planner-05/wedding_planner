@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import "./SoundHomePage.css";
 import Filters from "../../Components/Filters";
 import Swal from "sweetalert2";
-import swal from "sweetalert";
+import swal from "sweetalert";        
 
 const SoundHomePage = () => {
 
@@ -94,96 +94,8 @@ const SoundHomePage = () => {
   return <>
     {/* <Navbar/> */}
     <div className='vendors-box mt-5  d-flex justify-content-between'>
-      <div className='filter-box'>
-        <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
-          {/* -------------- Filter Start ------------------ */}
-          <Accordion
-            style={{
-              backgroundColor: "transparent",
-              boxShadow: "none",
-              border: "none",
-            }}
-            defaultExpanded
-          >
-            <AccordionSummary
-              // expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-            >
-              <Typography
-                className="ms-5 text-primary"
-                style={{ fontSize: "17px", fontWeight: "600" }}
-              >
-                Price range
-              </Typography>
-            </AccordionSummary>
-
-            <AccordionDetails className="ms-2">
-              {/* <Box style={{backgroundColor:'white'}}>
-                        <Slider 
-                            getAriaLabel={() => 'Temperature range'}
-                            value={[min, max]}
-                            onChange={()=>handlerViewall(0,10000)}
-                            valueLabelDisplay="auto"
-                            getAriaValueText={valuetext}
-                            min={0}
-                            max={9999}
-                        />
-                    </Box> */}
-              <div className="container d-flex flex-column justify-content-center align-items-center">
-                <div className="row d-flex">
-                  <div className="d-flex flex-column justify-content-center align-items-center">
-                    <label>Min</label>
-                    <input
-                      className="w-100"
-                      style={{
-                        height: "30px",
-                        paddingLeft: "10px",
-                        border: "2px solid #0D6EFD",
-                        outline: "none",
-                        borderRadius: "5px",
-                      }}
-                      type="number"
-                      value={min}
-                      onChange={handleMinChange}
-                    />
-                  </div>
-                  <div className=" d-flex flex-column align-items-center mt-3">
-                    <label>Max</label>
-                    <input
-                      className="w-100"
-                      style={{
-                        height: "30px",
-                        paddingLeft: "10px",
-                        border: "2px solid #0D6EFD",
-                        outline: "none",
-                        borderRadius: "5px",
-                      }}
-                      type="number"
-                      value={max}
-                      onChange={handleMaxChange}
-                    />
-                  </div>
-                </div>
-                <div className="w-100 d-flex justify-content-center">
-                  <button
-                    className="w-50 mt-3 btn btn-primary"
-                    onClick={() => handlerViewall(min, max)}
-                  >
-                    Apply
-                  </button>
-                </div>
-              </div>
-            </AccordionDetails>
-
-          </Accordion>
-          {/*  -------------- fILTER  End ---------------------*/}
-        </div>
-      </div>
-
-
-
-      <div className='cards'>
+      <Filters handle={handlerViewall}/>
+      <div className='cards me-5' style={{marginLeft:"350px"}}>
         <div style={{ width: "70%" }} className="main">
           {/* <p>Search Vendors</p> */}
           <div className="search mt-5">
