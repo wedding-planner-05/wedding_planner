@@ -51,8 +51,8 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor1.png" alt="teri " />
-          <div className="vendor-button text-black"
+          <img src="/images/vendor1.png" alt="Images not found " />
+          <div className="vendor-button text-dark"
             onClick={()=>DressHomePage()}>Wedding Wears
           </div>
         </div>
@@ -64,8 +64,8 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor2.png" alt="teri " />
-          <div className="vendor-button text-black" onClick={()=>MehendiHomePage()}> Mehendi</div>
+          <img src="/images/vendor2.png" alt="Images not found " />
+          <div className="vendor-button text-dark" onClick={()=>MehendiHomePage()}> Mehendi</div>
         </div>
 
         <div
@@ -75,15 +75,8 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          {/* <img src="/images/vendor3.png" alt="teri " /> */}
-          <img src="/images/image.png" alt="teri " />
-          
-
-
-          
-
-
-          <div className="vendor-button text-black"onClick={()=>PhotographerHomePage()} >Photographer
+          <img src="/images/vendor3.png" alt="Images not found " />
+          <div className="vendor-button text-dark"onClick={()=>PhotographerHomePage()} >Photographer
           </div>
         </div>
 
@@ -94,9 +87,8 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          {/* <img src="/images/vendor4.png" alt="teri " /> */}
-          <img src="/images/vendor4_n.png" alt="teri " />
-          <div className="vendor-button text-black" onClick={()=>SoundHomePage()}>Music / Band</div>
+          <img src="/images/vendor4.png" alt="Images not found " />
+          <div className="vendor-button text-dark" onClick={()=>SoundHomePage()}>Music / Band</div>
         </div>
         <div
           className="vendor-img d-flex justify-content-center align-item-center"
@@ -105,9 +97,8 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          {/* <img src="/images/vendor5.png" alt="teri " /> */}
-          <img src="/images/vendor5_n.png" alt="teri " />
-          <div className="vendor-button text-black" onClick={()=>GardenHomePage()}>Venue</div>
+          <img src="/images/vendor5.png" alt="Images not found " />
+          <div className="vendor-button text-dark" onClick={()=>GardenHomePage()}>Gardens</div>
         </div>
         <div
           className="vendor-img d-flex justify-content-center align-item-center"
@@ -116,8 +107,8 @@ const Vendors = () => {
             height: "400px",
           }}
         >
-          <img src="/images/vendor6.png" alt="teri " />
-          <div className="vendor-button text-black" onClick={()=>CaterHomePage()} >Caters</div>
+          <img src="/images/vendor6.png" alt="Images not found " />
+          <div className="vendor-button text-dark" onClick={()=>CaterHomePage()} >Caters</div>
         </div>
       </div>
     </div>

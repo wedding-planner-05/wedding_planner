@@ -33,7 +33,7 @@ import SoundContactDashBoard from "./DashBord/SoundDashBoard/SoundContactDashBoa
 import ForgetPassword from "./SignIn&SignUP/ForgorPassword/ForgotPassword.jsx";
 import ResetPassword from "./SignIn&SignUP/ResetPassword/ResetPassword.jsx";
 import DressDetailPage from "./VendorsPages/Dress/DressDetailPage.jsx";
-import Loader from "./Components/LoaderComponent/Loader.jsx";
+// import Loader from "./Components/LoaderComponent/Loader.jsx";
 import axios from "axios";
 import GardenDetailPage from "./VendorsPages/Garden/GardenDetailPage.jsx";
 import CaterProfile from "./DashBord/caterDashboard/CaterProfile.jsx";
@@ -42,8 +42,6 @@ import SoundProfile from "./DashBord/SoundDashBoard/SoundProfile.jsx";
 import GardenProfile from "./DashBord/Garden/GardenProfile.jsx";
 import Vendors from "./Components/Vendor/Vendors.jsx";
 import RatingReview from "./Components/Rating/RatingReview.jsx";
-
-
 
 
 const App = () => {
@@ -63,7 +61,7 @@ const App = () => {
                   return Promise.reject(error)
             })
       }, [])
-
+      
 
       return <>
             <Navbar />
@@ -90,6 +88,14 @@ const App = () => {
                   <Route path="/caterpage" element={<CaterPage />} />
                   <Route path="/CaterContactpage" element={<CaterContactpage />} />
                   <Route path="/vendorSignIn" elementm={<VendorSignIn />} />
+
+
+
+
+
+
+
+
 
                   {/* ----------------------------------------------CATER DASHBOARD--------------------------------------------- */}
 

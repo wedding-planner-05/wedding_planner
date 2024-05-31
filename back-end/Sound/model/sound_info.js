@@ -1,63 +1,7 @@
-
-// import { DataTypes } from "sequelize";
-// import sequelize from "../dbCongi/dbConnection.js";
-// import { type } from "os";
-
-// const soundVendorDetails = sequelize.define("sound_vendor_details",{
-//     id :{
-//         type : DataTypes.INTEGER ,
-//         primaryKey:true,
-//         allowNull : false,
-//         autoIncrement:true,
-//         references : {
-//             model : "sound_vendors",
-//             key : "id"
-//         }   
-//     },
-//     name : {
-//         type:DataTypes.STRING,
-//         allowNull: false
-
-//     },
-//     type : {
-//         type : DataTypes.STRING,
-//         allowNull : false ,
-//         defaultValue: 'sound'
-//     },
-//     imageUrl : {
-//         type : DataTypes.STRING ,
-//         allowNull : false 
-//     },
-//     serviceCharge : { 
-//         type : DataTypes.INTEGER ,
-//         allowNull : false    
-//     },
-//     address:{
-//         type : DataTypes.STRING,
-//         allowNull : false
-//     },
-//     description : {
-//         type : DataTypes.TEXT,
-//         allowNull :false 
-//     },
-//     contactNo : {
-//         type : DataTypes.STRING,
-//         allowNull: false
-//     }
-// })
-
-
-// sequelize.sync().then(()=>{
-//     console.log("table is created");
-// }).catch(()=>{
-//     console.log("table is not created");
-// })
-
-// export default soundVendorDetails ;
-
-
 import { DataTypes } from "sequelize";
 import sequelize from "../dbCongi/dbConnection.js";
+import { review } from "./review.js";
+import { ratingCount } from "../controller/sound_info.controller.js";
 
 const soundVendorDetails = sequelize.define("sound_vendor_details", {
   id: {
@@ -100,11 +44,19 @@ const soundVendorDetails = sequelize.define("sound_vendor_details", {
     type: DataTypes.TEXT,
     allowNull: false
   },
+  rating:{
+    type: DataTypes.FLOAT, 
+    allowNull: true,
+    defaultValue: 2.0 
+  },
   contactNo: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
 });
+
+soundVendorDetails.hasMany(review, { foreignKey: 'vendorId' });
+review.belongsTo(soundVendorDetails, { foreignKey: 'vendorId' });
 
 sequelize.sync().then(() => {
   console.log("soundVendorDetails table created successfully");
@@ -114,3 +66,75 @@ sequelize.sync().then(() => {
 
 export default soundVendorDetails;
 
+// models/soundVendorDetails.js
+// import { DataTypes } from "sequelize";
+// import sequelize from "../dbCongi/dbConnection.js";
+// import review from "./review.js"; // Ensure correct import path
+// import Posts from "./ImageArray.js";
+// // import Posts from "./Posts.js";   // Ensure correct import path for the Posts model
+
+// const soundVendorDetails = sequelize.define("sound_vendor_details", {
+//     id: {
+//         type: DataTypes.INTEGER,
+//         primaryKey: true,
+//         allowNull: false,
+//         autoIncrement: true,
+//     },
+//     vendorId: {
+//         allowNull: false,
+//         type: DataTypes.INTEGER,
+//         references: {
+//             model: "sound_vendors",
+//             key: "id",
+//         },
+//     },
+//     name: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//     },
+//     type: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//         defaultValue: 'sound',
+//     },
+//     imageUrl: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//     },
+//     serviceCharge: {
+//         type: DataTypes.INTEGER,
+//         allowNull: false,
+//     },
+//     address: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//     },
+//     description: {
+//         type: DataTypes.TEXT,
+//         allowNull: false,
+//     },
+//     rating: {
+//         type: DataTypes.FLOAT,
+//         allowNull: true,
+//         defaultValue: 2.0,
+//     },
+//     contactNo: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//     },
+// });
+
+// // Define the associations with the review and Posts models
+// soundVendorDetails.hasMany(review, { foreignKey: 'vendorId' });
+// review.belongsTo(soundVendorDetails, { foreignKey: 'vendorId' });
+
+// soundVendorDetails.hasMany(Posts, { foreignKey: 'vendorId' });
+// Posts.belongsTo(soundVendorDetails, { foreignKey: 'vendorId' });
+
+// sequelize.sync().then(() => {
+//     console.log("soundVendorDetails table created successfully");
+// }).catch((error) => {
+//     console.error("something went wrong in soundVendorDetails table", error);
+// });
+
+// export default soundVendorDetails;

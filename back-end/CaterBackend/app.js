@@ -11,8 +11,6 @@ import CaterDetails from "./model/CaterDetails.model.js";
 import xlsx from "xlsx"; // Added import for xlsx library
 import CaterFormDetails from "./model/CaterFormDetails.js";
 
-
-
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,7 +40,7 @@ app.post("/cater/signup", async (request, response, next) => {
         })
 }
 )
-app.post("/cater/AddInBulkVendor", async (req, res, next) => {
+app.post("/cater/addInBulkVendor", async (req, res, next) => {
     // console.log(request.body);
     const workbook = xlsx.readFile('VendorSignInData.xlsx');
     const sheet_name = workbook.SheetNames[0]; // Assuming you want to read the first sheet
@@ -132,7 +130,9 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
     let categoryId = req.body.categoryId;
     let imageUrl = "images/" + filename;
 
+
     const Cater = CaterFormDetails.create({ name, servicecharge, description, email, contactno, categoryId, imageUrl });
+
 
     Cater.then(result => {
         res.status(201).json({ message: "Data saved successfully" });
@@ -141,7 +141,6 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     });
 });
-
 
 // app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
 //     const {loginUserid, name, servicecharge, email, contactno, location } = req.body;
@@ -179,7 +178,7 @@ app.post("/cater/save", upload.single("imagesUrl"), (req, res) => {
 // });
 
 
-app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
+app.post("/cater/addformdetails", upload.single("file"), (req, res) => { 
     const { loginUserId, name, servicecharge, email, contactno, location, Description } = req.body;
     const filename = req.file?.filename;
     if (!filename) {
@@ -209,6 +208,19 @@ app.post("/cater/addformdetails", upload.single("file"), (req, res) => {
         });
 });
 
+
+
+
+app.get("/cater/getDetailsCater", async (req, res) => {
+    try {
+        const data = await CaterFormDetails.findAll();
+        console.log(data)
+        res.status(200).json({ data })
+    } catch (error) {
+        console.error("Error while retrieving data:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+})
 
 
 app.get("/cater/viewAllVendors", async (req, res) => {
@@ -253,54 +265,6 @@ app.get("/cater/viewprofile/:id", async (request, response, next) => {
 // });
 
 
-// app.post("/cater/addinBulk", async (req, res, next) => {
-
-//     const workbook = xlsx.readFile('dataregardCater2.xlsx');
-//     const sheet_name = workbook.SheetNames[0];
-//     const sheet = workbook.Sheets[sheet_name];
-
-//     console.log(req.body);
-
-//     const data = xlsx.utils.sheet_to_json(sheet);
-//     console.log(data);
-//     var i = 0;
-//     for (let item of data) {
-//         let id = item.name
-//         let loginUserId = item.name
-//         let name = item.name;
-//         let servicecharge = item.servicecharge;
-//         let email = item.email
-//         let contactno = item.contactno;
-//         let location = item.location
-//         let imageUrl = item.imageUrl;
-
-//         console.log("-------------------------------------------------------------------------------------");
-//         console.log(id + " " + loginUserId + " " + name + " " + servicecharge + " " + email + " " + " " + contactno + " " + location + " " + imageUrl);
-//         console.log("-------------------------------------------------------------------------------------");
-//     }
-//     try {
-//         for (let item of data) {
-//             let id = item.name
-//             let loginUserId = item.name
-//             let name = item.name;
-//             let servicecharge = item.servicecharge;
-//             let email = item.email
-//             let contactno = item.contactno;
-//             let location = item.location
-//             let imageUrl = item.imageUrl;
-
-//             console.log(id + " " + loginUserId + " " + name + " " + servicecharge + " " + email + " " + " " + contactno + " " + location + " " + imageUrl);
-//             console.log("this is your image url so check it", imageUrl);
-//             await CaterFormDetails.create({
-//                 id, loginUserId, name, servicecharge, email, contactno, location, imageUrl
-//             })
-//         }
-//         return res.status(200).json({ message: "product added successfully.." })
-//     } catch (err) {
-//         console.log(err);
-//         return res.status(501).json({ message: "Internal server error" })
-//     }
-// })
 app.post("/cater/addinBulk", async (req, res, next) => {
     const workbook = xlsx.readFile('dataregardCater2.xlsx');
     const sheet_name = workbook.SheetNames[0];

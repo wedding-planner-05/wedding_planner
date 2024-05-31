@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import RatingReview from "../../Components/Rating/RatingReview";
 import LeftRating from "../../Components/Rating/LeftRating";
+import SoundHomePage from "./SoundHomePage";
 
 const SoundVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -23,14 +24,11 @@ const SoundVendorDetails = () => {
   const data = location.state;
   console.log('vendor is ', data);
   const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
-  const [name, setUserName] = React.useState(
-    sessionStorage.getItem("userName")
-  );
+  const [name, setUserName] = React.useState(sessionStorage.getItem("userName"));
   const [comment, setComment] = React.useState();
   const [reviewadd, setReviwAdd] = React.useState([]);
   const [vendorId, setId] = React.useState(data.vendorId);
   const [showContact, setShowContact] = React.useState(false);
-
   const [showEmail, setShowEmail] = React.useState(false);
 
 
@@ -51,6 +49,22 @@ const SoundVendorDetails = () => {
     
     // alert("hello");
 
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
+      .then((result) => {
+        console.log("review data", result.data.data);
+        setReviwAdd(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
+  
+  let submitReview = (rating) => {
+    alert("hello");
     axios
       .post("http://localhost:3000/sound/sound/review", {
         vendorId,
@@ -60,8 +74,9 @@ const SoundVendorDetails = () => {
         comment,
       })
       .then((result) => {
-        setReviwAdd([result.data.data, ...reviewadd])
-      }).catch(error => {
+        setReviwAdd([result.data.data,...reviewadd])
+      })
+      .catch((error) => {
         console.log(error);
       })
   }
@@ -74,6 +89,14 @@ const SoundVendorDetails = () => {
       console.log(error);
     })
   }, [])
+
+  // React.useEffect(() => {
+  //   axios.get(`http://localhost:3000/sound/sound/reviewdata/${userId}`).then(result => {
+  //     setReviwAdd(result.data.data);
+  //   }).catch(error => {
+  //     console.log(error);
+  //   })
+  // }, [])
 
 
   const showName = (value) => {
@@ -136,8 +159,8 @@ const SoundVendorDetails = () => {
                   alt="image not available"
                 />
               </div>
-              <div className="position-absolute block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
-                <h5>{data.name}</h5>
+              <div className="position-absolute  block-details-1 p-3 mb-4 start-50 top-100 translate-middle">
+                <h5>{data.name}</h5> <h5>Rating : {data.rating}</h5>
                 <small>
                   <FaLocationDot color="green" />
                   {data.address}

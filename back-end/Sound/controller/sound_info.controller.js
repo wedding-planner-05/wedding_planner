@@ -5,6 +5,8 @@ import soundVendorDetails from "../model/sound_info.js";
 import xlsx from "xlsx";
 import { request, response } from "express";
 import { review } from "../model/review.js";
+import { col, fn } from "sequelize";
+
 
 export const addInBulkVendor = async (req, res, next) => {
   const workbook = xlsx.readFile("VendorSignInData.xlsx");
@@ -351,9 +353,10 @@ export const viewProfiles = async (request, response, next) => {
 };
 
 export const reviews = async (request, response, next) => {
-  const { vendorId, userId, rating,name, comment } = request.body;
+  const { vendorId, userId, rating, name, comment } = request.body;
 
-  review.create({ vendorId, userId, rating,name, comment })
+  review
+    .create({ vendorId, userId, rating, name, comment })
     .then((result) => {
       return response.status(200).json({ data: result });
     })
@@ -362,14 +365,53 @@ export const reviews = async (request, response, next) => {
     });
 };
 
-
-export const reviewData = (request,response,next)=>{
+export const reviewData = (request, response, next) => {
   const { vendorId } = request.params;
-  review.findAll({ where: { vendorId } })
+  review
+    .findAll({ where: { vendorId } })
     .then((result) => {
       return response.send({ data: result });
     })
     .catch((error) => {
       return response.send({ error: error });
     });
-}
+};
+
+export const ratingCount = async (req, res) => {
+  try {
+    const averageRatings = await review.findAll({
+      attributes: ["vendorId", [fn("AVG", col("rating")), "averageRating"]],
+      group: ["vendorId"],
+    });
+    let currentRating = 0
+    for (const rating of averageRatings) {
+      currentRating = rating.dataValues.averageRating
+      await soundVendorDetails.update(
+        { rating: currentRating },
+        { where: { vendorId: rating.vendorId } }
+      );
+    }
+    return res.json({ result: averageRatings, rating: currentRating });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Error calculating average ratings" });
+  }
+};
+
+// export const AllImages = async (req, res) => {
+//   try {
+//     const { vendorId } = req.body;
+//     const filePaths = req.files.map(file => file.path);
+
+//     const newImage = await Image.create({
+//       image: filePaths[0], 
+//       imageArray: filePaths,
+//       vendorId: vendorId 
+//     });
+
+//     res.status(201).json({ message: 'Images uploaded successfully', newImage });
+//   } catch (error) {
+//     console.error('Error saving images:', error);
+//     res.status(500).json({ error: 'Error saving images information' });
+//   }
+// };

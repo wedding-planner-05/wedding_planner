@@ -1,159 +1,201 @@
-import axios from 'axios';
-import React, {useEffect, useState } from 'react'
-import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
-import { useLocation, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaMapMarkerAlt, FaRupeeSign, FaSearch, FaStar } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import "./SoundHomePage.css";
-import Navbar from '../../Components/Navbar/Navbar';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { FaIndianRupeeSign } from 'react-icons/fa6';
-import Swal from 'sweetalert2';
-
+import Filters from "../../Components/Filters";
+import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const SoundHomePage = () => {
-  
-  const [products,setProducts] = useState([]) ;
-  const [dataSource,setDataSource] = useState(Array.from({length:20}))
-  const [hasMoreData,setHasMoreData] = useState(true)
+  const [products, setProducts] = useState([]);
+  const [dataSource, setDataSource] = useState(Array.from({ length: 20 }));
+  const [hasMoreData, setHasMoreData] = useState(true);
   const [inputText, setInputText] = useState("");
-  
-  const [minValue,setMinValue] = useState(0) ;
-  const [maxValue,setMaxValue] = useState(1000000) ;
+
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(1000000);
   const [isProductAvailable, setProductAvailable] = useState(true);
-  
-    const navigate = useNavigate()
 
-    const location = useLocation() ;
-    const data = location.state ; 
-    const url = ''
+  const navigate = useNavigate();
 
+  const location = useLocation();
+  const data = location.state;
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/sound/sound/rating")
+      .then((result) => {
+        console.log("review rating", result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-    useEffect(()=>{
-      if(data){
-          setProducts(data);
-        }else{ 
-            axios.get("http://localhost:3000/sound/sound/viewAllVendors").then((response)=>{
-              setProducts(response.data.data)
-              console.log("data from datavaase",response.data.data);
-            }).catch(err=>{
-              console.log(err);
-            })
-          }
-        },[])
-        
-        setTimeout(()=>{
-          setDataSource(dataSource.concat(Array.from({length:20})))
-        },1000)
-        const moreData = ()=>{}
-
-   
-    
-    const SoundVendorDetails = (data)=>{
-      navigate("/SoundVendorDetails",{state:data})
+  useEffect(() => {
+    if (data) {
+      setProducts(data);
+    } else {
+      axios
+        .get("http://localhost:3000/sound/sound/viewAllVendors")
+        .then((response) => {
+          setProducts(response.data.data);
+          console.log("data from datavaase", response.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-    
-    const handlerViewall = (min, max) => {
-      setMinValue(min);
-      setMaxValue(max);
-      setProductAvailable(true); // Reset product availability flag
-    }
+  }, []);
 
-    let inputHandler = (e) => {
-      var lowerCase = e.target.value.toLowerCase();
-      console.log(lowerCase);
-      setInputText(lowerCase);
-    };
+  setTimeout(() => {
+    setDataSource(dataSource.concat(Array.from({ length: 20 })));
+  }, 1000);
 
-    const filterHandeler = (ele)=>{
-        return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
-    }
+  const SoundVendorDetails = (data) => {
+    navigate("/SoundVendorDetails", { state: data });
+  };
 
-  
-  return <> 
-  {/* <Navbar/> */}
-  <div className='vendors-box mt-5  d-flex justify-content-between'>
-    <div className='filter-box'>
-    <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
-      {/* <button onClick={()=>setPriceFilter({operation :"",price:0})} className='btn' style={{height:'40px',width:"110px" , border:'1px solid crimson'}}>view all</button> */}
-      <button onClick={()=>handlerViewall(0,1000000)} className='btn p-0' style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}}><small>view all</small></button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(0,50000)} className='btn p-0'><small>Below 50000</small></button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(50000,200000)} className='btn p-0'><small>50000-200000</small></button>
-      <button style={{height:'40px',width:"150px" ,color:'black',borderRadius:'20px',backgroundColor:'white', border:'3px solid crimson'}} onClick={()=>handlerViewall(200000,2000000)} className='btn p-0'><small>Above 200000</small></button>
-    </div> 
-    </div>
+  {
+    /*------------ Filter START -------------- */
+  }
 
-    
-   
-    <div className='cards'>
-    <div style={{width:"70%"}} className="main">
-      {/* <p>Search Vendors</p> */}
-      <div className="search mt-5">
-        <TextField
-          id="outlined-basic"
-          onChange={inputHandler}
-          variant="standard"
-          fullWidth
-          label="search"
-        />
-      </div>
-      {/* <List input={inputText} /> */}
-    </div>
-    {products.filter(filterHandeler).length  === 0 && isProductAvailable ? 
-         <h3>No products available in the selected price range</h3> : 
-            // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
-          <div style={{marginTop:'-20px'}} className="d-flex flex-wrap justify-content-evenly align-items-center">
-          {products.filter((ele)=>filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase()) ).map((product, index) => (
-            <section onClick={()=>SoundVendorDetails(product)} key={index} className="main-page m-3">
-              <div style={{cursor:'pointer'}}
-                key={index}
-                className="p-2 row details-block "
-                >
-                <div className="p-0">
-                  <img style={{width: "100%",height: "200px"}}
-                    className=" custom-img"
-                    src={product.imageUrl.startsWith('images') ? `http://localhost:3006/`+ product.imageUrl : product.imageUrl} 
-                    alt={product.name}
+  const handlerViewall = (min, max) => {
+    // console.log("Min ", min);
+    // console.log("Max ", max);
+    setMinValue(min);
+    setMaxValue(max);
+    setProductAvailable(true); // Reset product availability flag
+  };
 
-                  />
-                </div>
+  const filterHandeler = (ele) => {
+    return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue;
+  };
 
-                {  ()=>{console.log("IMAGE URL: ",product.imageUrl)}}
-                <div className="p-1 font-size">
-                  <div className="row">
-                    <div className="col">
-                      <div className="h6" style={{ width: "170%" }}>
-                        <strong>{product.name}</strong>
-                      </div>
-                      {/* <p className="custom-text-size">Photo + Video</p> */}
-                    </div>
-                    <div className="col text-end">
-                      <p className="h6">
-                        <FaStar color="crimson" /> {product.rating || "N/A"}
-                      </p>
-                      <p className="font custom-text-size">
-                        <FaMapMarkerAlt color="green" /> {product.address.slice(0,13) + ".."}
-                      </p>
-                    </div>
-                  </div>
-                  <h6 className="mb-0">
-                    <FaRupeeSign /> {product.serviceCharge || "Price not available"}{" "}
-                    Onwards
-                  </h6>
-                </div>
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    console.log(lowerCase);
+    setInputText(lowerCase);
+  };
+
+  {
+    /*------------ Filter End -------------- */
+  }
+
+  return (
+    <>
+      <div className="vendors-box  d-flex justify-content-evenly ">
+        {/* ---------------- Filter Start -------------------- */}
+        <Filters handle={handlerViewall} />
+        {/* ---------------- Filter End --------------------*/}
+        <div className="cards me-5" style={{ marginLeft: "350px" }}>
+          <div style={{ width: "70%" }} className="main">
+            {/* <p>Search Vendors</p> */}
+            <div className="search mt-5">
+              <TextField
+                className="mt-2"
+                id="outlined-basic"
+                onChange={inputHandler}
+                variant="standard"
+                fullWidth
+                label={
+                  <>
+                    Search <FaSearch size={"18px"} />
+                  </>
+                }
+              />
+            </div>
+          </div>
+          {
+            products.filter(filterHandeler).length === 0 &&
+            isProductAvailable ? (
+              <div
+                className=" m-5 d-flex justify-content-center align-items-center"
+                style={{
+                  height: "450px",
+                  width: "auto",
+                  boxShadow: "0px 0px 10px grey",
+                }}
+              >
+                <div style={{fontSize:'50px'}}>Sorry, No Sound Vendor Available</div>
               </div>
-            </section>
-          ))
+            ) : (
+              // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
+              <div
+                style={{ marginTop: "-20px" }}
+                className="d-flex flex-wrap justify-content-evenly align-items-center"
+              >
+                {products
+                  .filter(
+                    (ele) =>
+                      filterHandeler(ele) &&
+                      ele.name.toLowerCase().includes(inputText.toLowerCase())
+                  )
+                  .map((product, index) => (
+                    <section
+                      onClick={() => SoundVendorDetails(product)}
+                      key={index}
+                      className="main-page m-3"
+                    >
+                      <div
+                        style={{ cursor: "pointer", height: "100%" }}
+                        key={index}
+                        className="p-2 row details-block "
+                      >
+                        <div className="p-0">
+                          <img
+                            style={{ width: "100%", height: "200px" }}
+                            className=" custom-img"
+                            src={
+                              product.imageUrl.startsWith("images")
+                                ? `http://localhost:3006/` + product.imageUrl
+                                : product.imageUrl
+                            }
+                            alt={product.name}
+                          />
+                        </div>
+
+                        {() => {
+                          console.log("IMAGE URL: ", product.imageUrl);
+                        }}
+                        <div className="p-1 font-size mt-4">
+                          <div className="row">
+                            <div className="col">
+                              <div className="h6" style={{ width: "170%" }}>
+                                <strong>{product.name}</strong>
+                              </div>
+                              {/* <p className="custom-text-size">Photo + Video</p> */}
+                            </div>
+                            <div className="col text-end">
+                              <p className="h6">
+                                <FaStar color="crimson" />{" "}
+                                {product.rating || "N/A"}
+                              </p>
+                              <p className="font custom-text-size">
+                                <FaMapMarkerAlt color="green" />{" "}
+                                {product.address.slice(0, 13) + ".."}
+                              </p>
+                            </div>
+                          </div>
+                          <h6 className="mb-2">
+                            <FaRupeeSign />{" "}
+                            {product.serviceCharge || "Price not available"}{" "}
+                            Onwards
+                          </h6>
+                        </div>
+                      </div>
+                    </section>
+                  ))}
+              </div>
+            )
+            // </InfiniteScroll>
           }
-    </div>
-                // </InfiniteScroll>
-  }    
-  </div>  
-</div>
-      
-  
-  </>
-}
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default SoundHomePage
-
+export default SoundHomePage;
