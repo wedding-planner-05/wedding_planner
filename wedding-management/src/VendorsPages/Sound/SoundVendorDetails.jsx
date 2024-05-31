@@ -1,4 +1,4 @@
-// import React, { useContext, useState } from 'react'
+console.log("hello from abhimanyu");
 import { FaEnvelope, FaPhoneAlt, FaStar, FaWhatsapp } from "react-icons/fa";
 import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
@@ -31,12 +31,7 @@ const SoundVendorDetails = () => {
   const [showContact, setShowContact] = React.useState(false);
   const [showEmail, setShowEmail] = React.useState(false);
 
-
-  // console.log(value);
-
-  // const [show, setShow] = React.useState(false);
-
-  let submitReview = (rating) => {
+  let submitAlert = () => {
     Swal.fire({
       // title: "Sweet!",
       text: "Your review matters alot",
@@ -45,10 +40,7 @@ const SoundVendorDetails = () => {
       imageHeight: 200,
       // imageAlt: "Custom image"
     });
-
-    
-    // alert("hello");
-
+  }
 
   React.useEffect(() => {
     axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
@@ -74,6 +66,7 @@ const SoundVendorDetails = () => {
         comment,
       })
       .then((result) => {
+        submitAlert() ;
         setReviwAdd([result.data.data,...reviewadd])
       })
       .catch((error) => {
@@ -263,6 +256,7 @@ const SoundVendorDetails = () => {
       <Footer />
     </>
   );
+
 };
 
-export default SoundVendorDetails;
+export default SoundVendorDetails

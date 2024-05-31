@@ -8,6 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 const RatingReview = ({ submitReview, setComment, reviewadd }) => {
   const [rating, setRating] = useState(0);
 
+  const [userId,setUserId] = useState(sessionStorage.getItem("userID")) ;
   const handleSubmit = () => {
     submitReview(rating);
   };
@@ -65,11 +66,10 @@ const RatingReview = ({ submitReview, setComment, reviewadd }) => {
             <div className="review-rating">{product.rating}★</div>
             <div className="review-comment">{product.comment}</div>
              {/* <button className="Delete-comment"type="button"> */}
-    
-        
-      <img src="/images/Delete.png" alt="" className="Delete-comment"/>
-        
-
+            {userId && <div>
+             <img src="/images/Delete.png" alt="" className="Delete-comment"/>
+            </div>
+            }
           </div>
         ))}
       </div>
