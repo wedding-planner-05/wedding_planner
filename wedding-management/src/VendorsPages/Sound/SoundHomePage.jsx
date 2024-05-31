@@ -27,8 +27,21 @@ const SoundHomePage = () => {
     axios
       .get("http://localhost:3000/sound/sound/rating")
       .then((result) => {
-        console.log("review rating", result.data.data);
-      })
+        console.log("review rating", result.data);
+        // let ratings = result?.data?.result
+        // if(ratings?.length){
+        //  let newProducts = []
+        //  products.map(ele=>{
+        //     let ratObj =  ratings.find((rat)=>rat.vendorId === ele.vendorId)
+        //     if(ratObj){
+        //       ele.rating =  ratObj.averageRating
+        //     }
+        //     newProducts.push(ele)
+        //   })
+        //  console.log("new object:::", newProducts) 
+        //  newProducts.length && setProducts(newProducts)
+        }
+      )
       .catch((error) => {
         console.log(error);
       });
