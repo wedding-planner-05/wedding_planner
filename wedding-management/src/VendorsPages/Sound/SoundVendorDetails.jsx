@@ -1,3 +1,4 @@
+
 import { FaEnvelope, FaPhoneAlt, FaStar, FaWhatsapp } from "react-icons/fa";
 import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
@@ -30,11 +31,8 @@ const SoundVendorDetails = () => {
   const [catalogimage, setCatalogimage] = React.useState([]);
   const [showEmail, setShowEmail] = React.useState(false);
 
-  // console.log(value);
 
-  // const [show, setShow] = React.useState(false);
-
-  let submitReview = (rating) => {
+  let submitAlert = () => {
     Swal.fire({
       // title: "Sweet!",
       text: "Your review matters alot",
@@ -44,8 +42,6 @@ const SoundVendorDetails = () => {
       // imageAlt: "Custom image"
     });
   }
-    
-    // alert("hello");
 
 
 
@@ -60,9 +56,28 @@ const SoundVendorDetails = () => {
       });
   }, [vendorId]);
 
-  React.useEffect(() => {
-    axios.get(`http://localhost:3000/sound/sound/catalogImages/${vendorId}`)
-      .then(result => {
+
+  
+  let submitReview = (rating) => {
+    alert("hello");
+    axios
+      .post("http://localhost:3000/sound/sound/review", {
+        vendorId,
+        userId,
+        name,
+        rating,
+        comment,
+      })
+      .then((result) => {
+        submitAlert() ;
+        setReviwAdd([result.data.data,...reviewadd])
+      })
+      .catch((error) => {
+        console.log(error);
+
+      React.useEffect(() => {
+        axios.get(`http://localhost:3000/sound/sound/catalogImages/${vendorId}`)
+        .then(result => {
         console.log("this is real data", result.data);
         let imageArray = result.data[0].images.split(" ");
         imageArray.shift();
@@ -233,6 +248,7 @@ const SoundVendorDetails = () => {
       <Footer />
     </>
   );
+
 };
 
-export default SoundVendorDetails;
+export default SoundVendorDetails
