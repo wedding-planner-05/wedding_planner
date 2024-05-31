@@ -44,8 +44,6 @@ import Vendors from "./Components/Vendor/Vendors.jsx";
 import RatingReview from "./Components/Rating/RatingReview.jsx";
 
 
-
-
 const App = () => {
       const [loading, setLoading] = useState(false)
 
@@ -63,7 +61,7 @@ const App = () => {
                   return Promise.reject(error)
             })
       }, [])
-
+      
 
       return <>
             <Navbar />
@@ -90,6 +88,14 @@ const App = () => {
                   <Route path="/caterpage" element={<CaterPage />} />
                   <Route path="/CaterContactpage" element={<CaterContactpage />} />
                   <Route path="/vendorSignIn" elementm={<VendorSignIn />} />
+
+
+
+
+
+
+
+
 
                   {/* ----------------------------------------------CATER DASHBOARD--------------------------------------------- */}
 

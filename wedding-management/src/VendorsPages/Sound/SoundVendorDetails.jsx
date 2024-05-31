@@ -12,6 +12,8 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import RatingReview from "../../Components/Rating/RatingReview";
+import LeftRating from "../../Components/Rating/LeftRating";
+import SoundHomePage from "./SoundHomePage";
 
 const SoundVendorDetails = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -27,6 +29,25 @@ const SoundVendorDetails = () => {
   const [showContact, setShowContact] = React.useState(false);
   const [catalogimage, setCatalogimage] = React.useState([]);
   const [showEmail, setShowEmail] = React.useState(false);
+
+  // console.log(value);
+
+  // const [show, setShow] = React.useState(false);
+
+  let submitReview = (rating) => {
+    Swal.fire({
+      // title: "Sweet!",
+      text: "Your review matters alot",
+      imageUrl: "public/images/Review_Rating.png",
+      imageWidth: 400,
+      imageHeight: 200,
+      // imageAlt: "Custom image"
+    });
+  }
+    
+    // alert("hello");
+
+
 
   React.useEffect(() => {
     axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`)
@@ -52,6 +73,24 @@ const SoundVendorDetails = () => {
         console.log("this is error", error);
       });
   }, [vendorId, userId]);
+  }
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3000/sound/sound/reviewdata/${vendorId}`).then(result => {
+      console.log("heelo main aa gaya", result.data.data);
+      setReviwAdd(result.data.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [])
+
+  // React.useEffect(() => {
+  //   axios.get(`http://localhost:3000/sound/sound/reviewdata/${userId}`).then(result => {
+  //     setReviwAdd(result.data.data);
+  //   }).catch(error => {
+  //     console.log(error);
+  //   })
+  // }, [])
 
   const submitReview = (rating) => {
     alert("hello");
@@ -182,6 +221,9 @@ const SoundVendorDetails = () => {
               <p>No images available</p>
             )}
           </div>
+          <LeftRating/>
+          <RatingReview submitReview={submitReview} setComment={setComment} reviewadd={reviewadd} />
+
           <div className="container custom-border mt-5 p-5 d-flex flex-wrap">
             <div>{data.description}</div>
           </div>

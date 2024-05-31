@@ -11,10 +11,11 @@
 }
 .filter-box{
     height:90vh; 
-    width: 16%;
+    width: auto;
 }
 .filter-box-inner{
     height:90vh; 
+    width: auto;
     position: fixed;
     background-color: white;
     margin-top: 0px;

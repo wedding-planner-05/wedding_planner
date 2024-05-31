@@ -1,14 +1,12 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
-import { useLocation, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaMapMarkerAlt, FaRupeeSign, FaSearch, FaStar } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import "./SoundHomePage.css";
-
-import Swal from 'sweetalert2';
-import { Accordion } from 'react-bootstrap';
-import { AccordionDetails, AccordionSummary, Typography } from '@mui/material';
-
+import Filters from "../../Components/Filters";
+import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const SoundHomePage = () => {
 
@@ -37,55 +35,37 @@ const SoundHomePage = () => {
     })
 
   }, [])
-
   useEffect(() => {
     if (data) {
       setProducts(data);
     } else {
-      axios.get("http://localhost:3000/sound/sound/viewAllVendors").then((response) => {
-        setProducts(response.data.data)
-        console.log("data from datavaase", response.data.data);
-      }).catch(err => {
-        console.log(err);
-      })
+      axios
+        .get("http://localhost:3000/sound/sound/viewAllVendors")
+        .then((response) => {
+          setProducts(response.data.data);
+          console.log("data from datavaase", response.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  }, [])
+  }, []);
 
   setTimeout(() => {
-    setDataSource(dataSource.concat(Array.from({ length: 20 })))
-  }, 1000)
+    setDataSource(dataSource.concat(Array.from({ length: 20 })));
+  }, 1000);
 
   const SoundVendorDetails = (data) => {
-    navigate("/SoundVendorDetails", { state: data })
+    navigate("/SoundVendorDetails", { state: data });
+  };
+
+  {
+    /*------------ Filter START -------------- */
   }
 
-
-
-
-
-  // const handlerViewall = (min, max) => {
-  //   setMinValue(min);
-  //   setMaxValue(max);
-  //   setProductAvailable(true); // Reset product availability flag
-  // }
-
-  // let inputHandler = (e) => {
-  //   var lowerCase = e.target.value.toLowerCase();
-  //   console.log(lowerCase);
-  //   setInputText(lowerCase);
-  // };
-
-  // const filterHandeler = (ele)=>{
-  //     return ele.serviceCharge >= minValue && ele.serviceCharge <= maxValue 
-  // }
-
-  {/*------------ Filter START -------------- */ }
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(300000);
-
   const handlerViewall = (min, max) => {
-    console.log("Min ", min);
-    console.log("Max ", max);
+    // console.log("Min ", min);
+    // console.log("Max ", max);
     setMinValue(min);
     setMaxValue(max);
     setProductAvailable(true); // Reset product availability flag
@@ -274,4 +254,3 @@ const SoundHomePage = () => {
 }
 
 export default SoundHomePage
-
