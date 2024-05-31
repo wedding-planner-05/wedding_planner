@@ -1,4 +1,4 @@
-import {reviewData, reviews,addInBulkVendor,resetPassword, createProfile, signin, signup, updateDetails, viewAllVendors, viewProfile, viewProfiles, ratingCount } from '../controller/sound_info.controller.js';
+import {removeRating,reviewData, reviews,addInBulkVendor,resetPassword, createProfile, signin, signup, updateDetails, viewAllVendors, viewProfile, viewProfiles, ratingCount } from '../controller/sound_info.controller.js';
 import express from 'express';
 import multer from 'multer'
 import { body } from 'express-validator';
@@ -146,8 +146,7 @@ router.get("/viewprofiles/:id", viewProfiles)
 router.post("/review",reviews)
 router.get('/reviewdata/:vendorId',reviewData)
 router.get('/rating',ratingCount)
-
-
+router.delete('/removeRating',removeRating)
 export default router;
 
 

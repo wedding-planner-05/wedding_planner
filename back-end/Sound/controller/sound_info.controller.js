@@ -400,6 +400,10 @@ export const ratingCount = async (req, res) => {
   }
 };
 
+export const removeRating = (request,response)=>{
+    
+}
+
 // export const AllImages = async (req, res) => {
 //   try {
 //     const { vendorId } = req.body;
