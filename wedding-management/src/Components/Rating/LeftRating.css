@@ -1,0 +1,69 @@
+/* src/Ratings.css */
+.ratings-container {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    /* padding: 60px; */
+    position: relative;
+    top:20px;
+    border-radius: 8px;
+    width:500px;
+    background: #fff;
+  }
+  
+  .rating-overview {
+    /* display: flex; */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .rating-score {
+    
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4caf50;
+    margin-right: 10px;
+  }
+  
+  .rating-info {
+    font-size: 0.9em;
+    /* color: #777; */
+    display:flex;
+        
+  }
+  
+  .rating-distribution {
+    width: 100%;
+  }
+  
+  .rating-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .rating-label {
+    width: 80px;
+    font-size: 0.9em;
+    color: #333;
+  }
+  
+  .bar-container {
+    
+    flex: 1;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 10px;
+  }
+  
+  .bar-fill {
+    height: 100%;
+  }
+  
+  .rating-count {
+    width: 30px;
+    font-size: 0.9em;
+    color: #333;
+  }
+  
