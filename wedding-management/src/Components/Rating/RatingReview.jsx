@@ -66,7 +66,7 @@ const RatingReview = ({ submitReview, setComment, reviewadd }) => {
             <div className="review-rating">{product.rating}★</div>
             <div className="review-comment">{product.comment}</div>
              {/* <button className="Delete-comment"type="button"> */}
-            {userId && <div>
+            {<div>
              <img src="/images/Delete.png" alt="" className="Delete-comment"/>
             </div>
             }

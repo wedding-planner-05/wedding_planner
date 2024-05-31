@@ -20,6 +20,7 @@ const SoundVendorDetails = () => {
   const location = useLocation();
 
   const data = location.state;
+  sessionStorage.setItem('vendorId',data.vendorId) ;
   console.log("vendor is ", data);
   const [userId, setUserId] = React.useState(sessionStorage.getItem("userID"));
   const [name, setUserName] = React.useState(
