@@ -5,6 +5,7 @@ import { body } from 'express-validator';
 import soundVendorDetails from '../model/sound_info.js';
 import xlsx from 'xlsx';
 import Posts from '../model/ImageArray.js';
+import { where } from 'sequelize';
 // import { verifyVendor } from '../verify/verifyToken.js';
 
 let router = express.Router();
@@ -103,6 +104,18 @@ router.post("/addInBulk",async (req, res) => {
     }
 }
 )
+router.get('/catalogImages/:vendorId', async (req, res) => {
+    const { vendorId } = req.params;
+    
+    try {
+        const images = await Posts.findAll({ where: { vendorId } });
+        res.status(200).json(images);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while fetching images' });
+    }
+});
+
+
 
 router.post("/catalogImages", upload.array("images", 10),async (req, res) => {
 

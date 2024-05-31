@@ -9,44 +9,32 @@ import Swal from "sweetalert2";
 import swal from "sweetalert";
 
 const SoundHomePage = () => {
-  const [products, setProducts] = useState([]);
-  const [dataSource, setDataSource] = useState(Array.from({ length: 20 }));
-  const [hasMoreData, setHasMoreData] = useState(true);
-  const [inputText, setInputText] = useState("");
 
+  const [products, setProducts] = useState([]);
+  const [dataSource, setDataSource] = useState(Array.from({ length: 20 }))
+  const [hasMoreData, setHasMoreData] = useState(true)
+  const [inputText, setInputText] = useState("");
+  const [catalogimage,setCatalogimage] = useState();
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(1000000);
   const [isProductAvailable, setProductAvailable] = useState(true);
+  const [vendorId, setUserId] = React.useState(sessionStorage.getItem("userID"));
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const location = useLocation();
   const data = location.state;
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/sound/sound/rating")
-      .then((result) => {
-        console.log("review rating", result.data);
-        // let ratings = result?.data?.result
-        // if(ratings?.length){
-        //  let newProducts = []
-        //  products.map(ele=>{
-        //     let ratObj =  ratings.find((rat)=>rat.vendorId === ele.vendorId)
-        //     if(ratObj){
-        //       ele.rating =  ratObj.averageRating
-        //     }
-        //     newProducts.push(ele)
-        //   })
-        //  console.log("new object:::", newProducts) 
-        //  newProducts.length && setProducts(newProducts)
-        }
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  React.useEffect(() => {
 
+    axios.get('http://localhost:3000/sound/sound/rating').then((result) => {
+      console.log('review rating', result.data);
+      console.log("this is result",result);
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }, [])
   useEffect(() => {
     if (data) {
       setProducts(data);
@@ -93,122 +81,176 @@ const SoundHomePage = () => {
     setInputText(lowerCase);
   };
 
-  {
-    /*------------ Filter End -------------- */
-  }
+  const handleMinChange = (event) => {
+    setMin(parseInt(event.target.value));
+  };
 
-  return (
-    <>
-      <div className="vendors-box  d-flex justify-content-evenly ">
-        {/* ---------------- Filter Start -------------------- */}
-        <Filters handle={handlerViewall} />
-        {/* ---------------- Filter End --------------------*/}
-        <div className="cards me-5" style={{ marginLeft: "350px" }}>
-          <div style={{ width: "70%" }} className="main">
-            {/* <p>Search Vendors</p> */}
-            <div className="search mt-5">
-              <TextField
-                className="mt-2"
-                id="outlined-basic"
-                onChange={inputHandler}
-                variant="standard"
-                fullWidth
-                label={
-                  <>
-                    Search <FaSearch size={"18px"} />
-                  </>
-                }
-              />
-            </div>
-          </div>
-          {
-            products.filter(filterHandeler).length === 0 &&
-            isProductAvailable ? (
-              <div
-                className=" m-5 d-flex justify-content-center align-items-center"
-                style={{
-                  height: "450px",
-                  width: "auto",
-                  boxShadow: "0px 0px 10px grey",
-                }}
-              >
-                <div style={{fontSize:'50px'}}>Sorry, No Sound Vendor Available</div>
-              </div>
-            ) : (
-              // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
-              <div
-                style={{ marginTop: "-20px" }}
-                className="d-flex flex-wrap justify-content-evenly align-items-center"
-              >
-                {products
-                  .filter(
-                    (ele) =>
-                      filterHandeler(ele) &&
-                      ele.name.toLowerCase().includes(inputText.toLowerCase())
-                  )
-                  .map((product, index) => (
-                    <section
-                      onClick={() => SoundVendorDetails(product)}
-                      key={index}
-                      className="main-page m-3"
-                    >
-                      <div
-                        style={{ cursor: "pointer", height: "100%" }}
-                        key={index}
-                        className="p-2 row details-block "
-                      >
-                        <div className="p-0">
-                          <img
-                            style={{ width: "100%", height: "200px" }}
-                            className=" custom-img"
-                            src={
-                              product.imageUrl.startsWith("images")
-                                ? `http://localhost:3006/` + product.imageUrl
-                                : product.imageUrl
-                            }
-                            alt={product.name}
-                          />
-                        </div>
+  const handleMaxChange = (event) => {
+    setMax(parseInt(event.target.value));
+  };
 
-                        {() => {
-                          console.log("IMAGE URL: ", product.imageUrl);
-                        }}
-                        <div className="p-1 font-size mt-4">
-                          <div className="row">
-                            <div className="col">
-                              <div className="h6" style={{ width: "170%" }}>
-                                <strong>{product.name}</strong>
-                              </div>
-                              {/* <p className="custom-text-size">Photo + Video</p> */}
-                            </div>
-                            <div className="col text-end">
-                              <p className="h6">
-                                <FaStar color="crimson" />{" "}
-                                {product.rating || "N/A"}
-                              </p>
-                              <p className="font custom-text-size">
-                                <FaMapMarkerAlt color="green" />{" "}
-                                {product.address.slice(0, 13) + ".."}
-                              </p>
-                            </div>
-                          </div>
-                          <h6 className="mb-2">
-                            <FaRupeeSign />{" "}
-                            {product.serviceCharge || "Price not available"}{" "}
-                            Onwards
-                          </h6>
-                        </div>
-                      </div>
-                    </section>
-                  ))}
+  {/*------------ Filter End -------------- */ }
+
+  return <>
+    {/* <Navbar/> */}
+    <div className='vendors-box mt-5  d-flex justify-content-between'>
+      <div className='filter-box'>
+        <div className='filter-box-inner d-flex flex-column align-items-center justify-content-center gap-4 '>
+          {/* -------------- Filter Start ------------------ */}
+          <Accordion
+            style={{
+              backgroundColor: "transparent",
+              boxShadow: "none",
+              border: "none",
+            }}
+            defaultExpanded
+          >
+            <AccordionSummary
+              // expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography
+                className="ms-5 text-primary"
+                style={{ fontSize: "17px", fontWeight: "600" }}
+              >
+                Price range
+              </Typography>
+            </AccordionSummary>
+
+            <AccordionDetails className="ms-2">
+              {/* <Box style={{backgroundColor:'white'}}>
+                        <Slider 
+                            getAriaLabel={() => 'Temperature range'}
+                            value={[min, max]}
+                            onChange={()=>handlerViewall(0,10000)}
+                            valueLabelDisplay="auto"
+                            getAriaValueText={valuetext}
+                            min={0}
+                            max={9999}
+                        />
+                    </Box> */}
+              <div className="container d-flex flex-column justify-content-center align-items-center">
+                <div className="row d-flex">
+                  <div className="d-flex flex-column justify-content-center align-items-center">
+                    <label>Min</label>
+                    <input
+                      className="w-100"
+                      style={{
+                        height: "30px",
+                        paddingLeft: "10px",
+                        border: "2px solid #0D6EFD",
+                        outline: "none",
+                        borderRadius: "5px",
+                      }}
+                      type="number"
+                      value={min}
+                      onChange={handleMinChange}
+                    />
+                  </div>
+                  <div className=" d-flex flex-column align-items-center mt-3">
+                    <label>Max</label>
+                    <input
+                      className="w-100"
+                      style={{
+                        height: "30px",
+                        paddingLeft: "10px",
+                        border: "2px solid #0D6EFD",
+                        outline: "none",
+                        borderRadius: "5px",
+                      }}
+                      type="number"
+                      value={max}
+                      onChange={handleMaxChange}
+                    />
+                  </div>
+                </div>
+                <div className="w-100 d-flex justify-content-center">
+                  <button
+                    className="w-50 mt-3 btn btn-primary"
+                    onClick={() => handlerViewall(min, max)}
+                  >
+                    Apply
+                  </button>
+                </div>
               </div>
-            )
-            // </InfiniteScroll>
-          }
+            </AccordionDetails>
+
+          </Accordion>
+          {/*  -------------- fILTER  End ---------------------*/}
         </div>
       </div>
-    </>
-  );
-};
 
-export default SoundHomePage;
+
+
+      <div className='cards'>
+        <div style={{ width: "70%" }} className="main">
+          {/* <p>Search Vendors</p> */}
+          <div className="search mt-5">
+            <TextField
+              id="outlined-basic"
+              onChange={inputHandler}
+              variant="standard"
+              fullWidth
+              label="search"
+            />
+          </div>
+          {/* <List input={inputText} /> */}
+        </div>
+        {products.filter(filterHandeler).length === 0 && isProductAvailable ?
+          <h3>No products available in the selected price range</h3> :
+          // <InfiniteScroll dataLength={dataSource.length} next={moreData} hasMore={hasMoreData} loader={<p>loading...</p>}>
+          <div style={{ marginTop: '-20px' }} className="d-flex flex-wrap justify-content-evenly align-items-center">
+            {products.filter((ele) => filterHandeler(ele) && ele.name.toLowerCase().includes(inputText.toLowerCase())).map((product, index) => (
+              <section onClick={() => SoundVendorDetails(product)} key={index} className="main-page m-3">
+                <div style={{ cursor: 'pointer' }}
+                  key={index}
+                  className="p-2 row details-block "
+                >
+                  <div className="p-0">
+                    <img style={{ width: "100%", height: "200px" }}
+                      className=" custom-img"
+                      src={product.imageUrl.startsWith('images') ? `http://localhost:3006/` + product.imageUrl : product.imageUrl}
+                      alt={product.name}
+
+                    />
+                  </div>
+
+                  {() => { console.log("IMAGE URL: ", product.imageUrl) }}
+                  <div className="p-1 font-size">
+                    <div className="row">
+                      <div className="col">
+                        <div className="h6" style={{ width: "170%" }}>
+                          <strong>{product.name}</strong>
+                        </div>
+                        {/* <p className="custom-text-size">Photo + Video</p> */}
+                      </div>
+                      <div className="col text-end">
+                        <p className="h6">
+                          <FaStar color="crimson" /> {product.rating || "N/A"}
+                        </p>
+                        <p className="font custom-text-size">
+                          <FaMapMarkerAlt color="green" /> {product.address.slice(0, 13) + ".."}
+                        </p>
+                      </div>
+                    </div>
+                    <h6 className="mb-0">
+                      <FaRupeeSign /> {product.serviceCharge || "Price not available"}{" "}
+                      Onwards
+                    </h6>
+                  </div>
+                </div>
+              </section>
+            ))
+            }
+          </div>
+          // </InfiniteScroll>
+        }
+      </div>
+    </div>
+
+
+  </>
+}
+
+export default SoundHomePage
